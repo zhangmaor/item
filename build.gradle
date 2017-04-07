@@ -66,6 +66,15 @@ dependencies {
     // https://mvnrepository.com/artifact/fast-md5/fast-md5
     /*连接mysql的支持包*/
     compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.38'
+    /**短信接口需要的支持包*/
+    // https://mvnrepository.com/artifact/commons-codec/commons-codec
+    compile group: 'commons-codec', name: 'commons-codec', version: '1.10'
+    // https://mvnrepository.com/artifact/dom4j/dom4j
+    compile group: 'dom4j', name: 'dom4j', version: '1.6.1'
+    // https://mvnrepository.com/artifact/commons-httpclient/commons-httpclient
+    compile group: 'commons-httpclient', name: 'commons-httpclient', version: '3.1'
+
+
 }
 
 
