@@ -24,7 +24,7 @@
         <!--将sqlSessionFactory的工作交给spring-->
         <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
                 <property name="dataSource" ref="DataSource" />
-                <property name="mapperLocations" value="classpath:myBatis/*.xml" />
+                <property name="mapperLocations" value="classpath:mapper/*.xml" />
         </bean>
         <!--myBatis后置处理器-->
         <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
