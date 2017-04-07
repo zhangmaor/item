@@ -8,6 +8,7 @@ public class EzdPermission {
 
     private int perId; //权限编号
     private String perName; //权限名称
+    
 
     public int getPerId() {
         return perId;
