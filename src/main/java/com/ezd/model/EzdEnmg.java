@@ -1,6 +1,7 @@
 package com.ezd.model;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/4/6.
@@ -16,9 +17,66 @@ public class EzdEnmg {
     private String enmgWcontact ;//联系方式
     private String enmgDetail ;//公司详情
     private String enmgAddress ;//公司地址
-    private int enmgType ;  //references ezd_entype(entype_id),--企业类型
+    private EzdEntype enmgType ;  //references ezd_entype(entype_id),--企业类型
     private String enmgScale ;//公司规模
     private Date enmgCretime ; //公司成立时间
+    private List<EzdUmg> ezdUmgs;//关注该公司的人
+    private List<EzdEnret> ezdEnrets;//本公司发布的招聘信息
+    private List<EzdBigret> ezdBigrets;//本公司发布的大招会信息
+    private List<EzdSchret> ezdSchrets;//本公司发布的校招会
+
+    @Override
+    public String toString() {
+        return "EzdEnmg{" +
+                "enmgId=" + enmgId +
+                ", enmgLogo='" + enmgLogo + '\'' +
+                ", enmgName='" + enmgName + '\'' +
+                ", enmgDomain='" + enmgDomain + '\'' +
+                ", enmgUser='" + enmgUser + '\'' +
+                ", enmgWcontact='" + enmgWcontact + '\'' +
+                ", enmgDetail='" + enmgDetail + '\'' +
+                ", enmgAddress='" + enmgAddress + '\'' +
+                ", enmgType=" + enmgType +
+                ", enmgScale='" + enmgScale + '\'' +
+                ", enmgCretime=" + enmgCretime +
+                ", ezdUmgs=" + ezdUmgs +
+                ", ezdEnrets=" + ezdEnrets +
+                ", ezdBigrets=" + ezdBigrets +
+                ", ezdSchrets=" + ezdSchrets +
+                '}';
+    }
+
+    public List<EzdSchret> getEzdSchrets() {
+        return ezdSchrets;
+    }
+
+    public void setEzdSchrets(List<EzdSchret> ezdSchrets) {
+        this.ezdSchrets = ezdSchrets;
+    }
+
+    public List<EzdBigret> getEzdBigrets() {
+        return ezdBigrets;
+    }
+
+    public void setEzdBigrets(List<EzdBigret> ezdBigrets) {
+        this.ezdBigrets = ezdBigrets;
+    }
+
+    public List<EzdEnret> getEzdEnrets() {
+        return ezdEnrets;
+    }
+
+    public void setEzdEnrets(List<EzdEnret> ezdEnrets) {
+        this.ezdEnrets = ezdEnrets;
+    }
+
+    public List<EzdUmg> getEzdUmgs() {
+        return ezdUmgs;
+    }
+
+    public void setEzdUmgs(List<EzdUmg> ezdUmgs) {
+        this.ezdUmgs = ezdUmgs;
+    }
 
     public int getEnmgId() {
         return enmgId;
@@ -84,11 +142,11 @@ public class EzdEnmg {
         this.enmgAddress = enmgAddress;
     }
 
-    public int getEnmgType() {
+    public EzdEntype getEnmgType() {
         return enmgType;
     }
 
-    public void setEnmgType(int enmgType) {
+    public void setEnmgType(EzdEntype enmgType) {
         this.enmgType = enmgType;
     }
 
@@ -108,20 +166,4 @@ public class EzdEnmg {
         this.enmgCretime = enmgCretime;
     }
 
-    @Override
-    public String toString() {
-        return "EzdEnmg{" +
-                "enmgId=" + enmgId +
-                ", enmgLogo='" + enmgLogo + '\'' +
-                ", enmgName='" + enmgName + '\'' +
-                ", enmgDomain='" + enmgDomain + '\'' +
-                ", enmgUser='" + enmgUser + '\'' +
-                ", enmgWcontact='" + enmgWcontact + '\'' +
-                ", enmgDetail='" + enmgDetail + '\'' +
-                ", enmgAddress='" + enmgAddress + '\'' +
-                ", enmgType=" + enmgType +
-                ", enmgScale='" + enmgScale + '\'' +
-                ", enmgCretime=" + enmgCretime +
-                '}';
-    }
 }

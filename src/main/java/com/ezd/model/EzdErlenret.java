@@ -5,19 +5,9 @@ package com.ezd.model;
  */
 public class EzdErlenret {
     private int erlenretId;
-    private int erlenretUmg;//references umg(umg_id), --  谁报名了
-    private int erlenretEnret;//references enret(enret_id), --  报名的是那个招聘信息
-    private int erlenretStatus;//references ezd_restatus(restatus_id) --  报名状态 (已报名 审核 录用 拒绝)
-
-    @Override
-    public String toString() {
-        return "EzdErlenret{" +
-                "erlenretId=" + erlenretId +
-                ", erlenretUmg=" + erlenretUmg +
-                ", erlenretEnret=" + erlenretEnret +
-                ", erlenretStatus=" + erlenretStatus +
-                '}';
-    }
+    private EzdUmg erlenretUmg;//references umg(umg_id), --  谁报名了
+    private EzdEnret erlenretEnret;//references enret(enret_id), --  报名的是那个招聘信息
+    private EzdRestatus erlenretStatus;//references ezd_restatus(restatus_id) --  报名状态 (已报名 审核 录用 拒绝)
 
     public EzdErlenret() {
     }
@@ -31,27 +21,37 @@ public class EzdErlenret {
         this.erlenretId = erlenretId;
     }
 
-    public int getErlenretUmg() {
+    @Override
+    public String toString() {
+        return "EzdErlenret{" +
+                "erlenretId=" + erlenretId +
+                ", erlenretUmg=" + erlenretUmg +
+                ", erlenretEnret=" + erlenretEnret +
+                ", erlenretStatus=" + erlenretStatus +
+                '}';
+    }
+
+    public EzdUmg getErlenretUmg() {
         return erlenretUmg;
     }
 
-    public void setErlenretUmg(int erlenretUmg) {
+    public void setErlenretUmg(EzdUmg erlenretUmg) {
         this.erlenretUmg = erlenretUmg;
     }
 
-    public int getErlenretEnret() {
+    public EzdEnret getErlenretEnret() {
         return erlenretEnret;
     }
 
-    public void setErlenretEnret(int erlenretEnret) {
+    public void setErlenretEnret(EzdEnret erlenretEnret) {
         this.erlenretEnret = erlenretEnret;
     }
 
-    public int getErlenretStatus() {
+    public EzdRestatus getErlenretStatus() {
         return erlenretStatus;
     }
 
-    public void setErlenretStatus(int erlenretStatus) {
+    public void setErlenretStatus(EzdRestatus erlenretStatus) {
         this.erlenretStatus = erlenretStatus;
     }
 }

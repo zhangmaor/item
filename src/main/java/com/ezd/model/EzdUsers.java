@@ -12,6 +12,26 @@ public class EzdUsers {
     private String userPhone; //电话
     private String userPwd; //密码
     private Date userUptime; //创建时间
+    private EzdUmg ezdUmg;
+
+    @Override
+    public String toString() {
+        return "EzdUsers{" +
+                "userId=" + userId +
+                ", userPhone='" + userPhone + '\'' +
+                ", userPwd='" + userPwd + '\'' +
+                ", userUptime=" + userUptime +
+                ", ezdUmg=" + ezdUmg +
+                '}';
+    }
+
+    public EzdUmg getEzdUmg() {
+        return ezdUmg;
+    }
+
+    public void setEzdUmg(EzdUmg ezdUmg) {
+        this.ezdUmg = ezdUmg;
+    }
 
     public int getUserId() {
         return userId;
@@ -45,13 +65,4 @@ public class EzdUsers {
         this.userUptime = userUptime;
     }
 
-    @Override
-    public String toString() {
-        return "EzdUsers{" +
-                "userId=" + userId +
-                ", userPhone='" + userPhone + '\'' +
-                ", userPwd='" + userPwd + '\'' +
-                ", userUptime=" + userUptime +
-                '}';
-    }
 }

@@ -1,6 +1,7 @@
 package com.ezd.model;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/4/6.
@@ -8,16 +9,18 @@ import java.util.Date;
  */
 public class EzdEnret {
     private int enretId;
-    private int nretEnmg;//nret_enmg int references ezd_enmg(enmg_id),
+    private EzdEnmg nretEnmg;//nret_enmg int references ezd_enmg(enmg_id),
     private int enretWantNum;//招聘人数
-    private int enretType;//references ezd_retType(retType_id),--   招聘类型 （实习 兼职 全职）
+    private EzdRetType enretType;//references ezd_retType(retType_id),--   招聘类型 （实习 兼职 全职）
     private Date enretCreTime;//发布时间
     private int enretLwMoney;//最低工资
     private int enretHgMoney;//最高工资
     private String enretPost;//招聘岗位
     private String enretPg;//待遇
     private String enretDemand;//招聘要求
-    private int enretStatus;//references ezd_newsStatus(newsStatus_id)  --  信息状态,( 进行中  已结束)
+    private EzdNewsStatus enretStatus;//references ezd_newsStatus(newsStatus_id)  --  信息状态,( 进行中  已结束)
+    private List<EzdErlenret> ezdErlenrets;//对应的报名信息表
+    private List<EzdUmg> ezdUmgs ;//对本信息浏览的人列表
 
     @Override
     public String toString() {
@@ -33,8 +36,27 @@ public class EzdEnret {
                 ", enretPg='" + enretPg + '\'' +
                 ", enretDemand='" + enretDemand + '\'' +
                 ", enretStatus=" + enretStatus +
+                ", ezdErlenrets=" + ezdErlenrets +
+                ", ezdUmgs=" + ezdUmgs +
                 '}';
     }
+
+    public List<EzdUmg> getEzdUmgs() {
+        return ezdUmgs;
+    }
+
+    public void setEzdUmgs(List<EzdUmg> ezdUmgs) {
+        this.ezdUmgs = ezdUmgs;
+    }
+
+    public List<EzdErlenret> getEzdErlenrets() {
+        return ezdErlenrets;
+    }
+
+    public void setEzdErlenrets(List<EzdErlenret> ezdErlenrets) {
+        this.ezdErlenrets = ezdErlenrets;
+    }
+
 
     public EzdEnret() {
     }
@@ -48,13 +70,6 @@ public class EzdEnret {
         this.enretId = enretId;
     }
 
-    public int getNretEnmg() {
-        return nretEnmg;
-    }
-
-    public void setNretEnmg(int nretEnmg) {
-        this.nretEnmg = nretEnmg;
-    }
 
     public int getEnretWantNum() {
         return enretWantNum;
@@ -64,13 +79,6 @@ public class EzdEnret {
         this.enretWantNum = enretWantNum;
     }
 
-    public int getEnretType() {
-        return enretType;
-    }
-
-    public void setEnretType(int enretType) {
-        this.enretType = enretType;
-    }
 
     public Date getEnretCreTime() {
         return enretCreTime;
@@ -120,11 +128,28 @@ public class EzdEnret {
         this.enretDemand = enretDemand;
     }
 
-    public int getEnretStatus() {
+    public EzdRetType getEnretType() {
+        return enretType;
+    }
+
+    public void setEnretType(EzdRetType enretType) {
+        this.enretType = enretType;
+    }
+
+    public EzdNewsStatus getEnretStatus() {
         return enretStatus;
     }
 
-    public void setEnretStatus(int enretStatus) {
+    public void setEnretStatus(EzdNewsStatus enretStatus) {
         this.enretStatus = enretStatus;
+    }
+
+    public EzdEnmg getNretEnmg() {
+
+        return nretEnmg;
+    }
+
+    public void setNretEnmg(EzdEnmg nretEnmg) {
+        this.nretEnmg = nretEnmg;
     }
 }

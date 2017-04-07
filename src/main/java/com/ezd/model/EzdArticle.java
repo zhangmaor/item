@@ -1,5 +1,7 @@
 package com.ezd.model;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2017/4/6.
  * 文章信息表
@@ -7,7 +9,7 @@ package com.ezd.model;
 public class EzdArticle {
     private int articleId;
     private String articleLogo;//文章封面
-    private String articleType;//文章类型 references ezd_artitype(artitype_id)
+    private EzdArtittype articleType;//文章类型 references ezd_artitype(artitype_id)
     private String articleMtitle;//主标题
     private String articleStitle;//副标题
     private String articleAuthor;//作者
@@ -16,6 +18,33 @@ public class EzdArticle {
     private String articleContent;//文章内容
     private String articleKeywords;//文章关键字
     private int articleStatus;//文章状态
+    private List<EzdReadarti> ezdReadartis;//阅读本文章的信息
+
+    @Override
+    public String toString() {
+        return "EzdArticle{" +
+                "articleId=" + articleId +
+                ", articleLogo='" + articleLogo + '\'' +
+                ", articleType=" + articleType +
+                ", articleMtitle='" + articleMtitle + '\'' +
+                ", articleStitle='" + articleStitle + '\'' +
+                ", articleAuthor='" + articleAuthor + '\'' +
+                ", articleAuemail='" + articleAuemail + '\'' +
+                ", articlePic='" + articlePic + '\'' +
+                ", articleContent='" + articleContent + '\'' +
+                ", articleKeywords='" + articleKeywords + '\'' +
+                ", articleStatus=" + articleStatus +
+                ", ezdReadartis=" + ezdReadartis +
+                '}';
+    }
+
+    public List<EzdReadarti> getEzdReadartis() {
+        return ezdReadartis;
+    }
+
+    public void setEzdReadartis(List<EzdReadarti> ezdReadartis) {
+        this.ezdReadartis = ezdReadartis;
+    }
 
     public int getArticleId() {
         return articleId;
@@ -33,11 +62,11 @@ public class EzdArticle {
         this.articleLogo = articleLogo;
     }
 
-    public String getArticleType() {
+    public EzdArtittype getArticleType() {
         return articleType;
     }
 
-    public void setArticleType(String articleType) {
+    public void setArticleType(EzdArtittype articleType) {
         this.articleType = articleType;
     }
 

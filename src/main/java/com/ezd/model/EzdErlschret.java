@@ -9,9 +9,33 @@ import java.util.Date;
 public class EzdErlschret {
 
     private int erlschretId ;
-    private int   erlschretUser ;// references ezd_umg(umg_id),--   谁报名了
-    private int  erlschretSchret ;// references ezd_schret(schret_id),--   报名了那个校招会\
-    private int  erlschretStatus ;//references ezd_restatus(restatus_id), --  包名状态 (已报名 审核 录用 拒绝)
+    private EzdUmg   erlschretUser ;// references ezd_umg(umg_id),--   谁报名了
+    private EzdSchret  erlschretSchret ;// references ezd_schret(schret_id),--   报名了那个校招会\
+
+    @Override
+    public String toString() {
+        return "EzdErlschret{" +
+                "erlschretId=" + erlschretId +
+                ", erlschretUser=" + erlschretUser +
+                ", erlschretSchret=" + erlschretSchret +
+                ", erlschretStatus=" + erlschretStatus +
+                ", erlschretTime=" + erlschretTime +
+                '}';
+    }
+
+    public void setErlschretUser(EzdUmg erlschretUser) {
+        this.erlschretUser = erlschretUser;
+    }
+
+    public void setErlschretSchret(EzdSchret erlschretSchret) {
+        this.erlschretSchret = erlschretSchret;
+    }
+
+    public void setErlschretStatus(EzdRestatus erlschretStatus) {
+        this.erlschretStatus = erlschretStatus;
+    }
+
+    private EzdRestatus  erlschretStatus ;//references ezd_restatus(restatus_id), --  包名状态 (已报名 审核 录用 拒绝)
     private Date erlschretTime ;//
 
     public int getErlschretId() {
@@ -22,29 +46,6 @@ public class EzdErlschret {
         this.erlschretId = erlschretId;
     }
 
-    public int getErlschretUser() {
-        return erlschretUser;
-    }
-
-    public void setErlschretUser(int erlschretUser) {
-        this.erlschretUser = erlschretUser;
-    }
-
-    public int getErlschretSchret() {
-        return erlschretSchret;
-    }
-
-    public void setErlschretSchret(int erlschretSchret) {
-        this.erlschretSchret = erlschretSchret;
-    }
-
-    public int getErlschretStatus() {
-        return erlschretStatus;
-    }
-
-    public void setErlschretStatus(int erlschretStatus) {
-        this.erlschretStatus = erlschretStatus;
-    }
 
     public Date getErlschretTime() {
         return erlschretTime;

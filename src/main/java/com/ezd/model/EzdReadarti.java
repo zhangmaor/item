@@ -8,8 +8,8 @@ import java.util.Date;
  */
 public class EzdReadarti {
     private int readartiId;
-    private int readartiArticle;//references ezd_article(article_id)
-    private int readartiUser;//references ezd_umg(umg_id)
+    private EzdArticle readartiArticle;//references ezd_article(article_id)
+    private EzdUmg readartiUser;//references ezd_umg(umg_id)
     private Date readartiTime;//阅读时间
 
     public int getReadartiId() {
@@ -20,19 +20,29 @@ public class EzdReadarti {
         this.readartiId = readartiId;
     }
 
-    public int getReadartiArticle() {
+    @Override
+    public String toString() {
+        return "EzdReadarti{" +
+                "readartiId=" + readartiId +
+                ", readartiArticle=" + readartiArticle +
+                ", readartiUser=" + readartiUser +
+                ", readartiTime=" + readartiTime +
+                '}';
+    }
+
+    public EzdArticle getReadartiArticle() {
         return readartiArticle;
     }
 
-    public void setReadartiArticle(int readartiArticle) {
+    public void setReadartiArticle(EzdArticle readartiArticle) {
         this.readartiArticle = readartiArticle;
     }
 
-    public int getReadartiUser() {
+    public EzdUmg getReadartiUser() {
         return readartiUser;
     }
 
-    public void setReadartiUser(int readartiUser) {
+    public void setReadartiUser(EzdUmg readartiUser) {
         this.readartiUser = readartiUser;
     }
 
