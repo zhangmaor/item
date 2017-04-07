@@ -1,6 +1,7 @@
 package com.ezd.model;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017-04-06.
@@ -12,8 +13,31 @@ public class EzdSchmg {
     private String schmgName ;     //学校名称
     private String schmgMg;        //学校详情
     private String schmgAddress;   //学校地址
-    private int schmgType;         //学校性质
+    private EzdSchtype schmgType;         //学校性质
     private Date schmgCretime;     //学校成立时间
+    private List<EzdSchret> ezdSchrets;//在本学校举行的校招会
+
+    @Override
+    public String toString() {
+        return "EzdSchmg{" +
+                "schmgId=" + schmgId +
+                ", schmgDomain='" + schmgDomain + '\'' +
+                ", schmgName='" + schmgName + '\'' +
+                ", schmgMg='" + schmgMg + '\'' +
+                ", schmgAddress='" + schmgAddress + '\'' +
+                ", schmgType=" + schmgType +
+                ", schmgCretime=" + schmgCretime +
+                ", ezdSchrets=" + ezdSchrets +
+                '}';
+    }
+
+    public List<EzdSchret> getEzdSchrets() {
+        return ezdSchrets;
+    }
+
+    public void setEzdSchrets(List<EzdSchret> ezdSchrets) {
+        this.ezdSchrets = ezdSchrets;
+    }
 
     public int getSchmgId() {
         return schmgId;
@@ -55,11 +79,11 @@ public class EzdSchmg {
         this.schmgAddress = schmgAddress;
     }
 
-    public int getSchmgType() {
+    public EzdSchtype getSchmgType() {
         return schmgType;
     }
 
-    public void setSchmgType(int schmgType) {
+    public void setSchmgType(EzdSchtype schmgType) {
         this.schmgType = schmgType;
     }
 
@@ -71,16 +95,4 @@ public class EzdSchmg {
         this.schmgCretime = schmgCretime;
     }
 
-    @Override
-    public String toString() {
-        return "EzdSchmg{" +
-                "schmgId=" + schmgId +
-                ", schmgDomain='" + schmgDomain + '\'' +
-                ", schmgName='" + schmgName + '\'' +
-                ", schmgMg='" + schmgMg + '\'' +
-                ", schmgAddress='" + schmgAddress + '\'' +
-                ", schmgType=" + schmgType +
-                ", schmgCretime=" + schmgCretime +
-                '}';
-    }
 }

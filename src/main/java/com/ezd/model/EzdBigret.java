@@ -1,9 +1,11 @@
 package com.ezd.model;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/4/6.
+ * 大招会
  */
 public class EzdBigret {
     private int bigretId;
@@ -11,11 +13,12 @@ public class EzdBigret {
     private String bigretTitle;//大招会标题
     private Date bigretTime;//大招会时间
     private String bigretAddress;//大招会地址
-    private int bigretStatus;//references ezd_newsStatus(newsStatus_id),--  大招会状态(未开始  进行中 已结束)
+    private EzdNewsStatus bigretStatus;//references ezd_newsStatus(newsStatus_id),--  大招会状态(未开始  进行中 已结束)
     private Date bigretCreTime;//发布时间
     private String bigretDetail;//大招会详情
     private String bigretPost;//招聘职位
-    private int bigretEnmg;//references ezd_enmg(enmg_id)--   哪家公司发布的
+    private EzdEnmg bigretEnmg;//references ezd_enmg(enmg_id)--   哪家公司发布的
+    private List<EzdErlbigret> ezdErlbigrets;//报名本大招会的人的列表信息；
 
     @Override
     public String toString() {
@@ -30,7 +33,16 @@ public class EzdBigret {
                 ", bigretDetail='" + bigretDetail + '\'' +
                 ", bigretPost='" + bigretPost + '\'' +
                 ", bigretEnmg=" + bigretEnmg +
+                ", ezdErlbigrets=" + ezdErlbigrets +
                 '}';
+    }
+
+    public List<EzdErlbigret> getEzdErlbigrets() {
+        return ezdErlbigrets;
+    }
+
+    public void setEzdErlbigrets(List<EzdErlbigret> ezdErlbigrets) {
+        this.ezdErlbigrets = ezdErlbigrets;
     }
 
     public EzdBigret() {
@@ -77,13 +89,6 @@ public class EzdBigret {
         this.bigretAddress = bigretAddress;
     }
 
-    public int getBigretStatus() {
-        return bigretStatus;
-    }
-
-    public void setBigretStatus(int bigretStatus) {
-        this.bigretStatus = bigretStatus;
-    }
 
     public Date getBigretCreTime() {
         return bigretCreTime;
@@ -109,11 +114,19 @@ public class EzdBigret {
         this.bigretPost = bigretPost;
     }
 
-    public int getBigretEnmg() {
+    public EzdNewsStatus getBigretStatus() {
+        return bigretStatus;
+    }
+
+    public void setBigretStatus(EzdNewsStatus bigretStatus) {
+        this.bigretStatus = bigretStatus;
+    }
+
+    public EzdEnmg getBigretEnmg() {
         return bigretEnmg;
     }
 
-    public void setBigretEnmg(int bigretEnmg) {
+    public void setBigretEnmg(EzdEnmg bigretEnmg) {
         this.bigretEnmg = bigretEnmg;
     }
 }

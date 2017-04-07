@@ -7,8 +7,8 @@ package com.ezd.model;
 public class EzdRoleUser {
 
     private int uperId;
-    private int uperRole; //int references ezd_role(role_id),
-    private int uperUmg; //int references ezd_umg(umg_id)
+    private EzdRole uperRole; //int references ezd_role(role_id),
+    private EzdUsers ezdUsers; //int references ezd_users(user_id)
 
     public int getUperId() {
         return uperId;
@@ -18,28 +18,29 @@ public class EzdRoleUser {
         this.uperId = uperId;
     }
 
-    public int getUperRole() {
-        return uperRole;
-    }
-
-    public void setUperRole(int uperRole) {
-        this.uperRole = uperRole;
-    }
-
-    public int getUperUmg() {
-        return uperUmg;
-    }
-
-    public void setUperUmg(int uperUmg) {
-        this.uperUmg = uperUmg;
-    }
-
     @Override
     public String toString() {
         return "EzdRoleUser{" +
                 "uperId=" + uperId +
                 ", uperRole=" + uperRole +
-                ", uperUmg=" + uperUmg +
+                ", ezdUsers=" + ezdUsers +
                 '}';
     }
+
+    public EzdRole getUperRole() {
+        return uperRole;
+    }
+
+    public void setUperRole(EzdRole uperRole) {
+        this.uperRole = uperRole;
+    }
+
+    public EzdUsers getEzdUsers() {
+        return ezdUsers;
+    }
+
+    public void setEzdUsers(EzdUsers ezdUsers) {
+        this.ezdUsers = ezdUsers;
+    }
+
 }

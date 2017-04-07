@@ -8,8 +8,30 @@ import java.util.Date;
  */
 public class EzdSayart {
     private int sayartId;
-    private int sayartArticel;//references ezd_article(article_id)
-    private int sayartUmg;//references ezd_umg(umg_id)
+    private EzdArticle sayartArticel;//references ezd_article(article_id)
+
+    @Override
+    public String toString() {
+        return "EzdSayart{" +
+                "sayartId=" + sayartId +
+                ", sayartArticel=" + sayartArticel +
+                ", sayartUmg=" + sayartUmg +
+                ", sayartContent='" + sayartContent + '\'' +
+                ", sayartTouser=" + sayartTouser +
+                ", sayartStatus=" + sayartStatus +
+                ", sayartTIme=" + sayartTIme +
+                '}';
+    }
+
+    public void setSayartArticel(EzdArticle sayartArticel) {
+        this.sayartArticel = sayartArticel;
+    }
+
+    public void setSayartUmg(EzdUmg sayartUmg) {
+        this.sayartUmg = sayartUmg;
+    }
+
+    private EzdUmg sayartUmg;//references ezd_umg(umg_id)
     private String  sayartContent;//评论内容
     private int sayartTouser;//评论其他用户
     private int sayartStatus;//评论状态 需要管理员审核
@@ -21,22 +43,6 @@ public class EzdSayart {
 
     public void setSayartId(int sayartId) {
         this.sayartId = sayartId;
-    }
-
-    public int getSayartArticel() {
-        return sayartArticel;
-    }
-
-    public void setSayartArticel(int sayartArticel) {
-        this.sayartArticel = sayartArticel;
-    }
-
-    public int getSayartUmg() {
-        return sayartUmg;
-    }
-
-    public void setSayartUmg(int sayartUmg) {
-        this.sayartUmg = sayartUmg;
     }
 
     public String getSayartContent() {

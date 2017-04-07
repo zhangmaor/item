@@ -1,6 +1,7 @@
 package com.ezd.model;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/4/6.
@@ -9,7 +10,12 @@ import java.util.Date;
 public class EzdUmg {
 
     private int umgId;
-    private int umgUser; //references ezd_users(user_id),-- 引用用户的主键
+
+    public void setUmgUser(EzdUsers umgUser) {
+        this.umgUser = umgUser;
+    }
+
+    private EzdUsers umgUser; //references ezd_users(user_id),-- 引用用户的主键
     private String umgPhoto ;//头像
     private String umgName  ;//姓名
     private String umgSex ; //性别
@@ -21,6 +27,100 @@ public class EzdUmg {
     private String umgSayMf ;//自我评价
     private String umgEducation ;//教育经历
     private Date umgUptime ; //修改时间
+    private List<EzdEnmg> ezdEnmgs;//关注的公司
+    private List<EzdUnews> ezdUnewss ;//收到的信息（消息
+    private List<EzdErlenret> ezdErlenrets;//对应的报名信息表
+    private List<EzdEnret> ezdEnrets;//本用户浏览的招聘信息
+    private List<EzdErlbigret> ezdErlbigrets;//本用户报名了那个大招会
+    private List<EzdErlschret> ezdErlschrets;//本用户报名了那个校招会
+    private List<EzdReadarti> ezdReadartis;//本用户阅读了那些文章
+
+    @Override
+    public String toString() {
+        return "EzdUmg{" +
+                "umgId=" + umgId +
+                ", umgUser=" + umgUser +
+                ", umgPhoto='" + umgPhoto + '\'' +
+                ", umgName='" + umgName + '\'' +
+                ", umgSex='" + umgSex + '\'' +
+                ", umg_birthday=" + umg_birthday +
+                ", umgEmail='" + umgEmail + '\'' +
+                ", umgSchool='" + umgSchool + '\'' +
+                ", umgMajor='" + umgMajor + '\'' +
+                ", umgDegree='" + umgDegree + '\'' +
+                ", umgSayMf='" + umgSayMf + '\'' +
+                ", umgEducation='" + umgEducation + '\'' +
+                ", umgUptime=" + umgUptime +
+                ", ezdEnmgs=" + ezdEnmgs +
+                ", ezdUnewss=" + ezdUnewss +
+                ", ezdErlenrets=" + ezdErlenrets +
+                ", ezdEnrets=" + ezdEnrets +
+                ", ezdErlbigrets=" + ezdErlbigrets +
+                ", ezdErlschrets=" + ezdErlschrets +
+                ", ezdReadartis=" + ezdReadartis +
+                '}';
+    }
+
+    public List<EzdReadarti> getEzdReadartis() {
+        return ezdReadartis;
+    }
+
+    public void setEzdReadartis(List<EzdReadarti> ezdReadartis) {
+        this.ezdReadartis = ezdReadartis;
+    }
+
+    public List<EzdErlschret> getEzdErlschrets() {
+        return ezdErlschrets;
+    }
+
+    public void setEzdErlschrets(List<EzdErlschret> ezdErlschrets) {
+        this.ezdErlschrets = ezdErlschrets;
+    }
+
+    public List<EzdErlbigret> getEzdErlbigrets() {
+        return ezdErlbigrets;
+    }
+
+    public void setEzdErlbigrets(List<EzdErlbigret> ezdErlbigrets) {
+        this.ezdErlbigrets = ezdErlbigrets;
+    }
+
+    public List<EzdEnret> getEzdEnrets() {
+        return ezdEnrets;
+    }
+
+    public void setEzdEnrets(List<EzdEnret> ezdEnrets) {
+        this.ezdEnrets = ezdEnrets;
+    }
+
+    public List<EzdErlenret> getEzdErlenrets() {
+        return ezdErlenrets;
+    }
+
+    public void setEzdErlenrets(List<EzdErlenret> ezdErlenrets) {
+        this.ezdErlenrets = ezdErlenrets;
+    }
+
+
+    public List<EzdUnews> getEzdUnewss() {
+        return ezdUnewss;
+    }
+
+    public void setEzdUnewss(List<EzdUnews> ezdUnewss) {
+        this.ezdUnewss = ezdUnewss;
+    }
+
+    public EzdUsers getUmgUser() {
+        return umgUser;
+    }
+
+    public List<EzdEnmg> getEzdEnmgs() {
+        return ezdEnmgs;
+    }
+
+    public void setEzdEnmgs(List<EzdEnmg> ezdEnmgs) {
+        this.ezdEnmgs = ezdEnmgs;
+    }
 
     public int getUmgId() {
         return umgId;
@@ -118,30 +218,6 @@ public class EzdUmg {
         this.umgUptime = umgUptime;
     }
 
-    public int getUmgUser() {
-        return umgUser;
-    }
 
-    public void setUmgUser(int umgUser) {
-        this.umgUser = umgUser;
-    }
 
-    @Override
-    public String toString() {
-        return "EzdUmg{" +
-                "umgId=" + umgId +
-                ", umgUser=" + umgUser +
-                ", umgPhoto='" + umgPhoto + '\'' +
-                ", umgName='" + umgName + '\'' +
-                ", umgSex='" + umgSex + '\'' +
-                ", umg_birthday=" + umg_birthday +
-                ", umgEmail='" + umgEmail + '\'' +
-                ", umgSchool='" + umgSchool + '\'' +
-                ", umgMajor='" + umgMajor + '\'' +
-                ", umgDegree='" + umgDegree + '\'' +
-                ", umgSayMf='" + umgSayMf + '\'' +
-                ", umgEducation='" + umgEducation + '\'' +
-                ", umgUptime=" + umgUptime +
-                '}';
-    }
 }
