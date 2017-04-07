@@ -4,16 +4,16 @@ package com.ezd.model;
  * Created by Administrator on 2017/4/6.
  * 文章类型
  */
-public class Ezd_artittype {
-    private int rtitype_id ;
-    private String artitypeName ;
+public class EzdArtittype {
+    private int rtitypeId ;
+    private String artitypeName ;//文章类型名称
 
-    public int getRtitype_id() {
-        return rtitype_id;
+    public int getRtitypeId() {
+        return rtitypeId;
     }
 
-    public void setRtitype_id(int rtitype_id) {
-        this.rtitype_id = rtitype_id;
+    public void setRtitypeId(int rtitypeId) {
+        this.rtitypeId = rtitypeId;
     }
 
     public String getArtitypeName() {
