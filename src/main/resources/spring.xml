@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+">
+        <!--扫描包-->
+        <context:component-scan base-package="com.ezd"/>
+        <!--注入外部的配置参数-->
+        <context:property-placeholder location="classpath:propertiesResoutces/dataBase.properties" />
+        <!--配置数据库的信息-->
+        <bean id="DataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+                <property name="driverClass" value="${driverClassName}" />
+                <property name="jdbcUrl" value="${url}"/>
+                <property name="user" value="${userName}" />
+                <property name="password" value="${password}"/>
+        </bean>
+        <!--将sqlSessionFactory的工作交给spring-->
+        <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+                <property name="dataSource" ref="DataSource" />
+                <property name="mapperLocations" value="classpath:myBatis/*.xml" />
+        </bean>
+        <!--myBatis后置处理器-->
+        <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+                <property name="basePackage" value="com.ezd.dao"/>
+                <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+        </bean>
+        <!--声明式事务，-->
+        <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+                <property name="dataSource" ref="DataSource"/>
+        </bean>
+        <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+</beans>
