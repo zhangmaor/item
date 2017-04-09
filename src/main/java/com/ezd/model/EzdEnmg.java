@@ -24,6 +24,8 @@ public class EzdEnmg {
     private List<EzdEnret> ezdEnrets;//本公司发布的招聘信息
     private List<EzdBigret> ezdBigrets;//本公司发布的大招会信息
     private List<EzdSchret> ezdSchrets;//本公司发布的校招会
+    private EzdIndustry ezdIndustry; //本公司的 一级企业类型
+    private EzdSeindustry  ezdSeindustry ; //二级 企业类型
 
     @Override
     public String toString() {
