@@ -1,3 +1,4 @@
+﻿
 
 
 ALTER DATABASE `ezd_item` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
@@ -13,8 +14,7 @@ CREATE TABLE ezd_permission( --   权限表 2
 CREATE TABLE ezd_tole_permission(--   角色权限关系表 3
 	roper_id INT PRIMARY KEY AUTO_INCREMENT,
 	roper_role INT , --  对应的那个权限
-	reper_perm  INT ,	--  那个角色对应了权限
-	
+	reper_perm  INT ,	--  那个角色对应了权限utf8_general_ci;	
 	FOREIGN KEY (roper_role) REFERENCES ezd_role(role_id),
 	FOREIGN KEY (reper_perm) REFERENCES ezd_permission(per_id)	
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
