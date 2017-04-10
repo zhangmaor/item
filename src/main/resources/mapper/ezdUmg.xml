@@ -26,4 +26,12 @@
         <collection property="ezdErlschrets" resultMap="*.erlschret"/><!--校招会-->
         <collection property="ezdReadartis" resultMap="*.readarti"/><!--用户阅读的文章列表信息-->
     </resultMap>
+    <select id="getAll" parameterType="com.ezd.model.EzdUsers" resultMap="umg" >
+        select * from ezd_umg
+        <where>
+            <if test="#{user_id!=null}">
+                umg_user = user_id
+            </if>
+        </where>
+    </select>
 </mapper>

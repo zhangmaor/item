@@ -10,5 +10,7 @@
         <result column="user_Pwd" property="userPwd" />
         <result column="user_uptime" property="userUptime" />
     </resultMap>
-
+    <select id="getAll" resultMap="users" >
+        select * from ezd_users
+    </select>
 </mapper>

@@ -8,14 +8,15 @@
         <id column="unews_id" property="unewsId"/><!--编号-->
         <result column="unews_from" property="unewsFrom" /><!--发信人（该版本默认的发信人是系统）-->
         <result column="unews_content" property="unewsContent" /><!--消息的内容-->
+        <result column="unews_user" property="unewsUser" /><!--收信人-->
     </resultMap>
-    <select id="info"  resultType="com.ezd.model.EzdUnews" parameterMap="unews">
-        select <include refid="row"/> from ead_unews
-        <where>
-            <if test="#{unewsUser!=null}">
-                unews_user = unewsUser
-            </if>
-        </where>
+    <select id="getAll"  resultType="unews" parameterMap="com.ezd.model.EzdUmg">
+      select * from ezd_unews
+      <where>
+          <if test="#{umg_id!=null}">
+              unews_id =  umg_id
+          </if>
+      </where>
 
     </select>
     <sql id="row">unews_id , unews_user , unews_from , unews_content , unews_status</sql>
