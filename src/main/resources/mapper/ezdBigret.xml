@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--这里的namespace还没有确定-->
+<mapper namespace="com.ezd.dao.*">
+    <resultMap id="bigret" type="com.ezd.model.EzdBigret"><!--大招会信息表-->
+        <id column="bigret_id" property="bigretId"/><!--编号-->
+        <result column="bigret_logo" property="bigretLogo"/><!--大招会logo(图片)-->
+        <result column="bigret_title" property="bigretTitle"/><!--大招会标题-->
+        <result column="bigret_time" property="bigretTime"/><!--大招会开始时间-->
+        <result column="bigret_address" property="bigretAddress"/><!--大招会地址-->
+        <result column="bigret_creTime" property="bigretCreTime"/><!--大招会发布时间-->
+        <result column="bigret_detail" property="bigretDetail"/><!--大招会详情-->
+        <result column="bigret_post" property="bigretPost"/><!--招聘岗位-->
+        <association property="bigretStatus" resultMap="*.newsStatus"/><!--大招会的状态-->
+        <association property="bigretEnmg" resultMap="*.enmg"/><!--哪家公司发布的-->
+        <collection property="ezdErlbigrets" resultMap="*.umg"/><!--浏览本大招会的人员列表-->
+    </resultMap>
+</mapper>

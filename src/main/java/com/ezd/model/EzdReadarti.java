@@ -8,8 +8,8 @@ import java.util.Date;
  */
 public class EzdReadarti {
     private int readartiId;
-    private EzdArticle readartiArticle;//references ezd_article(article_id)
-    private EzdUmg readartiUser;//references ezd_umg(umg_id)
+    private EzdArticle readartiArticle;//references ezd_article(article_id)哪篇文章
+    private EzdUmg readartiUser;//references ezd_umg(umg_id)谁阅读的
     private Date readartiTime;//阅读时间
 
     public int getReadartiId() {

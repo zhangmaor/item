@@ -6,9 +6,9 @@
 <mapper namespace="com.ezd.dao.*">
     <resultMap id="erlenret" type="com.ezd.model.EzdErlenret">
         <id column="erlenret_id" property="" /><!--招聘信息报名表mapper-->
-        <result column="erlenret_status" property="erlenretStatus"/><!--报名状态-->
-        <association property="EzdUmg" resultMap="*.umg"/><!--谁报名-->
-        <association property="EzdEnret" resultMap="*.enret"/><!--报名对象-->
+        <association property="erlenretStatus" resultMap="*.restatus"/> <!--报名状态-->
+        <association property="erlenretUmg" resultMap="*.umg"/><!--谁报名-->
+        <association property="erlenretEnret" resultMap="*.enret"/><!--报名对象-->
     </resultMap>
 
 </mapper>

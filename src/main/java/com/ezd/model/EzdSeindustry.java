@@ -5,22 +5,34 @@ package com.ezd.model;
  * 二级行业信息表
  */
 public class EzdSeindustry {
-   private int  se_id ; // int  primary key auto_increment,
-   private String  se_name; // varchar(40)
+   private int  seId ; // int  primary key auto_increment,
+   private String  seName; // varchar(40)
 
-    public int getSe_id() {
-        return se_id;
+    public EzdSeindustry() {
     }
 
-    public void setSe_id(int se_id) {
-        this.se_id = se_id;
+    @Override
+    public String toString() {
+        return "EzdSeindustry{" +
+                "seId=" + seId +
+                ", seName='" + seName + '\'' +
+                '}';
     }
 
-    public String getSe_name() {
-        return se_name;
+    public String getSeName() {
+        return seName;
     }
 
-    public void setSe_name(String se_name) {
-        this.se_name = se_name;
+    public void setSeName(String seName) {
+        this.seName = seName;
+    }
+
+    public int getSeId() {
+
+        return seId;
+    }
+
+    public void setSeId(int seId) {
+        this.seId = seId;
     }
 }

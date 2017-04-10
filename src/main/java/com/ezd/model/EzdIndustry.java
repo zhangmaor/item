@@ -7,23 +7,43 @@ import java.util.List;
  * 一级行业信息表
  */
 public class EzdIndustry {
-    private int  in_id ; //int primary key auto_increment ,
-    private String in_name ; //varchar(40)  一级行业
+    private int  inId ; //int primary key auto_increment ,
+    private String inName ; //varchar(40)  一级行业
     private List<EzdSeindustry> ezdSeindustries;
 
-    public int getIn_id() {
-        return in_id;
+    public EzdIndustry() {
     }
 
-    public void setIn_id(int in_id) {
-        this.in_id = in_id;
+    @Override
+    public String toString() {
+        return "EzdIndustry{" +
+                "inId=" + inId +
+                ", inName='" + inName + '\'' +
+                ", ezdSeindustries=" + ezdSeindustries +
+                '}';
     }
 
-    public String getIn_name() {
-        return in_name;
+    public int getInId() {
+        return inId;
     }
 
-    public void setIn_name(String in_name) {
-        this.in_name = in_name;
+    public void setInId(int inId) {
+        this.inId = inId;
+    }
+
+    public String getInName() {
+        return inName;
+    }
+
+    public void setInName(String inName) {
+        this.inName = inName;
+    }
+
+    public List<EzdSeindustry> getEzdSeindustries() {
+        return ezdSeindustries;
+    }
+
+    public void setEzdSeindustries(List<EzdSeindustry> ezdSeindustries) {
+        this.ezdSeindustries = ezdSeindustries;
     }
 }

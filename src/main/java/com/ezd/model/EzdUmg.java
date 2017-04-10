@@ -10,11 +10,6 @@ import java.util.List;
 public class EzdUmg {
 
     private int umgId;
-
-    public void setUmgUser(EzdUsers umgUser) {
-        this.umgUser = umgUser;
-    }
-
     private EzdUsers umgUser; //references ezd_users(user_id),-- 引用用户的主键
     private String umgPhoto ;//头像
     private String umgName  ;//姓名
@@ -59,6 +54,9 @@ public class EzdUmg {
                 ", ezdErlschrets=" + ezdErlschrets +
                 ", ezdReadartis=" + ezdReadartis +
                 '}';
+    }
+    public void setUmgUser(EzdUsers umgUser) {
+        this.umgUser = umgUser;
     }
 
     public List<EzdReadarti> getEzdReadartis() {

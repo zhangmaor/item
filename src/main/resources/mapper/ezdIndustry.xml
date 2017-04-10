@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--这里的namespace还没有确定-->
+<mapper namespace="com.ezd.dao.*">
+    <resultMap id="industry" type="com.ezd.model.EzdIndustry"><!--一级行业类型-->
+        <id column="in_id" property="inId"/><!--编号-->
+        <result column="in_name" property="inName"/><!--一级行业类型名-->
+        <collection property="ezdSeindustries" resultMap="*.seindustry"/><!--二级企业名-->
+    </resultMap>
+
+</mapper>

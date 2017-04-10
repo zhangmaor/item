@@ -14,9 +14,10 @@
         <result column="enret_pg" property="enretPg"/><!--待遇-->
         <result column="enret_demand" property="enretDemand"/><!--招聘要求-->
         <association property="nretEnmg" resultMap="*.enmg"/><!--发布信息的公司-->
-        <association property="" resultMap="" /><!--该招聘信息的状态-->
-        <association property="" resultMap="" /><!--招聘类型-->
-
+        <association property="" resultMap="*.newsStatus" /><!--该招聘信息的状态-->
+        <association property="" resultMap="*.retType" /><!--招聘类型-->
+        <collection property="ezdErlenrets" resultMap="*.erlenrets"/><!--对应的报名信息表-->
+        <collection property="ezdUmgs" resultMap="*.umgs"/><!--对应的浏览人列表-->
 
     </resultMap>
 </mapper>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--这里的namespace还没有确定-->
+<mapper namespace="com.ezd.dao.*">
+    <resultMap id="entype" type="com.ezd.model.EzdEntype"><!--企业类型-->
+        <id column="" property="" /><!--编号-->
+        <result column="" property=""/><!--类型名-->
+    </resultMap>
+</mapper>

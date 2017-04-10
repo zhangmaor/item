@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ezd.dao.*">
+    <resultMap id="point" type="com.ezd.model.EzdPoint"><!--文章点赞表-->
+        <id column="point_id" property="" /><!--编号-->
+        <result column="point_touser" property=""/><!--为其他评论点赞-->
+        <result column="point_status" property=""/><!--状态（取消，点赞）-->
+        <association property="pintArticle" resultMap="*.article" /><!--属于哪篇文章之下-->
+        <association property="pintUmg" resultMap="*.umg"/><!--哪个用户点的赞-->
+    </resultMap>
+
+</mapper>

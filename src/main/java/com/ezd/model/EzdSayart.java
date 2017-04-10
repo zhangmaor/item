@@ -8,7 +8,12 @@ import java.util.Date;
  */
 public class EzdSayart {
     private int sayartId;
-    private EzdArticle sayartArticel;//references ezd_article(article_id)
+    private EzdArticle sayartArticel;//references ezd_article(article_id)文章
+    private EzdUmg sayartUmg;//references ezd_umg(umg_id)用户
+    private String sayartContent;//评论内容
+    private int sayartTouser;//评论其他用户
+    private int sayartStatus;//评论状态 需要管理员审核
+    private Date sayartTIme;//评论时间
 
     @Override
     public String toString() {
@@ -31,11 +36,6 @@ public class EzdSayart {
         this.sayartUmg = sayartUmg;
     }
 
-    private EzdUmg sayartUmg;//references ezd_umg(umg_id)
-    private String  sayartContent;//评论内容
-    private int sayartTouser;//评论其他用户
-    private int sayartStatus;//评论状态 需要管理员审核
-    private Date sayartTIme;//评论时间
 
     public int getSayartId() {
         return sayartId;

@@ -19,24 +19,8 @@ public class EzdArticle {
     private String articleKeywords;//文章关键字
     private int articleStatus;//文章状态
     private List<EzdReadarti> ezdReadartis;//阅读本文章的信息
-
-    @Override
-    public String toString() {
-        return "EzdArticle{" +
-                "articleId=" + articleId +
-                ", articleLogo='" + articleLogo + '\'' +
-                ", articleType=" + articleType +
-                ", articleMtitle='" + articleMtitle + '\'' +
-                ", articleStitle='" + articleStitle + '\'' +
-                ", articleAuthor='" + articleAuthor + '\'' +
-                ", articleAuemail='" + articleAuemail + '\'' +
-                ", articlePic='" + articlePic + '\'' +
-                ", articleContent='" + articleContent + '\'' +
-                ", articleKeywords='" + articleKeywords + '\'' +
-                ", articleStatus=" + articleStatus +
-                ", ezdReadartis=" + ezdReadartis +
-                '}';
-    }
+    private List<EzdSayart> ezdSayarts;//对本文的评论
+    private List<EzdPoint> ezdPoints;//对本文的点赞
 
     public List<EzdReadarti> getEzdReadartis() {
         return ezdReadartis;
@@ -132,5 +116,41 @@ public class EzdArticle {
 
     public void setArticleStatus(int articleStatus) {
         this.articleStatus = articleStatus;
+    }
+
+    @Override
+    public String toString() {
+        return "EzdArticle{" +
+                "articleId=" + articleId +
+                ", articleLogo='" + articleLogo + '\'' +
+                ", articleType=" + articleType +
+                ", articleMtitle='" + articleMtitle + '\'' +
+                ", articleStitle='" + articleStitle + '\'' +
+                ", articleAuthor='" + articleAuthor + '\'' +
+                ", articleAuemail='" + articleAuemail + '\'' +
+                ", articlePic='" + articlePic + '\'' +
+                ", articleContent='" + articleContent + '\'' +
+                ", articleKeywords='" + articleKeywords + '\'' +
+                ", articleStatus=" + articleStatus +
+                ", ezdReadartis=" + ezdReadartis +
+                ", ezdSayarts=" + ezdSayarts +
+                ", ezdPoints=" + ezdPoints +
+                '}';
+    }
+
+    public List<EzdSayart> getEzdSayarts() {
+        return ezdSayarts;
+    }
+
+    public void setEzdSayarts(List<EzdSayart> ezdSayarts) {
+        this.ezdSayarts = ezdSayarts;
+    }
+
+    public List<EzdPoint> getEzdPoints() {
+        return ezdPoints;
+    }
+
+    public void setEzdPoints(List<EzdPoint> ezdPoints) {
+        this.ezdPoints = ezdPoints;
     }
 }
