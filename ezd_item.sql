@@ -1,6 +1,6 @@
 
 
-ALTER TABLE `ezd_item` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER database `ezd_item` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 create table ezd_role( --   角色表 1
 	role_id int primary key  AUTO_INCREMENT,
