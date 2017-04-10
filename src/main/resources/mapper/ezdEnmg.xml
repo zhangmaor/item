@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--这里的namespace还没有确定-->
+<mapper namespace="com.ezd.dao.*">
+    <resultMap id="enmg" type="com.ezd.model.EzdEnmg">
+        <id column="enmg_id" property="" /><!--编号-->
+        <result column="enmg_logo" property="" /><!--企业logo-->
+        <result column="enmg_name" property="" /><!--企业名称-->
+        <result column="enmg_domain" property="" /><!--公司网址-->
+        <result column="enmg_user" property="" /><!--联系人-->
+        <result column="enmg_wcontact" property="" /><!--联系方式-->
+        <result column="enmg_detail" property="" /><!--公司详情-->
+        <result column="enmg_address" property="" /><!--公司地址-->
+        <result column="enmg_scale" property="" /><!--公司规模-->
+        <result column="enmg_cretime" property="" /><!--注册时间-->
+
+    </resultMap>
+
+</mapper>

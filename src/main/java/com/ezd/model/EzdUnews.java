@@ -8,7 +8,30 @@ public class EzdUnews {
     private int unewsId;
     private int unewsUser;     // int references ezd_umg(umg_id),-- 受信人--用户信息
     private String unewsFrom;  //（默认系统） 发件人
+    private String unewsContent;
     private int unewsStatus;//int default(unews_status=0 or unews_status=1 )--消息状态（0未读 1已读）
+
+    public String getUnewsContent() {
+        return unewsContent;
+    }
+
+    @Override
+    public String toString() {
+        return "EzdUnews{" +
+                "unewsId=" + unewsId +
+                ", unewsUser=" + unewsUser +
+                ", unewsFrom='" + unewsFrom + '\'' +
+                ", unewsContent='" + unewsContent + '\'' +
+                ", unewsStatus=" + unewsStatus +
+                '}';
+    }
+
+    public void setUnewsContent(String unewsContent) {
+        this.unewsContent = unewsContent;
+    }
+
+
+
 
     public int getUnewsId() {
         return unewsId;
@@ -42,13 +65,4 @@ public class EzdUnews {
         this.unewsStatus = unewsStatus;
     }
 
-    @Override
-    public String toString() {
-        return "EzdUnews{" +
-                "unewsId=" + unewsId +
-                ", unewsUser=" + unewsUser +
-                ", unewsFrom='" + unewsFrom + '\'' +
-                ", unewsStatus=" + unewsStatus +
-                '}';
-    }
 }

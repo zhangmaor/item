@@ -23,6 +23,11 @@
         <!-- 可以指定 tomcat 启动的时候，自动初始化 DispatcherServlet -->
         <!-- 如果没有这个配置，会在第一次访问的时候才会去创建 -->
         <load-on-startup>1</load-on-startup>
+      <multipart-config>
+          <max-file-size>52428800</max-file-size>
+          <max-request-size>104857600</max-request-size>
+          <file-size-threshold>0</file-size-threshold>
+      </multipart-config>
     </servlet>
     <servlet-mapping>
         <servlet-name>item</servlet-name>
