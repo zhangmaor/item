@@ -32,7 +32,7 @@ create table ezd_umg(--  用户信息表 5
 	umg_photo varchar(50),--  头像
 	umg_name  varchar(20),--  姓名
 	umg_sex varchar(10)  ,
-	umg_birthday year ,--  生日
+	umg_birthday timestamp ,--  生日
 	umg_email varchar(20),--  邮箱
 	umg_school varchar(20),--  学校
 	umg_major varchar(20),--  专业
