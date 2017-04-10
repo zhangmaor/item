@@ -4,8 +4,8 @@ create table ezd_role( --   角色表 1
 	role_name varchar(20) not null	
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 create table ezd_permission( --   权限表 2
-	per_id int primary key ,
-	per_name varchar(20) not null
+	per_id int primary key ,u
+	per_name varchar(20) not nll
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 create table ezd_tole_permission(--   角色权限关系表 3
 	roper_id int primary key auto_increment,
@@ -103,7 +103,7 @@ create table ezd_uminden(--  关注记录表
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 create table ezd_jobmg(--  用户兼职记录信息表
 	jobmg_id int primary key AUTO_INCREMENT,
-	jobmg_user int ,
+	jobmg_user int  ,
 	jobmg_num int ,--  包名次数
 	jobmg_undonum int ,--  取消次数
 	jobmg_donum int ,--  录用次数
