@@ -50,6 +50,17 @@ create table ezd_entype(  						--  企业类型表
 	entype_id int primary key AUTO_INCREMENT,
 	entype_name varchar(30)	 not null			--  企业类型名称
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+create table ezd_industry ( -- 一级行业信息表
+	in_id  int primary key auto_increment , 
+	in_name varchar(40) -- 一级行业
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create table ezd_seindustry( -- 二级行业信息表
+	se_id int  primary key auto_increment,
+	se_in int , -- 关键 一级行业
+	se_name varchar(40) ,
+	foreign key (se_in) references ezd_industry(in_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 create table ezd_enmg(--  企业信息表
 	enmg_id int primary key AUTO_INCREMENT,
 	enmg_logo varchar(50),
@@ -62,7 +73,9 @@ create table ezd_enmg(--  企业信息表
 	enmg_type int  ,--  企业类型	
 	enmg_scale varchar(20) ,--  公司规模
 	enmg_cretime timestamp default current_timestamp, --  公司成立时间
-	foreign key (enmg_type) references ezd_entype(entype_id)
+	enmg_industry int , -- 企业所在行业
+	foreign key (enmg_type) references ezd_entype(entype_id) ,
+	foreign key (enmg_industry) references enmg_industry(entype_id) ,	
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table ezd_schtype(--  学校类型表（大专 本科 中专）
