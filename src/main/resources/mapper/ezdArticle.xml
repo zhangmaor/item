@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ezd.dao.*">
+<mapper namespace="com.ezd.dao.EzdArticlDao">
     <resultMap id="article" type="com.ezd.model.EzdArticle"><!--文章信息表-->
         <id column="article_id" property="articleId"/><!--编号-->
         <result column="article_logo" property="articleLogo"/><!--文章封面-->
@@ -14,9 +14,9 @@
         <result column="article_content" property="articleContent"/><!--文章内容-->
         <result column="article_keywords" property="articleKeywords"/><!--文章关键字-->
         <result column="article_status" property="articleStatus"/><!--文章状态-->
-        <association property="articleType" resultMap="*.artittype"/><!--文章类型-->
-        <collection property="ezdReadartis" resultMap="*.readarti"/><!--阅读本文章的信息-->
-        <collection property="ezdSayarts" resultMap="*.sayart" /><!--这篇文章之下的评论-->
-        <collection property="ezdPoints" resultMap="*.point" /><!--这篇文章之下的点赞-->
+        <association property="articleType" resultMap="EzdArtittypeDao.artittype"/><!--文章类型-->
+        <collection property="ezdReadartis" resultMap="EzdReadartiDao.readarti"/><!--阅读本文章的信息-->
+        <collection property="ezdSayarts" resultMap="EzdSayartDao.sayart" /><!--这篇文章之下的评论-->
+        <collection property="ezdPoints" resultMap="EzdPointDao.point" /><!--这篇文章之下的点赞-->
     </resultMap>
 </mapper>

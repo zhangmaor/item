@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--这里的namespace还没有确定-->
-<mapper namespace="com.ezd.dao.*">
+<mapper namespace="com.ezd.dao.EzdUnewsDao">
     <resultMap id="unews" type="com.ezd.model.EzdUnews"><!--用户消息表--><!--有问题，没有时间的这个字段-->
         <id column="unews_id" property="unewsId"/><!--编号-->
         <result column="unews_from" property="unewsFrom" /><!--发信人（该版本默认的发信人是系统）-->

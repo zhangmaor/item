@@ -2,11 +2,11 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ezd.dao.*">
+<mapper namespace="com.ezd.dao.EzdReadartiDao">
     <resultMap id="readarti" type="com.ezd.model.EzdReadarti"><!--文章阅读表-->
         <id column="readarti_id" property="readartiId"/><!--编号-->
         <result column="readarti_time" property="readartiTime"/><!--阅读时间-->
-        <association property="readartiUser" resultMap="*.umg"/><!--阅读的人-->
-        <association property="readartiArticle" resultMap=""/><!--阅读的文章-->
+        <association property="readartiUser" resultMap="EzdUmgDao.umg"/><!--阅读的人-->
+        <association property="readartiArticle" resultMap="EzdarticleDao.article"/><!--阅读的文章-->
     </resultMap>
 </mapper>
