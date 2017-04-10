@@ -6,6 +6,10 @@ package com.ezd.model;
  */
 public class EzdPoint {
     private int pintId;
+    private EzdArticle pintArticle;// references ezd_article(article_id)
+    private EzdUmg pintUmg;//references ezd_umg(umg_id)
+    private int pintTouser;//为其他用户点赞
+    private int poingStatus; //状态 0 1
 
     @Override
     public String toString() {
@@ -26,10 +30,6 @@ public class EzdPoint {
         this.pintUmg = pintUmg;
     }
 
-    private EzdArticle pintArticle;// references ezd_article(article_id)
-    private EzdUmg  pintUmg;//references ezd_umg(umg_id)
-    private int pintTouser;//为其他用户点赞
-    private int poingStatus; //状态 0 1
 
     public int getPintId() {
         return pintId;

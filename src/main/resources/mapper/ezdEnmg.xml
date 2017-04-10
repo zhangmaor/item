@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--这里的namespace还没有确定-->
+<mapper namespace="com.ezd.dao.*">
+    <resultMap id="enmg" type="com.ezd.model.EzdEnmg">
+        <id column="enmg_id" property="enmgId" /><!--编号-->
+        <result column="enmg_logo" property="enmgLogo" /><!--企业logo-->
+        <result column="enmg_name" property="enmgName" /><!--企业名称-->
+        <result column="enmg_domain" property="enmgDomain" /><!--公司网址-->
+        <result column="enmg_user" property="enmgUser" /><!--联系人-->
+        <result column="enmg_wcontact" property="enmgWcontact" /><!--联系方式-->
+        <result column="enmg_detail" property="enmgDetail" /><!--公司详情-->
+        <result column="enmg_address" property="enmgAddress" /><!--公司地址-->
+        <result column="enmg_scale" property="enmgScale" /><!--公司规模-->
+        <result column="enmg_cretime" property="enmgCretime" /><!--注册时间-->
+        <association property="enmgType" resultMap="*.entype"/><!--企业类型-->
+        <association property="ezdIndustry" resultMap="*.industry"/><!--一级行业类型-->
+        <association property="ezdSeindustry" resultMap="*.seindustry"/><!--二级行业类型-->
+        <collection property="ezdUmgs" resultMap="*.umg" /><!--关注本公司的人员列表-->
+        <collection property="ezdEnrets" resultMap="*.enret"/><!--本公司发布的招聘信息列表-->
+        <collection property="ezdBigrets" resultMap="*.bigret"/><!--本公司发布的大招会信息列表-->
+        <collection property="ezdSchrets" resultMap="*.schret" /><!--本 公司发布的校招会列表-->
+    </resultMap>
+
+</mapper>

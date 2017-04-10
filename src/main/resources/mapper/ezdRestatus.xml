@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--这里的namespace还没有确定-->
+<mapper namespace="com.ezd.dao.*">
+    <resultMap id="restatus" type="com.ezd.model.EzdRestatus"><!--报名状态表-->
+        <id column="restatus_id" property="restatusId" /><!--编号-->
+        <result column="restatus_name" property="restatusName"/><!--状态名-->
+    </resultMap>
+</mapper>

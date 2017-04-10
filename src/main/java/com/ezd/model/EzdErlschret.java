@@ -11,6 +11,8 @@ public class EzdErlschret {
     private int erlschretId ;
     private EzdUmg   erlschretUser ;// references ezd_umg(umg_id),--   谁报名了
     private EzdSchret  erlschretSchret ;// references ezd_schret(schret_id),--   报名了那个校招会\
+    private EzdRestatus  erlschretStatus ;//references ezd_restatus(restatus_id), --  包名状态 (已报名 审核 录用 拒绝)
+    private Date erlschretTime ;//报名时间
 
     @Override
     public String toString() {
@@ -35,8 +37,6 @@ public class EzdErlschret {
         this.erlschretStatus = erlschretStatus;
     }
 
-    private EzdRestatus  erlschretStatus ;//references ezd_restatus(restatus_id), --  包名状态 (已报名 审核 录用 拒绝)
-    private Date erlschretTime ;//
 
     public int getErlschretId() {
         return erlschretId;

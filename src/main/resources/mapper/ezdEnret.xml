@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--这里的namespace还没有确定-->
+<mapper namespace="com.ezd.dao.*">
+    <resultMap id="enret" type="com.ezd.model.EzdEnret"><!--招聘信息表mapper-->
+        <id column="enret_id" property="enretId" /><!--编号-->
+        <result column="enret_wantNum" property="enretWantNum"/><!--招聘人数-->
+        <result column="enret_creTime" property="enretCreTime"/><!--发布时间-->
+        <result column="enret_lwMoney" property="enretLwMoney"/><!--最低工资-->
+        <result column="enret_hgMoney" property="enretHgMoney"/><!--最高工资-->
+        <result column="enret_post" property="enretPost"/><!--招聘岗位-->
+        <result column="enret_pg" property="enretPg"/><!--待遇-->
+        <result column="enret_demand" property="enretDemand"/><!--招聘要求-->
+        <association property="nretEnmg" resultMap="*.enmg"/><!--发布信息的公司-->
+        <association property="" resultMap="*.newsStatus" /><!--该招聘信息的状态-->
+        <association property="" resultMap="*.retType" /><!--招聘类型-->
+        <collection property="ezdErlenrets" resultMap="*.erlenrets"/><!--对应的报名信息表-->
+        <collection property="ezdUmgs" resultMap="*.umgs"/><!--对应的浏览人列表-->
+
+    </resultMap>
+</mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--这里的namespace还没有确定-->
+<mapper namespace="com.ezd.dao.*">
+    <resultMap id="umg" type="com.ezd.model.EzdUmg">
+        <id column="umg_id" property="umgId"/><!--编号-->
+        <result column="umg_photo" property="umgPhoto"/><!--头像-->
+        <result column="umg_name" property="umgName"/><!--姓名-->
+        <result column="umg_sex" property="umgSex"/><!--性别-->
+        <result column="umg_birthday" property="umgBirthday"/><!--生日-->
+        <result column="umg_email" property="umgEmail"/><!--邮箱-->
+        <result column="umg_school" property="umgSchool"/><!--学校-->
+        <result column="umg_major" property="umgMajor"/><!--专业-->
+        <result column="umg_degree" property="umgDegree"/><!--学历-->
+        <result column="umg_sayMf" property="umgSayMf"/><!--自我评价-->
+        <result column="umg_education" property="umgEducation"/><!--教育经历-->
+        <result column="umg_uptime" property="umgUptime"/><!--修改时间-->
+        <association property="umgUser" resultMap="*.users"/><!--对应的是用户ezdusers.xml(用户表)-->
+        <collection property="ezdUnewss" resultMap="*.unews"/><!--对应的是(消息)信息表（ezdUnews.xml）-->
+        <collection property="ezdEnmgs" resultMap=".enmg"/><!--关注的公司-->
+        <collection property="ezdErlenrets" resultMap="*.erlenret"/><!--对应的招聘信息表-->
+        <collection property="ezdEnrets" resultMap="*.enrets"/><!--本用户浏览的招聘信息表-->
+        <collection property="ezdErlbigrets" resultMap="*.erlbigret"/><!--大招会-->
+        <collection property="ezdErlschrets" resultMap="*.erlschret"/><!--校招会-->
+        <collection property="ezdReadartis" resultMap="*.readarti"/><!--用户阅读的文章列表信息-->
+    </resultMap>
+</mapper>
