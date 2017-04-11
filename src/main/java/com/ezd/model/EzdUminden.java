@@ -8,7 +8,7 @@ public class EzdUminden {
     private int umindenId;
     private int umindenUser;   //references ezd_umg(umg_id)谁关注的 对应用户信息
     private int umindenEn;     //references ezd_enmg(enmg_id)关注了谁 对应公司信息表
-
+/*通过关注表获取到了一组公司的id号，然后循环通过公司id获取完整的公司信息*/
     public int getUmindenId() {
         return umindenId;
     }
