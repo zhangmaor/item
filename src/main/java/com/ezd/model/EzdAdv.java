@@ -4,6 +4,7 @@ package com.ezd.model;
  * Created by Administrator on 2017/4/6.
  * 广告信息表
  */
+
 public class EzdAdv {
     private int advId; //id
     private String advAddress;//广告位置

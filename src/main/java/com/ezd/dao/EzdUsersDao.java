@@ -8,5 +8,5 @@ import java.util.List;
  * Created by Administrator on 2017-04-10.
  */
 public interface EzdUsersDao {
-    public List<EzdUsers> getAll();
+    public EzdUsers getAll(EzdUsers ezdUsers);
 }

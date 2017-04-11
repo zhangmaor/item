@@ -13,8 +13,8 @@
     <select id="getAll"  resultMap="com.ezd.dao.EzdUnewsDao.unews" parameterType="com.ezd.model.EzdUmg">
       select * from ezd_unews
       <where>
-          <if test="#{umg_id!=null}">
-              unews_id =  umg_id
+          <if test="#{unewsId!=null}">
+              unews_id =  #{unewsId}
           </if>
       </where>
 

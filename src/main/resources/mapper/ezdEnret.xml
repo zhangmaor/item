@@ -3,6 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--这里的namespace还没有确定-->
+
 <mapper namespace="com.ezd.dao.EzdEnretDao">
     <resultMap id="enret" type="com.ezd.model.EzdEnret"><!--招聘信息表mapper-->
         <id column="enret_id" property="enretId" /><!--编号-->
@@ -16,8 +17,8 @@
         <association property="nretEnmg" resultMap="com.ezd.dao.EzdEnmgDao.enmg"/><!--发布信息的公司-->
         <association property="enretStatus" resultMap="com.ezd.dao.EzdNewsStatusDao.newsStatus" /><!--该招聘信息的状态-->
         <association property="enretType" resultMap="com.ezd.dao.EzdRetTypeDao.retType" /><!--招聘类型-->
-        <collection property="ezdErlenrets" resultMap="com.ezd.dao.EzdErlenretsDao.erlenrets"/><!--对应的报名信息表-->
-        <collection property="ezdUmgs" resultMap="com.ezd.dao.EzdUmgsDao.umgs"/><!--对应的浏览人列表-->
+        <collection property="ezdErlenrets" resultMap="com.ezd.dao.EzdErlenretDao.erlenret"/><!--对应的报名信息表-->
+        <collection property="ezdUmgs" resultMap="com.ezd.dao.EzdUmgDao.umg"/><!--对应的浏览人列表-->
 
     </resultMap>
 </mapper>

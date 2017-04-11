@@ -15,10 +15,10 @@
         <!--注入外部的配置参数-->
         <context:property-placeholder location="classpath:propertiesResoutces/dataBase.properties" />
         <!--配置数据库的信息-->
-        <bean id="DataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
-                <property name="driverClass" value="${driverClassName}" />
-                <property name="jdbcUrl" value="${url}"/>
-                <property name="user" value="${userName}" />
+        <bean id="DataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+                <property name="driverClassName" value="${driverClassName}" />
+                <property name="url" value="${url}"/>
+                <property name="username" value= "ezd" />
                 <property name="password" value="${password}"/>
         </bean>
         <!--将sqlSessionFactory的工作交给spring-->

@@ -11,7 +11,7 @@
         <result column="schmg_mg" property="schmgMg"/><!--学校详情-->
         <result column="schmg_address" property="schmgAddress"/><!--学校地址-->
         <result column="schmg_cretime" property="schmgCretime"/><!--注册时间-->
-        <association property="schmgType" resultMap="com.ezd.dao.EzdschtypeDao.schtype"/><!--学校类型-->
-        <collection property="ezdSchrets" resultMap="com.ezd.dao.EzdschretDao.schret" /><!--本学校（未开始，结束，进行时）举行过的校招会-->
+        <association property="schmgType" resultMap="com.ezd.dao.EzdSchtypeDao.schtype"/><!--学校类型-->
+        <collection property="ezdSchrets" resultMap="com.ezd.dao.EzdSchretDao.schret" /><!--本学校（未开始，结束，进行时）举行过的校招会-->
     </resultMap>
 </mapper>
