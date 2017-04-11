@@ -4,13 +4,13 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--这里的namespace还没有确定-->
 <mapper namespace="com.ezd.dao.EzdUsersDao">
-    <resultMap id="users" type="com.ezd.model.EzdUsers">
-        <id column="user_id"  property="userId" />
-        <result column="user_phone" property="userPhone" />
-        <result column="user_Pwd" property="userPwd" />
-        <result column="user_uptime" property="userUptime" />
+    <resultMap id="users" type="com.ezd.model.EzdUsers"><!--用户表-->
+        <id column="user_id"  property="userId" /><!--编号-->
+        <result column="user_phone" property="userPhone" /><!--手机号-->
+        <result column="user_Pwd" property="userPwd" /><!--密码-->
+        <result column="user_uptime" property="userUptime" /><!--创建时间-->
     </resultMap>
-    <select id="getAll" resultMap="users" >
+    <select id="getAll" resultMap="com.ezd.dao.EzdUsersDao.users" >
         select * from ezd_users
     </select>
 </mapper>

@@ -7,8 +7,8 @@
         <id column="point_id" property="pointId" /><!--编号-->
         <result column="point_touser" property="pointTouser"/><!--为其他评论点赞-->
         <result column="point_status" property="pointStatus"/><!--状态（取消，点赞）-->
-        <association property="pintArticle" resultMap="EzdArticleDao.article" /><!--属于哪篇文章之下-->
-        <association property="pintUmg" resultMap="EzdUmgDao.umg"/><!--哪个用户点的赞-->
+        <association property="pintArticle" resultMap="com.ezd.dao.EzdArticleDao.article" /><!--属于哪篇文章之下-->
+        <association property="pintUmg" resultMap="com.ezd.dao.EzdUmgDao.umg"/><!--哪个用户点的赞-->
     </resultMap>
 
 </mapper>

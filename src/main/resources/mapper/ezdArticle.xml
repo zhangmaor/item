@@ -14,9 +14,9 @@
         <result column="article_content" property="articleContent"/><!--文章内容-->
         <result column="article_keywords" property="articleKeywords"/><!--文章关键字-->
         <result column="article_status" property="articleStatus"/><!--文章状态-->
-        <association property="articleType" resultMap="EzdArtittypeDao.artittype"/><!--文章类型-->
-        <collection property="ezdReadartis" resultMap="EzdReadartiDao.readarti"/><!--阅读本文章的信息-->
-        <collection property="ezdSayarts" resultMap="EzdSayartDao.sayart" /><!--这篇文章之下的评论-->
-        <collection property="ezdPoints" resultMap="EzdPointDao.point" /><!--这篇文章之下的点赞-->
+        <association property="articleType" resultMap="com.ezd.dao.EzdArtittypeDao.artittype"/><!--文章类型-->
+        <collection property="ezdReadartis" resultMap="com.ezd.dao.EzdReadartiDao.readarti"/><!--阅读本文章的信息-->
+        <collection property="ezdSayarts" resultMap="com.ezd.dao.EzdSayartDao.sayart" /><!--这篇文章之下的评论-->
+        <collection property="ezdPoints" resultMap="com.ezd.dao.EzdPointDao.point" /><!--这篇文章之下的点赞-->
     </resultMap>
 </mapper>

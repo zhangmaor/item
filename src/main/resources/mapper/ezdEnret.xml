@@ -13,11 +13,11 @@
         <result column="enret_post" property="enretPost"/><!--招聘岗位-->
         <result column="enret_pg" property="enretPg"/><!--待遇-->
         <result column="enret_demand" property="enretDemand"/><!--招聘要求-->
-        <association property="nretEnmg" resultMap="EzdEnmgDao.enmg"/><!--发布信息的公司-->
-        <association property="" resultMap="EzdNewsStatusDao.newsStatus" /><!--该招聘信息的状态-->
-        <association property="" resultMap="EzdRetTypeDao.retType" /><!--招聘类型-->
-        <collection property="ezdErlenrets" resultMap="EzdErlenretsDao.erlenrets"/><!--对应的报名信息表-->
-        <collection property="ezdUmgs" resultMap="EzdUmgsDao.umgs"/><!--对应的浏览人列表-->
+        <association property="nretEnmg" resultMap="com.ezd.dao.EzdEnmgDao.enmg"/><!--发布信息的公司-->
+        <association property="enretStatus" resultMap="com.ezd.dao.EzdNewsStatusDao.newsStatus" /><!--该招聘信息的状态-->
+        <association property="enretType" resultMap="com.ezd.dao.EzdRetTypeDao.retType" /><!--招聘类型-->
+        <collection property="ezdErlenrets" resultMap="com.ezd.dao.EzdErlenretsDao.erlenrets"/><!--对应的报名信息表-->
+        <collection property="ezdUmgs" resultMap="com.ezd.dao.EzdUmgsDao.umgs"/><!--对应的浏览人列表-->
 
     </resultMap>
 </mapper>

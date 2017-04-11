@@ -13,8 +13,8 @@
         <result column="bigret_creTime" property="bigretCreTime"/><!--大招会发布时间-->
         <result column="bigret_detail" property="bigretDetail"/><!--大招会详情-->
         <result column="bigret_post" property="bigretPost"/><!--招聘岗位-->
-        <association property="bigretStatus" resultMap="EzdNewsStatusDao.newsStatus"/><!--大招会的状态-->
-        <association property="bigretEnmg" resultMap="EzdEnmgDao.enmg"/><!--哪家公司发布的-->
-        <collection property="ezdErlbigrets" resultMap="EzdUmgDao.umg"/><!--浏览本大招会的人员列表-->
+        <association property="bigretStatus" resultMap="com.ezd.dao.EzdNewsStatusDao.newsStatus"/><!--大招会的状态-->
+        <association property="bigretEnmg" resultMap="com.ezd.dao.EzdEnmgDao.enmg"/><!--哪家公司发布的-->
+        <collection property="ezdErlbigrets" resultMap="com.ezd.dao.EzdUmgDao.umg"/><!--浏览本大招会的人员列表-->
     </resultMap>
 </mapper>

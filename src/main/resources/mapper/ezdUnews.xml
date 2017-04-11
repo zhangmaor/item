@@ -10,7 +10,7 @@
         <result column="unews_content" property="unewsContent" /><!--消息的内容-->
         <result column="unews_user" property="unewsUser" /><!--收信人-->
     </resultMap>
-    <select id="getAll"  resultType="unews" parameterMap="com.ezd.model.EzdUmg">
+    <select id="getAll"  resultMap="com.ezd.dao.EzdUnewsDao.unews" parameterType="com.ezd.model.EzdUmg">
       select * from ezd_unews
       <where>
           <if test="#{umg_id!=null}">

@@ -21,7 +21,7 @@ public class EzdUsers {
                 ", userPhone='" + userPhone + '\'' +
                 ", userPwd='" + userPwd + '\'' +
                 ", userUptime=" + userUptime +
-                ", ezdUmg=" + ezdUmg +
+
                 '}';
     }
 

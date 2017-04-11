@@ -15,13 +15,13 @@
         <result column="enmg_address" property="enmgAddress" /><!--公司地址-->
         <result column="enmg_scale" property="enmgScale" /><!--公司规模-->
         <result column="enmg_cretime" property="enmgCretime" /><!--注册时间-->
-        <association property="enmgType" resultMap="EzdEntypeDao.entype"/><!--企业类型-->
-        <association property="ezdIndustry" resultMap="EzdIndustryDao.industry"/><!--一级行业类型-->
-        <association property="ezdSeindustry" resultMap="EzdSeindustryDao.seindustry"/><!--二级行业类型-->
-        <collection property="ezdUmgs" resultMap="EzdUmgDao.umg" /><!--关注本公司的人员列表-->
-        <collection property="ezdEnrets" resultMap="EzdEnretDao.enret"/><!--本公司发布的招聘信息列表-->
-        <collection property="ezdBigrets" resultMap="EzdBigretDao.bigret"/><!--本公司发布的大招会信息列表-->
-        <collection property="ezdSchrets" resultMap="EzdSchretDao.schret" /><!--本 公司发布的校招会列表-->
+        <association property="enmgType" resultMap="com.ezd.dao.EzdEntypeDao.entype"/><!--企业类型-->
+        <association property="ezdIndustry" resultMap="com.ezd.dao.EzdIndustryDao.industry"/><!--一级行业类型-->
+        <association property="ezdSeindustry" resultMap="com.ezd.dao.EzdSeindustryDao.seindustry"/><!--二级行业类型-->
+        <collection property="ezdUmgs" resultMap="com.ezd.dao.EzdUmgDao.umg" /><!--关注本公司的人员列表-->
+        <collection property="ezdEnrets" resultMap="com.ezd.dao.EzdEnretDao.enret"/><!--本公司发布的招聘信息列表-->
+        <collection property="ezdBigrets" resultMap="com.ezd.dao.EzdBigretDao.bigret"/><!--本公司发布的大招会信息列表-->
+        <collection property="ezdSchrets" resultMap="com.ezd.dao.EzdSchretDao.schret" /><!--本 公司发布的校招会列表-->
     </resultMap>
 
 </mapper>
