@@ -3,7 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--这里的namespace还没有确定-->
-<mapper namespace="com.ezd.dao.*">
+
+<mapper namespace="com.ezd.dao.EzdSchtypeDao">
     <resultMap id="schtype" type="com.ezd.model.EzdSchtype">
         <id column="schtype_id" property="schtypeId"/>
         <result column="schtype_name" property="schtypeName"/>

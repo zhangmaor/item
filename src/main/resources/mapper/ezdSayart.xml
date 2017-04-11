@@ -2,14 +2,14 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ezd.dao.*">
+<mapper namespace="com.ezd.dao.EzdSayartDao">
     <resultMap id="sayart" type="com.ezd.model.EzdSayart"><!--文章评论表-->
         <id column="sayart_id" property="" /><!--编号-->
-        <result column="sayart_content" property=""/><!--评论的内容-->
-        <result column="sayart_touser" property=""/><!--评论其他用户的评论-->
-        <result column="sayart_status" property=""/><!--评论状态-->
-        <result column="sayart_time" property=""/><!--评论的时间-->
-        <association property="sayartUmg" resultMap="*.umg"/><!--评论的用户-->
-        <association property="sayartArticel" resultMap="*.article"/><!--在那篇的文章之下-->
+        <result column="sayart_content" property="sayartContent"/><!--评论的内容-->
+        <result column="sayart_touser" property="sayartTouser"/><!--评论其他用户的评论-->
+        <result column="sayart_status" property="sayartStatus"/><!--评论状态-->
+        <result column="sayart_time" property="sayartTime"/><!--评论的时间-->
+        <association property="sayartUmg" resultMap="com.ezd.dao.EzdUmgDao.umg"/><!--评论的用户-->
+        <association property="sayartArticel" resultMap="com.ezd.dao.EzdarticleDao.article"/><!--在那篇的文章之下-->
     </resultMap>
 </mapper>

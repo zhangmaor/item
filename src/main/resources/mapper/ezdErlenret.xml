@@ -3,12 +3,12 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--这里的namespace还没有确定-->
-<mapper namespace="com.ezd.dao.*">
+<mapper namespace="com.ezd.dao.EzdErlenretDao">
     <resultMap id="erlenret" type="com.ezd.model.EzdErlenret">
-        <id column="erlenret_id" property="" /><!--招聘信息报名表mapper-->
-        <association property="erlenretStatus" resultMap="*.restatus"/> <!--报名状态-->
-        <association property="erlenretUmg" resultMap="*.umg"/><!--谁报名-->
-        <association property="erlenretEnret" resultMap="*.enret"/><!--报名对象-->
+        <id column="erlenret_id" property="erlenretId" /><!--招聘信息报名表mapper-->
+        <association property="erlenretStatus" resultMap="com.ezd.dao.EzdRestatusDao.restatus"/> <!--报名状态-->
+        <association property="erlenretUmg" resultMap="com.ezd.dao.EzdUmgDao.umg"/><!--谁报名-->
+        <association property="erlenretEnret" resultMap="com.ezd.dao.EzdEnretDao.enret"/><!--报名对象-->
     </resultMap>
 
 </mapper>

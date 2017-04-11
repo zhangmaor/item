@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--这里的namespace还没有确定-->
+<mapper namespace="com.ezd.dao.EzdUsersDao">
+    <resultMap id="users" type="com.ezd.model.EzdUsers"><!--用户表-->
+        <id column="user_id"  property="userId" /><!--编号-->
+        <result column="user_phone" property="userPhone" /><!--手机号-->
+        <result column="user_Pwd" property="userPwd" /><!--密码-->
+        <result column="user_uptime" property="userUptime" /><!--创建时间-->
+    </resultMap>
+    <select id="getAll" parameterType="com.ezd.model.EzdUsers"  resultMap="com.ezd.dao.EzdUsersDao.users" >
+        select * from ezd_users
+        <where>
+              <if test="#{userPhone!=null } and #{userPwd!=null}">
+                  user_phone = #{userPhone}
+                  and user_pwd = #{userPwd}
+              </if>
+        </where>
+    </select>
+</mapper>

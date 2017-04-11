@@ -3,16 +3,16 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--这里的namespace还没有确定-->
-<mapper namespace="com.ezd.dao.*">
+<mapper namespace="com.ezd.dao.EzdSchretDao">
     <resultMap id="schret" type="com.ezd.model.EzdSchret"><!--校招会-->
         <id column="schret_id" property="schretId"/><!--编号-->
         <result column="schret_detail" property="schretDetail"/><!--校招会详情-->
         <result column="schret_time" property="schretTime"/><!--开始时间-->
         <result column="schret_cretime" property="schretCretime"/><!--发布时间-->
         <result column="bigret_post" property="bigretPost"/><!--招聘职位-->
-        <association property="schretEnmg" resultMap="*.enmg"/><!--发布校招会的企业-->
-        <association property="schretStatus" resultMap="*.newsStatus" />
-        <association property="schretSchmg" resultMap="*.schmg" /><!--学校-->
-        <collection property="ezdErlschrets" resultMap="*.erlschret"/><!--校招会报名信息-->
+        <association property="schretEnmg" resultMap="com.ezd.dao.EzdEnmgDao.enmg"/><!--发布校招会的企业-->
+        <association property="schretStatus" resultMap="com.ezd.dao.EzdNewsStatusDao.newsStatus" />
+        <association property="schretSchmg" resultMap="com.ezd.dao.EzdSchmgDao.schmg" /><!--学校-->
+        <collection property="ezdErlschrets" resultMap="com.ezd.dao.EzdErlschretDao.erlschret"/><!--校招会报名信息-->
     </resultMap>
 </mapper>
