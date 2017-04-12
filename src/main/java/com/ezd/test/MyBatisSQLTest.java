@@ -31,19 +31,9 @@ public class MyBatisSQLTest {
 
     @Test
     public void jsonTest(){
-        List<EzdUsers> ls = new ArrayList<EzdUsers>();
-        for(int i=1;i<6;i++) {
-            EzdUsers ezdUsers = new EzdUsers();
+       boolean a = false;
 
-            ezdUsers.setUserPhone("aaaaa");
-            ezdUsers.setUserPwd("18958564");
-            ezdUsers.setUserId(1);
-            ezdUsers.setUserUptime(new Date());
-            ls.add(ezdUsers);
-        }
-        //String eu = JSONObject.toString("eu", ls);
-      //  String s = JSONArray.toJSONString(ls);
-        String s = JSONValue.toJSONString(ls);
+        String s = JSONValue.toJSONString(a);
         System.out.println(s);
 
     }

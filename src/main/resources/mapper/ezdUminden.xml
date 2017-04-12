@@ -3,6 +3,37 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--这里的namespace还没有确定-->
-<mapper namespace="com.ezd.dao.EzdUnewsDao">
+<mapper namespace="com.ezd.dao.EzdUmindenDao">
+    <resultMap id="uminden" type="com.ezd.model.EzdUminden"><!--关注表-->
+        <id column="uminden_id" property="umindenId" /><!--编号-->
+        <result column="uminden_user" property="umindenUser"/><!--谁关注的id-->
+        <result column="uminden_en" property="umindenEn"/><!--本关注的公司id-->
+        <result column="uminden_status" property="umindenStatus" />
+    </resultMap>
+    <!--通过用户编号获取该用户全部的关注对象-->
+    <select id="getEnmgId" parameterType="int" resultMap="uminden">
+        select * from ezd_uminden
+        where uminden_user = #{_parameter}
+    </select>
+    <!--添加
+        插入一条关注信息
+    -->
+    <insert id="add" parameterMap="uminden" >
+        INSERT  into ezd_uminden(uminden_user,uminden_en,uminden_status)
+        values (#{umindenUser},#{umindenEn},#{umindenStatus})
+    </insert>
 
+    <delete id="del" parameterMap="uminden">
+        /*/*在测试的时候出现问题的时候要注意这里if的条件可能有问题！！！*/*/
+        <if test="#{umindenId!=null}">
+            DELETE  ezd_uminden where uminden_id = #{umindenId}
+        </if>
+    </delete>
+
+    <select id="check" parameterMap="uminden" resultType="int"  >
+        select count(*) from ezd_minden
+        where
+            uminden_user = #{umindenUser}
+            and uminden_en = #{umindenEn}
+    </select>
 </mapper>

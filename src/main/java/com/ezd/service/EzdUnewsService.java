@@ -84,4 +84,21 @@ public class EzdUnewsService {
         }
         return result;
     }
+
+    /**
+     * 通过指定消息的编号id获取该消息的详细信息
+     *
+     * @param unewsId ----- 一条消息的编号id
+     * @return   -----返回的是这条消息的详细信息
+     *         null ----- 如果返回值是空的话那么即查询出错！
+     */
+    public EzdUnews getUnews(int unewsId){
+        EzdUnews ezdUnews = null;
+        try {
+            ezdUnews = ezdUnewsDao.getOne(unewsId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ezdUnews;
+    }
 }

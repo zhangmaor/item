@@ -12,6 +12,8 @@ import java.util.List;
 public interface EzdUnewsDao {
     /*查询同一个用户的所有消息*/
     public List<EzdUnews> getAll (EzdUmg ezdUmg)throws Exception;
+    /*通过指定的消息编号id获取详细的信息*/
+    public EzdUnews getOne(int unewsId)throws Exception;
     /*修改指定的信息的状态*/
     public int updateStatus(int id) throws Exception;
     /*插入数据*/

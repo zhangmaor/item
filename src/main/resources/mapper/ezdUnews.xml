@@ -21,6 +21,10 @@
       </where>
         ORDER BY unews_user ,news_time DESC
     </select>
+    <select id="getOne" resultMap="unews" parameterType="int">
+        select * from ezd_unews
+        where unews_id = #{_parameter}
+    </select>
     <update id="updateStatus" parameterType="int" >
         update ezd_unews set unews_status = 1
         where unews_id = #{_parameter}
