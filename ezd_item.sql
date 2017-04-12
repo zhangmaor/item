@@ -1,30 +1,35 @@
-﻿
 
 
-ALTER DATABASE `ezd_item` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER database `ezd_item` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-CREATE TABLE ezd_role( --   角色表 1
-	role_id INT PRIMARY KEY  AUTO_INCREMENT,
-	role_name VARCHAR(20) NOT NULL	
-)ENGINE=INNODB DEFAULT CHARSET=utf8;
-CREATE TABLE ezd_permission( --   权限表 2
-	per_id INT PRIMARY KEY ,
-	per_name VARCHAR(20) NOT NULL
-)ENGINE=INNODB DEFAULT CHARSET=utf8;
-CREATE TABLE ezd_tole_permission(--   角色权限关系表 3
-	roper_id INT PRIMARY KEY AUTO_INCREMENT,
-	roper_role INT , --  对应的那个权限
-	reper_perm  INT ,	--  那个角色对应了权限utf8_general_ci;	
-	FOREIGN KEY (roper_role) REFERENCES ezd_role(role_id),
-	FOREIGN KEY (reper_perm) REFERENCES ezd_permission(per_id)	
-)ENGINE=INNODB DEFAULT CHARSET=utf8;
+create table ezd_role( --   角色表 1
+	role_id int primary key  AUTO_INCREMENT,
+	role_name varchar(20) not null	
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+Alter table ezd_role add unique(role_name);
 
-CREATE TABLE ezd_users(--  用户表 4
+create table ezd_permission( --   权限表 2
+	per_id int primary key ,
+	per_name varchar(20) not null
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+Alter table ezd_permission add unique(per_name);
+
+create table ezd_tole_permission(--   角色权限关系表 3
+	roper_id int primary key auto_increment,
+	roper_role int , --  对应的那个权限
+	reper_perm  int ,	--  那个角色对应了权限
+	
+	foreign key (roper_role) references ezd_role(role_id),
+	foreign key (reper_perm) references ezd_permission(per_id)	
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create table ezd_users(--  用户表 4
 	user_id int primary key AUTO_INCREMENT, --  主键
 	user_phone varchar(11)  not null, --  电话
 	user_Pwd varchar(20)  not null,--  密码
 	user_uptime timestamp default current_timestamp	--  创建时间	
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+Alter table ezd_users add unique(user_phone);
 
 create table ezd_umg(--  用户信息表 5
 	umg_id int primary key auto_increment, --  主键
@@ -32,7 +37,7 @@ create table ezd_umg(--  用户信息表 5
 	umg_photo varchar(50),--  头像
 	umg_name  varchar(20),--  姓名
 	umg_sex varchar(10)  ,
-	umg_birthday year ,--  生日
+	umg_birthday timestamp ,--  生日
 	umg_email varchar(20),--  邮箱
 	umg_school varchar(20),--  学校
 	umg_major varchar(20),--  专业
@@ -53,6 +58,8 @@ create table ezd_entype(  						--  企业类型表
 	entype_id int primary key AUTO_INCREMENT,
 	entype_name varchar(30)	 not null			--  企业类型名称
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+Alter table ezd_entype add unique(entype_name);
+
 create table ezd_industry ( -- 一级行业信息表
 	in_id  int primary key auto_increment , 
 	in_name varchar(40) -- 一级行业
@@ -80,11 +87,14 @@ create table ezd_enmg(--  企业信息表
 	foreign key (enmg_type) references ezd_entype(entype_id),
 	foreign key (enmg_industry) references ezd_industry(in_id) 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+Alter table ezd_enmg add unique(enmg_name);
 
 create table ezd_schtype(--  学校类型表（大专 本科 中专）
 	schtype_id int primary key AUTO_INCREMENT,
 	schtype_name varchar(20) not null
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+Alter table ezd_schtype add unique(schtype_name);
+
 create table ezd_schmg(--  学校信息表
 	schmg_id  int primary key AUTO_INCREMENT,
 	schmg_domain varchar(20), --   学校网址
@@ -95,6 +105,8 @@ create table ezd_schmg(--  学校信息表
 	schmg_cretime timestamp default current_timestamp, --  学校成立时间	
 	foreign key (schmg_type) references ezd_schtype(schtype_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+Alter table ezd_schmg add unique(schmg_name);
+
 create table ezd_uminden(--  关注记录表
 	uminden_id int  primary key AUTO_INCREMENT,
 	uminden_user  int ,--  谁关注的 对应用户信息
@@ -124,6 +136,7 @@ create table ezd_unews(--  用户消息表
 	unews_from varchar(20)  not null,--  （默认系统） 发件人
 	unews_content text  not null,-- 信息内容
 	unews_status int check(unews_status=0 or unews_status=1 ), --  消息状态（0未读 1已读）	
+	unews_time timestamp ,
 	foreign key (unews_user) references ezd_umg(umg_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 create table ezd_retType(--  招聘类型表
