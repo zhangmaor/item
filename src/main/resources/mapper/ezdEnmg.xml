@@ -23,5 +23,14 @@
         <collection property="ezdBigrets" resultMap="com.ezd.dao.EzdBigretDao.bigret"/><!--本公司发布的大招会信息列表-->
         <collection property="ezdSchrets" resultMap="com.ezd.dao.EzdSchretDao.schret" /><!--本 公司发布的校招会列表-->
     </resultMap>
+    <!--通过一个企业编号查询该企业的详细信息-->
+    <select id="getEnmg" parameterMap="uminden" resultMap="enmg" >
+        select * from ezd_enmg
+        <where>
+            <if test="#{umindenEn!=null}">
+                enmg_id = #{umindenEn}
+            </if>
+        </where>
+    </select>
 
 </mapper>

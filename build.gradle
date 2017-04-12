@@ -14,8 +14,10 @@ repositories {
 dependencies {
 
     def springVersion = "4.3.5.RELEASE"
-
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+    providedCompile (
+            "javax:javaee-web-api:7.0",
+    )
+    compile group: 'junit', name: 'junit', version: '4.11'
     compile (
 
             // 本地的 OJDBC 包加入进来
@@ -73,7 +75,9 @@ dependencies {
     compile group: 'dom4j', name: 'dom4j', version: '1.6.1'
     // https://mvnrepository.com/artifact/commons-httpclient/commons-httpclient
     compile group: 'commons-httpclient', name: 'commons-httpclient', version: '3.1'
-
+    /*json支持包*/
+    compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+   
 
 }
 

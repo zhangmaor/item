@@ -14,7 +14,7 @@ public class EzdUmg {
     private String umgPhoto ;//头像
     private String umgName  ;//姓名
     private String umgSex ; //性别
-    private Date umg_birthday ; //生日
+    private Date umgBirthday ; //生日
     private String umgEmail ;//邮箱
     private String umgSchool ;//学校
     private String  umgMajor ;//专业
@@ -30,31 +30,6 @@ public class EzdUmg {
     private List<EzdErlschret> ezdErlschrets;//本用户报名了那个校招会
     private List<EzdReadarti> ezdReadartis;//本用户阅读了那些文章
 
-    @Override
-    public String toString() {
-        return "EzdUmg{" +
-                "umgId=" + umgId +
-                ", umgUser=" + umgUser +
-                ", umgPhoto='" + umgPhoto + '\'' +
-                ", umgName='" + umgName + '\'' +
-                ", umgSex='" + umgSex + '\'' +
-                ", umg_birthday=" + umg_birthday +
-                ", umgEmail='" + umgEmail + '\'' +
-                ", umgSchool='" + umgSchool + '\'' +
-                ", umgMajor='" + umgMajor + '\'' +
-                ", umgDegree='" + umgDegree + '\'' +
-                ", umgSayMf='" + umgSayMf + '\'' +
-                ", umgEducation='" + umgEducation + '\'' +
-                ", umgUptime=" + umgUptime +
-                ", ezdEnmgs=" + ezdEnmgs +
-                ", ezdUnewss=" + ezdUnewss +
-                ", ezdErlenrets=" + ezdErlenrets +
-                ", ezdEnrets=" + ezdEnrets +
-                ", ezdErlbigrets=" + ezdErlbigrets +
-                ", ezdErlschrets=" + ezdErlschrets +
-                ", ezdReadartis=" + ezdReadartis +
-                '}';
-    }
     public void setUmgUser(EzdUsers umgUser) {
         this.umgUser = umgUser;
     }
@@ -152,12 +127,38 @@ public class EzdUmg {
         this.umgSex = umgSex;
     }
 
-    public Date getUmg_birthday() {
-        return umg_birthday;
+    @Override
+    public String toString() {
+        return "EzdUmg{" +
+                "umgId=" + umgId +
+                ", umgUser=" + umgUser +
+                ", umgPhoto='" + umgPhoto + '\'' +
+                ", umgName='" + umgName + '\'' +
+                ", umgSex='" + umgSex + '\'' +
+                ", umgBirthday=" + umgBirthday +
+                ", umgEmail='" + umgEmail + '\'' +
+                ", umgSchool='" + umgSchool + '\'' +
+                ", umgMajor='" + umgMajor + '\'' +
+                ", umgDegree='" + umgDegree + '\'' +
+                ", umgSayMf='" + umgSayMf + '\'' +
+                ", umgEducation='" + umgEducation + '\'' +
+                ", umgUptime=" + umgUptime +
+                ", ezdEnmgs=" + ezdEnmgs +
+                ", ezdUnewss=" + ezdUnewss +
+                ", ezdErlenrets=" + ezdErlenrets +
+                ", ezdEnrets=" + ezdEnrets +
+                ", ezdErlbigrets=" + ezdErlbigrets +
+                ", ezdErlschrets=" + ezdErlschrets +
+                ", ezdReadartis=" + ezdReadartis +
+                '}';
     }
 
-    public void setUmg_birthday(Date umg_birthday) {
-        this.umg_birthday = umg_birthday;
+    public Date getUmgBirthday() {
+        return umgBirthday;
+    }
+
+    public void setUmgBirthday(Date umgBirthday) {
+        this.umgBirthday = umgBirthday;
     }
 
     public String getUmgEmail() {
