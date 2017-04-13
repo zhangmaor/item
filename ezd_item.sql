@@ -135,7 +135,7 @@ create table ezd_unews(--  用户消息表
 	unews_user int ,--   收信人--  用户信息
 	unews_from varchar(20)  not null,--  （默认系统） 发件人
 	unews_content text  not null,-- 信息内容
-	unews_status int check(unews_status=0 or unews_status=1 ), --  消息状态（0未读 1已读）	
+	unews_status int check(unews_status=0 or unews_status=1 or unews_status = 2), -- 消息状态（0未读 1已读）	
 	unews_time timestamp ,
 	foreign key (unews_user) references ezd_umg(umg_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
