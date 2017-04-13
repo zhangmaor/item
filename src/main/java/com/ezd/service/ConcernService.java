@@ -128,4 +128,21 @@ public class ConcernService {
         }
         return result>0;
     }
+
+    /**
+     * 这个是获取指定的企业的关注量
+     * 主要是管理员使用
+     * @param enmgId ------企业的编号ID
+     * @return  ------关注量
+     */
+    public int getConcernNum(int enmgId){
+        int i = 0 ;
+        try {
+            i = ezdUmindenDao.getConcernNum(enmgId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return i;
+
+    }
 }

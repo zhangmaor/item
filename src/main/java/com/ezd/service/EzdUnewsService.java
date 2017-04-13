@@ -62,18 +62,21 @@ public class EzdUnewsService {
 
     /**
      * 批量阅读消息
-     *
+     * 批量删除
      * @param unewsList -----一批消息的id(编号)
      * @return 非零-------返回值受影响的行，即最终批处理了多少的信息
      * 0 -------即传过来的参数 unewsList 出问题（为空等）
      * -1 ----- 即修改数据库的时候出现了错误！！
      */
-    public int update(List<Integer> unewsList) {
+    public int update(List<Integer> unewsList ,int stauts ) {
         int result = 0;
         if (unewsList != null) {
             for (int i = 0; i < unewsList.size(); i++) {
+                EzdUnews ezdUnews = new EzdUnews();
+                ezdUnews.setUnewsId(unewsList.get(i));
+                ezdUnews.setUnewsStatus(stauts);
                 try {
-                    int count = ezdUnewsDao.updateStatus(unewsList.get(i));
+                    int count = ezdUnewsDao.updateStatus(ezdUnews);
                     result += count;
                 } catch (Exception e) {
                     result = -1;
@@ -100,5 +103,15 @@ public class EzdUnewsService {
             e.printStackTrace();
         }
         return ezdUnews;
+    }
+
+    public int getCount(int userId){
+        int count = 0;
+        try {
+            count = ezdUnewsDao.getCount(userId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return count;
     }
 }

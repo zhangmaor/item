@@ -1,4 +1,4 @@
-package com.ezd.Controller;
+package com.ezd.Controller.app;
 
 import com.ezd.model.EzdEnmg;
 import com.ezd.model.EzdUminden;
@@ -28,7 +28,9 @@ public class UsersFunction {
     private ConcernService concernService;
 
     /*===============消息========================*/
-    /*获取当前用户下的全部的消息列表*/
+    /*获取当前用户下的全部的消息列表
+    * 可以多次使用
+    * */
     @RequestMapping(value = "/ajaxUnews", method = RequestMethod.POST)
     public void getUnewsList(HttpServletResponse response, int umgId) {
         List<EzdUnews> ezdUnewss = ezdUnewsService.displayUnews(umgId);
@@ -37,14 +39,18 @@ public class UsersFunction {
         new AjaxUtil().renderData(response, s);
     }
 
+
     /*通过指定的消息编号获取该消息的详细信息*/
-
-
     @RequestMapping(value = "/ajaxGetOne", method = RequestMethod.POST)
     public void getUnews(HttpServletResponse response, int unewsId) {
         EzdUnews unews = ezdUnewsService.getUnews(unewsId);
         String s = JSONValue.toJSONString(unews);
         new AjaxUtil().renderData(response, s);
+    }
+    @RequestMapping(value="/ajaxGetCount" ,method = RequestMethod.POST)
+    public void getCount(HttpServletResponse response,int userId){
+        int count = ezdUnewsService.getCount(userId);
+        new AjaxUtil().renderData(response,count+"");
     }
 
     /*=======================关注================================*/

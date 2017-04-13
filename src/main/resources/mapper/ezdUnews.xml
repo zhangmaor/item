@@ -10,6 +10,7 @@
         <result column="unews_from" property="unewsFrom" /><!--发信人（该版本默认的发信人是系统）-->
         <result column="unews_content" property="unewsContent" /><!--消息的内容-->
         <result column="unews_user" property="unewsUser" /><!--收信人-->
+        <result column="unews_status" property="unewsStatus"/><!--状态-->
     </resultMap>
     <!--通过指定的用户获取该用户的全部的消息-->
     <select id="getAll"  resultMap="com.ezd.dao.EzdUnewsDao.unews" parameterType="com.ezd.model.EzdUmg">
@@ -21,14 +22,23 @@
       </where>
         ORDER BY unews_user ,news_time DESC
     </select>
+    <!--查询当前用户中未读的消息条数-->
     <select id="getOne" resultMap="unews" parameterType="int">
         select * from ezd_unews
-        where unews_id = #{_parameter}
+        where unews_user = #{_parameter}
     </select>
-    <update id="updateStatus" parameterType="int" >
-        update ezd_unews set unews_status = 1
+    <select id="getCount" resultType="int" parameterType="int" >
+        select count(*) from ezd_unews
         where unews_id = #{_parameter}
+          and unews_status = 0
+    </select>
+    <!--将指定的消息的状态改为已读状态或删除的状态-->
+    <update id="updateStatus" parameterType="com.ezd.model.EzdUnews" >
+        update ezd_unews set unews_status = #{unewsStatus}
+        where unews_id = #{unewsId}
     </update>
+    <!--将指定的消息的状态改为-->
+
     <insert id="insertOne" parameterMap="unews">
         INSERT into ezd_unmews(<include refid="row"/> )
         values(#{unewsUser},#{unewsFrom},#{unewsContent},#{unewsStatus},#{unewsTime})

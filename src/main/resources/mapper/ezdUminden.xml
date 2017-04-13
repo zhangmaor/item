@@ -15,6 +15,12 @@
         select * from ezd_uminden
         where uminden_user = #{_parameter}
     </select>
+
+    <!--获取指定公司的关注量-->
+    <select id="getConcernNum" parameterType="int" resultType="int">
+        select count(*) from ezd_uminden
+        where uminden_en = #{_parameter}
+    </select>
     <!--添加
         插入一条关注信息
     -->
