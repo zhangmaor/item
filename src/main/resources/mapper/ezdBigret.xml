@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--这里的namespace还没有确定-->
 <mapper namespace="com.ezd.dao.EzdBigretDao">
+
     <resultMap id="bigret" type="com.ezd.model.EzdBigret"><!--大招会信息表-->
         <id column="bigret_id" property="bigretId"/><!--编号-->
         <result column="bigret_logo" property="bigretLogo"/><!--大招会logo(图片)-->
@@ -19,8 +20,8 @@
         <collection property="ezdErlbigrets" resultMap="com.ezd.dao.EzdUmgDao.umg"/><!--浏览本大招会的人员列表-->
     </resultMap>
     <!--通过编号显示详细信息-->
-        select * from ezd_bigret
     <select id="idGet" parameterType="int" resultMap="bigret">
+        select * from ezd_bigret
         where
             bigret_id = #{_parameter}
     </select>
@@ -54,7 +55,8 @@
           ,bigret_status = #{bigretStatus.newsStatusId}
           ,bigret_creTime = #{bigretCreTime}
           ,bigret_detail = #{bigretDetail}
-          ,bigret_post = #{bigretPost}
+          ,bigret_postOne = #{ezdPostOne}
+          ,bigret_postTwo = #{ezdPostTwo}
           ,bigret_enmg = #{bigretEnmg.enmgId}
       WHERE
          bigret_id = #{bigretId}
@@ -69,7 +71,7 @@
     </update>
     <!--生成一个大招会-->
     <insert id="add" parameterType="com.ezd.model.EzdBigret">
-        INSERT  into ezd_bigret(bigret_logo , bigret_title, bigret_time , bigret_address , bigret_status  , bigret_creTime ,bigret_detail,bigret_post ,bigret_enmg  )
-        VALUES (#{bigretLogo},#{bigretTitle},#{bigretTime},#{bigretAddress},#{bigretStatus.newsStatusId} , #{bigretCreTime},#{bigretDetail},#{bigretPost},#{bigretEnmg.enmgId})
+        INSERT  into ezd_bigret(bigret_logo , bigret_title, bigret_time , bigret_address , bigret_status  , bigret_creTime ,bigret_detail,bigret_postOne,bigret_postTwo ,bigret_enmg  )
+        VALUES (#{bigretLogo},#{bigretTitle},#{bigretTime},#{bigretAddress},#{bigretStatus.newsStatusId} , #{bigretCreTime},#{bigretDetail},#{ezdPostOne},#{ezdPostTwo},#{bigretEnmg.enmgId})
     </insert>
 </mapper>
