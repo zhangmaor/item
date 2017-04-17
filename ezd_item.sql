@@ -152,11 +152,11 @@ CREATE TABLE ezd_newsStatus(--  消息状态表
 	newsStatus_name VARCHAR(20)  NOT NULL--  未开始  进行中  已结束
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-CREATE TABLE ezd_postOne(
+CREATE TABLE ezd_postOne( -- 招聘类型一级表
 	pone_id INT PRIMARY KEY AUTO_INCREMENT,
 	pone_name VARCHAR(20) NOT NULL	
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
-CREATE TABLE ezd_postTwo(
+CREATE TABLE ezd_postTwo( -- 招聘类型二级表
 	ptwo_id INT PRIMARY KEY AUTO_INCREMENT,
 	ptwo_postOne INT ,
 	ptwo_name VARCHAR(20),
@@ -171,13 +171,16 @@ CREATE TABLE ezd_enret(--  招聘信息表
 	enret_creTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,--  发布时间
 	enret_lwMoney INT  NOT NULL,--  最低工资
 	enret_hgMoney INT  NOT NULL,--  最高工资
-	enret_postOne VARCHAR(20) NOT NULL,--  招聘岗位1
-	enret_postTwo VARCHAR(20) ,--  招聘岗位2
+	enret_postOne int,--  招聘岗位1
+	enret_postTwo int ,--  招聘岗位2
 	enret_pg TEXT,--  待遇
 	enret_demand TEXT NOT NULL,--  招聘要求
 	enret_status INT ,  --  信息状态,( 进行中  已结束)
+	
 	FOREIGN KEY (nret_enmg) REFERENCES ezd_enmg(enmg_id),
 	FOREIGN KEY (enret_type) REFERENCES ezd_retType(retType_id),
+	FOREIGN KEY (enret_postOne) REFERENCES ezd_postOne(pone_id),
+	FOREIGN KEY (enret_postTwo) REFERENCES ezd_postTwo(ptwo_id),
 	FOREIGN KEY (enret_status) REFERENCES ezd_newsStatus(newsStatus_id)	
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 CREATE TABLE ezd_erlenret(--  招聘信息报名表
@@ -201,14 +204,16 @@ CREATE TABLE ezd_bigret(--  大招会信息表
 	bigret_logo VARCHAR(50),
 	bigret_title VARCHAR(100),--  大招会标题
 	bigret_time TIMESTAMP  NOT NULL,--  大招会时间
-	bigret_address VARCHAR(20),--  大招会地址
+	bigret_address int,--  大招会地址
 	bigret_status INT ,--  大招会状态(未开始  进行中 已结束)
 	bigret_creTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,--  发布时间
 	bigret_detail TEXT  NOT NULL,--  大招会详情
-	bigret_post VARCHAR(20),--  招聘职位
+	enret_postOne int,--  招聘岗位1
+	enret_postTwo int ,--  招聘岗位2
 	bigret_enmg INT ,--   哪家公司发布的
 	
 	FOREIGN KEY (bigret_status)  REFERENCES ezd_newsStatus(newsStatus_id),
+	FOREIGN KEY (bigret_address)  REFERENCES ezd_schmg(schm_id),
 	FOREIGN KEY (bigret_enmg)  REFERENCES ezd_enmg(enmg_id)
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 CREATE TABLE ezd_erlbigret(--  大招会报名表
@@ -243,8 +248,7 @@ CREATE TABLE ezd_erlschret(--  校招会包名表
 	erlschret_user INT ,--   谁报名了
 	erlschret_schret INT ,--   报名了那个校招会\
 	erlschret_status INT , --  包名状态 (已报名 审核 录用 拒绝)
-	erlschret_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	
+	erlschret_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,	
 		
 	FOREIGN KEY (erlschret_user) REFERENCES ezd_umg(umg_id),	
 	FOREIGN KEY (erlschret_schret) REFERENCES ezd_schret(schret_id),	
