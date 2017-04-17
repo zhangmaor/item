@@ -14,11 +14,4 @@
         <association property="schmgType" resultMap="com.ezd.dao.EzdSchtypeDao.schtype"/><!--学校类型-->
         <collection property="ezdSchrets" resultMap="com.ezd.dao.EzdSchretDao.schret" /><!--本学校（未开始，结束，进行时）举行过的校招会-->
     </resultMap>
-
-    <insert id="insertSchMg" parameterType="com.ezd.model.EzdSchmg">
-        INSERT INTO ezd_schmg values()
-    </insert>
-
-
-
 </mapper>

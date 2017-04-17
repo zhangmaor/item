@@ -270,7 +270,7 @@ CREATE TABLE ezd_point(--  点赞信息表
 	point_article INT ,--  点赞的文章
 	point_umg INT,--   点赞人	
 	point_touser INT ,--  可为null 为其他用户点赞
-	point_status INT NOT NULL --  （0 取消点赞 1 点赞）
+	point_status INT NOT NULL, --  （0 取消点赞 1 点赞）
 	
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 CREATE TABLE ezd_adv(
