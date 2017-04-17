@@ -1,4 +1,4 @@
-
+﻿
 
 ALTER DATABASE `ezd_item` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
@@ -156,6 +156,7 @@ CREATE TABLE ezd_postTwo( -- 招聘类型二级表
 	ptwo_postOne INT ,
 	ptwo_name VARCHAR(20)
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
+
 
 CREATE TABLE ezd_enret(--  招聘信息表
 	enret_id INT PRIMARY KEY AUTO_INCREMENT,
