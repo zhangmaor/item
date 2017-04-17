@@ -15,31 +15,15 @@ public class EzdEnret {
     private Date enretCreTime;//发布时间
     private int enretLwMoney;//最低工资
     private int enretHgMoney;//最高工资
-    private String enretPost;//招聘岗位
+    private EzdPostOne ezdPostOne; //一级招聘岗位
+    private EzdPostTwo ezdPostTwo; //二级招聘岗位
     private String enretPg;//待遇
     private String enretDemand;//招聘要求
     private EzdNewsStatus enretStatus;//references ezd_newsStatus(newsStatus_id)  --  信息状态,( 进行中  已结束)
     private List<EzdErlenret> ezdErlenrets;//对应的报名信息表
     private List<EzdUmg> ezdUmgs ;//对本信息浏览的人列表
 
-    @Override
-    public String toString() {
-        return "EzdEnret{" +
-                "enretId=" + enretId +
-                ", nretEnmg=" + nretEnmg +
-                ", enretWantNum=" + enretWantNum +
-                ", enretType=" + enretType +
-                ", enretCreTime=" + enretCreTime +
-                ", enretLwMoney=" + enretLwMoney +
-                ", enretHgMoney=" + enretHgMoney +
-                ", enretPost='" + enretPost + '\'' +
-                ", enretPg='" + enretPg + '\'' +
-                ", enretDemand='" + enretDemand + '\'' +
-                ", enretStatus=" + enretStatus +
-                ", ezdErlenrets=" + ezdErlenrets +
-                ", ezdUmgs=" + ezdUmgs +
-                '}';
-    }
+
 
     public List<EzdUmg> getEzdUmgs() {
         return ezdUmgs;
@@ -57,6 +41,26 @@ public class EzdEnret {
         this.ezdErlenrets = ezdErlenrets;
     }
 
+
+    @Override
+    public String toString() {
+        return "EzdEnret{" +
+                "enretId=" + enretId +
+                ", nretEnmg=" + nretEnmg +
+                ", enretWantNum=" + enretWantNum +
+                ", enretType=" + enretType +
+                ", enretCreTime=" + enretCreTime +
+                ", enretLwMoney=" + enretLwMoney +
+                ", enretHgMoney=" + enretHgMoney +
+                ", ezdPostOne=" + ezdPostOne +
+                ", ezdPostTwo=" + ezdPostTwo +
+                ", enretPg='" + enretPg + '\'' +
+                ", enretDemand='" + enretDemand + '\'' +
+                ", enretStatus=" + enretStatus +
+                ", ezdErlenrets=" + ezdErlenrets +
+                ", ezdUmgs=" + ezdUmgs +
+                '}';
+    }
 
     public EzdEnret() {
     }
@@ -104,12 +108,20 @@ public class EzdEnret {
         this.enretHgMoney = enretHgMoney;
     }
 
-    public String getEnretPost() {
-        return enretPost;
+    public EzdPostOne getEzdPostOne() {
+        return ezdPostOne;
     }
 
-    public void setEnretPost(String enretPost) {
-        this.enretPost = enretPost;
+    public void setEzdPostOne(EzdPostOne ezdPostOne) {
+        this.ezdPostOne = ezdPostOne;
+    }
+
+    public EzdPostTwo getEzdPostTwo() {
+        return ezdPostTwo;
+    }
+
+    public void setEzdPostTwo(EzdPostTwo ezdPostTwo) {
+        this.ezdPostTwo = ezdPostTwo;
     }
 
     public String getEnretPg() {
