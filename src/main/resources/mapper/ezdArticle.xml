@@ -20,4 +20,5 @@
         <collection property="ezdSayarts" resultMap="com.ezd.dao.EzdSayartDao.sayart" /><!--这篇文章之下的评论-->
         <collection property="ezdPoints" resultMap="com.ezd.dao.EzdPointDao.point" /><!--这篇文章之下的点赞-->
     </resultMap>
+
 </mapper>

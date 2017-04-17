@@ -5,30 +5,30 @@ package com.ezd.model;
  */
 //企业类型表
 public class EzdEntype {
-    private int entityId;
-    private String entityName;  //企业类型名称
+    private int enTypeId;
+    private String enTypeName;  //企业类型名称
 
-    public int getEntityId() {
-        return entityId;
+    public int getEnTypeId() {
+        return enTypeId;
     }
 
-    public void setEntityId(int entityId) {
-        this.entityId = entityId;
+    public void setEnTypeId(int enTypeId) {
+        this.enTypeId = enTypeId;
     }
 
-    public String getEntityName() {
-        return entityName;
+    public String getEnTypeNmae() {
+        return enTypeName;
     }
 
-    public void setEntityName(String entityName) {
-        this.entityName = entityName;
+    public void setEnTypeNmae(String enTypeName) {
+        this.enTypeName = enTypeName;
     }
 
     @Override
     public String toString() {
         return "EzdEntype{" +
-                "entityId=" + entityId +
-                ", entityName='" + entityName + '\'' +
+                "enTypeId=" + enTypeId +
+                ", enTypeNmae='" + enTypeName + '\'' +
                 '}';
     }
 }
