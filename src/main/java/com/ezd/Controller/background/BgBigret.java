@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/4/17.
@@ -22,8 +23,8 @@ public class BgBigret {
      */
     @RequestMapping("/bigret")
     public String displayBigret(){
-        ezdBigretService.modeGet(0);//这个有问题吧！！！
-        return "";
+        List<EzdBigret> bigretList = ezdBigretService.modeGet(0);//这个有问题吧！！！
+        return "indexText";
     }
     /**
      * 点击其中一个大招会信息
@@ -33,7 +34,7 @@ public class BgBigret {
     @RequestMapping("/bigretDetail")
     public String datail(int id){
         EzdBigret ezdBigret = ezdBigretService.get(id);
-        return "";
+        return "bigret";
     }
     /**
      * 点击修改
