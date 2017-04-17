@@ -11,6 +11,7 @@ import org.json.simple.JSONValue;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -32,35 +33,35 @@ public class UsersFunction {
     * 可以多次使用
     * */
     @RequestMapping(value = "/ajaxUnews", method = RequestMethod.POST)
-    public void getUnewsList(HttpServletResponse response, int umgId) {
+    @ResponseBody
+    public List<EzdUnews> getUnewsList(HttpServletResponse response, int umgId) {
         List<EzdUnews> ezdUnewss = ezdUnewsService.displayUnews(umgId);
-        String s = JSONArray.toJSONString(ezdUnewss);
-
-        new AjaxUtil().renderData(response, s);
+       return ezdUnewss;
     }
 
 
     /*通过指定的消息编号获取该消息的详细信息*/
     @RequestMapping(value = "/ajaxGetOne", method = RequestMethod.POST)
-    public void getUnews(HttpServletResponse response, int unewsId) {
+    @ResponseBody
+    public EzdUnews getUnews(HttpServletResponse response, int unewsId) {
         EzdUnews unews = ezdUnewsService.getUnews(unewsId);
-        String s = JSONValue.toJSONString(unews);
-        new AjaxUtil().renderData(response, s);
+       return unews;
     }
     @RequestMapping(value="/ajaxGetCount" ,method = RequestMethod.POST)
-    public void getCount(HttpServletResponse response,int userId){
+    @ResponseBody
+    public int getCount(HttpServletResponse response,int userId){
         int count = ezdUnewsService.getCount(userId);
-        new AjaxUtil().renderData(response,count+"");
+        return count;
     }
 
     /*=======================关注================================*/
 
     /*显示我的关注里面的关注列表*/
     @RequestMapping(value = "/ajaxGetConcern", method = RequestMethod.POST)
-    public void getConcern(HttpServletResponse response, int umgId) {
+    @ResponseBody
+    public List<EzdEnmg> getConcern(HttpServletResponse response, int umgId) {
         List<EzdEnmg> enmgList = concernService.getEnmgList(umgId);
-        String s = JSONArray.toJSONString(enmgList);
-        new AjaxUtil().renderData(response, s);
+       return enmgList;
     }
 
     /**
@@ -69,10 +70,10 @@ public class UsersFunction {
      * 或者在我的关注中点击一个企业显示也可以调用此方法
      */
     @RequestMapping(value = "/ajaxGetEnmg", method = RequestMethod.POST)
-    public void getEnmg(HttpServletResponse response, int enmgId) {
+    @ResponseBody
+    public EzdEnmg getEnmg(HttpServletResponse response, int enmgId) {
         EzdEnmg enmg = concernService.getEnmg(enmgId);
-        String s = JSONValue.toJSONString(enmg);
-        new AjaxUtil().renderData(response, s);
+        return enmg;
     }
 
     /* 检查当前的用户是否关注该企业
@@ -81,23 +82,36 @@ public class UsersFunction {
      *   false —— 没关注；
      * */
     @RequestMapping(value = "/ajaxCheck", method = RequestMethod.POST)
-    public void checkConcern(HttpServletResponse response, EzdUminden ezdUminden) {
+    @ResponseBody
+    public boolean checkConcern(HttpServletResponse response, EzdUminden ezdUminden) {
         boolean check = concernService.check(ezdUminden);
-        String s = JSONValue.toJSONString(check);
-        new AjaxUtil().renderData(response, s);
+       return check;
     }
 
+    /**
+     * 添加一条数据
+     * @param response
+     * @param ezdUminden
+     * @return
+     */
     @RequestMapping(value="/ajaxAdd" , method=RequestMethod.POST )
-    public void addConcern(HttpServletResponse response , EzdUminden ezdUminden){
+    @ResponseBody
+    public boolean addConcern(HttpServletResponse response , EzdUminden ezdUminden){
         boolean add = concernService.add(ezdUminden);
-        String s = JSONValue.toJSONString(add);
-        new AjaxUtil().renderData(response,s);
+       return add;
     }
+
+    /**
+     * 删除一条数据
+     * @param response
+     * @param ezdUminden
+     * @return
+     */
     @RequestMapping(value="/ajaxDel" , method=RequestMethod.POST )
-    public void delConcern(HttpServletResponse response, EzdUminden ezdUminden){
+    @ResponseBody
+    public boolean delConcern(HttpServletResponse response, EzdUminden ezdUminden){
         boolean del = concernService.del(ezdUminden);
-        String s = JSONValue.toJSONString(del);
-        new AjaxUtil().renderData(response,s);
+        return del;
     }
 
 }

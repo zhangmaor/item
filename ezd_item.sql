@@ -188,7 +188,7 @@ create table ezd_enret_browse(--  浏览记录表
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 create table ezd_bigret(--  大招会信息表
 	bigret_id int primary key auto_increment,
-	bigret_logo varchar(50),
+	bigret_logo varchar(50), --  主题图片
 	bigret_title varchar(100),--  大招会标题
 	bigret_time timestamp  not null,--  大招会时间
 	bigret_address varchar(20),--  大招会地址
