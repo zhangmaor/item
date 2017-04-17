@@ -16,7 +16,8 @@ public class EzdBigret {
     private EzdNewsStatus bigretStatus;//references ezd_newsStatus(newsStatus_id),--  大招会状态(未开始  进行中 已结束)
     private Date bigretCreTime;//发布时间
     private String bigretDetail;//大招会详情
-    private String bigretPost;//招聘职位
+    private EzdPostOne ezdPostOne; //一级招聘岗位
+    private EzdPostTwo ezdPostTwo; //二级招聘岗位
     private EzdEnmg bigretEnmg;//references ezd_enmg(enmg_id)--   哪家公司发布的
     private List<EzdErlbigret> ezdErlbigrets;//报名本大招会的人的列表信息；
 
@@ -31,7 +32,8 @@ public class EzdBigret {
                 ", bigretStatus=" + bigretStatus +
                 ", bigretCreTime=" + bigretCreTime +
                 ", bigretDetail='" + bigretDetail + '\'' +
-                ", bigretPost='" + bigretPost + '\'' +
+                ", ezdPostOne=" + ezdPostOne +
+                ", ezdPostTwo=" + ezdPostTwo +
                 ", bigretEnmg=" + bigretEnmg +
                 ", ezdErlbigrets=" + ezdErlbigrets +
                 '}';
@@ -106,12 +108,20 @@ public class EzdBigret {
         this.bigretDetail = bigretDetail;
     }
 
-    public String getBigretPost() {
-        return bigretPost;
+    public EzdPostOne getEzdPostOne() {
+        return ezdPostOne;
     }
 
-    public void setBigretPost(String bigretPost) {
-        this.bigretPost = bigretPost;
+    public void setEzdPostOne(EzdPostOne ezdPostOne) {
+        this.ezdPostOne = ezdPostOne;
+    }
+
+    public EzdPostTwo getEzdPostTwo() {
+        return ezdPostTwo;
+    }
+
+    public void setEzdPostTwo(EzdPostTwo ezdPostTwo) {
+        this.ezdPostTwo = ezdPostTwo;
     }
 
     public EzdNewsStatus getBigretStatus() {
