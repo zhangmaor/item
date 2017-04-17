@@ -55,8 +55,8 @@
           ,bigret_status = #{bigretStatus.newsStatusId}
           ,bigret_creTime = #{bigretCreTime}
           ,bigret_detail = #{bigretDetail}
-          ,bigret_postOne = #{ezdPostOne}
-          ,bigret_postTwo = #{ezdPostTwo}
+          ,bigret_postOne = #{ezdPostOne.poneId}
+          ,bigret_postTwo = #{ezdPostTwo.ptwoId}
           ,bigret_enmg = #{bigretEnmg.enmgId}
       WHERE
          bigret_id = #{bigretId}
@@ -72,6 +72,6 @@
     <!--生成一个大招会-->
     <insert id="add" parameterType="com.ezd.model.EzdBigret">
         INSERT  into ezd_bigret(bigret_logo , bigret_title, bigret_time , bigret_address , bigret_status  , bigret_creTime ,bigret_detail,bigret_postOne,bigret_postTwo ,bigret_enmg  )
-        VALUES (#{bigretLogo},#{bigretTitle},#{bigretTime},#{bigretAddress},#{bigretStatus.newsStatusId} , #{bigretCreTime},#{bigretDetail},#{ezdPostOne},#{ezdPostTwo},#{bigretEnmg.enmgId})
+        VALUES (#{bigretLogo},#{bigretTitle},#{bigretTime},#{bigretAddress},#{bigretStatus.newsStatusId} , #{bigretCreTime},#{bigretDetail},#{ezdPostOne.poneId},#{ezdPostTwo.ptwoId},#{bigretEnmg.enmgId})
     </insert>
 </mapper>

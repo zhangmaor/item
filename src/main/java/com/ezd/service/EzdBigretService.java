@@ -80,8 +80,11 @@ public class EzdBigretService {
             if(ezdBigret.getBigretLogo()!=null){
                 ezdBigret1.setBigretLogo(ezdBigret.getBigretLogo());
             }
-            if(ezdBigret.getBigretPost()!=null){
-                ezdBigret1.setBigretPost(ezdBigret.getBigretPost());
+            if(ezdBigret.getEzdPostOne()!=null){
+                ezdBigret1.setEzdPostOne(ezdBigret.getEzdPostOne());
+            }
+            if(ezdBigret.getEzdPostTwo()!=null){
+                ezdBigret1.setEzdPostTwo(ezdBigret.getEzdPostTwo());
             }
             if(ezdBigret.getBigretStatus()!=null){
                 ezdBigret1.setBigretStatus(ezdBigret.getBigretStatus());
