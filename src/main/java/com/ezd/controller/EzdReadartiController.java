@@ -5,6 +5,7 @@ import com.ezd.service.EzdReadartiService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -21,12 +22,12 @@ public class EzdReadartiController {
 
     /**
      * 添加阅读信息
-     * @param response
      * @param ezdReadarti
      * @return
      */
     @RequestMapping(value = "/ajaxInsert",method = RequestMethod.POST)
-    public boolean insert(HttpServletResponse response, EzdReadarti ezdReadarti){
+    @ResponseBody
+    public boolean insert( EzdReadarti ezdReadarti){
         boolean insert = ezdReadartiService.insert(ezdReadarti);
         return insert;
 

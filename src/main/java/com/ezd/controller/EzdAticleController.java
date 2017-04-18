@@ -41,6 +41,7 @@ public class EzdAticleController {
      * @param ezdArticle
      */
     @RequestMapping(value = "/ajaxDelete",method = RequestMethod.POST)
+    @ResponseBody
     public boolean delete(HttpServletResponse response, EzdArticle ezdArticle){
         boolean delete = ezdArticleService.delete(ezdArticle);
         return delete;
@@ -48,22 +49,22 @@ public class EzdAticleController {
 
     /**
      * 更改文章信息
-     * @param response
      * @param e1,e2
      * @return
      */
     @RequestMapping(value = "/ajaxUpdate",method = RequestMethod.POST)
-    public boolean update(HttpServletResponse response,EzdArticle e1,EzdArticle e2){
+    @ResponseBody
+    public boolean update(EzdArticle e1,EzdArticle e2){
         boolean update = ezdArticleService.update(e1, e2);
         return update;
     }
 
 
     @RequestMapping(value = "/ajaxGetArticleAll",method = RequestMethod.POST)
-    public void getArticleAll(HttpServletResponse response, EzdArticle ezdArticle){
+    @ResponseBody
+    public List<EzdArticle> getArticleAll(EzdArticle ezdArticle){
         List<EzdArticle> articleAll = ezdArticleService.getArticleAll();
-        String s = JSONValue.toJSONString(articleAll);
-        new AjaxUtil().renderData(response,s);
+        return articleAll;
     }
 
 

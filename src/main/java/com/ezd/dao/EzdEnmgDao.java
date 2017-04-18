@@ -12,11 +12,6 @@ public interface EzdEnmgDao {
     /*通过id获取详细的公司信息*/
     public EzdEnmg getEnmg(int enmgId)throws Exception;
 
-<<<<<<< HEAD
-
-
-
-=======
     /**
      * 修改企业的一些基本信息
      * @param ezdEnmg
@@ -33,6 +28,5 @@ public interface EzdEnmgDao {
      * @throws Exception
      */
     public int add(EzdEnmg ezdEnmg) throws Exception;
->>>>>>> a994ff89af3406f04800a015ffe51ae755eb6955
 
 }

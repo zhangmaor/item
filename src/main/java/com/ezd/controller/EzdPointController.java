@@ -5,6 +5,7 @@ import com.ezd.service.EzdPointService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -22,12 +23,12 @@ public class EzdPointController {
 
     /**
      * 添加点赞
-     * @param response
      * @param ezdPoint
      * @return
      */
     @RequestMapping(value = "/ajaxInsert",method = RequestMethod.POST)
-    public boolean insert(HttpServletResponse response, EzdPoint ezdPoint){
+    @ResponseBody
+    public boolean insert( EzdPoint ezdPoint){
         boolean insert = ezdPointService.insert(ezdPoint);
         return insert;
     }
