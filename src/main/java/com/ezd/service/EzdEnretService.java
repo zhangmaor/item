@@ -1,0 +1,176 @@
+package com.ezd.service;
+
+import com.ezd.dao.EzdEnretBrowseDao;
+import com.ezd.dao.EzdEnretDao;
+import com.ezd.dao.EzdErlenretDao;
+import com.ezd.dao.EzdUmgDao;
+import com.ezd.model.*;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by Administrator on 2017/4/13.
+ */
+@Service
+@Transactional
+public class EzdEnretService {
+
+    @Resource
+    private EzdEnretDao ezdEnretDao;
+    @Resource
+    private EzdErlenretDao ezdErlenretDao;
+    @Resource
+    private EzdEnretBrowseDao ezdEnretBrowseDao;
+    @Resource
+    private EzdUmgDao ezdUmgDao;
+
+
+    //查询出所有招聘信息
+    public List<EzdEnret> getAll(){
+        List<EzdEnret> list = new ArrayList<>();
+        list = ezdEnretDao.getAll();
+        for (EzdEnret li:list) {
+            List<EzdErlenret> personList = ezdErlenretDao.getPersonEnrolled(li);
+            List<EzdEnretBrowse> peopleBrowsing = ezdEnretBrowseDao.getPeopleBrowsing(li);
+            for (EzdEnretBrowse people:peopleBrowsing) {
+                List<EzdUmg> browsingUsers = ezdUmgDao.getBrowsingUsers(people);
+                li.setEzdUmgs(browsingUsers);
+            }
+            li.setEzdErlenrets(personList);
+        }
+        return list;
+    }
+
+    //根据公司id查询出本公司所有的招聘信息
+    public List<EzdEnret> getOneAll(EzdEnmg ezdEnmg){
+        List<EzdEnret> list = new ArrayList<>();
+        list = ezdEnretDao.getOneAll(ezdEnmg);
+        for (EzdEnret li:list) {
+            List<EzdErlenret> personList = ezdErlenretDao.getPersonEnrolled(li);
+            List<EzdEnretBrowse> peopleBrowsing = ezdEnretBrowseDao.getPeopleBrowsing(li);
+            for (EzdEnretBrowse people:peopleBrowsing) {
+                List<EzdUmg> browsingUsers = ezdUmgDao.getBrowsingUsers(people);
+                li.setEzdUmgs(browsingUsers);
+            }
+            li.setEzdErlenrets(personList);
+        }
+        return list;
+    }
+
+    //根据招聘类型查询出招聘信息
+    public List<EzdEnret> getEnretTypeAll(EzdRetType ezdRetType){
+        List<EzdEnret> list = new ArrayList<>();
+        list = ezdEnretDao.getEnretTypeAll(ezdRetType);
+        for (EzdEnret li:list) {
+            List<EzdErlenret> personList = ezdErlenretDao.getPersonEnrolled(li);
+            List<EzdEnretBrowse> peopleBrowsing = ezdEnretBrowseDao.getPeopleBrowsing(li);
+            for (EzdEnretBrowse people:peopleBrowsing) {
+                List<EzdUmg> browsingUsers = ezdUmgDao.getBrowsingUsers(people);
+                li.setEzdUmgs(browsingUsers);
+            }
+            li.setEzdErlenrets(personList);
+        }
+        return list;
+    }
+
+    //根据工资的范围进行查询招聘信息
+    public List<EzdEnret> getMoneyAll(EzdEnret ezdEnret){
+        List<EzdEnret> list = new ArrayList<>();
+        list = ezdEnretDao.getMoneyAll(ezdEnret);
+        for (EzdEnret li:list) {
+            List<EzdErlenret> personList = ezdErlenretDao.getPersonEnrolled(li);
+            List<EzdEnretBrowse> peopleBrowsing = ezdEnretBrowseDao.getPeopleBrowsing(li);
+            for (EzdEnretBrowse people:peopleBrowsing) {
+                List<EzdUmg> browsingUsers = ezdUmgDao.getBrowsingUsers(people);
+                li.setEzdUmgs(browsingUsers);
+            }
+            li.setEzdErlenrets(personList);
+        }
+        return list;
+    }
+
+    //根据企业地址查询出招聘信息
+    public List<EzdEnret> getEnmgAddressAll(EzdEnmg ezdEnmg){
+        List<EzdEnret> list = new ArrayList<>();
+        list = ezdEnretDao.getEnmgAddressAll(ezdEnmg);
+        for (EzdEnret li:list) {
+            List<EzdErlenret> personList = ezdErlenretDao.getPersonEnrolled(li);
+            List<EzdEnretBrowse> peopleBrowsing = ezdEnretBrowseDao.getPeopleBrowsing(li);
+            for (EzdEnretBrowse people:peopleBrowsing) {
+                List<EzdUmg> browsingUsers = ezdUmgDao.getBrowsingUsers(people);
+                li.setEzdUmgs(browsingUsers);
+            }
+            li.setEzdErlenrets(personList);
+        }
+        return list;
+    }
+
+    //根据浏览数量进行排序查询招聘信息
+    public List<EzdEnret> getCountAll(){
+        List<EzdEnret> list = new ArrayList<>();
+        list = ezdEnretDao.getCountAll();
+        for (EzdEnret li:list) {
+            List<EzdErlenret> personList = ezdErlenretDao.getPersonEnrolled(li);
+            List<EzdEnretBrowse> peopleBrowsing = ezdEnretBrowseDao.getPeopleBrowsing(li);
+            for (EzdEnretBrowse people:peopleBrowsing) {
+                List<EzdUmg> browsingUsers = ezdUmgDao.getBrowsingUsers(people);
+                li.setEzdUmgs(browsingUsers);
+            }
+            li.setEzdErlenrets(personList);
+        }
+        return list;
+    }
+
+    //根据企业id更改招聘信息
+    public boolean update(EzdEnret e1,EzdEnret e2){
+
+        if (e2.getEnretWantNum() == 0){
+            e2.setEnretWantNum(e1.getEnretWantNum());
+        }else if (e2.getEnretCreTime() == null){
+            e2.setEnretCreTime(e1.getEnretCreTime());
+        }else if (e2.getEnretDemand() == null){
+            e2.setEnretDemand(e1.getEnretDemand());
+        }else if (e2.getEnretHgMoney() == 0){
+            e2.setEnretHgMoney(e1.getEnretHgMoney());
+        }else if (e2.getEnretLwMoney() == 0){
+            e2.setEnretLwMoney(e1.getEnretLwMoney());
+        }else if (e2.getEnretPg() == null){
+            e2.setEnretPg(e1.getEnretPg());
+        }else if (e2.getEnretPost() == null){
+            e2.setEnretPost(e1.getEnretPost());
+        }else if (e2.getEnretType() == null){
+            e2.setEnretType(e1.getEnretType());
+        }else if (e2.getEnretStatus() == null){
+            e2.setEnretStatus(e1.getEnretStatus());
+        }
+        int row = ezdEnretDao.update(e2.getNretEnmg().getEnmgId());
+        if (row>0){
+            return true;
+        }
+        return false;
+
+    }
+
+    //根据企业删除招聘信息
+    public boolean delete(EzdEnret ezdEnret){
+        int row = ezdEnretDao.delete(ezdEnret);
+        if (row>0){
+            return true;
+        }
+        return false;
+    }
+
+    //根据企业添加招聘信息
+    public boolean insert(EzdEnret ezdEnret){
+        int row = ezdEnretDao.insert(ezdEnret);
+        if (row>0){
+            return true;
+        }
+        return false;
+
+    }
+}

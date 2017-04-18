@@ -1,6 +1,7 @@
 package com.ezd.dao;
 
 import com.ezd.model.EzdEnmg;
+import com.ezd.model.EzdEnret;
 
 import java.util.List;
 
@@ -10,4 +11,9 @@ import java.util.List;
 public interface EzdEnmgDao {
     /*通过id获取详细的公司信息*/
     public EzdEnmg getEnmg(int enmgId)throws Exception;
+
+
+
+
+
 }

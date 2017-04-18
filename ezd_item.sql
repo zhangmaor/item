@@ -47,6 +47,7 @@ create table ezd_umg(--  用户信息表 5
 	umg_uptime timestamp default current_timestamp, --  修改时间	
 	foreign key (umg_user) references ezd_users(user_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 create table ezd_role_user(--  用户角色关系表
 	uper_id  int primary key auto_increment,
 	uper_role int , --  对应的那个角色
@@ -54,6 +55,7 @@ create table ezd_role_user(--  用户角色关系表
 	foreign key (uper_role) references ezd_role(role_id),
 	foreign key (uper_umg) references ezd_users(user_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 create table ezd_entype(  						--  企业类型表
 	entype_id int primary key AUTO_INCREMENT,
 	entype_name varchar(30)	 not null			--  企业类型名称
@@ -71,6 +73,7 @@ create table ezd_seindustry( -- 二级行业信息表
 	se_name varchar(40),
 	foreign key (se_in) references ezd_industry(in_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 create table ezd_enmg(--  企业信息表
 	enmg_id int primary key AUTO_INCREMENT,
 	enmg_logo varchar(50),
@@ -130,6 +133,7 @@ create table ezd_jobmg(--  用户兼职记录信息表
 	foreign key (jobmg_user)   REFERENCES ezd_umg(umg_id)
 	
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 create table ezd_unews(--  用户消息表
 	unews_id int primary key AUTO_INCREMENT,
 	unews_user int ,--   收信人--  用户信息
@@ -139,14 +143,17 @@ create table ezd_unews(--  用户消息表
 	unews_time timestamp ,
 	foreign key (unews_user) references ezd_umg(umg_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 create table ezd_retType(--  招聘类型表
 	retType_id int primary key auto_increment,
 	retType_name varchar(20) not null
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 create table ezd_restatus(--  报名状态表
 	restatus_id int primary key auto_increment,
 	restatus_name varchar(20) not null --  已报名 审核 录用 拒绝
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 create table ezd_newsStatus(--  消息状态表
 	newsStatus_id int primary key auto_increment,
 	newsStatus_name varchar(20)  not null--  未开始  进行中  已结束
@@ -170,6 +177,7 @@ create table ezd_enret(--  招聘信息表
 	foreign key (enret_type) references ezd_retType(retType_id),
 	foreign key (enret_status) references ezd_newsStatus(newsStatus_id)	
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 create table ezd_erlenret(--  招聘信息报名表
 	erlenret_id int primary key auto_increment,
 	erlenret_umg int , --  谁报名了
@@ -179,6 +187,7 @@ create table ezd_erlenret(--  招聘信息报名表
 	foreign key (erlenret_status)  references ezd_restatus(restatus_id),
 	foreign key (erlenret_umg) references ezd_umg(umg_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 create table ezd_enret_browse(--  浏览记录表
 	browse_id int primary key auto_increment,
 	browse_user int ,--   谁浏览的 对应用户信息
@@ -186,6 +195,7 @@ create table ezd_enret_browse(--  浏览记录表
 	foreign key (browse_user) references ezd_umg(umg_id),
 	foreign key (browse_en)  references ezd_enret(enret_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 create table ezd_bigret(--  大招会信息表
 	bigret_id int primary key auto_increment,
 	bigret_logo varchar(50),
@@ -201,6 +211,7 @@ create table ezd_bigret(--  大招会信息表
 	foreign key (bigret_status)  references ezd_newsStatus(newsStatus_id),
 	foreign key (bigret_enmg)  references ezd_enmg(enmg_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 create table ezd_erlbigret(--  大招会报名表
 	erlbigret_id int primary key auto_increment,
 	erlbigret_mes int , --  报名了那个大招会
@@ -212,6 +223,7 @@ create table ezd_erlbigret(--  大招会报名表
 	foreign key (erlbigret_user)  references ezd_umg(umg_id),
 	foreign key (erlbigret_status) references ezd_restatus(restatus_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 create table ezd_schret(--  校招会
 	schret_id int primary key auto_increment,
 	schret_schmg int ,--   那所学校开校招会
@@ -240,10 +252,12 @@ create table ezd_erlschret(--  校招会包名表
 	foreign key (erlschret_schret) references ezd_schret(schret_id),	
 	foreign key (erlschret_status) references ezd_restatus(restatus_id)	
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 create table ezd_artitype(--  文章类型表
 	artitype_id int primary key  auto_increment,
 	artitype_name varchar(20)  not null
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 create table ezd_article(--  文章信息表
 	article_id int primary key auto_increment, 
 	article_logo varchar(50),--  文章封面
@@ -255,11 +269,13 @@ create table ezd_article(--  文章信息表
 	article_pic varchar(50),--  文章分享图
 	article_content text not null,--  文章内容
 	article_keywords varchar(50),--  文章关键字
+	article_time timestamp default current_timestamp,--发布时间
 	article_status int  not null ,--  文章状态（显示 影藏）
 	
 	foreign key (article_type) references ezd_artitype(artitype_id)
 	
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 create table ezd_readarti( -- 文章阅读信息表
 	readarti_id int primary key auto_increment,
 	readarti_article int , -- 阅读了那篇文章
@@ -303,5 +319,5 @@ create table ezd_adv(
 	adv_people varchar(20),--  广告联系人
 	adv_peoway varchar(50),--  联系方式
 	adv_domain varchar(50), --  广告连接
-	adv_status int  -- 状态（已过时 正在进行 稍后进行）
+	adv_status int  -- 状态（0 显示、1 隐藏）
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;

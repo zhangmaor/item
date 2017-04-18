@@ -30,7 +30,7 @@
         where unews_id = #{_parameter}
     </update>
     <insert id="insertOne" parameterMap="unews">
-        INSERT into ezd_unmews(<include refid="row"/> )
+        INSERT into ezd_unews(<include refid="row"/> )
         values(#{unewsUser},#{unewsFrom},#{unewsContent},#{unewsStatus},#{unewsTime})
     </insert>
 

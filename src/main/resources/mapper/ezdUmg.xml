@@ -36,4 +36,9 @@
         </where>
     </select>
 
+    <!--根据浏览信息的查询用户-->
+    <select id="getBrowsingUsers" parameterType="com.ezd.model.EzdEnretBrowse">
+        SELECT * FROM ezd_umg WHERE umg_id = #{browseUser}
+    </select>
+
 </mapper>
