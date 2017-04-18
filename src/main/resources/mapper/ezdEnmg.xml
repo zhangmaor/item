@@ -23,5 +23,10 @@
         <collection property="ezdBigrets" resultMap="com.ezd.dao.EzdBigretDao.bigret"/><!--本公司发布的大招会信息列表-->
         <collection property="ezdSchrets" resultMap="com.ezd.dao.EzdSchretDao.schret" /><!--本 公司发布的校招会列表-->
     </resultMap>
+    <select id="enmgAll" parameterType="com.ezd.model.EzdUminden" resultType="com.ezd.model.EzdEnmg">
+        select * from ezd_enmg WHERE enmg_id = #{umindenEn} ;
+    </select>
+
+
 
 </mapper>
