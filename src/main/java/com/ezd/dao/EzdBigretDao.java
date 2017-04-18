@@ -58,4 +58,11 @@ public interface EzdBigretDao {
      */
     public EzdBigret idGet(int id)throws Exception;
 
+    /**
+     * 获取全部的大招会信息
+     * @return
+     * @throws Exception
+     */
+    public List<EzdBigret> get()throws Exception;
+
 }

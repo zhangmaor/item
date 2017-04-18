@@ -156,4 +156,13 @@ public class EzdBigretService {
         }
         return ezdBigret;
     }
+    public List<EzdBigret> getAll(){
+        List<EzdBigret> bigretList = null;
+        try {
+            bigretList = ezdBigretDao.get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return bigretList;
+    }
 }

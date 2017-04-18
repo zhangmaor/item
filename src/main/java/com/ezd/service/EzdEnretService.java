@@ -5,19 +5,27 @@ import com.ezd.dao.EzdEnretDao;
 import com.ezd.dao.EzdErlenretDao;
 import com.ezd.dao.EzdUmgDao;
 import com.ezd.model.*;
+import com.ezd.dao.EzdEnmgDao;
+import com.ezd.model.EzdEnmg;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Administrator on 2017/4/13.
+import java.util.List;
+
+/**
+ * Created by Administrator on 2017/4/18.
  */
 @Service
 @Transactional
 public class EzdEnretService {
+
 
     @Resource
     private EzdEnretDao ezdEnretDao;
@@ -130,21 +138,32 @@ public class EzdEnretService {
 
         if (e2.getEnretWantNum() == 0){
             e2.setEnretWantNum(e1.getEnretWantNum());
-        }else if (e2.getEnretCreTime() == null){
+        }
+        if (e2.getEnretCreTime() == null){
             e2.setEnretCreTime(e1.getEnretCreTime());
-        }else if (e2.getEnretDemand() == null){
+        }
+        if (e2.getEnretDemand() == null){
             e2.setEnretDemand(e1.getEnretDemand());
-        }else if (e2.getEnretHgMoney() == 0){
+        }
+        if (e2.getEnretHgMoney() == 0){
             e2.setEnretHgMoney(e1.getEnretHgMoney());
-        }else if (e2.getEnretLwMoney() == 0){
+        }
+        if (e2.getEnretLwMoney() == 0){
             e2.setEnretLwMoney(e1.getEnretLwMoney());
-        }else if (e2.getEnretPg() == null){
+        }
+        if (e2.getEnretPg() == null){
             e2.setEnretPg(e1.getEnretPg());
-        }else if (e2.getEnretPost() == null){
-            e2.setEnretPost(e1.getEnretPost());
-        }else if (e2.getEnretType() == null){
+        }
+       if(e2.getEzdPostOne()==null){
+            e2.setEzdPostOne(e1.getEzdPostOne());
+       }
+       if(e2.getEzdPostTwo()==null){
+           e2.setEzdPostTwo(e1.getEzdPostTwo());
+       }
+        if (e2.getEnretType() == null){
             e2.setEnretType(e1.getEnretType());
-        }else if (e2.getEnretStatus() == null){
+        }
+        if (e2.getEnretStatus() == null){
             e2.setEnretStatus(e1.getEnretStatus());
         }
         int row = ezdEnretDao.update(e2.getNretEnmg().getEnmgId());

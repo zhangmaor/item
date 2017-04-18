@@ -11,7 +11,7 @@
         <result column="uminden_status" property="umindenStatus" />
     </resultMap>
     <!--通过用户编号获取该用户全部的关注对象-->
-    <select id="getEnmgId" parameterType="int" resultMap="uminden">
+    <select id="getEnmgId" parameterType="int" resultMap="com.ezd.dao.EzdUmindenDao.uminden">
         select * from ezd_uminden
         where uminden_user = #{_parameter}
     </select>
@@ -24,19 +24,19 @@
     <!--添加
         插入一条关注信息
     -->
-    <insert id="add" parameterMap="uminden" >
+    <insert id="add" parameterType="com.ezd.model.EzdUminden" >
         INSERT  into ezd_uminden(uminden_user,uminden_en,uminden_status)
         values (#{umindenUser},#{umindenEn},#{umindenStatus})
     </insert>
 
-    <delete id="del" parameterMap="uminden">
+    <delete id="del" parameterType="com.ezd.model.EzdUminden">
         /*/*在测试的时候出现问题的时候要注意这里if的条件可能有问题！！！*/*/
         <if test="#{umindenId!=null}">
             DELETE  ezd_uminden where uminden_id = #{umindenId}
         </if>
     </delete>
 
-    <select id="check" parameterMap="uminden" resultType="int"  >
+    <select id="check" parameterType="com.ezd.model.EzdUminden" resultType="int"  >
         select count(*) from ezd_minden
         where
             uminden_user = #{umindenUser}

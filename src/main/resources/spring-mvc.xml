@@ -10,11 +10,16 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd
     ">
+<<<<<<< HEAD
 
         <context:component-scan base-package="com.ezd.controller"/>
 
+=======
+        <mvc:annotation-driven/>
+        <context:component-scan base-package="com.ezd"/>
+>>>>>>> a994ff89af3406f04800a015ffe51ae755eb6955
         <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-            <property name="prefix" value="/WEB-INF/view"/>
+            <property name="prefix" value="/WEB-INF/view/"/>
             <property name="suffix" value=".jsp"/>
         </bean>
 

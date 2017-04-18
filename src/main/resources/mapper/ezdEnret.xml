@@ -23,6 +23,7 @@
 
     </resultMap>
 
+<<<<<<< HEAD
     <select id="getAll" resultType="com.ezd.model.EzdEnret">
         select * from ezd_enret ORDER BY enret_creTime DESC;
     </select>
@@ -77,4 +78,47 @@
           VALUES (#{nretEnmg.enmgId},#{enretWantNum},#{enretType.retTypeId},#{enretCreTime},#{enretLwMoney},#{enretHgMoney},#{enretPost,#{enretPg},#{enretDemand},#{enretStatus.newsStatusId});
     </insert>
 
+=======
+    <!--查询全部的信息-->
+    <select id="getAll">
+        select * from ezd_enret
+    </select>
+    <!--通过一个企业的编号获取信息-->
+    <select id="getOne" parameterType="int ">
+        SELECT * from ezd_enret
+        where nret_enmg = #{_parameter}
+    </select>
+    <!--发布一条招聘信息-->
+    <insert id="add" parameterType="com.ezd.model.EzdEnret" >
+        insert into
+        ezd_enret(	nret_enmg ,
+                    enret_wantNum ,
+                    enret_type ,
+                    enret_creTime ,
+                    enret_lwMoney ,
+                    enret_hgMoney ,
+                    enret_postOne ,
+                    enret_postTwo  ,
+                    enret_pg ,
+                    enret_demand ,
+                    enret_status,)
+        values (#{nretEnmg},
+                #{enretWantNum},
+                #{enretType.retTypeId},
+                #{enretCreTime},
+                #{enretLwMoney},
+                #{enretHgMoney},
+                #{ezdPostOne.poneId},
+                #{ezdPostTwo.ptwoId},
+                #{enretPg},
+                #{enretDemand},
+                #{enretStatus.newsStatusId})
+    </insert>
+    <!--修改指定的招聘信息的状态-->
+    <update id="updateStatus" parameterType="com.ezd.model.EzdEnret">
+        UPDATE ezd_enret
+        set enret_status =  #{enretStatus.newsStatusId}
+        where enret_id = #{enretId}
+    </update>
+>>>>>>> a994ff89af3406f04800a015ffe51ae755eb6955
 </mapper>
