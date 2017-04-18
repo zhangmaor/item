@@ -10,7 +10,9 @@
         <result column="sayart_status" property="sayartStatus"/><!--评论状态-->
         <result column="sayart_time" property="sayartTime"/><!--评论的时间-->
         <association property="sayartUmg" resultMap="com.ezd.dao.EzdUmgDao.umg"/><!--评论的用户-->
+
         <association property="sayartArticel" resultMap="com.ezd.dao.EzdArticlDao.article"/><!--在那篇的文章之下-->
+
     </resultMap>
 
     <!--添加评论-->
