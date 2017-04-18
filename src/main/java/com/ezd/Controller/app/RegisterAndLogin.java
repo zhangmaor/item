@@ -1,9 +1,10 @@
-package com.ezd.Controller;
+package com.ezd.Controller.app;
 
 import com.ezd.model.EzdUsers;
 import com.ezd.service.UserService;
 import com.ezd.utils.Sendsms;
 import com.ezd.validators.RigisterValiddator;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.DataBinder;
 import org.springframework.validation.Errors;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Created by Administrator on 2017/4/7.
  */
+@Controller
 public class RegisterAndLogin {
 
     @Resource

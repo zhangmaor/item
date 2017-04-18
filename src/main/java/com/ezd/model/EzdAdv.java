@@ -14,7 +14,7 @@ public class EzdAdv {
     private String advPeople;//广告联系人
     private String advPeoway;//广告联系方式
     private String advDomain;//广告连接
-    private String advStatus;//广告状态
+    private int advStatus;//广告状态
 
     public int getAdvId() {
         return advId;
@@ -80,11 +80,11 @@ public class EzdAdv {
         this.advDomain = advDomain;
     }
 
-    public String getAdvStatus() {
+    public int getAdvStatus() {
         return advStatus;
     }
 
-    public void setAdvStatus(String advStatus) {
+    public void setAdvStatus(int advStatus) {
         this.advStatus = advStatus;
     }
 }

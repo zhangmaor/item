@@ -3,6 +3,8 @@ package com.ezd.model;
 /**
  * Created by Administrator on 2017-04-06.
  */
+
+//招聘类型表
 public class EzdRetType {
     private int retTypeId;
     private String retTypeName;

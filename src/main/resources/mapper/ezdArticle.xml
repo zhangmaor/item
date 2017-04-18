@@ -2,6 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="com.ezd.dao.EzdArticlDao">
     <resultMap id="article" type="com.ezd.model.EzdArticle"><!--文章信息表-->
         <id column="article_id" property="articleId"/><!--编号-->
@@ -19,4 +20,41 @@
         <collection property="ezdSayarts" resultMap="com.ezd.dao.EzdSayartDao.sayart" /><!--这篇文章之下的评论-->
         <collection property="ezdPoints" resultMap="com.ezd.dao.EzdPointDao.point" /><!--这篇文章之下的点赞-->
     </resultMap>
+
+<<<<<<< HEAD
+    <!--添加文章信息-->
+    <insert id="insert" parameterType="com.ezd.model.EzdArticle" >
+        INSERT INTO ezd_article(article_logo,article_type,article_mtitle,article_stitle,
+          article_author,article_auemail,article_pic,article_content,article_keywords,article_status)
+          VALUES (#{articleLogo},#{articleType.rtitypeId},#{articleMtitle},#{articleStitle},#{articleAuthor}
+          #{articleAuemail},#{articlePic},#{articleContent},#{articleKeywords},#{articleStatus})
+    </insert>
+
+    <!--删除文章信息-->
+    <delete id="delete" parameterType="com.ezd.model.EzdArticle" >
+        DELETE FROM ezd_article WHERE article_id = #{articleId}
+    </delete>
+
+    <!--更改文章信息-->
+    <update id="update" parameterType="com.ezd.model.EzdArticle" >
+        UPDATE ezd_article SET article_logo = #{articleLogo},
+            article_type = #{articleType.rtitypeId},
+            article_mtitle = #{articleMtitle},
+            article_stitle = #{articleStitle},
+            article_author = #{articleAuthor},
+            article_auemail = #{articleAuemail},
+            article_pic = #{articlePic},
+            article_content = #{articleContent},
+            article_keywords = #{articleKeywords},
+            article_status = #{articleStatus}
+              WHERE article_id = #{articleId}
+    </update>
+
+    <!--查询文章并按时间排序-->
+    <select id="getArticleAll" resultType="com.ezd.model.EzdArticle">
+        SELECT * FROM ezd_article ORDER BY article_time DESC
+    </select>
+
+=======
+>>>>>>> 9c5e2ae9355c202f3bbe8c67205a792828175ba0
 </mapper>

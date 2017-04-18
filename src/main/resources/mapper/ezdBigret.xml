@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--这里的namespace还没有确定-->
 <mapper namespace="com.ezd.dao.EzdBigretDao">
+
     <resultMap id="bigret" type="com.ezd.model.EzdBigret"><!--大招会信息表-->
         <id column="bigret_id" property="bigretId"/><!--编号-->
         <result column="bigret_logo" property="bigretLogo"/><!--大招会logo(图片)-->
@@ -12,9 +13,68 @@
         <result column="bigret_address" property="bigretAddress"/><!--大招会地址-->
         <result column="bigret_creTime" property="bigretCreTime"/><!--大招会发布时间-->
         <result column="bigret_detail" property="bigretDetail"/><!--大招会详情-->
-        <result column="bigret_post" property="bigretPost"/><!--招聘岗位-->
+        <association property="ezdPostOne" resultMap="com.ezd.dao.EzdPostOneDao.postOne" /><!-- 一级招聘岗位 -->
+        <association property="ezdPostTwo" resultMap="com.ezd.dao.EzdPostTwoDao.postTwo" /><!-- 二级招聘岗位 -->
         <association property="bigretStatus" resultMap="com.ezd.dao.EzdNewsStatusDao.newsStatus"/><!--大招会的状态-->
         <association property="bigretEnmg" resultMap="com.ezd.dao.EzdEnmgDao.enmg"/><!--哪家公司发布的-->
         <collection property="ezdErlbigrets" resultMap="com.ezd.dao.EzdUmgDao.umg"/><!--浏览本大招会的人员列表-->
     </resultMap>
+    <!--通过编号显示详细信息-->
+    <select id="idGet" parameterType="int" resultMap="bigret">
+        select * from ezd_bigret
+        where
+            bigret_id = #{_parameter}
+    </select>
+    <!--根据大招会的状态进行大招会的查询
+        这个需要测试，如果参数是空的话会执行下面的条件吗？？？
+
+    -->
+    <select id="modeGet" resultMap="com.ezd.dao.EzdBigretDao.bigret" parameterType="com.ezd.model.EzdNewsStatus">
+        select *  from  ezd_bigret
+        <where>
+            <if test="#{newsStatusId!=null}">
+                newsStatus_id = #{newsStatusId}
+            </if>
+        </where>
+    </select>
+    <select id="get" resultMap="com.ezd.dao.EzdBigretDao.bigret">
+        select * from ezd_bigret
+    </select>
+<!--根据公司的编号id获取大招会信息列表-->
+    <select id="enmgGet" resultMap="com.ezd.dao.EzdBigretDao.bigret" parameterType="com.ezd.model.EzdEnmg">
+        SELECT  *  from ezd_bigret
+        WHERE bigret_enmg = #{enmgId}
+    </select>
+    <!--这个是修改数据，
+        修改未知（未指定的信息）
+    将一个新的EzdBigret类作为参数传递过来-->
+    <update id="update" parameterType="com.ezd.model.EzdBigret" >
+      update ezd_bigret
+      set
+          bigret_logo = #{bigretLogo}
+          ,bigret_title = #{bigretTitle}
+          ,bigret_time = #{bigretTime}
+          ,bigret_address = #{bigretAddress}
+          ,bigret_status = #{bigretStatus.newsStatusId}
+          ,bigret_creTime = #{bigretCreTime}
+          ,bigret_detail = #{bigretDetail}
+          ,bigret_postOne = #{ezdPostOne.poneId}
+          ,bigret_postTwo = #{ezdPostTwo.ptwoId}
+          ,bigret_enmg = #{bigretEnmg.enmgId}
+      WHERE
+         bigret_id = #{bigretId}
+    </update>
+    <!--修改指定的大招会的状态
+
+    -->
+    <update id="updateStatus" parameterType="com.ezd.model.EzdBigret">
+        update ezd_bigret
+        set bigret_status = #{bigretStatus.newsStatusId}
+         WHERE bigret_id = #{bigretId}
+    </update>
+    <!--生成一个大招会-->
+    <insert id="add" parameterType="com.ezd.model.EzdBigret">
+        INSERT  into ezd_bigret(bigret_logo , bigret_title, bigret_time , bigret_address , bigret_status  , bigret_creTime ,bigret_detail,bigret_postOne,bigret_postTwo ,bigret_enmg  )
+        VALUES (#{bigretLogo},#{bigretTitle},#{bigretTime},#{bigretAddress},#{bigretStatus.newsStatusId} , #{bigretCreTime},#{bigretDetail},#{ezdPostOne.poneId},#{ezdPostTwo.ptwoId},#{bigretEnmg.enmgId})
+    </insert>
 </mapper>

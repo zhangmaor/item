@@ -1,5 +1,6 @@
 package com.ezd.model;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,6 +18,7 @@ public class EzdArticle {
     private String articlePic;//文章分享图
     private String articleContent;//文章内容
     private String articleKeywords;//文章关键字
+    private Date articleTime;//发布时间
     private int articleStatus;//文章状态
     private List<EzdReadarti> ezdReadartis;//阅读本文章的信息
     private List<EzdSayart> ezdSayarts;//对本文的评论
@@ -116,6 +118,14 @@ public class EzdArticle {
 
     public void setArticleStatus(int articleStatus) {
         this.articleStatus = articleStatus;
+    }
+
+    public Date getArticleTime() {
+        return articleTime;
+    }
+
+    public void setArticleTime(Date articleTime) {
+        this.articleTime = articleTime;
     }
 
     @Override
