@@ -1,4 +1,4 @@
-﻿
+
 
 ALTER DATABASE `ezd_item` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
@@ -157,10 +157,9 @@ CREATE TABLE ezd_postTwo( -- 招聘类型二级表
 	ptwo_name VARCHAR(20)
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-
 CREATE TABLE ezd_enret(--  招聘信息表
 	enret_id INT PRIMARY KEY AUTO_INCREMENT,
-	nret_enmg INT ,--  发布的企业
+	nret_enmg INT ,
 	enret_wantNum INT  NOT NULL,--  招聘人数
 	enret_type INT ,--   招聘类型 （实习 兼职 全职）
 	enret_creTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,--  发布时间
@@ -271,7 +270,7 @@ CREATE TABLE ezd_point(--  点赞信息表
 	point_article INT ,--  点赞的文章
 	point_umg INT,--   点赞人	
 	point_touser INT ,--  可为null 为其他用户点赞
-	point_status INT NOT NULL --  （0 取消点赞 1 点赞）
+	point_status INT NOT NULL, --  （0 取消点赞 1 点赞）
 	
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 CREATE TABLE ezd_adv(

@@ -1,4 +1,4 @@
-package com.ezd.controller;
+package com.ezd.Controller.app;
 
 import com.ezd.validators.RigisterValiddator;
 import org.springframework.stereotype.Controller;

@@ -19,5 +19,7 @@ public interface EzdUmindenDao {
     * 这个是的作用的在用户关注企业前！！
     * */
     public int check(EzdUminden ezdUminden) throws Exception;
+    /*获取指定公司的的关注量*/
+    public int getConcernNum(int emgId) throws Exception;
 
 }
