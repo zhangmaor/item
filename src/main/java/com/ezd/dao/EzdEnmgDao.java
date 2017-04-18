@@ -28,4 +28,11 @@ public interface EzdEnmgDao {
      */
     public int add(EzdEnmg ezdEnmg) throws Exception;
 
+    /**
+     * 查询全部的企业信息
+     * @return
+     * @throws Exception
+     */
+    public List<EzdEnmg> getAll()throws  Exception;
+
 }

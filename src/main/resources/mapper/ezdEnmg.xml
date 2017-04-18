@@ -76,6 +76,8 @@
                 #{enmgCretime},
                 #{ezdIndustry.inId})
     </insert>
-    <!--查询-->
-    <select id=""></select>
+    <!--查询全部的信息-->
+    <select id="getAll" resultMap="com.ezd.dao.EzdEnmgDao.enmg">
+        select * from ezd_enmg
+    </select>
 </mapper>
