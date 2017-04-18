@@ -39,8 +39,13 @@
     </update>
     <!--将指定的消息的状态改为-->
 
+<<<<<<< HEAD
+    <insert id="insertOne" parameterMap="unews">
+        INSERT into ezd_unews(<include refid="row"/> )
+=======
     <insert id="insertOne" parameterType="com.ezd.model.EzdUnews">
         INSERT into ezd_unmews(<include refid="row"/> )
+>>>>>>> a994ff89af3406f04800a015ffe51ae755eb6955
         values(#{unewsUser},#{unewsFrom},#{unewsContent},#{unewsStatus},#{unewsTime})
     </insert>
 

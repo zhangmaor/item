@@ -9,4 +9,17 @@
         <association property="readartiUser" resultMap="com.ezd.dao.EzdUmgDao.umg"/><!--阅读的人-->
         <association property="readartiArticle" resultMap="com.ezd.dao.EzdArticlDao.article"/><!--阅读的文章-->
     </resultMap>
+
+
+    <!--添加阅读信息-->
+    <insert id="insert" parameterType="com.ezd.model.EzdReadarti">
+        INSERT INTO ezd_readarti(readarti_article,readarti_user)
+          VALUES (#{readartiArticle.articleId},#{readartiUser.umgId})
+    </insert>
+
+    <!--根据文章查询阅读条数-->
+    <select id="getCount" parameterType="com.ezd.model.EzdArticle" resultType="int">
+        SELECT * FROM ezd_readarti WHERE readarti_article = #{articleId}
+    </select>
+
 </mapper>

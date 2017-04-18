@@ -23,6 +23,11 @@
         <collection property="ezdBigrets" resultMap="com.ezd.dao.EzdBigretDao.bigret"/><!--本公司发布的大招会信息列表-->
         <collection property="ezdSchrets" resultMap="com.ezd.dao.EzdSchretDao.schret" /><!--本 公司发布的校招会列表-->
     </resultMap>
+
+    <select id="enmgAll" parameterType="com.ezd.model.EzdUminden" resultType="com.ezd.model.EzdEnmg">
+        select * from ezd_enmg WHERE enmg_id = #{umindenEn} ;
+    </select>
+
     <!--通过一个企业编号查询该企业的详细信息-->
     <select id="getEnmg" parameterType="com.ezd.model.EzdUminden" resultMap="enmg" >
         select * from ezd_enmg
@@ -32,6 +37,11 @@
             </if>
         </where>
     </select>
+
+
+
+
+
     <!--修改数据!!更新一个企业的信息-->
     <update id="update" parameterType="com.ezd.model.EzdEnmg" >
         update ezd_enmg

@@ -11,4 +11,25 @@
         <association property="pintUmg" resultMap="com.ezd.dao.EzdUmgDao.umg"/><!--哪个用户点的赞-->
     </resultMap>
 
+    <!--添加点赞-->
+    <insert id="insert" parameterType="com.ezd.model.EzdPoint">
+        insert into ezd_point (point_article,point_umg,point_touser,point_status)
+          values (#{pintArticle.articleId},#{pintUmg.umgId},#{pintTouser},#{poingStatus});
+    </insert>
+
+    <!--取消点赞-->
+    <update id="update" parameterType="com.ezd.model.EzdPoint">
+        UPDATE ezd_point SET point_status = #{poingStatus} WHERE point_id = #{pintId}
+    </update>
+
+    <!--查询点赞数量-->
+    <select id="getEzdPointCount" parameterType="com.ezd.model.EzdArticle" resultType="com.ezd.model.EzdPoint">
+        SELECT COUNT (*) FROM ezd_point WHERE point_article = #{articleId}
+    </select>
+
+    <!--用于判断用户是否已经点过赞-->
+    <select id="isThere" parameterType="com.ezd.model.EzdPoint" resultType="int">
+        SELECT COUNT (*) FROM ezd_point WHERE point_umg = #{pintUmg} AND point_article = #{pintArticle.articleId}
+    </select>
+
 </mapper>

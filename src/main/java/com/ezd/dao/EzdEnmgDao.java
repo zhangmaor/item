@@ -1,6 +1,7 @@
 package com.ezd.dao;
 
 import com.ezd.model.EzdEnmg;
+import com.ezd.model.EzdEnret;
 
 import java.util.List;
 

@@ -26,6 +26,7 @@
         <collection property="ezdErlschrets" resultMap="com.ezd.dao.EzdErlschretDao.erlschret"/><!--校招会-->
         <collection property="ezdReadartis" resultMap="com.ezd.dao.EzdReadartiDao.readarti"/><!--用户阅读的文章列表信息-->
     </resultMap>
+    <!--获取的个人数据-->
     <!--通过指点的用户的该用户的具体信息-->
     <select id="getAll" parameterType="com.ezd.model.EzdUsers" resultMap="umg" >
         select * from ezd_umg
@@ -34,6 +35,25 @@
                 umg_user = #{userId}
             </if>
         </where>
+    </select>
+    <!--更新所有的个人数据-->
+    <update id="upAll" parameterType="com.ezd.model.EzdUmg" >
+        update ezd_umg SET umg_photo = #{umgPhoto},
+        umg_name = #{umgName},
+        umg_sex = #{umgSex},
+        umg_birthday = #{umgBirthday},
+        umg_email = #{umgEmail},
+        umg_school = #{umgSchool},
+        umg_major = #{umgMajor},
+        umg_degree = #{umgDegree},
+        umg_sayMf = #{umgSayMf},
+        umg_education = #{umgEducation},
+        umg_uptime = #{umgUptime}
+    </update>
+
+    <!--根据浏览信息的查询用户-->
+    <select id="getBrowsingUsers" parameterType="com.ezd.model.EzdEnretBrowse">
+        SELECT * FROM ezd_umg WHERE umg_id = #{browseUser}
     </select>
 
 </mapper>
