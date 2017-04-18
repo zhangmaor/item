@@ -24,7 +24,7 @@
         <collection property="ezdSchrets" resultMap="com.ezd.dao.EzdSchretDao.schret" /><!--本 公司发布的校招会列表-->
     </resultMap>
     <!--通过一个企业编号查询该企业的详细信息-->
-    <select id="getEnmg" parameterMap="uminden" resultMap="enmg" >
+    <select id="getEnmg" parameterType="com.ezd.model.EzdUminden" resultMap="enmg" >
         select * from ezd_enmg
         <where>
             <if test="#{umindenEn!=null}">
@@ -32,5 +32,50 @@
             </if>
         </where>
     </select>
-
+    <!--修改数据!!更新一个企业的信息-->
+    <update id="update" parameterType="com.ezd.model.EzdEnmg" >
+        update ezd_enmg
+        set
+          enmg_logo = #{enmgLogo} ,
+	      enmg_name = #{enmgName},
+	      enmg_domain = #{enmgDomain},
+	      enmg_user = #{enmgUser} ,
+	      enmg_wcontact = #{enmgWcontact},
+	      enmg_detail = #{enmgDetail},
+	      enmg_address = #{enmgAddress},
+	      enmg_type =#{enmgType.enTypeId},
+	      enmg_scale =#{enmgScale},
+	      enmg_cretime =#{enmgCretime},
+	      enmg_industry =#{ezdIndustry.inId}
+        WHERE
+            enmg_id = #{enmgId}
+    </update>
+    <!--添加一个企业信息-->
+    <insert id="add" parameterType="com.ezd.model.EzdEnmg">
+        INSERT  into
+        ezd_enmg(enmg_logo,
+	            enmg_name,
+	            enmg_domain,
+	            enmg_user,
+	            enmg_wcontact,
+	            enmg_detail,
+	            enmg_address,
+	            enmg_type,
+	            enmg_scale,
+	            enmg_cretime,
+	            enmg_industry)
+          VALUES (#{enmgLogo} ,
+                #{enmgName},
+                #{enmgDomain},
+                #{enmgUser} ,
+                #{enmgWcontact},
+                #{enmgDetail},
+                #{enmgAddress},
+                #{enmgType.enTypeId},
+                #{enmgScale},
+                #{enmgCretime},
+                #{ezdIndustry.inId})
+    </insert>
+    <!--查询-->
+    <select id=""></select>
 </mapper>

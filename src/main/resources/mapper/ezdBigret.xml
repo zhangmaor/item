@@ -33,9 +33,12 @@
         select *  from  ezd_bigret
         <where>
             <if test="#{newsStatusId!=null}">
-                newsStatus_id = newsStatusId
+                newsStatus_id = #{newsStatusId}
             </if>
         </where>
+    </select>
+    <select id="get" resultMap="com.ezd.dao.EzdBigretDao.bigret">
+        select * from ezd_bigret
     </select>
 <!--根据公司的编号id获取大招会信息列表-->
     <select id="enmgGet" resultMap="com.ezd.dao.EzdBigretDao.bigret" parameterType="com.ezd.model.EzdEnmg">

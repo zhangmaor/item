@@ -27,7 +27,24 @@ public class EzdEnmg {
     private EzdIndustry ezdIndustry; //本公司的 一级企业类型
     private EzdSeindustry  ezdSeindustry ; //二级 企业类型
 
+    public EzdIndustry getEzdIndustry() {
+        return ezdIndustry;
+    }
+
+    public void setEzdIndustry(EzdIndustry ezdIndustry) {
+        this.ezdIndustry = ezdIndustry;
+    }
+
+    public EzdSeindustry getEzdSeindustry() {
+        return ezdSeindustry;
+    }
+
+    public void setEzdSeindustry(EzdSeindustry ezdSeindustry) {
+        this.ezdSeindustry = ezdSeindustry;
+    }
+
     @Override
+
     public String toString() {
         return "EzdEnmg{" +
                 "enmgId=" + enmgId +

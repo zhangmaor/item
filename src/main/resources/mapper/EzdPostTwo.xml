@@ -8,7 +8,7 @@
         <id column="ptwo_id" property="ptwoId" />
         <result property="ptwo_name" column="ptwoName"/>
     </resultMap>
-    <select id="findPostTwo" resultMap="postOne"  parameterType="int">
+    <select id="findPostTwo" resultMap="com.ezd.dao.EzdPostOneDao.postOne"  parameterType="int">
         select * from ezd_postTwo where ptwo_postOne = #{_parameter}
     </select>
 </mapper>

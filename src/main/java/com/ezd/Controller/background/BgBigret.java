@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2017/4/17.
@@ -22,19 +25,39 @@ public class BgBigret {
      * 进入大招会列表页面
      */
     @RequestMapping("/bigret")
-    public String displayBigret(){
-        List<EzdBigret> bigretList = ezdBigretService.modeGet(0);//这个有问题吧！！！
-        return "indexText";
-    }
+    public String displayBigret(HttpServletRequest request, Model model){
+        List<EzdBigret> bigretList = ezdBigretService.getAll();//这个有问题吧！！！
+        HttpSession session = request.getSession();
+        session.setAttribute("list",bigretList);
+
+
+        System.out.println(bigretList);
+        return "indexTest";
+            }
+
     /**
      * 点击其中一个大招会信息
      * 进入大招会详情
      *
      */
     @RequestMapping("/bigretDetail")
-    public String datail(int id){
-        EzdBigret ezdBigret = ezdBigretService.get(id);
-        return "bigret";
+    public String datail(HttpServletRequest request,int id,Model model){
+        //EzdBigret ezdBigret = ezdBigretService.get(id);
+        List<EzdBigret> list = (List<EzdBigret>) request.getSession().getAttribute("list");
+        for (EzdBigret e: list
+             ) {
+            if(e.getBigretId()==id) {
+                model.addAttribute("ezdBigret", e);
+            }
+        }
+
+        return "forward:redirectBig";
+    }
+    @RequestMapping("/redirectBig")
+    public String da(Model model ){
+       // Map<String, Object> stringObjectMap = model.asMap();
+        //System.out.println(stringObjectMap.get("list"));
+        return "bret";
     }
     /**
      * 点击修改
