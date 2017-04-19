@@ -9,8 +9,8 @@
         <id column="enret_id" property="enretId" /><!--编号-->
         <result column="enret_type" property="enretType"/><!--招聘类型-->
         <result column="nret_enmg" property="nretEnmg" /><!--发布的企业-->
-        <result column="enret_postOne" property="ezdPostOne" /><!--一级招聘岗位-->
-        <result column="enret_postTwo" property="ezdPostTwo" /><!--二级招聘岗位-->
+        <result column="enret_postOne" property="enretPostOne" /><!--一级招聘岗位-->
+        <result column="enret_postTwo" property="enretPostTwo" /><!--二级招聘岗位-->
         <result column="enret_status" property="enretStatus"/> <!--信息状态-->
         <result column="enret_wantNum" property="enretWantNum"/><!--招聘人数-->
         <result column="enret_creTime" property="enretCreTime"/><!--发布时间-->
@@ -66,8 +66,8 @@
           enret_type = #{enretType},
           enret_lwMoney = #{enret_lwMoney},
           enret_hgMoney = #{enret_hgMoney},
-          enret_postOne = #{ezdPostOne}
-          enret_postTwo = #{ezdPostTwo}
+          enret_postOne = #{enretPostOne}
+          enret_postTwo = #{enretPostTwo}
           enret_pg = #{enretPg},
           enret_demand = #{enretDemand},
           enret_status = #{newsStatusId}

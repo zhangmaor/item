@@ -17,4 +17,6 @@ public interface EzdEntypeDao {
      * @throws Exception
      */
     public List<EzdEntype> getAll()throws Exception;
+
+    public EzdEntype getEzdEntype(int enTypeId) throws Exception;
 }

@@ -1,7 +1,9 @@
 package com.ezd.service;
 
 import com.ezd.dao.EzdEnmgDao;
+import com.ezd.dao.EzdEntypeDao;
 import com.ezd.model.EzdEnmg;
+import com.ezd.model.EzdEntype;
 import com.sun.javafx.collections.ListListenerHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +22,8 @@ import java.util.List;
 public class EzdEnmgService {
     @Resource
     private EzdEnmgDao ezdEnmgDao;
+    @Resource
+    private EzdEntypeDao ezdEntypeDao;
 
     /**
      * 添加一个企业
@@ -44,6 +48,10 @@ public class EzdEnmgService {
         List<EzdEnmg> ezdEnmgList = null;
         try {
             ezdEnmgList = ezdEnmgDao.getAll();
+            for (EzdEnmg ezdEnmg:ezdEnmgList) {
+                EzdEntype ezdEntype = ezdEntypeDao.getEzdEntype(ezdEnmg.getEnmgType());
+                ezdEnmg.setEzdEntype(ezdEntype);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
