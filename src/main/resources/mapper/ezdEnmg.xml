@@ -27,7 +27,27 @@
     <select id="enmgAll" parameterType="com.ezd.model.EzdUminden" resultType="com.ezd.model.EzdEnmg">
         select * from ezd_enmg WHERE enmg_id = #{umindenEn} ;
     </select>
+    <!--通过地域来查询匹配的企业列表-->
+    <select id="addressGet" resultMap="enmg" parameterType="String">
+        select * from ezd_enmg
+        where enmg_address = #{_parameter}
+    </select>
+    <!--根据企业所在行业的二级编号获取企业列表-->
+    <select id="industryGet"  resultMap="enmg" parameterType="int" >
+        SELECT * from ezd_enmg
+        where enmg_industry = #{_parameter}
+    </select>
 
+    <select id="typeGet" resultMap="enmg" parameterType="int">
+        select * from ezd_enmg
+
+        <choose>
+            <when test="#{_parameter==-1}"/>
+            <otherwise>
+                where enmg_type = #{_parameter}
+            </otherwise>
+        </choose>
+    </select>
     <!--通过一个企业编号查询该企业的详细信息-->
     <select id="getEnmg" parameterType="com.ezd.model.EzdUminden" resultMap="enmg">
         select * from ezd_enmg
@@ -82,7 +102,7 @@
                 #{ezdIndustry.inId})
     </insert>
     <!--查询全部的信息-->
-    <select id="getAll" resultMap="com.ezd.dao.EzdEnmgDao.enmg">
+    <select id="getAll" resultMap="enmg">
         select * from ezd_enmg
     </select>
 </mapper>
