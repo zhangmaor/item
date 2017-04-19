@@ -77,4 +77,11 @@
         INSERT  into ezd_bigret(bigret_logo , bigret_title, bigret_time , bigret_address , bigret_status  , bigret_creTime ,bigret_detail,bigret_postOne,bigret_postTwo ,bigret_enmg  )
         VALUES (#{bigretLogo},#{bigretTitle},#{bigretTime},#{bigretAddress},#{bigretStatus.newsStatusId} , #{bigretCreTime},#{bigretDetail},#{ezdPostOne.poneId},#{ezdPostTwo.ptwoId},#{bigretEnmg.enmgId})
     </insert>
+
+
+    <!--通过学校的id来查询匹配的大招会-->
+    <select id="addressGet" resultMap="bigret" parameterType="int" >
+        select * from ezd_bigret
+        where bigret_address = #{_parameter}
+    </select>
 </mapper>
