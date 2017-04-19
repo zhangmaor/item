@@ -1,4 +1,4 @@
-package com.ezd.Controller.app;
+package com.ezd.controller.app;
 
 import com.ezd.model.EzdEnmg;
 import com.ezd.model.EzdUminden;
