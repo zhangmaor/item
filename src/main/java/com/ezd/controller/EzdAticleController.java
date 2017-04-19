@@ -62,7 +62,7 @@ public class EzdAticleController {
 
     @RequestMapping(value = "/ajaxGetArticleAll",method = RequestMethod.POST)
     @ResponseBody
-    public List<EzdArticle> getArticleAll(EzdArticle ezdArticle){
+    public List<EzdArticle> getArticleAll(){
         List<EzdArticle> articleAll = ezdArticleService.getArticleAll();
         return articleAll;
     }
