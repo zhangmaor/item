@@ -6,30 +6,12 @@ package com.ezd.model;
  */
 public class EzdPoint {
     private int pintId;
-    private EzdArticle pintArticle;// references ezd_article(article_id)
-    private EzdUmg pintUmg;//references ezd_umg(umg_id)
+    private int pointArticle;// references ezd_article(article_id)
+    private int pointUmg;//references ezd_umg(umg_id)
     private int pintTouser;//为其他用户点赞
     private int poingStatus; //状态 0 1
-
-    @Override
-    public String toString() {
-        return "EzdPoint{" +
-                "pintId=" + pintId +
-                ", pintArticle=" + pintArticle +
-                ", pintUmg=" + pintUmg +
-                ", pintTouser=" + pintTouser +
-                ", poingStatus=" + poingStatus +
-                '}';
-    }
-
-    public void setPintArticle(EzdArticle pintArticle) {
-        this.pintArticle = pintArticle;
-    }
-
-    public void setPintUmg(EzdUmg pintUmg) {
-        this.pintUmg = pintUmg;
-    }
-
+    private EzdArticle ezdArticle;// references ezd_article(article_id)
+    private EzdUmg ezdUmg;//references ezd_umg(umg_id)
 
     public int getPintId() {
         return pintId;
@@ -37,6 +19,22 @@ public class EzdPoint {
 
     public void setPintId(int pintId) {
         this.pintId = pintId;
+    }
+
+    public int getPointArticle() {
+        return pointArticle;
+    }
+
+    public void setPointArticle(int pointArticle) {
+        this.pointArticle = pointArticle;
+    }
+
+    public int getPointUmg() {
+        return pointUmg;
+    }
+
+    public void setPointUmg(int pointUmg) {
+        this.pointUmg = pointUmg;
     }
 
     public int getPintTouser() {
@@ -53,5 +51,34 @@ public class EzdPoint {
 
     public void setPoingStatus(int poingStatus) {
         this.poingStatus = poingStatus;
+    }
+
+    public EzdArticle getEzdArticle() {
+        return ezdArticle;
+    }
+
+    public void setEzdArticle(EzdArticle ezdArticle) {
+        this.ezdArticle = ezdArticle;
+    }
+
+    public EzdUmg getEzdUmg() {
+        return ezdUmg;
+    }
+
+    public void setEzdUmg(EzdUmg ezdUmg) {
+        this.ezdUmg = ezdUmg;
+    }
+
+    @Override
+    public String toString() {
+        return "EzdPoint{" +
+                "pintId=" + pintId +
+                ", pointArticle=" + pointArticle +
+                ", pointUmg=" + pointUmg +
+                ", pintTouser=" + pintTouser +
+                ", poingStatus=" + poingStatus +
+                ", ezdArticle=" + ezdArticle +
+                ", ezdUmg=" + ezdUmg +
+                '}';
     }
 }

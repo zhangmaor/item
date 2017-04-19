@@ -6,6 +6,7 @@
 <mapper namespace="com.ezd.dao.EzdArticlDao">
     <resultMap id="article" type="com.ezd.model.EzdArticle"><!--文章信息表-->
         <id column="article_id" property="articleId"/><!--编号-->
+        <result column="article_type" property="articleType"/><!--文章类型-->
         <result column="article_logo" property="articleLogo"/><!--文章封面-->
         <result column="article_mtitle" property="articleMtitle"/><!--主标题-->
         <result column="article_stitle" property="articleStitle"/><!--副标题-->
@@ -25,7 +26,7 @@
     <insert id="insert" parameterType="com.ezd.model.EzdArticle" >
         INSERT INTO ezd_article(article_logo,article_type,article_mtitle,article_stitle,
           article_author,article_auemail,article_pic,article_content,article_keywords,article_status)
-          VALUES (#{articleLogo},#{articleType.rtitypeId},#{articleMtitle},#{articleStitle},#{articleAuthor}
+          VALUES (#{articleLogo},#{articleType},#{articleMtitle},#{articleStitle},#{articleAuthor}
           #{articleAuemail},#{articlePic},#{articleContent},#{articleKeywords},#{articleStatus})
     </insert>
 
@@ -37,7 +38,7 @@
     <!--更改文章信息-->
     <update id="update" parameterType="com.ezd.model.EzdArticle" >
         UPDATE ezd_article SET article_logo = #{articleLogo},
-            article_type = #{articleType.rtitypeId},
+            article_type = #{articleType},
             article_mtitle = #{articleMtitle},
             article_stitle = #{articleStitle},
             article_author = #{articleAuthor},

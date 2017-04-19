@@ -26,12 +26,21 @@ public class EzdEnretController {
     private EzdEnretService ezdEnretService;
 
     /**
+     * 查询出所有招聘信息
+     */
+    @RequestMapping(value = "/ajaxGetAll",method = RequestMethod.POST)
+    @ResponseBody
+    public List<EzdEnret> getAll() throws Exception {
+        List<EzdEnret> All = ezdEnretService.getAll();
+        return All;
+    }
+    /**
      * 根据公司id查询出本公司所有的招聘信息
      * @param enmgId
      */
     @RequestMapping(value = "/ajaxGetOneAll",method = RequestMethod.POST)
     @ResponseBody
-    public List<EzdEnret> getOneAll(int enmgId){
+    public List<EzdEnret> getOneAll(int enmgId) throws Exception {
         EzdEnmg ezdEnmg = new EzdEnmg();
         ezdEnmg.setEnmgId(enmgId);
         List<EzdEnret> oneAll = ezdEnretService.getOneAll(ezdEnmg);
@@ -44,7 +53,7 @@ public class EzdEnretController {
      */
     @RequestMapping(value = "/ajaxGetEnretTypeAll",method = RequestMethod.POST)
     @ResponseBody
-    public List<EzdEnret> getEnretTypeAll(int retTypeId){
+    public List<EzdEnret> getEnretTypeAll(int retTypeId) throws Exception {
         EzdRetType ezdRetType = new EzdRetType();
         ezdRetType.setRetTypeId(retTypeId);
         List<EzdEnret> enretTypeAll = ezdEnretService.getEnretTypeAll(ezdRetType);
@@ -57,7 +66,7 @@ public class EzdEnretController {
      */
     @RequestMapping(value = "/ajaxGetMoneyAll",method = RequestMethod.POST)
     @ResponseBody
-    public List<EzdEnret> getMoneyAll(EzdEnret ezdEnret){
+    public List<EzdEnret> getMoneyAll(EzdEnret ezdEnret) throws Exception {
         List<EzdEnret> moneyAll = ezdEnretService.getMoneyAll(ezdEnret);
         return moneyAll;
     }
@@ -68,7 +77,7 @@ public class EzdEnretController {
      */
     @RequestMapping(value = "/ajaxGetEnmgAddressAll",method = RequestMethod.POST)
     @ResponseBody
-    public List<EzdEnret> getEnmgAddressAll(String enmgAddress){
+    public List<EzdEnret> getEnmgAddressAll(String enmgAddress) throws Exception {
         EzdEnmg ezdEnmg = new EzdEnmg();
         ezdEnmg.setEnmgAddress(enmgAddress);
         List<EzdEnret> enmgAddressAll = ezdEnretService.getEnmgAddressAll(ezdEnmg);
@@ -80,7 +89,7 @@ public class EzdEnretController {
      */
     @RequestMapping(value = "ajaxGetCountAll",method = RequestMethod.POST)
     @ResponseBody
-    public List<EzdEnret> getCountAll(){
+    public List<EzdEnret> getCountAll() throws Exception {
         List<EzdEnret> countAll = ezdEnretService.getCountAll();
         return countAll;
 

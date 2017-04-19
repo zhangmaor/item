@@ -7,6 +7,11 @@
 <mapper namespace="com.ezd.dao.EzdEnretDao">
     <resultMap id="enret" type="com.ezd.model.EzdEnret"><!--招聘信息表mapper-->
         <id column="enret_id" property="enretId" /><!--编号-->
+        <result column="enret_type" property="enretType"/><!--招聘类型-->
+        <result column="nret_enmg" property="nretEnmg" /><!--发布的企业-->
+        <result column="enret_postOne" property="enretPostOne" /><!--一级招聘岗位-->
+        <result column="enret_postTwo" property="enretPostTwo" /><!--二级招聘岗位-->
+        <result column="enret_status" property="enretStatus"/> <!--信息状态-->
         <result column="enret_wantNum" property="enretWantNum"/><!--招聘人数-->
         <result column="enret_creTime" property="enretCreTime"/><!--发布时间-->
         <result column="enret_lwMoney" property="enretLwMoney"/><!--最低工资-->
@@ -23,7 +28,7 @@
 
     </resultMap>
 
-
+    <!--查询全部的信息-->
     <select id="getAll" resultType="com.ezd.model.EzdEnret">
         select * from ezd_enret ORDER BY enret_creTime DESC;
     </select>
@@ -58,14 +63,14 @@
     <update id="update" parameterType="com.ezd.model.EzdEnret" >
         UPDATE ezd_enret SET
           enret_wantNum = #{enret_wantNum},
-          enret_type = #{enret_type.retTypeId},
+          enret_type = #{enretType},
           enret_lwMoney = #{enret_lwMoney},
           enret_hgMoney = #{enret_hgMoney},
-          enret_postOne = #{ezdPostOne.poneId}
-          enret_postTwo = #{ezdPostTwo.ptwoId}
+          enret_postOne = #{enretPostOne}
+          enret_postTwo = #{enretPostTwo}
           enret_pg = #{enretPg},
           enret_demand = #{enretDemand},
-          enret_status = #{enretStatus.newsStatusId}
+          enret_status = #{newsStatusId}
          WHERE enret_id = #{enret_id}
     </update>
 
@@ -80,10 +85,7 @@
     <!--</insert>-->
 
 
-    <!--查询全部的信息-->
-    <!--<select id="getAll">-->
-        <!--select * from ezd_enret-->
-    <!--</select>-->
+
     <!--通过一个企业的编号获取信息-->
     <select id="getOne" parameterType="int">
         SELECT * from ezd_enret
@@ -103,22 +105,22 @@
                     enret_pg ,
                     enret_demand ,
                     enret_status,)
-        values (#{nretEnmg.enmgId},
+        values (#{nretEnmg},
                 #{enretWantNum},
-                #{enretType.retTypeId},
+                #{enretType},
                 #{enretCreTime},
                 #{enretLwMoney},
                 #{enretHgMoney},
-                #{ezdPostOne.poneId},
-                #{ezdPostTwo.ptwoId},
+                #{enretPostOne},
+                #{enretPostTwo},
                 #{enretPg},
                 #{enretDemand},
-                #{enretStatus.newsStatusId})
+                #{enretStatus})
     </insert>
     <!--修改指定的招聘信息的状态-->
     <update id="updateStatus" parameterType="com.ezd.model.EzdEnret">
         UPDATE ezd_enret
-        set enret_status =  #{enretStatus.newsStatusId}
+        set enret_status =  #{enretStatus}
         where enret_id = #{enretId}
     </update>
 </mapper>

@@ -10,7 +10,7 @@ import java.util.List;
 public class EzdArticle {
     private int articleId;
     private String articleLogo;//文章封面
-    private EzdArtittype articleType;//文章类型 references ezd_artitype(artitype_id)
+    private int articleType;//文章类型 references ezd_artitype(artitype_id)
     private String articleMtitle;//主标题
     private String articleStitle;//副标题
     private String articleAuthor;//作者
@@ -20,6 +20,7 @@ public class EzdArticle {
     private String articleKeywords;//文章关键字
     private Date articleTime;//发布时间
     private int articleStatus;//文章状态
+    private EzdArtittype ezdarticleType;//文章类型 references ezd_artitype(artitype_id)
     private List<EzdReadarti> ezdReadartis;//阅读本文章的信息
     private List<EzdSayart> ezdSayarts;//对本文的评论
     private List<EzdPoint> ezdPoints;//对本文的点赞
@@ -48,12 +49,20 @@ public class EzdArticle {
         this.articleLogo = articleLogo;
     }
 
-    public EzdArtittype getArticleType() {
+    public int getArticleType() {
         return articleType;
     }
 
-    public void setArticleType(EzdArtittype articleType) {
+    public void setArticleType(int articleType) {
         this.articleType = articleType;
+    }
+
+    public EzdArtittype getEzdarticleType() {
+        return ezdarticleType;
+    }
+
+    public void setEzdarticleType(EzdArtittype ezdarticleType) {
+        this.ezdarticleType = ezdarticleType;
     }
 
     public String getArticleMtitle() {
@@ -128,26 +137,6 @@ public class EzdArticle {
         this.articleTime = articleTime;
     }
 
-    @Override
-    public String toString() {
-        return "EzdArticle{" +
-                "articleId=" + articleId +
-                ", articleLogo='" + articleLogo + '\'' +
-                ", articleType=" + articleType +
-                ", articleMtitle='" + articleMtitle + '\'' +
-                ", articleStitle='" + articleStitle + '\'' +
-                ", articleAuthor='" + articleAuthor + '\'' +
-                ", articleAuemail='" + articleAuemail + '\'' +
-                ", articlePic='" + articlePic + '\'' +
-                ", articleContent='" + articleContent + '\'' +
-                ", articleKeywords='" + articleKeywords + '\'' +
-                ", articleStatus=" + articleStatus +
-                ", ezdReadartis=" + ezdReadartis +
-                ", ezdSayarts=" + ezdSayarts +
-                ", ezdPoints=" + ezdPoints +
-                '}';
-    }
-
     public List<EzdSayart> getEzdSayarts() {
         return ezdSayarts;
     }
@@ -162,5 +151,27 @@ public class EzdArticle {
 
     public void setEzdPoints(List<EzdPoint> ezdPoints) {
         this.ezdPoints = ezdPoints;
+    }
+
+    @Override
+    public String toString() {
+        return "EzdArticle{" +
+                "articleId=" + articleId +
+                ", articleLogo='" + articleLogo + '\'' +
+                ", articleType=" + articleType +
+                ", articleMtitle='" + articleMtitle + '\'' +
+                ", articleStitle='" + articleStitle + '\'' +
+                ", articleAuthor='" + articleAuthor + '\'' +
+                ", articleAuemail='" + articleAuemail + '\'' +
+                ", articlePic='" + articlePic + '\'' +
+                ", articleContent='" + articleContent + '\'' +
+                ", articleKeywords='" + articleKeywords + '\'' +
+                ", articleTime=" + articleTime +
+                ", articleStatus=" + articleStatus +
+                ", ezdarticleType=" + ezdarticleType +
+                ", ezdReadartis=" + ezdReadartis +
+                ", ezdSayarts=" + ezdSayarts +
+                ", ezdPoints=" + ezdPoints +
+                '}';
     }
 }

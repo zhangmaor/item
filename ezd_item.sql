@@ -68,6 +68,7 @@ CREATE TABLE ezd_seindustry( -- 二级行业信息表
 	se_name VARCHAR(40)
 	
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
 CREATE TABLE ezd_enmg(--  企业信息表
 	enmg_id INT PRIMARY KEY AUTO_INCREMENT,
 	enmg_logo VARCHAR(50),
