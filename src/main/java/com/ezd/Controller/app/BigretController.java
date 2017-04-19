@@ -1,4 +1,4 @@
-﻿package com.ezd.controller.app;
+package com.ezd.Controller.app;
 
 import com.ezd.model.EzdBigret;
 import com.ezd.service.EzdBigretService;
@@ -30,7 +30,7 @@ public class BigretController {
     @ResponseBody
     public EzdBigret get(HttpServletResponse response, int id){
         EzdBigret ezdBigret = ezdBigretService.get(id);
-       return ezdBigret;
+        return ezdBigret;
     }
     @RequestMapping(value = "/ajaxBigretList", method = RequestMethod.POST)
     @ResponseBody
@@ -44,7 +44,6 @@ public class BigretController {
      * 点击某个学校
      * 然后就进入到该学校的大招会列表
      * @param id
-     * @return
      */
     @RequestMapping("/schoolebigret")
     @ResponseBody
@@ -53,4 +52,5 @@ public class BigretController {
         return bigretList;
     }
 }
+
 

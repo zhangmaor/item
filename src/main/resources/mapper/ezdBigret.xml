@@ -16,7 +16,7 @@
         <association property="ezdPostOne" resultMap="com.ezd.dao.EzdPostOneDao.postOne" /><!-- 一级招聘岗位 -->
         <association property="ezdPostTwo" resultMap="com.ezd.dao.EzdPostTwoDao.postTwo" /><!-- 二级招聘岗位 -->
         <association property="bigretStatus" resultMap="com.ezd.dao.EzdNewsStatusDao.newsStatus"/><!--大招会的状态-->
-        <association property="bigretEnmg" resultMap="com.ezd.dao.EzdEnmgDao.enmg"/><!--哪家公司发布的-->
+        <association property="bigretEnmg" resultMap="com.ezd.dao.EzdEnmgDao.enmg"/> <!--哪家公司发布的-->
         <collection property="ezdErlbigrets" resultMap="com.ezd.dao.EzdUmgDao.umg"/><!--浏览本大招会的人员列表-->
     </resultMap>
     <!--通过编号显示详细信息-->

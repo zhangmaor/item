@@ -23,7 +23,7 @@ public class SchController {
     @Resource
     private EzdSchmgService ezdSchmgService;
 
-    //PC 端 获取所有 学校信息
+    // 获取所有 学校信息
     @GetMapping
     private String  findScg(Model model){
 
