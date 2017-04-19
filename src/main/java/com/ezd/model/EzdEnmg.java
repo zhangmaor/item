@@ -17,9 +17,11 @@ public class EzdEnmg {
     private String enmgWcontact ;//联系方式
     private String enmgDetail ;//公司详情
     private String enmgAddress ;//公司地址
-    private EzdEntype enmgType ;  //references ezd_entype(entype_id),--企业类型
+    private int enmgType; //references ezd_entype(entype_id),--企业类型
     private String enmgScale ;//公司规模
     private Date enmgCretime ; //公司成立时间
+    private int enmgIndustry; //企业所在行业
+    private EzdEntype ezdEntype ;  //references ezd_entype(entype_id),--企业类型
     private List<EzdUmg> ezdUmgs;//关注该公司的人
     private List<EzdEnret> ezdEnrets;//本公司发布的招聘信息
     private List<EzdBigret> ezdBigrets;//本公司发布的大招会信息
@@ -41,28 +43,6 @@ public class EzdEnmg {
 
     public void setEzdSeindustry(EzdSeindustry ezdSeindustry) {
         this.ezdSeindustry = ezdSeindustry;
-    }
-
-    @Override
-
-    public String toString() {
-        return "EzdEnmg{" +
-                "enmgId=" + enmgId +
-                ", enmgLogo='" + enmgLogo + '\'' +
-                ", enmgName='" + enmgName + '\'' +
-                ", enmgDomain='" + enmgDomain + '\'' +
-                ", enmgUser='" + enmgUser + '\'' +
-                ", enmgWcontact='" + enmgWcontact + '\'' +
-                ", enmgDetail='" + enmgDetail + '\'' +
-                ", enmgAddress='" + enmgAddress + '\'' +
-                ", enmgType=" + enmgType +
-                ", enmgScale='" + enmgScale + '\'' +
-                ", enmgCretime=" + enmgCretime +
-                ", ezdUmgs=" + ezdUmgs +
-                ", ezdEnrets=" + ezdEnrets +
-                ", ezdBigrets=" + ezdBigrets +
-                ", ezdSchrets=" + ezdSchrets +
-                '}';
     }
 
     public List<EzdSchret> getEzdSchrets() {
@@ -161,12 +141,28 @@ public class EzdEnmg {
         this.enmgAddress = enmgAddress;
     }
 
-    public EzdEntype getEnmgType() {
+    public int getEnmgType() {
         return enmgType;
     }
 
-    public void setEnmgType(EzdEntype enmgType) {
+    public void setEnmgType(int enmgType) {
         this.enmgType = enmgType;
+    }
+
+    public int getEnmgIndustry() {
+        return enmgIndustry;
+    }
+
+    public void setEnmgIndustry(int enmgIndustry) {
+        this.enmgIndustry = enmgIndustry;
+    }
+
+    public EzdEntype getEzdEntype() {
+        return ezdEntype;
+    }
+
+    public void setEzdEntype(EzdEntype ezdEntype) {
+        this.ezdEntype = ezdEntype;
     }
 
     public String getEnmgScale() {
@@ -185,4 +181,28 @@ public class EzdEnmg {
         this.enmgCretime = enmgCretime;
     }
 
+    @Override
+    public String toString() {
+        return "EzdEnmg{" +
+                "enmgId=" + enmgId +
+                ", enmgLogo='" + enmgLogo + '\'' +
+                ", enmgName='" + enmgName + '\'' +
+                ", enmgDomain='" + enmgDomain + '\'' +
+                ", enmgUser='" + enmgUser + '\'' +
+                ", enmgWcontact='" + enmgWcontact + '\'' +
+                ", enmgDetail='" + enmgDetail + '\'' +
+                ", enmgAddress='" + enmgAddress + '\'' +
+                ", enmgType=" + enmgType +
+                ", enmgScale='" + enmgScale + '\'' +
+                ", enmgCretime=" + enmgCretime +
+                ", enmgIndustry=" + enmgIndustry +
+                ", ezdEntype=" + ezdEntype +
+                ", ezdUmgs=" + ezdUmgs +
+                ", ezdEnrets=" + ezdEnrets +
+                ", ezdBigrets=" + ezdBigrets +
+                ", ezdSchrets=" + ezdSchrets +
+                ", ezdIndustry=" + ezdIndustry +
+                ", ezdSeindustry=" + ezdSeindustry +
+                '}';
+    }
 }

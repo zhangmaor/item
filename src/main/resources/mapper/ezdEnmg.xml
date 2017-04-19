@@ -6,6 +6,8 @@
 <mapper namespace="com.ezd.dao.EzdEnmgDao">
     <resultMap id="enmg" type="com.ezd.model.EzdEnmg">
         <id column="enmg_id" property="enmgId"/><!--编号-->
+        <result column="enmg_type" property="enmgType"/><!--企业类型-->
+        <result column="enmg_industry" property="enmgIndustry" /><!--企业所在行业-->
         <result column="enmg_logo" property="enmgLogo"/><!--企业logo-->
         <result column="enmg_name" property="enmgName"/><!--企业名称-->
         <result column="enmg_domain" property="enmgDomain"/><!--公司网址-->
@@ -71,7 +73,7 @@
 	      enmg_type =#{enmgType.enTypeId},
 	      enmg_scale =#{enmgScale},
 	      enmg_cretime =#{enmgCretime},
-	      enmg_industry =#{ezdIndustry.inId}
+	      enmg_industry =#{enmgIndustry}
         WHERE
             enmg_id = #{enmgId}
     </update>
@@ -96,10 +98,10 @@
                 #{enmgWcontact},
                 #{enmgDetail},
                 #{enmgAddress},
-                #{enmgType.enTypeId},
+                #{enmgType},
                 #{enmgScale},
                 #{enmgCretime},
-                #{ezdIndustry.inId})
+                #{enmgIndustry})
     </insert>
     <!--查询全部的信息-->
     <select id="getAll" resultMap="enmg">

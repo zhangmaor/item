@@ -9,17 +9,22 @@ import java.util.List;
  */
 public class EzdEnret {
     private int enretId;
-    private EzdEnmg nretEnmg;//nret_enmg int references ezd_enmg(enmg_id),
+    private int nretEnmg;//nret_enmg int references ezd_enmg(enmg_id),
     private int enretWantNum;//招聘人数
-    private EzdRetType enretType;//references ezd_retType(retType_id),--   招聘类型 （实习 兼职 全职）
+    private int enretType;//references ezd_retType(retType_id),--   招聘类型 （实习 兼职 全职）
     private Date enretCreTime;//发布时间
     private int enretLwMoney;//最低工资
     private int enretHgMoney;//最高工资
-    private EzdPostOne ezdPostOne; //一级招聘岗位
-    private EzdPostTwo ezdPostTwo; //二级招聘岗位
+    private int enretPostOne;//一级招聘岗位
+    private int enretPostTwo;//二级招聘岗位
     private String enretPg;//待遇
     private String enretDemand;//招聘要求
-    private EzdNewsStatus enretStatus;//references ezd_newsStatus(newsStatus_id)  --  信息状态,( 进行中  已结束)
+    private int enretStatus;//references ezd_newsStatus(newsStatus_id)
+    private EzdPostOne ezdPostOne; //一级招聘岗位
+    private EzdPostTwo ezdPostTwo; //二级招聘岗位
+    private EzdRetType ezdRetType;//references ezd_retType(retType_id),--   招聘类型
+    private EzdEnmg ezdEnmg;//nret_enmg int references ezd_enmg(enmg_id),
+    private EzdNewsStatus ezdNewsStatus;//references ezd_newsStatus(newsStatus_id)  --  信息状态,( 进行中  已结束)
     private List<EzdErlenret> ezdErlenrets;//对应的报名信息表
     private List<EzdUmg> ezdUmgs ;//对本信息浏览的人列表
 
@@ -39,27 +44,6 @@ public class EzdEnret {
 
     public void setEzdErlenrets(List<EzdErlenret> ezdErlenrets) {
         this.ezdErlenrets = ezdErlenrets;
-    }
-
-
-    @Override
-    public String toString() {
-        return "EzdEnret{" +
-                "enretId=" + enretId +
-                ", nretEnmg=" + nretEnmg +
-                ", enretWantNum=" + enretWantNum +
-                ", enretType=" + enretType +
-                ", enretCreTime=" + enretCreTime +
-                ", enretLwMoney=" + enretLwMoney +
-                ", enretHgMoney=" + enretHgMoney +
-                ", ezdPostOne=" + ezdPostOne +
-                ", ezdPostTwo=" + ezdPostTwo +
-                ", enretPg='" + enretPg + '\'' +
-                ", enretDemand='" + enretDemand + '\'' +
-                ", enretStatus=" + enretStatus +
-                ", ezdErlenrets=" + ezdErlenrets +
-                ", ezdUmgs=" + ezdUmgs +
-                '}';
     }
 
     public EzdEnret() {
@@ -140,28 +124,92 @@ public class EzdEnret {
         this.enretDemand = enretDemand;
     }
 
-    public EzdRetType getEnretType() {
-        return enretType;
-    }
-
-    public void setEnretType(EzdRetType enretType) {
-        this.enretType = enretType;
-    }
-
-    public EzdNewsStatus getEnretStatus() {
-        return enretStatus;
-    }
-
-    public void setEnretStatus(EzdNewsStatus enretStatus) {
-        this.enretStatus = enretStatus;
-    }
-
-    public EzdEnmg getNretEnmg() {
-
+    public int getNretEnmg() {
         return nretEnmg;
     }
 
-    public void setNretEnmg(EzdEnmg nretEnmg) {
+    public void setNretEnmg(int nretEnmg) {
         this.nretEnmg = nretEnmg;
+    }
+
+    public int getEnretType() {
+        return enretType;
+    }
+
+    public void setEnretType(int enretType) {
+        this.enretType = enretType;
+    }
+
+    public int getEnretPostOne() {
+        return enretPostOne;
+    }
+
+    public void setEnretPostOne(int enretPostOne) {
+        this.enretPostOne = enretPostOne;
+    }
+
+    public int getEnretPostTwo() {
+        return enretPostTwo;
+    }
+
+    public void setEnretPostTwo(int enretPostTwo) {
+        this.enretPostTwo = enretPostTwo;
+    }
+
+    public EzdRetType getEzdRetType() {
+        return ezdRetType;
+    }
+
+    public void setEzdRetType(EzdRetType ezdRetType) {
+        this.ezdRetType = ezdRetType;
+    }
+
+    public EzdEnmg getEzdEnmg() {
+        return ezdEnmg;
+    }
+
+    public void setEzdEnmg(EzdEnmg ezdEnmg) {
+        this.ezdEnmg = ezdEnmg;
+    }
+
+    public int getEnretStatus() {
+        return enretStatus;
+    }
+
+    public void setEnretStatus(int enretStatus) {
+        this.enretStatus = enretStatus;
+    }
+
+    public EzdNewsStatus getEzdNewsStatus() {
+        return ezdNewsStatus;
+    }
+
+    public void setEzdNewsStatus(EzdNewsStatus ezdNewsStatus) {
+        this.ezdNewsStatus = ezdNewsStatus;
+    }
+
+    @Override
+    public String toString() {
+        return "EzdEnret{" +
+                "enretId=" + enretId +
+                ", nretEnmg=" + nretEnmg +
+                ", enretWantNum=" + enretWantNum +
+                ", enretType=" + enretType +
+                ", enretCreTime=" + enretCreTime +
+                ", enretLwMoney=" + enretLwMoney +
+                ", enretHgMoney=" + enretHgMoney +
+                ", enretPostOne=" + enretPostOne +
+                ", enretPostTwo=" + enretPostTwo +
+                ", enretPg='" + enretPg + '\'' +
+                ", enretDemand='" + enretDemand + '\'' +
+                ", enretStatus=" + enretStatus +
+                ", ezdPostOne=" + ezdPostOne +
+                ", ezdPostTwo=" + ezdPostTwo +
+                ", ezdRetType=" + ezdRetType +
+                ", ezdEnmg=" + ezdEnmg +
+                ", ezdNewsStatus=" + ezdNewsStatus +
+                ", ezdErlenrets=" + ezdErlenrets +
+                ", ezdUmgs=" + ezdUmgs +
+                '}';
     }
 }

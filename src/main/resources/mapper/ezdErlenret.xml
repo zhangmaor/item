@@ -6,6 +6,9 @@
 <mapper namespace="com.ezd.dao.EzdErlenretDao">
     <resultMap id="erlenret" type="com.ezd.model.EzdErlenret">
         <id column="erlenret_id" property="erlenretId" /><!--招聘信息报名表mapper-->
+        <result column="erlenret_umg" property="erlenretUmg" /> <!--谁报名了-->
+        <result column="erlenret_enret" property="erlenretEnret" /> <!--报名的是那个招聘信息-->
+        <result column="erlenret_status" property="erlenretStatus" /> <!--报名状态-->
         <association property="erlenretStatus" resultMap="com.ezd.dao.EzdRestatusDao.restatus"/> <!--报名状态-->
         <association property="erlenretUmg" resultMap="com.ezd.dao.EzdUmgDao.umg"/><!--谁报名-->
         <association property="erlenretEnret" resultMap="com.ezd.dao.EzdEnretDao.enret"/><!--报名对象-->

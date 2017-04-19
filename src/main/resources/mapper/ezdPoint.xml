@@ -5,6 +5,8 @@
 <mapper namespace="com.ezd.dao.EzdPointDao">
     <resultMap id="point" type="com.ezd.model.EzdPoint"><!--文章点赞表-->
         <id column="point_id" property="pointId" /><!--编号-->
+        <result column="point_article" property="pointArticle" /> <!--点赞的文章-->
+        <result column="point_umg" property="pointUmg" /> <!--点赞人-->
         <result column="point_touser" property="pointTouser"/><!--为其他评论点赞-->
         <result column="point_status" property="pointStatus"/><!--状态（取消，点赞）-->
         <association property="pintArticle" resultMap="com.ezd.dao.EzdArticlDao.article" /><!--属于哪篇文章之下-->
@@ -14,7 +16,7 @@
     <!--添加点赞-->
     <insert id="insert" parameterType="com.ezd.model.EzdPoint">
         insert into ezd_point (point_article,point_umg,point_touser,point_status)
-          values (#{pintArticle.articleId},#{pintUmg.umgId},#{pintTouser},#{poingStatus});
+          values (#{pointArticle},#{pointUmg},#{pintTouser},#{poingStatus});
     </insert>
 
     <!--取消点赞-->
@@ -29,7 +31,7 @@
 
     <!--用于判断用户是否已经点过赞-->
     <select id="isThere" parameterType="com.ezd.model.EzdPoint" resultType="int">
-        SELECT COUNT (*) FROM ezd_point WHERE point_umg = #{pintUmg.umgId} AND point_article = #{pintArticle.articleId}
+        SELECT COUNT (*) FROM ezd_point WHERE point_umg = #{pointUmg} AND point_article = #{pointArticle}
     </select>
 
 </mapper>
