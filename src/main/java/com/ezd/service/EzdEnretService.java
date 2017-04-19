@@ -185,7 +185,7 @@ public class EzdEnretService {
 
     //根据企业添加招聘信息
     public boolean insert(EzdEnret ezdEnret){
-        int row = ezdEnretDao.insert(ezdEnret);
+        int row = ezdEnretDao.add(ezdEnret);
         if (row>0){
             return true;
         }

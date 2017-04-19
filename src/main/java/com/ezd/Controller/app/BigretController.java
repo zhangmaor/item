@@ -1,4 +1,4 @@
-package com.ezd.Controller.app;
+package com.ezd.controller.app;
 
 import com.ezd.model.EzdBigret;
 import com.ezd.service.EzdBigretService;
@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import javax.persistence.SqlResultSetMapping;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 

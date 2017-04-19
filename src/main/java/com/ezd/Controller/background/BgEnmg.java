@@ -1,4 +1,4 @@
-package com.ezd.Controller.background;
+package com.ezd.controller.background;
 
 import com.ezd.model.EzdEnmg;
 import com.ezd.service.EzdEnmgService;
