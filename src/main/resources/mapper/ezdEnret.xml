@@ -23,7 +23,7 @@
 
     </resultMap>
 
-
+    <!--查询全部的信息-->
     <select id="getAll" resultType="com.ezd.model.EzdEnret">
         select * from ezd_enret ORDER BY enret_creTime DESC;
     </select>
@@ -65,7 +65,7 @@
           enret_postTwo = #{ezdPostTwo.ptwoId}
           enret_pg = #{enretPg},
           enret_demand = #{enretDemand},
-          enret_status = #{enretStatus.newsStatusId}
+          enret_status = #{newsStatusId}
          WHERE enret_id = #{enret_id}
     </update>
 
@@ -80,10 +80,7 @@
     <!--</insert>-->
 
 
-    <!--查询全部的信息-->
-    <!--<select id="getAll">-->
-        <!--select * from ezd_enret-->
-    <!--</select>-->
+
     <!--通过一个企业的编号获取信息-->
     <select id="getOne" parameterType="int">
         SELECT * from ezd_enret

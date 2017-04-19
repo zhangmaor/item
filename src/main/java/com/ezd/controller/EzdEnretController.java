@@ -26,6 +26,15 @@ public class EzdEnretController {
     private EzdEnretService ezdEnretService;
 
     /**
+     * 查询出所有招聘信息
+     */
+    @RequestMapping(value = "/ajaxGetAll",method = RequestMethod.POST)
+    @ResponseBody
+    public List<EzdEnret> getAll(){
+        List<EzdEnret> All = ezdEnretService.getAll();
+        return All;
+    }
+    /**
      * 根据公司id查询出本公司所有的招聘信息
      * @param enmgId
      */
