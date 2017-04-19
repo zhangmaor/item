@@ -2,15 +2,12 @@ package com.ezd.controller;
 
 import com.ezd.model.EzdArticle;
 import com.ezd.service.EzdArticleService;
-import com.ezd.utils.AjaxUtil;
-import org.json.simple.JSONValue;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -25,24 +22,22 @@ public class EzdAticleController {
 
     /**
      * 添加文章信息
-     * @param response
      * @param ezdArticle
      */
     @RequestMapping(value = "/ajaxInsert",method = RequestMethod.POST)
     @ResponseBody
-    public boolean insert(HttpServletResponse response, EzdArticle ezdArticle){
+    public boolean insert( EzdArticle ezdArticle){
         boolean bl = ezdArticleService.insert(ezdArticle);
         return bl;
     }
 
     /**
      * 删除文章信息
-     * @param response
      * @param ezdArticle
      */
     @RequestMapping(value = "/ajaxDelete",method = RequestMethod.POST)
     @ResponseBody
-    public boolean delete(HttpServletResponse response, EzdArticle ezdArticle){
+    public boolean delete( EzdArticle ezdArticle){
         boolean delete = ezdArticleService.delete(ezdArticle);
         return delete;
     }
@@ -60,6 +55,10 @@ public class EzdAticleController {
     }
 
 
+    /**
+     * 查询文章并按时间排序
+     * @return
+     */
     @RequestMapping(value = "/ajaxGetArticleAll",method = RequestMethod.POST)
     @ResponseBody
     public List<EzdArticle> getArticleAll(){

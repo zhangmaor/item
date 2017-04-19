@@ -1,21 +1,18 @@
-﻿package com.ezd.model;
+﻿
+package com.ezd.model;
+
 import java.util.Date;
 
 /**
- * Created by Administrator on 2017-04-06.//用户消息表
- */
-
+ * Created by Administrator on 2017/4/19.
+ *///用户消息表
 public class EzdUnews {
     private int unewsId;
     private int unewsUser;     // int references ezd_umg(umg_id),-- 受信人--用户信息
     private String unewsFrom;  //（默认系统） 发件人
-
-
     private String unewsContent;//信件内容
-
     private Date unewsTime;
     private int unewsStatus;//int default(unews_status=0 or unews_status=1 )--消息状态（0未读 1已读）
-
     public EzdUnews() {
     }
 
@@ -78,4 +75,5 @@ public class EzdUnews {
     public void setUnewsStatus(int unewsStatus) {
         this.unewsStatus = unewsStatus;
     }
+
 }
