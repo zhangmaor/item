@@ -6,6 +6,7 @@ import java.util.Date;
  * Created by Administrator on 2017/4/6.
  * 文章阅读信息表
  */
+
 public class EzdReadarti {
     private int readartiId;
     private EzdArticle readartiArticle;//references ezd_article(article_id)哪篇文章

@@ -68,7 +68,7 @@ public class EzdBigretService {
         int up = 0;
         try {
             EzdBigret ezdBigret1 = ezdBigretDao.idGet(bigretId);//修改前的数据
-            if(ezdBigret.getBigretAddress()!=null){
+            if(ezdBigret.getBigretAddress()==0){
                 ezdBigret1.setBigretAddress(ezdBigret.getBigretAddress());
             }
             if(ezdBigret.getBigretDetail()!=null){
@@ -155,5 +155,30 @@ public class EzdBigretService {
             e.printStackTrace();
         }
         return ezdBigret;
+    }
+    public List<EzdBigret> getAll(){
+        List<EzdBigret> bigretList = null;
+        try {
+            bigretList = ezdBigretDao.get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return bigretList;
+    }
+
+    /**
+     * 通过学校的一个编号查询出在该学校的大招会列表
+     *
+     * @param id
+     * @return
+     */
+    public List<EzdBigret> addressGet(int id){
+        List<EzdBigret> bigretList = null;
+        try {
+            bigretList = ezdBigretDao.addressGet(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return bigretList;
     }
 }

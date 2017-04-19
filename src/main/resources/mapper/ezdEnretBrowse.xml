@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ezd.dao.EzdEnretBrowseDao">
+    <resultMap id="EnretBrowse" type="com.ezd.model.EzdEnretBrowse"><!--浏览记录表-->
+        <id column="browse_id" property="browseId"/><!--编号-->
+        <result column="browse_user" property="browseUser"/><!--谁浏览的 对应用户信息-->
+        <result column="browse_en" property="browseEn"/><!--浏览的信息 对应 招聘信息-->
+    </resultMap>
+
+    <!--根据招聘信息查询浏览过此招聘信息的人-->
+    <select id="getPeopleBrowsing" parameterType="com.ezd.model.EzdEnret">
+        SELECT * FROM ezd_enret_browse WHERE browse_en = #{enretId}
+    </select>
+</mapper>

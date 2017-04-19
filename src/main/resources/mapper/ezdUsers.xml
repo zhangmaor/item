@@ -11,6 +11,18 @@
         <result column="user_uptime" property="userUptime" /><!--创建时间-->
 
     </resultMap>
+    <!-- 此处select标签的id值对应DAO类中检查登录方法名 -->
+    <select id="login" parameterType="com.ezd.model.EzdUsers" resultMap="users">
+        select * FROM ezd_users where user_phone=#{userPhone} and user_pwd=#{userPwd}
+    </select>
+    <!--此处insert标签的id值对应DAO类中添加账号方法名-->
+    <insert id="addUser" parameterType="com.ezd.model.EzdUsers">
+        insert into ezd_users(user_phone,user_pwd) VALUES(#{userPhone},#{userPwd})
+    </insert>
+    <!--此处select标签的id值对应DAO类中检查添加账号是否已存在方法名-->
+    <select id="checkUser" parameterType="String" resultType="int">
+        select count(*) from ezd_users where user_phone=#{userPhone}
+    </select>
     <!--通过密码和手机号号来获取到用户-->
     <select id="getAll" parameterType="com.ezd.model.EzdUsers"  resultMap="com.ezd.dao.EzdUsersDao.users" >
         select * from ezd_users
@@ -31,4 +43,12 @@
             </if>
         </where>
     </select>
+    <!--忘记密码，修改密码-->
+    <update id="upPasword" parameterType="com.ezd.model.EzdUsers">
+      update ezd_users set user_Pwd = {userPwd}
+    </update>
+    <!--更换号码，和密码-->
+    <update id="upUsers" parameterType="com.ezd.model.EzdUsers">
+      update ezd_users set user_Pwd = {userPwd},user_phone={userPhone}
+    </update>
 </mapper>

@@ -1,16 +1,13 @@
-package com.ezd.Controller.app;
+﻿package com.ezd.controller.app;
 
 import com.ezd.model.EzdBigret;
 import com.ezd.service.EzdBigretService;
-import com.ezd.utils.AjaxUtil;
-import org.json.simple.JSONValue;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import javax.persistence.SqlResultSetMapping;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
@@ -42,5 +39,18 @@ public class BigretController {
         return bigretList;
     }
 
+
+    /**
+     * 点击某个学校
+     * 然后就进入到该学校的大招会列表
+     * @param id
+     * @return
+     */
+    @RequestMapping("/schoolebigret")
+    @ResponseBody
+    public List<EzdBigret> getschoolBigret(int id){
+        List<EzdBigret> bigretList = ezdBigretService.addressGet(id);
+        return bigretList;
+    }
 }
 

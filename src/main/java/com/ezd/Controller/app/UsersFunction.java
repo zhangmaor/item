@@ -1,13 +1,10 @@
-package com.ezd.Controller.app;
+package com.ezd.controller.app;
 
 import com.ezd.model.EzdEnmg;
 import com.ezd.model.EzdUminden;
 import com.ezd.model.EzdUnews;
 import com.ezd.service.ConcernService;
 import com.ezd.service.EzdUnewsService;
-import com.ezd.utils.AjaxUtil;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONValue;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

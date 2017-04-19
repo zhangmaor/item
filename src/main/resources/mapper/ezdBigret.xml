@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -33,9 +33,12 @@
         select *  from  ezd_bigret
         <where>
             <if test="#{newsStatusId!=null}">
-                newsStatus_id = newsStatusId
+                newsStatus_id = #{newsStatusId}
             </if>
         </where>
+    </select>
+    <select id="get" resultMap="com.ezd.dao.EzdBigretDao.bigret">
+        select * from ezd_bigret
     </select>
 <!--根据公司的编号id获取大招会信息列表-->
     <select id="enmgGet" resultMap="com.ezd.dao.EzdBigretDao.bigret" parameterType="com.ezd.model.EzdEnmg">
@@ -73,4 +76,11 @@
         INSERT  into ezd_bigret(bigret_logo , bigret_title, bigret_time , bigret_address , bigret_status  , bigret_creTime ,bigret_detail,bigret_postOne,bigret_postTwo ,bigret_enmg  )
         VALUES (#{bigretLogo},#{bigretTitle},#{bigretTime},#{bigretAddress},#{bigretStatus.newsStatusId} , #{bigretCreTime},#{bigretDetail},#{ezdPostOne.poneId},#{ezdPostTwop.ptwoId},#{bigretEnmg.enmgId})
     </insert>
+
+
+    <!--通过学校的id来查询匹配的大招会-->
+    <select id="addressGet" resultMap="bigret" parameterType="int" >
+        select * from ezd_bigret
+        where bigret_address = #{_parameter}
+    </select>
 </mapper>

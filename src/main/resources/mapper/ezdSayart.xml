@@ -10,6 +10,37 @@
         <result column="sayart_status" property="sayartStatus"/><!--评论状态-->
         <result column="sayart_time" property="sayartTime"/><!--评论的时间-->
         <association property="sayartUmg" resultMap="com.ezd.dao.EzdUmgDao.umg"/><!--评论的用户-->
+
         <association property="sayartArticel" resultMap="com.ezd.dao.EzdArticlDao.article"/><!--在那篇的文章之下-->
+
     </resultMap>
+
+    <!--添加评论-->
+    <insert id="insert" parameterType="com.ezd.model.EzdSayart">
+        INSERT INTO ezd_sayart(sayart_article,sayart_umg,sayart_content,sayart_touser,sayart_status)
+          VALUES (#{sayartArticel.articleId},#{sayartUmg.umgId},#{sayartContent},#{sayartTouser},#{sayartStatus})
+    </insert>
+
+    <!--评论别人的评论-->
+    <insert id="CommentOnOthers" parameterType="com.ezd.model.EzdSayart">
+        INSERT INTO ezd_sayart(sayart_article,sayart_umg,sayart_content,sayart_touser,sayart_status)
+          VALUES (#{sayartArticel.articleId},#{sayartUmg.umgId},#{sayartContent},#{sayartTouser},#{sayartStatus})
+    </insert>
+
+    <!--删除评论-->
+    <delete id="delete" parameterType="com.ezd.model.EzdSayart">
+        DELETE FROM ezd_sayart WHERE sayart_id = #{sayartId}
+    </delete>
+
+    <!--管理员审核评论-->
+    <update id="update" parameterType="com.ezd.model.EzdSayart">
+        UPDATE ezd_sayart SET sayart_status = #{sayartStatus} WHERE sayart_id = #{sayartId}
+    </update>
+
+    <!--根据文章的id查询评论-->
+    <select id="getEzdSayartAll" parameterType="com.ezd.model.EzdArticle" resultType="com.ezd.model.EzdSayart">
+        SELECT * FROM ezd_sayart WHERE sayart_article = #{articleId}
+    </select>
+
+
 </mapper>

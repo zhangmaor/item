@@ -7,4 +7,8 @@
         <id column="artitype_id" property="artitypeId"/>
         <result column="artitype_name" property="artitypeName"/>
     </resultMap>
+    <!--添加文章类型-->
+    <insert id="inserType" parameterType="com.ezd.model.EzdArtittype">
+        insert into ezd_artitype(artitype_name) values(#{artitypeName})
+    </insert>
 </mapper>
