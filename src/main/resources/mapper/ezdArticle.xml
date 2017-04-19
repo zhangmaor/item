@@ -21,7 +21,6 @@
         <collection property="ezdPoints" resultMap="com.ezd.dao.EzdPointDao.point" /><!--这篇文章之下的点赞-->
     </resultMap>
 
-<<<<<<< HEAD
     <!--添加文章信息-->
     <insert id="insert" parameterType="com.ezd.model.EzdArticle" >
         INSERT INTO ezd_article(article_logo,article_type,article_mtitle,article_stitle,
@@ -55,6 +54,4 @@
         SELECT * FROM ezd_article ORDER BY article_time DESC
     </select>
 
-=======
->>>>>>> 9c5e2ae9355c202f3bbe8c67205a792828175ba0
 </mapper>

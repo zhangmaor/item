@@ -18,5 +18,4 @@ public interface EzdArticlDao {
     //查询文章并按时间排序
     public List<EzdArticle> getArticleAll();
 
-
 }

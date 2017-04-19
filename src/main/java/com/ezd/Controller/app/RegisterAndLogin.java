@@ -1,7 +1,7 @@
 package com.ezd.Controller.app;
 
 import com.ezd.model.EzdUsers;
-import com.ezd.service.UserService;
+import com.ezd.service.EzdUserService;
 import com.ezd.utils.Sendsms;
 import com.ezd.validators.RigisterValiddator;
 import org.springframework.stereotype.Controller;
@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
 public class RegisterAndLogin {
 
     @Resource
-    private UserService userService;
+    private EzdUserService userService;
 
     private final String PHONE_CODE = "phone_code";
 

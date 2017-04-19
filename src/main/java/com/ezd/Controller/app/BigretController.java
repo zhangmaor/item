@@ -39,6 +39,5 @@ public class BigretController {
         List<EzdBigret> bigretList = ezdBigretService.modeGet(status);
         return bigretList;
     }
-
 }
 

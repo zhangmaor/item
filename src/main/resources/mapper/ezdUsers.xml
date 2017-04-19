@@ -22,7 +22,7 @@
     <!--此处select标签的id值对应DAO类中检查添加账号是否已存在方法名-->
     <select id="checkUser" parameterType="String" resultType="int">
         select count(*) from ezd_users where user_phone=#{userPhone}
-
+    </select>
     <!--通过密码和手机号号来获取到用户-->
     <select id="getAll" parameterType="com.ezd.model.EzdUsers"  resultMap="com.ezd.dao.EzdUsersDao.users" >
         select * from ezd_users
@@ -43,4 +43,12 @@
             </if>
         </where>
     </select>
+    <!--忘记密码，修改密码-->
+    <update id="upPasword" parameterType="com.ezd.model.EzdUsers">
+      update ezd_users set user_Pwd = {userPwd}
+    </update>
+    <!--更换号码，和密码-->
+    <update id="upUsers" parameterType="com.ezd.model.EzdUsers">
+      update ezd_users set user_Pwd = {userPwd},user_phone={userPhone}
+    </update>
 </mapper>
