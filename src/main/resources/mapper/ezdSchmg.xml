@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--这里的namespace还没有确定-->
 <mapper namespace="com.ezd.dao.EzdSchmgDao">
-    <resultMap id="schmg" type="com.ezd.model.EzdSchmg"><!--学校表-->
+    <resultMap id="schmap" type="com.ezd.model.EzdSchmg"><!--学校表-->
         <id column="schmg_id" property="schmgId" /><!--编号-->
         <result column="schmg_domain" property="schmgDomain"/><!--网址-->
         <result column="schmg_name" property="schmgName"/><!--学校名字-->
@@ -12,6 +12,51 @@
         <result column="schmg_address" property="schmgAddress"/><!--学校地址-->
         <result column="schmg_cretime" property="schmgCretime"/><!--注册时间-->
         <association property="schmgType" resultMap="com.ezd.dao.EzdSchtypeDao.schtype"/><!--学校类型-->
-        <collection property="ezdSchrets" resultMap="com.ezd.dao.EzdSchretDao.schret" /><!--本学校（未开始，结束，进行时）举行过的校招会-->
+        <collection property="ezdBigrets" resultMap="com.ezd.dao.EzdBigretDao.bigret" /><!--本学校（未开始，结束，进行时）举行过的校招会-->
     </resultMap>
+
+    <!--查询所有的 学校信息 -->
+    <select id="findAll" resultMap="schmap">
+        SELECT * FROM ezd_schmg a JOIN ezd_schType b ON a.schmg_type = b.schtype_id;
+    </select>
+
+    <!--根据Id查询 学校信息 -->
+    <select id="findSchById" resultMap="schmap" parameterType="int">
+        select * from ezd_schmg a JOIN ezd_schType b ON a.schmg_type = b.schtype_id where  a.schmg_id = #{_paramater}
+    </select>
+
+    <!--保存 学校信息 -->
+    <insert id="insertSchmg" parameterType="com.ezd.model.EzdSchmg">
+        insert into
+          ezd_schmg (schmg_id, schmg_domain, schmg_name, schmg_mg, schmg_address, schmg_type, schmg_cretime )
+        VALUES
+        (#{schmgId},#{schmgDomain},#{schmgName},#{schmgMg},#{schmgAddress},#{schmgType.schtypeId},#{schmgCretime} )
+    </insert>
+
+    <!--更新 学校信息 -->
+    <update id="updateSchmg" parameterType="com.ezd.model.EzdSchmg">
+      updata ezd_schmg
+       <set>
+           <if test="schmgDomain != null">
+               schmg_domain = #{schmgDomain}
+           </if>
+           <if test="schmgName != null">
+               schmg_name = #{schmgName}
+           </if>
+           <if test="schmgMg != null">
+               schmg_mg = #{schmgMg}
+           </if>
+           <if test="schmgAddress != null">
+               schmg_address = #{schmgAddress}
+           </if>
+           <if test="schmgType != null">
+               schmg_type = #{schmgType.schtypeId}
+           </if>
+           <if test="schmgCretime != null">
+               schmg_cretime = #{schmgCretime}
+           </if>
+       </set>
+        where schmg_id = #{schmgId}
+    </update>
+
 </mapper>

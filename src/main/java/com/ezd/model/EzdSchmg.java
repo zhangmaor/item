@@ -15,8 +15,7 @@ public class EzdSchmg {
     private String schmgAddress;   //学校地址
     private EzdSchtype schmgType;         //学校性质
     private Date schmgCretime;     //学校成立时间
-    private List<EzdSchret> ezdSchrets;//在本学校举行的校招会
-
+    private List<EzdBigret> ezdBigrets;//在本学校举行的校招会
     @Override
     public String toString() {
         return "EzdSchmg{" +
@@ -27,16 +26,16 @@ public class EzdSchmg {
                 ", schmgAddress='" + schmgAddress + '\'' +
                 ", schmgType=" + schmgType +
                 ", schmgCretime=" + schmgCretime +
-                ", ezdSchrets=" + ezdSchrets +
+                ", ezdSchrets=" + ezdBigrets +
                 '}';
     }
 
-    public List<EzdSchret> getEzdSchrets() {
-        return ezdSchrets;
+    public List<EzdBigret> getEzdSchrets() {
+        return ezdBigrets;
     }
 
-    public void setEzdSchrets(List<EzdSchret> ezdSchrets) {
-        this.ezdSchrets = ezdSchrets;
+    public void setEzdSchrets(List<EzdBigret> ezdBigrets) {
+        this.ezdBigrets = ezdBigrets;
     }
 
     public int getSchmgId() {
