@@ -1,11 +1,10 @@
-﻿
 package com.ezd.model;
 
 import java.util.Date;
 
 /**
  * Created by Administrator on 2017/4/19.
- *///用户消息表
+ */
 public class EzdUnews {
     private int unewsId;
     private int unewsUser;     // int references ezd_umg(umg_id),-- 受信人--用户信息
@@ -75,5 +74,4 @@ public class EzdUnews {
     public void setUnewsStatus(int unewsStatus) {
         this.unewsStatus = unewsStatus;
     }
-
 }
