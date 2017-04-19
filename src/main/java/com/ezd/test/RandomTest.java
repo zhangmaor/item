@@ -13,4 +13,7 @@ public class RandomTest {
         System.out.println(random);
     }
 
+
+
+
 }

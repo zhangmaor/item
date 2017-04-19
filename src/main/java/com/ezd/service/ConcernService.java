@@ -37,8 +37,7 @@ public class ConcernService {
         List<EzdEnmg> ezdEnmgs = new ArrayList<EzdEnmg>();
         try {
             List<EzdUminden> umindens = ezdUmindenDao.getEnmgId(umgId);
-            for (EzdUminden e : umindens
-                    ) {
+            for (EzdUminden e : umindens  ) {
                 EzdEnmg enmg = ezdEnmgDao.getEnmg(e.getUmindenEn());
                 ezdEnmgs.add(enmg);
             }
