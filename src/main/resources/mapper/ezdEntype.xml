@@ -8,4 +8,12 @@
         <id column="entity_id" property="entityId" /><!--编号-->
         <result column="entity_name" property="entityName"/><!--类型名-->
     </resultMap>
+    <insert id="insertEntype" parameterType="com.ezd.model.EzdArtittype">
+        insert into ezd_entype(entity_name) values(#{entityName})
+    </insert>
+
+    <select id="getAll" resultMap="entype">
+        select * from ezd_entype
+    </select>
+
 </mapper>

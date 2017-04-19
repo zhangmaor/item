@@ -2,6 +2,7 @@ package com.ezd.service;
 
 import com.ezd.dao.EzdEnmgDao;
 import com.ezd.model.EzdEnmg;
+import com.sun.javafx.collections.ListListenerHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -102,6 +103,52 @@ public class EzdEnmgService {
             e.printStackTrace();
         }
         return ezdEnmg;
+    }
+
+    /**
+     * 根据企业的类型进行企业的查询
+     *
+     * @param typeId ---- 这个是类型的编号
+     * @return
+     */
+    public List<EzdEnmg> typeGet(int typeId){
+        List<EzdEnmg> enmgList = null;
+        try {
+            enmgList = ezdEnmgDao.typeGet(typeId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return enmgList;
+    }
+
+    /**
+     * 通过企业所在的区域进行企业的查询
+     * @param address ----- 区域
+     * @return
+     */
+    public List<EzdEnmg> addressGet(String address){
+        List<EzdEnmg> enmgList = null;
+        try {
+            enmgList = ezdEnmgDao.addressGet(address);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return enmgList;
+    }
+
+    /**
+     * 通过行业类型进行企业的查询
+     * @param industryId
+     * @return
+     */
+    public List<EzdEnmg> industryGet(int industryId){
+        List<EzdEnmg> enmgList = null;
+        try {
+            enmgList = ezdEnmgDao.industryGet(industryId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return enmgList;
     }
 
 }

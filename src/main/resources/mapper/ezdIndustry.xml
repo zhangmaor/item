@@ -10,4 +10,10 @@
         <collection property="ezdSeindustries" resultMap="com.ezd.dao.EzdSeindustryDao.seindustry"/><!--二级企业名-->
     </resultMap>
 
+    <!--全部的一级二级行业-->
+    <select id="getAll" resultMap="industry" >
+        select a.in_id , a.in_name ,b.se_id , b.se_name  from ezd_industry a left join ezd_seindustry b
+        on a.in_id = b.se_in;
+    </select>
+
 </mapper>

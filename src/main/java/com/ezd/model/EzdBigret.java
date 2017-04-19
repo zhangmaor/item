@@ -12,7 +12,7 @@ public class EzdBigret {
     private String bigretLogo;//logo图片
     private String bigretTitle;//大招会标题
     private Date bigretTime;//大招会时间
-    private String bigretAddress;//大招会地址
+    private int bigretAddress;//大招会地址
     private EzdNewsStatus bigretStatus;//references ezd_newsStatus(newsStatus_id),--  大招会状态(未开始  进行中 已结束)
     private Date bigretCreTime;//发布时间
     private String bigretDetail;//大招会详情
@@ -83,14 +83,13 @@ public class EzdBigret {
         this.bigretTime = bigretTime;
     }
 
-    public String getBigretAddress() {
+    public int getBigretAddress() {
         return bigretAddress;
     }
 
-    public void setBigretAddress(String bigretAddress) {
+    public void setBigretAddress(int bigretAddress) {
         this.bigretAddress = bigretAddress;
     }
-
 
     public Date getBigretCreTime() {
         return bigretCreTime;

@@ -65,4 +65,5 @@ public interface EzdBigretDao {
      */
     public List<EzdBigret> get()throws Exception;
 
+    public List<EzdBigret> addressGet(int schoolId)throws Exception;
 }

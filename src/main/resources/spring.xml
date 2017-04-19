@@ -8,8 +8,8 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd
        http://www.springframework.org/schema/tx
-       http://www.springframework.org/schema/tx/spring-tx.xsd
-">
+       http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+
         <!--扫描包-->
         <context:component-scan base-package="com.ezd.dao,com.ezd.model,com.ezd.service,com.ezd.utils,com.ezd.validators"/>
         <!--注入外部的配置参数-->
@@ -23,6 +23,7 @@
         </bean>
         <!--将sqlSessionFactory的工作交给spring-->
         <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+                <property name="typeAliasesPackage" value="classpsth:com.ezd.model" />
                 <property name="dataSource" ref="DataSource" />
                 <property name="mapperLocations" value="classpath:mapper/*.xml" />
         </bean>

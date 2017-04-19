@@ -4,7 +4,7 @@ import java.util.Date;
 
 /**
  * Created by Administrator on 2017/4/19.
- *///用户消息表
+ */
 public class EzdUnews {
     private int unewsId;
     private int unewsUser;     // int references ezd_umg(umg_id),-- 受信人--用户信息
@@ -12,7 +12,20 @@ public class EzdUnews {
     private String unewsContent;//信件内容
     private Date unewsTime;
     private int unewsStatus;//int default(unews_status=0 or unews_status=1 )--消息状态（0未读 1已读）
+    public EzdUnews() {
+    }
 
+    @Override
+    public String toString() {
+        return "EzdUnews{" +
+                "unewsId=" + unewsId +
+                ", unewsUser=" + unewsUser +
+                ", unewsFrom='" + unewsFrom + '\'' +
+                ", unewsContent='" + unewsContent + '\'' +
+                ", unewsTime=" + unewsTime +
+                ", unewsStatus=" + unewsStatus +
+                '}';
+    }
 
     public int getUnewsId() {
         return unewsId;
