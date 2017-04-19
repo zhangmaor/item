@@ -37,8 +37,6 @@
             </if>
         </where>
     </select>
-
-
     <!--修改数据!!更新一个企业的信息-->
     <update id="update" parameterType="com.ezd.model.EzdEnmg">
         update ezd_enmg

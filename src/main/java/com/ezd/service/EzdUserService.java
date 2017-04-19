@@ -9,7 +9,7 @@ import javax.annotation.Resource;
 
 @Service
 @Transactional
-public class UserService {
+public class EzdUserService {
     @Resource
     private EzdUsersDao ezdUsersDao;
 

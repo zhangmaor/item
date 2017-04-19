@@ -43,4 +43,12 @@
             </if>
         </where>
     </select>
+    <!--忘记密码，修改密码-->
+    <update id="upPasword" parameterType="com.ezd.model.EzdUsers">
+      update ezd_users set user_Pwd = {userPwd}
+    </update>
+    <!--更换号码，和密码-->
+    <update id="upUsers" parameterType="com.ezd.model.EzdUsers">
+      update ezd_users set user_Pwd = {userPwd},user_phone={userPhone}
+    </update>
 </mapper>

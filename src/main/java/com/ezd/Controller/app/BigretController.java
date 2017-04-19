@@ -1,4 +1,4 @@
-package com.ezd.controller.app;
+﻿package com.ezd.controller.app;
 
 import com.ezd.model.EzdBigret;
 import com.ezd.service.EzdBigretService;
@@ -38,6 +38,7 @@ public class BigretController {
         List<EzdBigret> bigretList = ezdBigretService.modeGet(status);
         return bigretList;
     }
+
 
     /**
      * 点击某个学校

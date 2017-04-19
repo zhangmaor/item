@@ -14,7 +14,4 @@
     <select id="getPeopleBrowsing" parameterType="com.ezd.model.EzdEnret">
         SELECT * FROM ezd_enret_browse WHERE browse_en = #{enretId}
     </select>
-
-
-
 </mapper>

@@ -14,10 +14,7 @@ public interface EzdUmgDao {
     //查询所有个人信息
     public List<EzdUmg> getAll(EzdUsers ezdUsers);
     //更新个人信息
-    public List<EzdUmg> upAll(EzdUmg ezdUmg);
-
-
-
+    public int upAll(EzdUmg ezdUmg);
     //根据浏览信息的查询用户
     public List<EzdUmg> getBrowsingUsers(EzdEnretBrowse ezdEnretBrowse);
 
