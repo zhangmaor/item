@@ -1,11 +1,10 @@
 ﻿package com.ezd.model;
-
 import java.util.Date;
 
 /**
- * Created by Administrator on 2017-04-06.
+ * Created by Administrator on 2017-04-06.//用户消息表
  */
-//用户消息表
+
 public class EzdUnews {
     private int unewsId;
     private int unewsUser;     // int references ezd_umg(umg_id),-- 受信人--用户信息
@@ -17,8 +16,7 @@ public class EzdUnews {
     private Date unewsTime;
     private int unewsStatus;//int default(unews_status=0 or unews_status=1 )--消息状态（0未读 1已读）
 
-    public String getUnewsContent() {
-        return unewsContent;
+    public EzdUnews() {
     }
 
     @Override
@@ -32,21 +30,6 @@ public class EzdUnews {
                 ", unewsStatus=" + unewsStatus +
                 '}';
     }
-
-    public Date getUnewsTime() {
-        return unewsTime;
-    }
-
-    public void setUnewsTime(Date unewsTime) {
-        this.unewsTime = unewsTime;
-    }
-
-    public void setUnewsContent(String unewsContent) {
-        this.unewsContent = unewsContent;
-    }
-
-
-
 
     public int getUnewsId() {
         return unewsId;
@@ -72,6 +55,22 @@ public class EzdUnews {
         this.unewsFrom = unewsFrom;
     }
 
+    public String getUnewsContent() {
+        return unewsContent;
+    }
+
+    public void setUnewsContent(String unewsContent) {
+        this.unewsContent = unewsContent;
+    }
+
+    public Date getUnewsTime() {
+        return unewsTime;
+    }
+
+    public void setUnewsTime(Date unewsTime) {
+        this.unewsTime = unewsTime;
+    }
+
     public int getUnewsStatus() {
         return unewsStatus;
     }
@@ -79,5 +78,4 @@ public class EzdUnews {
     public void setUnewsStatus(int unewsStatus) {
         this.unewsStatus = unewsStatus;
     }
-
 }
