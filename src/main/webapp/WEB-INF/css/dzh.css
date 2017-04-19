@@ -1,0 +1,108 @@
+.article-list{
+	margin:0 10px 0 10px;
+}
+.article-list-1{
+	margin-top: -16px ;
+	
+}
+.article-list-1-bigType{
+	float: left;
+}
+.article-list-1-type{
+	width: 210px;
+	height:32px;
+	margin-bottom:30px ;
+	
+}
+.article-list-1-search{
+	float: left;
+	margin-left: 20px;
+	
+}
+.article-list-1-search-1{
+	float: left;
+	width: 210px;
+	height:32px;
+	
+}
+#searchBtn1{
+	float: left;
+	margin: 0;
+	-webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    
+}
+#searchBtn2{
+	float: left;
+	margin: 0;
+	-webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    margin-right: 30px;
+}
+.searchRadio{
+	float: left;
+	padding: 6px 0px 0px 0px;
+}
+.searchRadio input[type='radio']{
+	width: 20px;
+	height: 20px;
+	vertical-align:middle;
+	opacity: 0;
+
+}
+.input_style{
+	background: url(../img/green.png) no-repeat;
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+}
+.radio_bg{
+	background-position: -142px 0 ;
+}
+.radio_bg_check{
+	background-position: -166px 0 ;
+}
+#searchBtn3{
+	float: right;
+	
+}
+
+#btnHidden,#btnEdit,#btnDetails,#btnDelete{
+	margin-left: 10px;
+	margin-bottom: 5px;
+}
+table th,table td{
+	vertical-align: middle!important;
+}
+.thWhite{
+	background-color:white ;
+	
+}
+.miniDiv{
+	background-color: #23C6C8;
+	color: white;
+	text-align: center;
+	border-radius:10px ;
+}
+.smallAddTab th{
+	text-align: right;
+	padding:0px 20px 0px 30px; 
+	vertical-align: middle!important;
+}
+.smallAddTab td{
+	padding-top:10px ;
+	padding-bottom: 10px;
+	vertical-align: middle!important;
+}
+.TabTextBox{
+	min-width: 700px;
+	height:35px ;
+}
+textarea {
+	display: block;
+}
+
+
+

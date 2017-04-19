@@ -23,7 +23,7 @@
 
     </resultMap>
 
-<<<<<<< HEAD
+
     <select id="getAll" resultType="com.ezd.model.EzdEnret">
         select * from ezd_enret ORDER BY enret_creTime DESC;
     </select>
@@ -61,7 +61,8 @@
           enret_type = #{enret_type.retTypeId},
           enret_lwMoney = #{enret_lwMoney},
           enret_hgMoney = #{enret_hgMoney},
-          enret_post = #{enretPost},
+          enret_postOne = #{ezdPostOne.poneId}
+          enret_postTwo = #{ezdPostTwo.ptwoId}
           enret_pg = #{enretPg},
           enret_demand = #{enretDemand},
           enret_status = #{enretStatus.newsStatusId}
@@ -73,18 +74,18 @@
         DELETE FROM ezd_enret WHERE enret_id = #{enretId};
     </delete>
 
-    <insert id="insert" parameterType="com.ezd.model.EzdEnret" >
-        INSERT INTO ezd_enret(nret_enmg,enret_wantNum,enret_type,enret_creTime,enret_lwMoney,enret_hgMoney,enret_post,enret_pg,enret_demand,enret_status)
-          VALUES (#{nretEnmg.enmgId},#{enretWantNum},#{enretType.retTypeId},#{enretCreTime},#{enretLwMoney},#{enretHgMoney},#{enretPost,#{enretPg},#{enretDemand},#{enretStatus.newsStatusId});
-    </insert>
+    <!--<insert id="insert" parameterType="com.ezd.model.EzdEnret" >-->
+        <!--INSERT INTO ezd_enret(nret_enmg,enret_wantNum,enret_type,enret_creTime,enret_lwMoney,enret_hgMoney,enret_post,enret_pg,enret_demand,enret_status)-->
+          <!--VALUES (#{nretEnmg.enmgId},#{enretWantNum},#{enretType.retTypeId},#{enretCreTime},#{enretLwMoney},#{enretHgMoney},#{enretPost},#{enretPg},#{enretDemand,#{enretStatus.newsStatusId});-->
+    <!--</insert>-->
 
-=======
+
     <!--查询全部的信息-->
-    <select id="getAll">
-        select * from ezd_enret
-    </select>
+    <!--<select id="getAll">-->
+        <!--select * from ezd_enret-->
+    <!--</select>-->
     <!--通过一个企业的编号获取信息-->
-    <select id="getOne" parameterType="int ">
+    <select id="getOne" parameterType="int">
         SELECT * from ezd_enret
         where nret_enmg = #{_parameter}
     </select>
@@ -102,7 +103,7 @@
                     enret_pg ,
                     enret_demand ,
                     enret_status,)
-        values (#{nretEnmg},
+        values (#{nretEnmg.enmgId},
                 #{enretWantNum},
                 #{enretType.retTypeId},
                 #{enretCreTime},
@@ -120,5 +121,4 @@
         set enret_status =  #{enretStatus.newsStatusId}
         where enret_id = #{enretId}
     </update>
->>>>>>> a994ff89af3406f04800a015ffe51ae755eb6955
 </mapper>

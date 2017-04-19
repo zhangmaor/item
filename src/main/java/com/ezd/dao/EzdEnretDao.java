@@ -36,5 +36,5 @@ public interface EzdEnretDao {
     public int delete(EzdEnret ezdEnret);
 
     //根据企业添加招聘信息
-    public int insert(EzdEnret ezdEnret);
+    public int add(EzdEnret ezdEnret);
 }

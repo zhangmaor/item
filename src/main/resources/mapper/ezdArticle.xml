@@ -53,5 +53,4 @@
     <select id="getArticleAll" resultType="com.ezd.model.EzdArticle">
         SELECT * FROM ezd_article ORDER BY article_time DESC
     </select>
-
 </mapper>

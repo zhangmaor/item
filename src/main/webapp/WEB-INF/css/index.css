@@ -1,0 +1,122 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+.whole{
+	width: 100%;
+	height: 1000px;
+	
+	
+}
+.header{
+	height: 40px;
+	width: 100%;
+	background-color: #1B8CF2;
+	
+}
+.font-hearder{
+	color: white;
+	padding-top: 10px;
+	float: right;
+}
+.fa-unlock{
+	color: #5AB0F9;
+}
+
+.center{
+	height: 950px;
+	
+}
+.left-center{
+	width: 13%;
+	height: 100%;
+	background-color: #424F57;
+	float: left;
+
+}
+.right-center{
+	width: 87%;
+	height: 100%;
+	background-color: #E4E9EF;
+	float: left;
+	
+}
+
+
+.left-center-1{
+	padding: 5px;
+	padding-top: 20px;
+	padding-bottom: 50px;
+	
+}
+.center-mokuai{
+	
+	padding: 0 25px;
+}
+.mokuai{
+	width: 100%;
+	height: 40px;
+	padding:10px  0px; 
+	padding: ;
+	color: white;
+	padding-left: 20px;
+	border-radius: 3px;
+}
+.mokuai-active{
+	width: 100%;
+	height: 40px;
+	padding:10px  0px; 
+	background-color: #586671;
+	color: white;
+	padding-left: 20px;
+	border-radius: 3px;
+}
+
+
+.right-mokuai{
+	width: 100%;
+	
+	padding-left: 18px;
+	padding-top: 20px;
+	padding-bottom:27px ;
+	
+}
+.practice {
+	padding-left: 22px;
+	color:#B8BFC9;
+}
+
+.right-body{
+	padding:0px 20px ;
+}
+.right-body-main{
+	width: 100%;
+	height: 700px;
+	background-color: white;
+	border-radius: 5px;
+	padding:0 25px;
+	padding-top:20px ;
+}
+.main-1{
+	height: 20px;
+	width: 100%;
+	background-color: #1B8CF2;
+	border-radius: 3px;
+	color: white;
+	padding-left: 10px;
+	font-size: 10px;
+	line-height: 20px;
+}
+.main-1-1{
+	float: left;
+}
+.main-1-2{
+	float: right;
+}
+.main-1-2-1{
+	margin: 0  18px;
+}
+
+
+
+

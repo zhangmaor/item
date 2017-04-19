@@ -1,4 +1,4 @@
-package com.ezd.Controller.background;
+package com.ezd.controller.background;
 
 import com.ezd.model.EzdBigret;
 import com.ezd.service.EzdBigretService;
@@ -11,7 +11,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Administrator on 2017/4/17.

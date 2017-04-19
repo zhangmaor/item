@@ -5,23 +5,23 @@
 <!--这里的namespace还没有确定-->
 <mapper namespace="com.ezd.dao.EzdEnmgDao">
     <resultMap id="enmg" type="com.ezd.model.EzdEnmg">
-        <id column="enmg_id" property="enmgId" /><!--编号-->
-        <result column="enmg_logo" property="enmgLogo" /><!--企业logo-->
-        <result column="enmg_name" property="enmgName" /><!--企业名称-->
-        <result column="enmg_domain" property="enmgDomain" /><!--公司网址-->
-        <result column="enmg_user" property="enmgUser" /><!--联系人-->
-        <result column="enmg_wcontact" property="enmgWcontact" /><!--联系方式-->
-        <result column="enmg_detail" property="enmgDetail" /><!--公司详情-->
-        <result column="enmg_address" property="enmgAddress" /><!--公司地址-->
-        <result column="enmg_scale" property="enmgScale" /><!--公司规模-->
-        <result column="enmg_cretime" property="enmgCretime" /><!--注册时间-->
+        <id column="enmg_id" property="enmgId"/><!--编号-->
+        <result column="enmg_logo" property="enmgLogo"/><!--企业logo-->
+        <result column="enmg_name" property="enmgName"/><!--企业名称-->
+        <result column="enmg_domain" property="enmgDomain"/><!--公司网址-->
+        <result column="enmg_user" property="enmgUser"/><!--联系人-->
+        <result column="enmg_wcontact" property="enmgWcontact"/><!--联系方式-->
+        <result column="enmg_detail" property="enmgDetail"/><!--公司详情-->
+        <result column="enmg_address" property="enmgAddress"/><!--公司地址-->
+        <result column="enmg_scale" property="enmgScale"/><!--公司规模-->
+        <result column="enmg_cretime" property="enmgCretime"/><!--注册时间-->
         <association property="enmgType" resultMap="com.ezd.dao.EzdEntypeDao.entype"/><!--企业类型-->
         <association property="ezdIndustry" resultMap="com.ezd.dao.EzdIndustryDao.industry"/><!--一级行业类型-->
         <association property="ezdSeindustry" resultMap="com.ezd.dao.EzdSeindustryDao.seindustry"/><!--二级行业类型-->
-        <collection property="ezdUmgs" resultMap="com.ezd.dao.EzdUmgDao.umg" /><!--关注本公司的人员列表-->
+        <collection property="ezdUmgs" resultMap="com.ezd.dao.EzdUmgDao.umg"/><!--关注本公司的人员列表-->
         <collection property="ezdEnrets" resultMap="com.ezd.dao.EzdEnretDao.enret"/><!--本公司发布的招聘信息列表-->
         <collection property="ezdBigrets" resultMap="com.ezd.dao.EzdBigretDao.bigret"/><!--本公司发布的大招会信息列表-->
-        <collection property="ezdSchrets" resultMap="com.ezd.dao.EzdSchretDao.schret" /><!--本 公司发布的校招会列表-->
+        <collection property="ezdSchrets" resultMap="com.ezd.dao.EzdSchretDao.schret"/><!--本 公司发布的校招会列表-->
     </resultMap>
 
     <select id="enmgAll" parameterType="com.ezd.model.EzdUminden" resultType="com.ezd.model.EzdEnmg">
@@ -29,7 +29,7 @@
     </select>
 
     <!--通过一个企业编号查询该企业的详细信息-->
-    <select id="getEnmg" parameterType="com.ezd.model.EzdUminden" resultMap="enmg" >
+    <select id="getEnmg" parameterType="com.ezd.model.EzdUminden" resultMap="enmg">
         select * from ezd_enmg
         <where>
             <if test="#{umindenEn!=null}">
@@ -38,7 +38,7 @@
         </where>
     </select>
     <!--修改数据!!更新一个企业的信息-->
-    <update id="update" parameterType="com.ezd.model.EzdEnmg" >
+    <update id="update" parameterType="com.ezd.model.EzdEnmg">
         update ezd_enmg
         set
           enmg_logo = #{enmgLogo} ,
@@ -81,6 +81,8 @@
                 #{enmgCretime},
                 #{ezdIndustry.inId})
     </insert>
-    <!--查询-->
-    <select id=""></select>
+    <!--查询全部的信息-->
+    <select id="getAll" resultMap="com.ezd.dao.EzdEnmgDao.enmg">
+        select * from ezd_enmg
+    </select>
 </mapper>
