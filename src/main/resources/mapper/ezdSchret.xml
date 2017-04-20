@@ -10,6 +10,9 @@
         <result column="schret_time" property="schretTime"/><!--开始时间-->
         <result column="schret_cretime" property="schretCretime"/><!--发布时间-->
         <result column="bigret_post" property="bigretPost"/><!--招聘职位-->
+        <result column="schret_schmg" property="schmgId"/><!--学校信息的ID-->
+        <result column="schret_enmg" property="enmgId"/><!--公司信息的-->
+        <result column="schret_status" property="statusId"/><!--状态的ID-->
         <association property="schretEnmg" resultMap="com.ezd.dao.EzdEnmgDao.enmg"/><!--发布校招会的企业-->
         <association property="schretStatus" resultMap="com.ezd.dao.EzdNewsStatusDao.newsStatus" />
         <association property="schretSchmg" resultMap="com.ezd.dao.EzdSchmgDao.schmap" /><!--学校-->

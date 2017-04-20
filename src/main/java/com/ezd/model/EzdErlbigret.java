@@ -8,10 +8,37 @@ import java.util.Date;
  */
 public class EzdErlbigret {
     private int erlbigretId;
+    private int bigMgId; // 大招会id
+    private int userMgId; // 报名用户的id
+    private int statusId; //报名状态的ID
     private EzdBigret erlbigretMes;//references ezd_bigret(bigret_id), --  报名了那个大招会
     private EzdUmg erlbigretUser;//references ezd_umg(umg_id), --   谁报名了大招会
     private EzdRestatus erlbigretStatus;//references ezd_restatus(restatus_id), --  报名状态 (已报名 审核 录用 拒绝)
     private Date erlbigretTime;//报名时间
+
+    public int getBigMgId() {
+        return bigMgId;
+    }
+
+    public void setBigMgId(int bigMgId) {
+        this.bigMgId = bigMgId;
+    }
+
+    public int getUserMgId() {
+        return userMgId;
+    }
+
+    public void setUserMgId(int userMgId) {
+        this.userMgId = userMgId;
+    }
+
+    public int getStatusId() {
+        return statusId;
+    }
+
+    public void setStatusId(int statusId) {
+        this.statusId = statusId;
+    }
 
     public int getErlbigretId() {
         return erlbigretId;

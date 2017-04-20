@@ -17,6 +17,7 @@
         <result column="umg_sayMf" property="umgSayMf"/><!--自我评价-->
         <result column="umg_education" property="umgEducation"/><!--教育经历-->
         <result column="umg_uptime" property="umgUptime"/><!--修改时间-->
+        <result column="umg_user" property="userId"/><!--用户表的ID-->
         <association property="umgUser" resultMap="com.ezd.dao.EzdUsersDao.users"/><!--对应的是用户ezdusers.xml(用户表)-->
         <collection property="ezdUnewss" resultMap="com.ezd.dao.EzdUnewsDao.unews"/><!--对应的是(消息)信息表（ezdUnews.xml）-->
         <collection property="ezdEnmgs" resultMap="com.ezd.dao.EzdEnmgDao.enmg"/><!--关注的公司-->

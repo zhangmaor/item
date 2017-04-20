@@ -13,9 +13,27 @@ public class EzdSchmg {
     private String schmgName ;     //学校名称
     private String schmgMg;        //学校详情
     private String schmgAddress;   //学校地址
+    private int typeId;  //学校性质ID
     private EzdSchtype schmgType;         //学校性质
     private Date schmgCretime;     //学校成立时间
     private List<EzdBigret> ezdBigrets;//在本学校举行的校招会
+
+    public int getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(int typeId) {
+        this.typeId = typeId;
+    }
+
+    public List<EzdBigret> getEzdBigrets() {
+        return ezdBigrets;
+    }
+
+    public void setEzdBigrets(List<EzdBigret> ezdBigrets) {
+        this.ezdBigrets = ezdBigrets;
+    }
+
     @Override
     public String toString() {
         return "EzdSchmg{" +
