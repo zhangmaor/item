@@ -11,8 +11,7 @@ public class EzdIndustry {
     private String inName ; //varchar(40)  一级行业
     private List<EzdSeindustry> ezdSeindustries;
 
-    public EzdIndustry() {
-    }
+
 
     @Override
     public String toString() {

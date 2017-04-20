@@ -8,7 +8,11 @@ import java.util.List;
  * 校招会
  */
 public class EzdSchret {
+
     private int schretId;
+    private int schmgId ; //  INT ,--   那所学校开校招会
+    private int enmgId ; //INT ,--  那家公司在招聘
+    private int statusId ; // INT,--  校招聘状态 （未开始 已结束 进行中)
     private EzdSchmg schretSchmg;//references ezd_schmg(schmg_id),--   那所学校开校招会
     private EzdEnmg schretEnmg;//references ezd_enmg(enmg_id),--  那家公司在招聘
     private EzdNewsStatus schretStatus;//references ezd_newsStatus(newsStatus_id),--  校招聘状态 （未开始 已结束 进行中)
@@ -17,6 +21,30 @@ public class EzdSchret {
     private Date schretCretime;//校招会发布时间
     private String bigretPost;//招聘职位
     private List<EzdErlschret> ezdErlschrets;//报名本校招会的信息
+
+    public int getSchmgId() {
+        return schmgId;
+    }
+
+    public void setSchmgId(int schmgId) {
+        this.schmgId = schmgId;
+    }
+
+    public int getEnmgId() {
+        return enmgId;
+    }
+
+    public void setEnmgId(int enmgId) {
+        this.enmgId = enmgId;
+    }
+
+    public int getStatusId() {
+        return statusId;
+    }
+
+    public void setStatusId(int statusId) {
+        this.statusId = statusId;
+    }
 
     @Override
     public String toString() {

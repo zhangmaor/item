@@ -18,16 +18,16 @@ public class EzdEnmg {
     private String enmgDetail ;//公司详情
     private String enmgAddress ;//公司地址
     private int enmgType; //references ezd_entype(entype_id),--企业类型
+    private int enmgIndustry; //企业所在行业
     private String enmgScale ;//公司规模
     private Date enmgCretime ; //公司成立时间
-    private int enmgIndustry; //企业所在行业
     private EzdEntype ezdEntype ;  //references ezd_entype(entype_id),--企业类型
+    private EzdSeindustry  ezdSeindustry ; //二级 企业类型
     private List<EzdUmg> ezdUmgs;//关注该公司的人
     private List<EzdEnret> ezdEnrets;//本公司发布的招聘信息
     private List<EzdBigret> ezdBigrets;//本公司发布的大招会信息
     private List<EzdSchret> ezdSchrets;//本公司发布的校招会
     private EzdIndustry ezdIndustry; //本公司的 一级企业类型
-    private EzdSeindustry  ezdSeindustry ; //二级 企业类型
 
     public EzdIndustry getEzdIndustry() {
         return ezdIndustry;

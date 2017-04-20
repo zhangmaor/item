@@ -152,6 +152,7 @@ CREATE TABLE ezd_postOne( -- 招聘类型一级表
 	pone_id INT PRIMARY KEY AUTO_INCREMENT,
 	pone_name VARCHAR(20) NOT NULL	
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
+
 CREATE TABLE ezd_postTwo( -- 招聘类型二级表
 	ptwo_id INT PRIMARY KEY AUTO_INCREMENT,
 	ptwo_postOne INT ,
@@ -194,8 +195,8 @@ CREATE TABLE ezd_bigret(--  大招会信息表
 	bigret_status INT ,--  大招会状态(未开始  进行中 已结束)
 	bigret_creTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,--  发布时间
 	bigret_detail TEXT  NOT NULL,--  大招会详情
-	enret_postOne int,--  招聘岗位1
-	enret_postTwo int ,--  招聘岗位2
+	bigret_postOne int,--  招聘岗位1
+	bigret_postTwo int ,--  招聘岗位2
 	bigret_enmg INT --   哪家公司发布的
 	
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
@@ -223,7 +224,7 @@ CREATE TABLE ezd_schret(--  校招会
 CREATE TABLE ezd_erlschret(--  校招会包名表
 	erlschret_id INT PRIMARY KEY AUTO_INCREMENT,
 	erlschret_user INT ,--   谁报名了
-	erlschret_schret INT ,--   报名了那个校招会\
+	erlschret_schret INT ,--   报名了那个校招会
 	erlschret_status INT , --  包名状态 (已报名 审核 录用 拒绝)
 	erlschret_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 		

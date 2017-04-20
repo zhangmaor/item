@@ -13,6 +13,10 @@
         <result column="bigret_address" property="bigretAddress"/><!--大招会地址-->
         <result column="bigret_creTime" property="bigretCreTime"/><!--大招会发布时间-->
         <result column="bigret_detail" property="bigretDetail"/><!--大招会详情-->
+        <result column="bigret_postOne" property="postOne"/><!-- 一级岗位的ID-->
+        <result column="bigret_postTwo" property="postTwo"/><!-- 二级岗位的ID-->
+        <result column="bigret_status" property="retStatus"/><!-- 消息状态的 id-->
+        <result column="bigret_enmg" property="enmgId"/><!-- 消息状态的 id-->
         <association property="ezdPostOne" resultMap="com.ezd.dao.EzdPostOneDao.postOne" /><!-- 一级招聘岗位 -->
         <association property="ezdPostTwo" resultMap="com.ezd.dao.EzdPostTwoDao.postTwo" /><!-- 二级招聘岗位 -->
         <association property="bigretStatus" resultMap="com.ezd.dao.EzdNewsStatusDao.newsStatus"/><!--大招会的状态-->
@@ -55,12 +59,12 @@
           ,bigret_title = #{bigretTitle}
           ,bigret_time = #{bigretTime}
           ,bigret_address = #{bigretAddress}
-          ,bigret_status = #{bigretStatus.newsStatusId}
+          ,bigret_status = #{retStatus}
           ,bigret_creTime = #{bigretCreTime}
           ,bigret_detail = #{bigretDetail}
-          ,bigret_postOne = #{ezdPostOne.poneId}
-          ,bigret_postTwo = #{ezdPostTwo.ptwoId}
-          ,bigret_enmg = #{bigretEnmg.enmgId}
+          ,bigret_postOne = #{postOne}
+          ,bigret_postTwo = #{postTwo}
+          ,bigret_enmg = #{enmgId}
       WHERE
          bigret_id = #{bigretId}
     </update>
@@ -74,7 +78,7 @@
     <!--生成一个大招会-->
     <insert id="add" parameterType="com.ezd.model.EzdBigret">
         INSERT  into ezd_bigret(bigret_logo , bigret_title, bigret_time , bigret_address , bigret_status  , bigret_creTime ,bigret_detail,bigret_postOne,bigret_postTwo ,bigret_enmg  )
-        VALUES (#{bigretLogo},#{bigretTitle},#{bigretTime},#{bigretAddress},#{bigretStatus.newsStatusId} , #{bigretCreTime},#{bigretDetail},#{ezdPostOne.poneId},#{ezdPostTwop.ptwoId},#{bigretEnmg.enmgId})
+        VALUES (#{bigretLogo},#{bigretTitle},#{bigretTime},#{bigretAddress},#{retStatus} , #{bigretCreTime},#{bigretDetail},#{postOne},#{postTwo},#{enmgId})
     </insert>
 
 

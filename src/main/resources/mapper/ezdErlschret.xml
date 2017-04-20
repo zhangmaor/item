@@ -7,6 +7,9 @@
     <resultMap id="erlschret" type="com.ezd.model.EzdErlschret"><!--校招会报名表-->
         <id column="erlschret_id" property="erlschretId"/><!--编号-->
         <result column="erlschret_time" property="erlschretTime"/><!--报名时间-->
+        <result column="schret_schmg" property="schmgId"/><!--报名时间-->
+        <result column="schret_enmg" property="enmgId"/><!--报名时间-->
+        <result column="schret_status" property="statusId"/><!--状态的ID-->
         <association property="erlschretUser" resultMap="com.ezd.dao.EzdUmgDao.umg"/><!--报名用户-->
         <association property="erlschretSchret" resultMap="com.ezd.dao.EzdSchretDao.schret"/><!--哪个校招会-->
         <association property="erlschretStatus" resultMap="com.ezd.dao.EzdRestatusDao.restatus"/><!--报名状态-->
