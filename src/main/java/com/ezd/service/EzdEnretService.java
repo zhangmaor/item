@@ -40,16 +40,17 @@ public class EzdEnretService {
     public List<EzdEnret> getAll() throws Exception{
         List<EzdEnret> list = new ArrayList<>();
         list = ezdEnretDao.getAll();
+        System.out.println(list);
         for (EzdEnret li:list) {
             List<EzdErlenret> personList = ezdErlenretDao.getPersonEnrolled(li);
-            EzdEnmg enmg = ezdEnmgDao.getEnmg(li.getNretEnmg());
+            /*EzdEnmg enmg = ezdEnmgDao.getEnmg(li.getNretEnmg());
             List<EzdEnretBrowse> peopleBrowsing = ezdEnretBrowseDao.getPeopleBrowsing(li);
             for (EzdEnretBrowse people:peopleBrowsing) {
                 List<EzdUmg> browsingUsers = ezdUmgDao.getBrowsingUsers(people);
                 li.setEzdUmgs(browsingUsers);
-            }
+            }*/
             li.setEzdErlenrets(personList);
-            li.setEzdEnmg(enmg);
+            /*li.setEzdEnmg(enmg);*/
         }
         return list;
     }

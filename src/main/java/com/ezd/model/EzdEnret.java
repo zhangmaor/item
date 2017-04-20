@@ -29,28 +29,7 @@ public class EzdEnret {
     private List<EzdUmg> ezdUmgs ;//对本信息浏览的人列表
 
 
-
-    public List<EzdUmg> getEzdUmgs() {
-        return ezdUmgs;
-    }
-
-    public void setEzdUmgs(List<EzdUmg> ezdUmgs) {
-        this.ezdUmgs = ezdUmgs;
-    }
-
-    public List<EzdErlenret> getEzdErlenrets() {
-        return ezdErlenrets;
-    }
-
-    public void setEzdErlenrets(List<EzdErlenret> ezdErlenrets) {
-        this.ezdErlenrets = ezdErlenrets;
-    }
-
-    public EzdEnret() {
-    }
-
     public int getEnretId() {
-
         return enretId;
     }
 
@@ -58,6 +37,13 @@ public class EzdEnret {
         this.enretId = enretId;
     }
 
+    public int getNretEnmg() {
+        return nretEnmg;
+    }
+
+    public void setNretEnmg(int nretEnmg) {
+        this.nretEnmg = nretEnmg;
+    }
 
     public int getEnretWantNum() {
         return enretWantNum;
@@ -67,6 +53,13 @@ public class EzdEnret {
         this.enretWantNum = enretWantNum;
     }
 
+    public int getEnretType() {
+        return enretType;
+    }
+
+    public void setEnretType(int enretType) {
+        this.enretType = enretType;
+    }
 
     public Date getEnretCreTime() {
         return enretCreTime;
@@ -92,20 +85,20 @@ public class EzdEnret {
         this.enretHgMoney = enretHgMoney;
     }
 
-    public EzdPostOne getEzdPostOne() {
-        return ezdPostOne;
+    public int getEnretPostOne() {
+        return enretPostOne;
     }
 
-    public void setEzdPostOne(EzdPostOne ezdPostOne) {
-        this.ezdPostOne = ezdPostOne;
+    public void setEnretPostOne(int enretPostOne) {
+        this.enretPostOne = enretPostOne;
     }
 
-    public EzdPostTwo getEzdPostTwo() {
-        return ezdPostTwo;
+    public int getEnretPostTwo() {
+        return enretPostTwo;
     }
 
-    public void setEzdPostTwo(EzdPostTwo ezdPostTwo) {
-        this.ezdPostTwo = ezdPostTwo;
+    public void setEnretPostTwo(int enretPostTwo) {
+        this.enretPostTwo = enretPostTwo;
     }
 
     public String getEnretPg() {
@@ -124,36 +117,28 @@ public class EzdEnret {
         this.enretDemand = enretDemand;
     }
 
-    public int getNretEnmg() {
-        return nretEnmg;
+    public int getEnretStatus() {
+        return enretStatus;
     }
 
-    public void setNretEnmg(int nretEnmg) {
-        this.nretEnmg = nretEnmg;
+    public void setEnretStatus(int enretStatus) {
+        this.enretStatus = enretStatus;
     }
 
-    public int getEnretType() {
-        return enretType;
+    public EzdPostOne getEzdPostOne() {
+        return ezdPostOne;
     }
 
-    public void setEnretType(int enretType) {
-        this.enretType = enretType;
+    public void setEzdPostOne(EzdPostOne ezdPostOne) {
+        this.ezdPostOne = ezdPostOne;
     }
 
-    public int getEnretPostOne() {
-        return enretPostOne;
+    public EzdPostTwo getEzdPostTwo() {
+        return ezdPostTwo;
     }
 
-    public void setEnretPostOne(int enretPostOne) {
-        this.enretPostOne = enretPostOne;
-    }
-
-    public int getEnretPostTwo() {
-        return enretPostTwo;
-    }
-
-    public void setEnretPostTwo(int enretPostTwo) {
-        this.enretPostTwo = enretPostTwo;
+    public void setEzdPostTwo(EzdPostTwo ezdPostTwo) {
+        this.ezdPostTwo = ezdPostTwo;
     }
 
     public EzdRetType getEzdRetType() {
@@ -172,14 +157,6 @@ public class EzdEnret {
         this.ezdEnmg = ezdEnmg;
     }
 
-    public int getEnretStatus() {
-        return enretStatus;
-    }
-
-    public void setEnretStatus(int enretStatus) {
-        this.enretStatus = enretStatus;
-    }
-
     public EzdNewsStatus getEzdNewsStatus() {
         return ezdNewsStatus;
     }
@@ -188,8 +165,44 @@ public class EzdEnret {
         this.ezdNewsStatus = ezdNewsStatus;
     }
 
+    public List<EzdErlenret> getEzdErlenrets() {
+        return ezdErlenrets;
+    }
+
+    public void setEzdErlenrets(List<EzdErlenret> ezdErlenrets) {
+        this.ezdErlenrets = ezdErlenrets;
+    }
+
+    public List<EzdUmg> getEzdUmgs() {
+        return ezdUmgs;
+    }
+
+    public void setEzdUmgs(List<EzdUmg> ezdUmgs) {
+        this.ezdUmgs = ezdUmgs;
+    }
+
     @Override
     public String toString() {
-        return "EzdEnret";
+        return "EzdEnret{" +
+                "enretId=" + enretId +
+                ", nretEnmg=" + nretEnmg +
+                ", enretWantNum=" + enretWantNum +
+                ", enretType=" + enretType +
+                ", enretCreTime=" + enretCreTime +
+                ", enretLwMoney=" + enretLwMoney +
+                ", enretHgMoney=" + enretHgMoney +
+                ", enretPostOne=" + enretPostOne +
+                ", enretPostTwo=" + enretPostTwo +
+                ", enretPg='" + enretPg + '\'' +
+                ", enretDemand='" + enretDemand + '\'' +
+                ", enretStatus=" + enretStatus +
+                ", ezdPostOne=" + ezdPostOne +
+                ", ezdPostTwo=" + ezdPostTwo +
+                ", ezdRetType=" + ezdRetType +
+                ", ezdEnmg=" + ezdEnmg +
+                ", ezdNewsStatus=" + ezdNewsStatus +
+                ", ezdErlenrets=" + ezdErlenrets +
+                ", ezdUmgs=" + ezdUmgs +
+                '}';
     }
 }
