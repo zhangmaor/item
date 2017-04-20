@@ -20,50 +20,58 @@ import java.util.List;
 public class BgBigret {
     @Resource
     private EzdBigretService ezdBigretService;
+
+    @RequestMapping("/index")
+    public String aaaa(HttpServletRequest request) {
+        System.out.println("aaaaaa");
+        return "sxgl";
+    }
+
     /**
      * 进入大招会列表页面
      */
     @RequestMapping("/bigret")
-    public String displayBigret(HttpServletRequest request, Model model){
+    public String displayBigret(HttpServletRequest request, Model model) {
         List<EzdBigret> bigretList = ezdBigretService.getAll();//这个有问题吧！！！
         HttpSession session = request.getSession();
-        session.setAttribute("list",bigretList);
+        session.setAttribute("list", bigretList);
 
 
         System.out.println(bigretList);
         return "indexTest";
-            }
+    }
 
     /**
      * 点击其中一个大招会信息
      * 进入大招会详情
-     *
      */
     @RequestMapping("/bigretDetail")
-    public String datail(HttpServletRequest request,int id,Model model){
+    public String datail(HttpServletRequest request, int id, Model model) {
         //EzdBigret ezdBigret = ezdBigretService.get(id);
         List<EzdBigret> list = (List<EzdBigret>) request.getSession().getAttribute("list");
-        for (EzdBigret e: list
-             ) {
-            if(e.getBigretId()==id) {
+        for (EzdBigret e : list
+                ) {
+            if (e.getBigretId() == id) {
                 model.addAttribute("ezdBigret", e);
             }
         }
 
         return "forward:redirectBig";
     }
+
     @RequestMapping("/redirectBig")
-    public String da(Model model ){
-       // Map<String, Object> stringObjectMap = model.asMap();
+    public String da(Model model) {
+        // Map<String, Object> stringObjectMap = model.asMap();
         //System.out.println(stringObjectMap.get("list"));
         return "bret";
     }
+
     /**
      * 点击修改
      * 进入修改页面
      */
     @RequestMapping("/updateBigret")
-    public String update(int id){
+    public String update(int id) {
         EzdBigret ezdBigret = ezdBigretService.get(id);
         return "";
     }
@@ -71,6 +79,7 @@ public class BgBigret {
     /**
      * 提交修改的数据
      * 看返回值
+     *
      * @param
      * @param ezdBigret
      * @param id
@@ -78,29 +87,31 @@ public class BgBigret {
 
     @RequestMapping("/actionUpdate")
     @ResponseBody
-    public boolean actionUp(EzdBigret ezdBigret, int id){
+    public boolean actionUp(EzdBigret ezdBigret, int id) {
         boolean update = ezdBigretService.update(ezdBigret, id);
         return update;
     }
 
     /**
      * 进入添加页面
+     *
      * @return
      */
     @RequestMapping("/insert")
-    public String getAdd(){
+    public String getAdd() {
         return "";
     }
 
     /**
      * 提交添加页面
+     *
      * @param ezdBigret
      * @return
      */
     @RequestMapping("/actionInsert")
-    public String add(EzdBigret ezdBigret, Model model){
+    public String add(EzdBigret ezdBigret, Model model) {
         boolean add = ezdBigretService.add(ezdBigret);
-        model.addAttribute("result",add);
+        model.addAttribute("result", add);
         return "";
     }
 }

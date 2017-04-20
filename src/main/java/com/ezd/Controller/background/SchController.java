@@ -1,4 +1,4 @@
-package com.ezd.Controller.background;
+package com.ezd.controller.background;
 
 import com.ezd.model.EzdSchmg;
 import com.ezd.service.EzdSchmgService;
@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;

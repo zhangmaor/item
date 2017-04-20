@@ -196,13 +196,6 @@ public class EzdEnmg {
                 ", enmgScale='" + enmgScale + '\'' +
                 ", enmgCretime=" + enmgCretime +
                 ", enmgIndustry=" + enmgIndustry +
-                ", ezdEntype=" + ezdEntype +
-                ", ezdUmgs=" + ezdUmgs +
-                ", ezdEnrets=" + ezdEnrets +
-                ", ezdBigrets=" + ezdBigrets +
-                ", ezdSchrets=" + ezdSchrets +
-                ", ezdIndustry=" + ezdIndustry +
-                ", ezdSeindustry=" + ezdSeindustry +
                 '}';
     }
 }

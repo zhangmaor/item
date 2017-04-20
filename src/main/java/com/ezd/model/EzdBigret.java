@@ -28,14 +28,9 @@ public class EzdBigret {
                 ", bigretLogo='" + bigretLogo + '\'' +
                 ", bigretTitle='" + bigretTitle + '\'' +
                 ", bigretTime=" + bigretTime +
-                ", bigretAddress='" + bigretAddress + '\'' +
-                ", bigretStatus=" + bigretStatus +
+                ", bigretAddress=" + bigretAddress +
                 ", bigretCreTime=" + bigretCreTime +
                 ", bigretDetail='" + bigretDetail + '\'' +
-                ", ezdPostOne=" + ezdPostOne +
-                ", ezdPostTwo=" + ezdPostTwo +
-                ", bigretEnmg=" + bigretEnmg +
-                ", ezdErlbigrets=" + ezdErlbigrets +
                 '}';
     }
 

@@ -190,26 +190,6 @@ public class EzdEnret {
 
     @Override
     public String toString() {
-        return "EzdEnret{" +
-                "enretId=" + enretId +
-                ", nretEnmg=" + nretEnmg +
-                ", enretWantNum=" + enretWantNum +
-                ", enretType=" + enretType +
-                ", enretCreTime=" + enretCreTime +
-                ", enretLwMoney=" + enretLwMoney +
-                ", enretHgMoney=" + enretHgMoney +
-                ", enretPostOne=" + enretPostOne +
-                ", enretPostTwo=" + enretPostTwo +
-                ", enretPg='" + enretPg + '\'' +
-                ", enretDemand='" + enretDemand + '\'' +
-                ", enretStatus=" + enretStatus +
-                ", ezdPostOne=" + ezdPostOne +
-                ", ezdPostTwo=" + ezdPostTwo +
-                ", ezdRetType=" + ezdRetType +
-                ", ezdEnmg=" + ezdEnmg +
-                ", ezdNewsStatus=" + ezdNewsStatus +
-                ", ezdErlenrets=" + ezdErlenrets +
-                ", ezdUmgs=" + ezdUmgs +
-                '}';
+        return "EzdEnret";
     }
 }

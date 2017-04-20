@@ -25,6 +25,7 @@ public class EzdEnretController {
     @Resource
     private EzdEnretService ezdEnretService;
 
+
     /**
      * 查询出所有招聘信息
      */

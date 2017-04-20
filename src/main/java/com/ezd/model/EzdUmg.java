@@ -129,28 +129,7 @@ public class EzdUmg {
 
     @Override
     public String toString() {
-        return "EzdUmg{" +
-                "umgId=" + umgId +
-                ", umgUser=" + umgUser +
-                ", umgPhoto='" + umgPhoto + '\'' +
-                ", umgName='" + umgName + '\'' +
-                ", umgSex='" + umgSex + '\'' +
-                ", umgBirthday=" + umgBirthday +
-                ", umgEmail='" + umgEmail + '\'' +
-                ", umgSchool='" + umgSchool + '\'' +
-                ", umgMajor='" + umgMajor + '\'' +
-                ", umgDegree='" + umgDegree + '\'' +
-                ", umgSayMf='" + umgSayMf + '\'' +
-                ", umgEducation='" + umgEducation + '\'' +
-                ", umgUptime=" + umgUptime +
-                ", ezdEnmgs=" + ezdEnmgs +
-                ", ezdUnewss=" + ezdUnewss +
-                ", ezdErlenrets=" + ezdErlenrets +
-                ", ezdEnrets=" + ezdEnrets +
-                ", ezdErlbigrets=" + ezdErlbigrets +
-                ", ezdErlschrets=" + ezdErlschrets +
-                ", ezdReadartis=" + ezdReadartis +
-                '}';
+        return "enzUnmg";
     }
 
     public Date getUmgBirthday() {

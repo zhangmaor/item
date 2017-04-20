@@ -8,8 +8,8 @@
         <result column="readarti_article" property="readartiArticle" /><!--哪篇文章-->
         <result column="readarti_user" property="readartiUser" /><!--谁阅读的-->
         <result column="readarti_time" property="readartiTime"/><!--阅读时间-->
-        <association property="readartiUser" resultMap="com.ezd.dao.EzdUmgDao.umg"/><!--阅读的人-->
-        <association property="readartiArticle" resultMap="com.ezd.dao.EzdArticlDao.article"/><!--阅读的文章-->
+        <association property="ezdUmg" resultMap="com.ezd.dao.EzdUmgDao.umg"/><!--阅读的人-->
+        <association property="ezdArticle" resultMap="com.ezd.dao.EzdArticlDao.article"/><!--阅读的文章-->
     </resultMap>
 
 

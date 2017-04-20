@@ -12,7 +12,7 @@
         <result column="bigret_post" property="bigretPost"/><!--招聘职位-->
         <association property="schretEnmg" resultMap="com.ezd.dao.EzdEnmgDao.enmg"/><!--发布校招会的企业-->
         <association property="schretStatus" resultMap="com.ezd.dao.EzdNewsStatusDao.newsStatus" />
-        <association property="schretSchmg" resultMap="com.ezd.dao.EzdSchmgDao.schmg" /><!--学校-->
+        <association property="schretSchmg" resultMap="com.ezd.dao.EzdSchmgDao.schmap" /><!--学校-->
         <collection property="ezdErlschrets" resultMap="com.ezd.dao.EzdErlschretDao.erlschret"/><!--校招会报名信息-->
     </resultMap>
 </mapper>

@@ -20,9 +20,9 @@
         <result column="enret_demand" property="enretDemand"/><!--招聘要求-->
         <association property="ezdPostOne" resultMap="com.ezd.dao.EzdPostOneDao.postOne" /><!-- 一级招聘岗位 -->
         <association property="ezdPostTwo" resultMap="com.ezd.dao.EzdPostTwoDao.postTwo" /><!-- 二级招聘岗位 -->
-        <association property="nretEnmg" resultMap="com.ezd.dao.EzdEnmgDao.enmg"/><!--发布信息的公司-->
+        <association property="ezdEnmg" resultMap="com.ezd.dao.EzdEnmgDao.enmg"/><!--发布信息的公司-->
         <association property="enretStatus" resultMap="com.ezd.dao.EzdNewsStatusDao.newsStatus" /><!--该招聘信息的状态-->
-        <association property="enretType" resultMap="com.ezd.dao.EzdRetTypeDao.retType" /><!--招聘类型-->
+        <association property="ezdRetType" resultMap="com.ezd.dao.EzdRetTypeDao.retType" /><!--招聘类型-->
         <collection property="ezdErlenrets" resultMap="com.ezd.dao.EzdErlenretDao.erlenret"/><!--对应的报名信息表-->
         <collection property="ezdUmgs" resultMap="com.ezd.dao.EzdUmgDao.umg"/><!--对应的浏览人列表-->
 
@@ -62,16 +62,16 @@
     <!--根据企业id更改招聘信息-->
     <update id="update" parameterType="com.ezd.model.EzdEnret" >
         UPDATE ezd_enret SET
-          enret_wantNum = #{enret_wantNum},
+          enret_wantNum = #{enretWantNum},
           enret_type = #{enretType},
-          enret_lwMoney = #{enret_lwMoney},
-          enret_hgMoney = #{enret_hgMoney},
+          enret_lwMoney = #{enretLwMoney},
+          enret_hgMoney = #{enretHgMoney},
           enret_postOne = #{enretPostOne}
           enret_postTwo = #{enretPostTwo}
           enret_pg = #{enretPg},
           enret_demand = #{enretDemand},
           enret_status = #{newsStatusId}
-         WHERE enret_id = #{enret_id}
+         WHERE enret_id = #{enretId}
     </update>
 
 
