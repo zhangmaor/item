@@ -1,7 +1,10 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
-
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme()+"://" +request.getServerName()+":" +request.getServerPort()+path+"/" ;
+%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -13,7 +16,7 @@
 		<script src="/js/jquery.nouislider.js"></script>
 		<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="/css/index.css" />
-		<link rel="stylesheet" type="text/css" href="/Font-Awesome/css/font-awesome.css" />
+		<link rel="stylesheet" type="text/css" href="/fa/css/font-awesome.css" />
 		<link rel="stylesheet" type="text/css" href="/css/font-awesome.css" />
 		<link rel="stylesheet" type="text/css" href="/css/sxgl.css" />
 		
@@ -506,19 +509,22 @@
 
                 $.ajax({
                     type: "get", //请求的方式，也有get请求
-                    url: "enret/ajaxGetAll", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
+                    url: "<%=path%>/enret/ajaxGetAll", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
                     dataType: "json", //json格式，后台返回的数据为json格式的。
                     success: function(result){
                         var dataObj = result, //返回的result为json格式的数据
                             con = "";
                         $.each(dataObj, function(index, item){
                             con += "<tr>";
-                            con += "<td>"+item.nretEnmg.enmgName+"</td>";
-                            con += "<td>"+item.ezdPostTwo+"</td>";
+                            con += "<td>"+item.ezdEnmg.enmgName+"</td>";
+                            con += "<td>"+item.ezdPostTwo.ptwoName+"</td>";
                             con += "<td>"+item.enretDemand+"</td>";
                             con += "<td>"+item.enretWantNum+"</td>";
                             con += "<td>"+item.enretWantNum+"</td>";
-                            con += "<td>"+item.enretHgMoney+"</td>";
+                            con += "<td>"+item.enretLwMoney+"-"+item.enretHgMoney+"</td>";
+                            con += "<td><span class='label label-warning'>停招</span></td>";
+                            con += "<td><button type='button' class='btn btn-primary' data-toggle='modal' data-target='#update_sx'>修改</button>"+
+                            "<button type='button' class='btn btn-danger' data-toggle='modal' data-target='#del_sx'>删除</button></td>";
                             con += "</tr>";
                         });
 
@@ -539,17 +545,17 @@
 		
 		$(function(){
 			$("#sxgl").on("click",function(){
-				window.location.href="sxgl.html";
+				window.location.href="index";
 			//	$(".right-center").load("sxgl.html .right-mokuai,#one,#two");
 			});
 			$("#qzgl").on("click",function(){
-				$(".right-center").load("qzgl.html");
+				$(".right-center").load("qzgl.jsp");
 			});
 			$("#xxgl").on("click",function(){
-				$(".right-center").load("xxgl.html");
+				$(".right-center").load("xxgl.jsp");
 			});	
 			$("#dzhgl").on("click",function(){
-				$(".right-center").load("dzhgl.html");
+				$(".right-center").load("dzhgl.jsp");
 			});
 		})
 		

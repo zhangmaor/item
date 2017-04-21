@@ -8,6 +8,15 @@ public class EzdPostTwo {
     private int  ptwoId; //INT PRIMARY KEY AUTO_INCREMENT,
     private EzdPostOne ezdPostOne; // INT ,
     private String ptwoName; // VARCHAR(20)
+    private int postOneId;
+
+    public int getPostOneId() {
+        return postOneId;
+    }
+
+    public void setPostOneId(int postOneId) {
+        this.postOneId = postOneId;
+    }
 
     public int getPtwoId() {
         return ptwoId;
@@ -39,6 +48,7 @@ public class EzdPostTwo {
                 "ptwoId=" + ptwoId +
                 ", ezdPostOne=" + ezdPostOne +
                 ", ptwoName='" + ptwoName + '\'' +
+                ", postOneId=" + postOneId +
                 '}';
     }
 }

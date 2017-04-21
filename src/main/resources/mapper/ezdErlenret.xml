@@ -15,7 +15,7 @@
     </resultMap>
 
     <!--根据招聘信息查出报名的人-->
-    <select id="getPersonEnrolled" parameterType="com.ezd.model.EzdEnret">
+    <select id="getPersonEnrolled" resultType="com.ezd.model.EzdErlenret" parameterType="com.ezd.model.EzdEnret">
         SELECT * FROM ezd_erlenret WHERE erlenret_enret = #{enretId}
     </select>
 

@@ -11,7 +11,7 @@
     </resultMap>
 
     <!--根据招聘信息查询浏览过此招聘信息的人-->
-    <select id="getPeopleBrowsing" parameterType="com.ezd.model.EzdEnret">
+    <select id="getPeopleBrowsing" parameterType="com.ezd.model.EzdEnret" resultMap="EnretBrowse">
         SELECT * FROM ezd_enret_browse WHERE browse_en = #{enretId}
     </select>
 </mapper>

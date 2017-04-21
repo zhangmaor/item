@@ -6,9 +6,15 @@
 <mapper namespace="com.ezd.dao.EzdPostTwoDao">
     <resultMap id="postTwo" type="com.ezd.model.EzdPostTwo"> <!--二级招聘类型-->
         <id column="ptwo_id" property="ptwoId" />
-        <result property="ptwo_name" column="ptwoName"/>
+        <result property="ptwoName" column="ptwo_name"/>
+        <result property="postOneId" column="ptwo_postOne"/>
+        <association property="ezdPostOne" resultMap="com.ezd.dao.EzdPostOneDao.postOne" />
     </resultMap>
-    <select id="findPostTwo" resultMap="com.ezd.dao.EzdPostOneDao.postOne"  parameterType="int">
+    <!--<select id="findPostTwo" resultMap="com.ezd.dao.EzdPostOneDao.postOne"  parameterType="int">
         select * from ezd_postTwo where ptwo_postOne = #{_parameter}
+    </select>-->
+
+    <select id="findPostTwo" resultMap="postTwo"  parameterType="int">
+        select * from ezd_posttwo where ptwo_id = #{_parameter}
     </select>
 </mapper>

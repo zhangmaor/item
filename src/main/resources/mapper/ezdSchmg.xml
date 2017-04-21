@@ -9,6 +9,7 @@
         <result column="schmg_domain" property="schmgDomain"/><!--网址-->
         <result column="schmg_name" property="schmgName"/><!--学校名字-->
         <result column="schmg_mg" property="schmgMg"/><!--学校详情-->
+        <result column="schmg_type" property="typeId"/><!-- 学校性质的Id-->
         <result column="schmg_address" property="schmgAddress"/><!--学校地址-->
         <result column="schmg_cretime" property="schmgCretime"/><!--注册时间-->
         <association property="schmgType" resultMap="com.ezd.dao.EzdSchtypeDao.schtype"/><!--学校类型-->
@@ -30,7 +31,7 @@
         insert into
           ezd_schmg (schmg_id, schmg_domain, schmg_name, schmg_mg, schmg_address, schmg_type, schmg_cretime )
         VALUES
-        (#{schmgId},#{schmgDomain},#{schmgName},#{schmgMg},#{schmgAddress},#{schmgType.schtypeId},#{schmgCretime} )
+        (#{schmgId},#{schmgDomain},#{schmgName},#{schmgMg},#{schmgAddress},#{typeId},#{schmgCretime} )
     </insert>
 
     <!--更新 学校信息 -->
@@ -50,7 +51,7 @@
                schmg_address = #{schmgAddress}
            </if>
            <if test="schmgType != null">
-               schmg_type = #{schmgType.schtypeId}
+               schmg_type = #{typeId}
            </if>
            <if test="schmgCretime != null">
                schmg_cretime = #{schmgCretime}
