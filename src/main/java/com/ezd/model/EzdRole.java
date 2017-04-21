@@ -11,7 +11,7 @@ public class EzdRole {
     private int roleId; //角色编号
     private String roleName; //角色名称
     private List<EzdPermission> ezdPermissions;//角色对应的权限
-    private List<EzdRoleUser> ezdRoleUsers;
+    private List<EzdUsers> ezdUserss; // 角色对应的用户
 
     @Override
     public String toString() {
@@ -19,16 +19,16 @@ public class EzdRole {
                 "roleId=" + roleId +
                 ", roleName='" + roleName + '\'' +
                 ", ezdPermissions=" + ezdPermissions +
-                ", ezdRoleUsers=" + ezdRoleUsers +
+                ", ezdRoleUsers=" + ezdUserss +
                 '}';
     }
 
-    public List<EzdRoleUser> getEzdRoleUsers() {
-        return ezdRoleUsers;
+    public List<EzdUsers> getEzdUserss() {
+        return ezdUserss;
     }
 
-    public void setEzdRoleUsers(List<EzdRoleUser> ezdRoleUsers) {
-        this.ezdRoleUsers = ezdRoleUsers;
+    public void setEzdUserss(List<EzdUsers> ezdUserss) {
+        this.ezdUserss = ezdUserss;
     }
 
     public List<EzdPermission> getEzdPermissions() {
