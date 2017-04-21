@@ -25,11 +25,15 @@ public class EzdEnretController {
     @Resource
     private EzdEnretService ezdEnretService;
 
+    @RequestMapping("/index")
+    public String index(){
+        return "sxgl";
+    }
 
     /**
      * 查询出所有招聘信息
      */
-    @RequestMapping(value = "/ajaxGetAll",method = RequestMethod.POST)
+    @RequestMapping(value = "/ajaxGetAll",method = RequestMethod.GET)
     @ResponseBody
     public List<EzdEnret> getAll() throws Exception {
         List<EzdEnret> All = ezdEnretService.getAll();

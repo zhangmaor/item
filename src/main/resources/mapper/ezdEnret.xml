@@ -25,37 +25,36 @@
         <association property="ezdRetType" resultMap="com.ezd.dao.EzdRetTypeDao.retType" /><!--招聘类型-->
         <collection property="ezdErlenrets" resultMap="com.ezd.dao.EzdErlenretDao.erlenret"/><!--对应的报名信息表-->
         <collection property="ezdUmgs" resultMap="com.ezd.dao.EzdUmgDao.umg"/><!--对应的浏览人列表-->
-
     </resultMap>
 
     <!--查询全部的信息-->
-    <select id="getAll" resultType="com.ezd.model.EzdEnret">
-        select * from ezd_enret ORDER BY enret_creTime DESC;
+    <select id="getAll" resultMap="enret">
+        select * from ezd_enret ORDER BY enret_creTime DESC
     </select>
 
     <!--通过企业编号查询出本企业所有的招聘信息-->
-    <select id="getOneAll" parameterType="com.ezd.model.EzdEnmg" resultType="com.ezd.model.EzdEnret">
+    <select id="getOneAll" parameterType="com.ezd.model.EzdEnmg" resultMap="enret">
         SELECT * FROM ezd_enret WHERE nret_enmg = #{enmgId} ORDER BY enret_creTime DESC;
     </select>
 
     <!--根据招聘类型查询出招聘信息-->
-    <select id="getEnretTypeAll" parameterType="com.ezd.model.EzdRetType" resultType="com.ezd.model.EzdEnret">
+    <select id="getEnretTypeAll" parameterType="com.ezd.model.EzdRetType" resultMap="enret">
         SELECT * FROM ezd_enret WHERE enret_type = #{retTypeId} ORDER BY enret_creTime DESC;;
     </select>
 
     <!--根据工资的范围进行查询招聘信息-->
-    <select id="getMoneyAll" parameterType="com.ezd.model.EzdEnret" resultType="com.ezd.model.EzdEnret">
+    <select id="getMoneyAll" parameterType="com.ezd.model.EzdEnret" resultMap="enret">
         SELECT * FROM ezd_enret WHERE enret_lwMoney = #{enretLwMoney} AND enret_hgMoney = #{enretHgMoney}
           ORDER BY enret_creTime DESC;
     </select>
 
     <!--根据企业地址查询出招聘信息-->
-    <select id="getEnmgAddressAll" parameterType="com.ezd.model.EzdEnmg" resultType="com.ezd.model.EzdEnret">
+    <select id="getEnmgAddressAll" parameterType="com.ezd.model.EzdEnmg" resultMap="enret">
         SELECT e1.* FROM ezd_enret e1,ezd_enmg e2 WHERE e1.nret_enmg = e2.enmg_id AND enmg_address LIKE %enmgAddress%
     </select>
 
     <!--根据浏览数量进行排序查询招聘信息-->
-    <select id="getCountAll" resultType="com.ezd.model.EzdEnret">
+    <select id="getCountAll" resultMap="enret">
         SELECT * FROM (SELECT COUNT(*) numbers,t.* FROM ezd_enret e1,ezd_enret_browse e2 WHERE e2.browse_en = e1.enret_id GROUP BY e2.browse_en) f ORDER BY f.numbers DESC
     </select>
 

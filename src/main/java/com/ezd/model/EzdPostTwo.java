@@ -48,6 +48,7 @@ public class EzdPostTwo {
                 "ptwoId=" + ptwoId +
                 ", ezdPostOne=" + ezdPostOne +
                 ", ptwoName='" + ptwoName + '\'' +
+                ", postOneId=" + postOneId +
                 '}';
     }
 }

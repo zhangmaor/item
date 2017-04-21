@@ -29,54 +29,6 @@ public class EzdEnmg {
     private List<EzdSchret> ezdSchrets;//本公司发布的校招会
     private EzdIndustry ezdIndustry; //本公司的 一级企业类型
 
-    public EzdIndustry getEzdIndustry() {
-        return ezdIndustry;
-    }
-
-    public void setEzdIndustry(EzdIndustry ezdIndustry) {
-        this.ezdIndustry = ezdIndustry;
-    }
-
-    public EzdSeindustry getEzdSeindustry() {
-        return ezdSeindustry;
-    }
-
-    public void setEzdSeindustry(EzdSeindustry ezdSeindustry) {
-        this.ezdSeindustry = ezdSeindustry;
-    }
-
-    public List<EzdSchret> getEzdSchrets() {
-        return ezdSchrets;
-    }
-
-    public void setEzdSchrets(List<EzdSchret> ezdSchrets) {
-        this.ezdSchrets = ezdSchrets;
-    }
-
-    public List<EzdBigret> getEzdBigrets() {
-        return ezdBigrets;
-    }
-
-    public void setEzdBigrets(List<EzdBigret> ezdBigrets) {
-        this.ezdBigrets = ezdBigrets;
-    }
-
-    public List<EzdEnret> getEzdEnrets() {
-        return ezdEnrets;
-    }
-
-    public void setEzdEnrets(List<EzdEnret> ezdEnrets) {
-        this.ezdEnrets = ezdEnrets;
-    }
-
-    public List<EzdUmg> getEzdUmgs() {
-        return ezdUmgs;
-    }
-
-    public void setEzdUmgs(List<EzdUmg> ezdUmgs) {
-        this.ezdUmgs = ezdUmgs;
-    }
-
     public int getEnmgId() {
         return enmgId;
     }
@@ -149,6 +101,22 @@ public class EzdEnmg {
         this.enmgType = enmgType;
     }
 
+    public String getEnmgScale() {
+        return enmgScale;
+    }
+
+    public void setEnmgScale(String enmgScale) {
+        this.enmgScale = enmgScale;
+    }
+
+    public Date getEnmgCretime() {
+        return enmgCretime;
+    }
+
+    public void setEnmgCretime(Date enmgCretime) {
+        this.enmgCretime = enmgCretime;
+    }
+
     public int getEnmgIndustry() {
         return enmgIndustry;
     }
@@ -165,20 +133,52 @@ public class EzdEnmg {
         this.ezdEntype = ezdEntype;
     }
 
-    public String getEnmgScale() {
-        return enmgScale;
+    public List<EzdUmg> getEzdUmgs() {
+        return ezdUmgs;
     }
 
-    public void setEnmgScale(String enmgScale) {
-        this.enmgScale = enmgScale;
+    public void setEzdUmgs(List<EzdUmg> ezdUmgs) {
+        this.ezdUmgs = ezdUmgs;
     }
 
-    public Date getEnmgCretime() {
-        return enmgCretime;
+    public List<EzdEnret> getEzdEnrets() {
+        return ezdEnrets;
     }
 
-    public void setEnmgCretime(Date enmgCretime) {
-        this.enmgCretime = enmgCretime;
+    public void setEzdEnrets(List<EzdEnret> ezdEnrets) {
+        this.ezdEnrets = ezdEnrets;
+    }
+
+    public List<EzdBigret> getEzdBigrets() {
+        return ezdBigrets;
+    }
+
+    public void setEzdBigrets(List<EzdBigret> ezdBigrets) {
+        this.ezdBigrets = ezdBigrets;
+    }
+
+    public List<EzdSchret> getEzdSchrets() {
+        return ezdSchrets;
+    }
+
+    public void setEzdSchrets(List<EzdSchret> ezdSchrets) {
+        this.ezdSchrets = ezdSchrets;
+    }
+
+    public EzdIndustry getEzdIndustry() {
+        return ezdIndustry;
+    }
+
+    public void setEzdIndustry(EzdIndustry ezdIndustry) {
+        this.ezdIndustry = ezdIndustry;
+    }
+
+    public EzdSeindustry getEzdSeindustry() {
+        return ezdSeindustry;
+    }
+
+    public void setEzdSeindustry(EzdSeindustry ezdSeindustry) {
+        this.ezdSeindustry = ezdSeindustry;
     }
 
     @Override
@@ -196,6 +196,13 @@ public class EzdEnmg {
                 ", enmgScale='" + enmgScale + '\'' +
                 ", enmgCretime=" + enmgCretime +
                 ", enmgIndustry=" + enmgIndustry +
+                ", ezdEntype=" + ezdEntype +
+                ", ezdUmgs=" + ezdUmgs +
+                ", ezdEnrets=" + ezdEnrets +
+                ", ezdBigrets=" + ezdBigrets +
+                ", ezdSchrets=" + ezdSchrets +
+                ", ezdIndustry=" + ezdIndustry +
+                ", ezdSeindustry=" + ezdSeindustry +
                 '}';
     }
 }
