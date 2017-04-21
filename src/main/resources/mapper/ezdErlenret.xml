@@ -9,6 +9,7 @@
         <result column="erlenret_umg" property="erlenretUmg" /> <!--谁报名了-->
         <result column="erlenret_enret" property="erlenretEnret" /> <!--报名的是那个招聘信息-->
         <result column="erlenret_status" property="erlenretStatus" /> <!--报名状态-->
+        <result column="enret_time" property="rettime" /> <!--报名时间-->
         <association property="ezdRestatus" resultMap="com.ezd.dao.EzdRestatusDao.restatus"/> <!--报名状态-->
         <association property="ezdUmg" resultMap="com.ezd.dao.EzdUmgDao.umg"/><!--谁报名-->
         <association property="ezdEnret" resultMap="com.ezd.dao.EzdEnretDao.enret"/><!--报名对象-->
