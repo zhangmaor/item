@@ -8,4 +8,10 @@
         <id column="restatus_id" property="restatusId" /><!--编号-->
         <result column="restatus_name" property="restatusName"/><!--状态名-->
     </resultMap>
+
+    <!--根据restatus_id查询出状态信息-->
+    <select id="getEzdRestatusAll" parameterType="int" resultMap="restatus">
+        SELECT * FROM ezd_restatus WHERE restatus_id = #{_parameter}
+    </select>
+
 </mapper>

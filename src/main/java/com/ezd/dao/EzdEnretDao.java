@@ -14,6 +14,9 @@ public interface EzdEnretDao {
     //查询出所有招聘信息
     public List<EzdEnret> getAll();
 
+    //根据enret_id查询出招聘信息
+    public EzdEnret getEzdEnretAll(int enret_id);
+
     //根据公司id查询出本公司所有的招聘信息
     public List<EzdEnret> getOneAll(EzdEnmg ezdEnmg);
 

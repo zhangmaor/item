@@ -13,4 +13,7 @@ public interface EzdErlenretDao {
     //根据招聘信息查出报名的人
     public List<EzdErlenret> getPersonEnrolled(EzdEnret ezdEnret);
 
+    //查询出所有的报名信息
+    public List<EzdErlenret> getAll();
+
 }

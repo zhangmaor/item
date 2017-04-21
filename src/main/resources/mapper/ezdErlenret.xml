@@ -19,4 +19,9 @@
         SELECT * FROM ezd_erlenret WHERE erlenret_enret = #{enretId}
     </select>
 
+    <!--查询出所有的报名信息-->
+    <select id="getAll" resultMap="erlenret">
+        SELECT * FROM ezd_erlenret
+    </select>
+
 </mapper>

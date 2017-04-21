@@ -45,4 +45,6 @@ public class EzdUmgService {
     public List<EzdUmg> getBrowsingUsers(EzdEnretBrowse ezdEnretBrowse){
         return ezdUmgDao.getBrowsingUsers(ezdEnretBrowse);
     }
+
+
 }

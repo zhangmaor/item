@@ -32,6 +32,11 @@
         select * from ezd_enret ORDER BY enret_creTime DESC
     </select>
 
+    <!--根据enret_id查询出招聘信息-->
+    <select id="getEzdEnretAll" parameterType="int" resultMap="enret">
+        select * from ezd_enret WHERE enret_id = #{_parameter}
+    </select>
+
     <!--通过企业编号查询出本企业所有的招聘信息-->
     <select id="getOneAll" parameterType="com.ezd.model.EzdEnmg" resultMap="enret">
         SELECT * FROM ezd_enret WHERE nret_enmg = #{enmgId} ORDER BY enret_creTime DESC;

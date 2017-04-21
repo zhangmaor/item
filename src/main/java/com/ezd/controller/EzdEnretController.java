@@ -30,6 +30,23 @@ public class EzdEnretController {
         return "sxgl";
     }
 
+    @RequestMapping("/qzgl")
+    public String index2(){
+        return "qzgl";
+    }
+
+    @RequestMapping("/dzhgl")
+    public String index3(){
+        return "dzhgl";
+    }
+
+    @RequestMapping("/xxgl")
+    public String index4(){
+        return "xxgl";
+    }
+
+
+
     /**
      * 查询出所有招聘信息
      */

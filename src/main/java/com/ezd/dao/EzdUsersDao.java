@@ -16,6 +16,9 @@ public interface EzdUsersDao {
     //检查用户是否存在
     public int checkUser(String userPhone);
 
+    //根据user_id获取一个用户信息
+    public EzdUsers getEzdUsersAll(int userId);
+
     /*获取一个用户信息*/
     public EzdUsers getAll(EzdUsers ezdUsers);
     public Integer getCount(EzdUsers ezdUsers);

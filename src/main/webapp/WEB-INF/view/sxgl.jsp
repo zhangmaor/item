@@ -132,7 +132,7 @@
 									<th>状态<i class="icon-angle-down"></i></th>
 					            </thead>
 								
-								<tbody>
+								<tbody id="sxbm">
 									<tr>
 										<td class="text-center"><img src="img/QQ图片20170308195953.jpg" style="width: 20px;height: 20px;"></td>
 										<td>文员</td>
@@ -533,6 +533,35 @@
                 })
         })
 	</script>
+
+	<script>
+        $(function(){
+
+            $.ajax({
+                type: "get", //请求的方式，也有get请求
+                url: "<%=path%>/EzdErlenret/ajaxGetAll", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
+                dataType: "json", //json格式，后台返回的数据为json格式的。
+                success: function(result){
+                    var dataObj = result, //返回的result为json格式的数据
+                        con = "";
+                    $.each(dataObj, function(index, item){
+                        con += "<tr>";
+                        con += "<td>"+item.ezdEnret.ezdPostTwo.ptwoName+"</td>";
+                        con += "<td>"+item.ezdEnret.ezdPostTwo.ptwoName+"</td>";
+                        con += "<td>"+item.ezdUmg.umgName+"</td>";
+                        con += "<td>"+item.ezdUmg.umgUser.userPhone+"</td>";
+                        con += "<td>"+item.ezdUmg.umgSex+"</td>";
+                        con += "<td>"+item.ezdUmg.umgEmail+"</td>";
+                        con += "<td>"+item.ezdRestatus.restatusName+"</td>";
+
+                        con += "</tr>";
+                    });
+
+                    $("#sxbm").html(con); //把内容入到这个div中即完成
+                }
+            })
+        })
+	</script>
 	
 	<script type="text/javascript">
 		
@@ -549,13 +578,13 @@
 			//	$(".right-center").load("sxgl.html .right-mokuai,#one,#two");
 			});
 			$("#qzgl").on("click",function(){
-				$(".right-center").load("qzgl.jsp");
+				$(".right-center").load("<%=path%>/enret/index2");
 			});
 			$("#xxgl").on("click",function(){
-				$(".right-center").load("xxgl.jsp");
+				$(".right-center").load("<%=path%>/enret/xxgl");
 			});	
 			$("#dzhgl").on("click",function(){
-				$(".right-center").load("dzhgl.jsp");
+				$(".right-center").load("<%=path%>/enret/dzhgl");
 			});
 		})
 		

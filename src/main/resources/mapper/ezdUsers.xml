@@ -51,4 +51,10 @@
     <update id="upUsers" parameterType="com.ezd.model.EzdUsers">
       update ezd_users set user_Pwd = {userPwd},user_phone={userPhone}
     </update>
+
+
+    <!--根据user_id获取一个用户信息-->
+    <select id="getEzdUsersAll" parameterType="int" resultMap="users">
+        SELECT * FROM ezd_users WHERE user_id = #{_parameter}
+    </select>
 </mapper>
