@@ -1,5 +1,7 @@
 package com.ezd.model;
 
+import java.util.Date;
+
 /**
  * Created by Administrator on 2017/4/6.
  */
@@ -10,9 +12,18 @@ public class EzdErlenret {
     private int erlenretStatus;//references ezd_restatus(restatus_id)
     private EzdUmg ezdUmg;//references umg(umg_id), --  谁报名了
     private EzdEnret ezdEnret;//references enret(enret_id), --  报名的是那个招聘信息
+    private Date rettime; // Datetime DEFAULT CURRENT_TIMESTAMP  , -- 报名时间
     private EzdRestatus ezdRestatus;//references ezd_restatus(restatus_id) --  报名状态 (已报名 审核 录用 拒绝)
 
     public EzdErlenret() {
+    }
+
+    public Date getRettime() {
+        return rettime;
+    }
+
+    public void setRettime(Date rettime) {
+        this.rettime = rettime;
     }
 
     public int getErlenretId() {

@@ -17,10 +17,8 @@ ALTER TABLE ezd_permission ADD UNIQUE(per_name);
 CREATE TABLE ezd_tole_permission(--   角色权限关系表 3
 	roper_id INT PRIMARY KEY AUTO_INCREMENT,
 	roper_role INT , --  对应的那个权限
-	reper_perm  INT ,	--  那个角色对应了权限
-	
-	FOREIGN KEY (roper_role) REFERENCES ezd_role(role_id),
-	FOREIGN KEY (reper_perm) REFERENCES ezd_permission(per_id)	
+	reper_perm  INT 	--  那个角色对应了权限
+		
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 CREATE TABLE ezd_users(--  用户表 4
@@ -44,15 +42,13 @@ CREATE TABLE ezd_umg(--  用户信息表 5
 	umg_degree VARCHAR(20),--  学历
 	umg_sayMf VARCHAR(500),--  自我评价
 	umg_education VARCHAR(200),--  教育经历
-	umg_uptime TIMESTAMP DEFAULT CURRENT_TIMESTAMP, --  修改时间	
-	FOREIGN KEY (umg_user) REFERENCES ezd_users(user_id)
+	umg_uptime TIMESTAMP DEFAULT CURRENT_TIMESTAMP --  修改时间
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 CREATE TABLE ezd_role_user(--  用户角色关系表
 	uper_id  INT PRIMARY KEY AUTO_INCREMENT,
 	uper_role INT , --  对应的那个角色
-	uper_umg INT , --  那个用户对应的角色
-	FOREIGN KEY (uper_role) REFERENCES ezd_role(role_id),
-	FOREIGN KEY (uper_umg) REFERENCES ezd_users(user_id)
+	uper_umg INT  --  那个用户对应的角色
+	
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 CREATE TABLE ezd_entype(  						--  企业类型表
 	entype_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -68,8 +64,8 @@ CREATE TABLE ezd_industry ( -- 一级行业信息表
 CREATE TABLE ezd_seindustry( -- 二级行业信息表
 	se_id INT  PRIMARY KEY AUTO_INCREMENT,
 	se_in INT , -- 关键 一级行业
-	se_name VARCHAR(40),
-	FOREIGN KEY (se_in) REFERENCES ezd_industry(in_id)
+	se_name VARCHAR(40)
+	
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 CREATE TABLE ezd_enmg(--  企业信息表
 	enmg_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -83,9 +79,7 @@ CREATE TABLE ezd_enmg(--  企业信息表
 	enmg_type INT  ,--  企业类型	
 	enmg_scale VARCHAR(20) ,--  公司规模
 	enmg_cretime Datetime DEFAULT CURRENT_TIMESTAMP, --  公司成立时间
-	enmg_industry INT , -- 企业所在行业
-	FOREIGN KEY (enmg_type) REFERENCES ezd_entype(entype_id),
-	FOREIGN KEY (enmg_industry) REFERENCES ezd_industry(in_id) 
+	enmg_industry INT  -- 企业所在行业
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 ALTER TABLE ezd_enmg ADD UNIQUE(enmg_name);
 
@@ -102,8 +96,8 @@ CREATE TABLE ezd_schmg(--  学校信息表
 	schmg_mg TEXT,--  学校详情
 	schmg_address VARCHAR(50),--  学校地址
 	schmg_type INT ,--  学校性质 
-	schmg_cretime Datetime DEFAULT CURRENT_TIMESTAMP, --  学校成立时间	
-	FOREIGN KEY (schmg_type) REFERENCES ezd_schtype(schtype_id)
+	schmg_cretime Datetime DEFAULT CURRENT_TIMESTAMP --  学校成立时间
+	
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 ALTER TABLE ezd_schmg ADD UNIQUE(schmg_name);
 
@@ -112,9 +106,8 @@ CREATE TABLE ezd_uminden(--  关注记录表
 	uminden_user  INT ,--  谁关注的 对应用户信息
 	uminden_en INT , --  关注了谁 对应公司信息表	
 	uminden_status INT  NOT NULL, -- 是否关注
-	uminden_time Datetime DEFAULT CURRENT_TIMESTAMP,
-	FOREIGN KEY (uminden_user) REFERENCES ezd_umg(umg_id),
-	FOREIGN KEY (uminden_en) REFERENCES ezd_enmg(enmg_id)
+	uminden_time Datetime DEFAULT CURRENT_TIMESTAMP
+	
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 
@@ -126,8 +119,7 @@ CREATE TABLE ezd_jobmg(--  用户兼职记录信息表
 	jobmg_donum INT ,--  录用次数
 	jobmg_uundo INT ,--  用户取消
 	jobmg_enundo INT ,--  企业取消
-	jobmg_success INT, --  已完工
-	FOREIGN KEY (jobmg_user)   REFERENCES ezd_umg(umg_id)
+	jobmg_success INT --  已完工
 	
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 CREATE TABLE ezd_unews(--  用户消息表
@@ -136,8 +128,8 @@ CREATE TABLE ezd_unews(--  用户消息表
 	unews_from VARCHAR(20)  NOT NULL,--  （默认系统） 发件人
 	unews_content TEXT  NOT NULL,-- 信息内容
 	unews_status INT CHECK(unews_status=0 OR unews_status=1 ), --  消息状态（0未读 1已读）	
-	unews_time Datetime ,
-	FOREIGN KEY (unews_user) REFERENCES ezd_umg(umg_id)
+	unews_time Datetime DEFAULT CURRENT_TIMESTAMP
+	
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 CREATE TABLE ezd_retType(--  招聘类型表
 	retType_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -159,8 +151,8 @@ CREATE TABLE ezd_postOne( -- 招聘类型一级表
 CREATE TABLE ezd_postTwo( -- 招聘类型二级表
 	ptwo_id INT PRIMARY KEY AUTO_INCREMENT,
 	ptwo_postOne INT ,
-	ptwo_name VARCHAR(20),
-	FOREIGN KEY (ptwo_postOne) REFERENCES ezd_postOne(pone_id)
+	ptwo_name VARCHAR(20)
+	
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 CREATE TABLE ezd_enret(--  招聘信息表
@@ -175,27 +167,22 @@ CREATE TABLE ezd_enret(--  招聘信息表
 	enret_postTwo int ,--  招聘岗位2
 	enret_pg TEXT,--  待遇
 	enret_demand TEXT NOT NULL,--  招聘要求
-	enret_status INT ,  --  信息状态,( 进行中  已结束)
+	enret_status INT   --  信息状态,( 进行中  已结束)
 	
-	FOREIGN KEY (nret_enmg) REFERENCES ezd_enmg(enmg_id),
-	FOREIGN KEY (enret_type) REFERENCES ezd_retType(retType_id),
-	FOREIGN KEY (enret_status) REFERENCES ezd_newsStatus(newsStatus_id)	
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 CREATE TABLE ezd_erlenret(--  招聘信息报名表
 	erlenret_id INT PRIMARY KEY AUTO_INCREMENT,
 	erlenret_umg INT , --  谁报名了
-	erlenret_enret INT , --  报名的是那个招聘信息
-	erlenret_status INT, --  报名状态 (已报名 审核 录用 拒绝)	
-	FOREIGN KEY (erlenret_enret) REFERENCES ezd_enret(enret_id),
-	FOREIGN KEY (erlenret_status)  REFERENCES ezd_restatus(restatus_id),
-	FOREIGN KEY (erlenret_umg) REFERENCES ezd_umg(umg_id)
+	erlenret_enret INT , --  报名的是那个招聘信息	
+	enret_time Datetime DEFAULT CURRENT_TIMESTAMP  , -- 报名时间
+	erlenret_status INT --  报名状态 (已报名 审核 录用 拒绝)	
+	
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 CREATE TABLE ezd_enret_browse(--  浏览记录表
 	browse_id INT PRIMARY KEY AUTO_INCREMENT,
 	browse_user INT ,--   谁浏览的 对应用户信息
-	browse_en INT ,--   浏览的信息 对应 招聘信息
-	FOREIGN KEY (browse_user) REFERENCES ezd_umg(umg_id),
-	FOREIGN KEY (browse_en)  REFERENCES ezd_enret(enret_id)
+	browse_en INT --   浏览的信息 对应 招聘信息
+	
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 CREATE TABLE ezd_bigret(--  大招会信息表
 	bigret_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -208,22 +195,16 @@ CREATE TABLE ezd_bigret(--  大招会信息表
 	bigret_detail TEXT  NOT NULL,--  大招会详情
 	enret_postOne int,--  招聘岗位1
 	enret_postTwo int ,--  招聘岗位2
-	bigret_enmg INT ,--   哪家公司发布的
+	bigret_enmg INT --   哪家公司发布的
 	
-	FOREIGN KEY (bigret_status)  REFERENCES ezd_newsStatus(newsStatus_id),
-	FOREIGN KEY (bigret_address)  REFERENCES ezd_schmg(schm_id),
-	FOREIGN KEY (bigret_enmg)  REFERENCES ezd_enmg(enmg_id)
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 CREATE TABLE ezd_erlbigret(--  大招会报名表
 	erlbigret_id INT PRIMARY KEY AUTO_INCREMENT,
 	erlbigret_mes INT , --  报名了那个大招会
 	erlbigret_user INT, --   谁报名了大招会
 	erlbigret_status INT , --  报名状态 (已报名 审核 录用 拒绝)
-	erlbigret_time Datetime DEFAULT CURRENT_TIMESTAMP,
+	erlbigret_time Datetime DEFAULT CURRENT_TIMESTAMP
 	
-	FOREIGN KEY (erlbigret_mes) REFERENCES ezd_bigret(bigret_id),
-	FOREIGN KEY (erlbigret_user)  REFERENCES ezd_umg(umg_id),
-	FOREIGN KEY (erlbigret_status) REFERENCES ezd_restatus(restatus_id)
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 CREATE TABLE ezd_schret(--  校招会
 	schret_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -233,11 +214,8 @@ CREATE TABLE ezd_schret(--  校招会
 	schret_detail TEXT,--  校招会详情
 	schret_time Datetime NOT NULL,--  校招会始时间
 	schret_cretime Datetime DEFAULT CURRENT_TIMESTAMP,--   校招会发布时间
-	bigret_post VARCHAR(20), --  招聘职位
+	bigret_post VARCHAR(20) --  招聘职位
 	
-	FOREIGN KEY (schret_schmg) REFERENCES ezd_schmg(schmg_id),	
-	FOREIGN KEY (schret_enmg)  REFERENCES ezd_enmg(enmg_id),
-	FOREIGN KEY (schret_status)  REFERENCES ezd_newsStatus(newsStatus_id)
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 
@@ -246,11 +224,8 @@ CREATE TABLE ezd_erlschret(--  校招会包名表
 	erlschret_user INT ,--   谁报名了
 	erlschret_schret INT ,--   报名了那个校招会\
 	erlschret_status INT , --  包名状态 (已报名 审核 录用 拒绝)
-	erlschret_time Datetime DEFAULT CURRENT_TIMESTAMP,	
+	erlschret_time Datetime DEFAULT CURRENT_TIMESTAMP
 		
-	FOREIGN KEY (erlschret_user) REFERENCES ezd_umg(umg_id),	
-	FOREIGN KEY (erlschret_schret) REFERENCES ezd_schret(schret_id),	
-	FOREIGN KEY (erlschret_status) REFERENCES ezd_restatus(restatus_id)	
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 CREATE TABLE ezd_artitype(--  文章类型表
 	artitype_id INT PRIMARY KEY  AUTO_INCREMENT,
@@ -267,19 +242,16 @@ CREATE TABLE ezd_article(--  文章信息表
 	article_pic VARCHAR(50),--  文章分享图
 	article_content TEXT NOT NULL,--  文章内容
 	article_keywords VARCHAR(50),--  文章关键字
-	article_status INT  NOT NULL ,--  文章状态（显示 影藏）
+	article_status INT  NOT NULL --  文章状态（显示 影藏）
 	
-	FOREIGN KEY (article_type) REFERENCES ezd_artitype(artitype_id)
 	
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 CREATE TABLE ezd_readarti( -- 文章阅读信息表
 	readarti_id INT PRIMARY KEY AUTO_INCREMENT,
 	readarti_article INT , -- 阅读了那篇文章
 	readarti_user INT ,-- 谁阅读了
-	readarti_time Datetime DEFAULT CURRENT_TIMESTAMP ,
+	readarti_time Datetime DEFAULT CURRENT_TIMESTAMP 
 	
-	FOREIGN KEY (readarti_article) REFERENCES ezd_article(article_id),
-	FOREIGN KEY (readarti_user) REFERENCES ezd_umg(umg_id)
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 CREATE TABLE ezd_sayart(--  文章评论
 	sayart_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -288,10 +260,8 @@ CREATE TABLE ezd_sayart(--  文章评论
 	sayart_content VARCHAR(500) ,--  评论内容
 	sayart_touser INT ,--  可为null 评论其他用户
 	sayart_status INT  NOT NULL,--   评论状态表 需要管理员审核
-	sayart_time Datetime DEFAULT CURRENT_TIMESTAMP,
+	sayart_time Datetime DEFAULT CURRENT_TIMESTAMP
 	
-	FOREIGN KEY (sayart_article) REFERENCES ezd_article(article_id),
-	FOREIGN KEY (sayart_umg) REFERENCES ezd_umg(umg_id)
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 
@@ -301,10 +271,8 @@ CREATE TABLE ezd_point(--  点赞信息表
 	point_article INT ,--  点赞的文章
 	point_umg INT,--   点赞人	
 	point_touser INT ,--  可为null 为其他用户点赞
-	point_status INT NOT NULL, --  （0 取消点赞 1 点赞）
+	point_status INT NOT NULL --  （0 取消点赞 1 点赞）
 	
-	FOREIGN KEY (point_article) REFERENCES ezd_article(article_id),
-	FOREIGN KEY (point_umg)  REFERENCES ezd_umg(umg_id)
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 CREATE TABLE ezd_adv(
 	adv_id INT PRIMARY KEY  AUTO_INCREMENT,
