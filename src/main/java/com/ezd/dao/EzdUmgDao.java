@@ -13,6 +13,8 @@ public interface EzdUmgDao {
 
     //查询所有个人信息
     public List<EzdUmg> getAll(EzdUsers ezdUsers);
+    //添加个人信息
+    public int insetAll(EzdUmg ezdUmg);
     //更新个人信息
     public int upAll(EzdUmg ezdUmg);
     //根据浏览信息的查询用户
