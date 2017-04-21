@@ -36,6 +36,13 @@
             </if>
         </where>
     </select>
+    <!--添加个人信息-->
+    <insert id="insetUmg" parameterType="edu.cheshi.model.EzdUmg">
+        inset into ezd_umg(umg_user,umg_photo,umg_name,umg_sex,umg_birthday
+        umg_emial,umg_school,umg_major,umg_degree,umg_sayMf,umg_education)
+        VALUES(umgPhoto,umgName,umgSex,umgBirthday,umgEmial,umgSchool,umgMajor,
+        umgDegree,umgSayMf,umgEducation)
+    </insert>
     <!--更新所有的个人数据-->
     <update id="upAll" parameterType="com.ezd.model.EzdUmg" >
         update ezd_umg SET umg_photo = #{umgPhoto},

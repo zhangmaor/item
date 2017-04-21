@@ -1,4 +1,4 @@
-package com.ezd.controller;
+package com.ezd.Controller;
 
 import com.ezd.model.EzdArticle;
 import com.ezd.service.EzdArticleService;

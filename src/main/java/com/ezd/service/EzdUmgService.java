@@ -21,28 +21,40 @@ public class EzdUmgService {
 
     /**
      * 根据用户查询所有的个人信息
+     *
      * @param ezdUsers
      * @return
      */
-    public List<EzdUmg> getAll(EzdUsers ezdUsers){
+    public List<EzdUmg> getAll(EzdUsers ezdUsers) {
         return ezdUmgDao.getAll(ezdUsers);
     }
 
     /**
-     * 修改个人信息
+     * 添加个人信息
      * @param ezdUmg
      * @return
      */
-    public int upAll(EzdUmg ezdUmg){
+    public int insetAll(EzdUmg ezdUmg) {
+        return ezdUmgDao.insetAll(ezdUmg);
+    }
+
+    /**
+     * 修改个人信息
+     *
+     * @param ezdUmg
+     * @return
+     */
+    public int upAll(EzdUmg ezdUmg) {
         return ezdUmgDao.upAll(ezdUmg);
     }
 
     /**
      * 根据浏览信息的查询用户
+     *
      * @param ezdEnretBrowse
      * @return
      */
-    public List<EzdUmg> getBrowsingUsers(EzdEnretBrowse ezdEnretBrowse){
+    public List<EzdUmg> getBrowsingUsers(EzdEnretBrowse ezdEnretBrowse) {
         return ezdUmgDao.getBrowsingUsers(ezdEnretBrowse);
     }
 }
