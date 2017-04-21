@@ -51,8 +51,8 @@
         </choose>
     </select>
     <!--通过一个企业编号查询该企业的详细信息-->
-    <select id="getEnmg" parameterType="com.ezd.model.EzdUminden" resultMap="enmg">
-        select * from ezd_enmg WHERE enmg_id = #{umindenEn}
+    <select id="getEnmg" parameterType="int" resultMap="enmg">
+        select * from ezd_enmg WHERE enmg_id = #{_parameter}
     </select>
     <!--修改数据!!更新一个企业的信息-->
     <update id="update" parameterType="com.ezd.model.EzdEnmg">

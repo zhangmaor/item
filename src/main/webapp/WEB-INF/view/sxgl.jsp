@@ -516,12 +516,12 @@
                             con = "";
                         $.each(dataObj, function(index, item){
                             con += "<tr>";
-                            con += "<td>"+item.nretEnmg.enmgName+"</td>";
-                            con += "<td>"+item.ezdPostTwo+"</td>";
+                            con += "<td>"+item.ezdEnmg.enmgName+"</td>";
+                            con += "<td>"+item.ezdPostTwo.ptwoName+"</td>";
                             con += "<td>"+item.enretDemand+"</td>";
                             con += "<td>"+item.enretWantNum+"</td>";
                             con += "<td>"+item.enretWantNum+"</td>";
-                            con += "<td>"+item.enretHgMoney+"</td>";
+                            con += "<td>"+item.enretLwMoney+"-"+item.enretHgMoney+"</td>";
                             con += "<td><span class='label label-warning'>停招</span></td>";
                             con += "<td><button type='button' class='btn btn-primary' data-toggle='modal' data-target='#update_sx'>修改</button>"+
                             "<button type='button' class='btn btn-danger' data-toggle='modal' data-target='#del_sx'>删除</button></td>";

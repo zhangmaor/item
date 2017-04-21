@@ -1,11 +1,7 @@
 package com.ezd.service;
 
-import com.ezd.dao.EzdEnretBrowseDao;
-import com.ezd.dao.EzdEnretDao;
-import com.ezd.dao.EzdErlenretDao;
-import com.ezd.dao.EzdUmgDao;
+import com.ezd.dao.*;
 import com.ezd.model.*;
-import com.ezd.dao.EzdEnmgDao;
 import com.ezd.model.EzdEnmg;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,6 +30,8 @@ public class EzdEnretService {
     private EzdUmgDao ezdUmgDao;
     @Resource
     private EzdEnmgDao ezdEnmgDao;
+    @Resource
+    private EzdPostTwoDao ezdPostTwoDao;
 
 
     //查询出所有招聘信息
@@ -43,14 +41,16 @@ public class EzdEnretService {
         System.out.println(list);
         for (EzdEnret li:list) {
             List<EzdErlenret> personList = ezdErlenretDao.getPersonEnrolled(li);
-            /*EzdEnmg enmg = ezdEnmgDao.getEnmg(li.getNretEnmg());
+            EzdEnmg enmg = ezdEnmgDao.getEnmg(li.getNretEnmg());
+            EzdPostTwo ezdPostTwo = ezdPostTwoDao.findPostTwo(li.getEnretPostTwo());
             List<EzdEnretBrowse> peopleBrowsing = ezdEnretBrowseDao.getPeopleBrowsing(li);
             for (EzdEnretBrowse people:peopleBrowsing) {
                 List<EzdUmg> browsingUsers = ezdUmgDao.getBrowsingUsers(people);
                 li.setEzdUmgs(browsingUsers);
-            }*/
+            }
             li.setEzdErlenrets(personList);
-            /*li.setEzdEnmg(enmg);*/
+            li.setEzdEnmg(enmg);
+            li.setEzdPostTwo(ezdPostTwo);
         }
         return list;
     }
