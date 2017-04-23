@@ -14,7 +14,6 @@ public class EzdErlenret {
     private EzdEnret ezdEnret;//references enret(enret_id), --  报名的是那个招聘信息
     private Date rettime; // Datetime DEFAULT CURRENT_TIMESTAMP  , -- 报名时间
     private EzdRestatus ezdRestatus;//references ezd_restatus(restatus_id) --  报名状态 (已报名 审核 录用 拒绝)
-
     public EzdErlenret() {
     }
 
@@ -92,6 +91,7 @@ public class EzdErlenret {
                 ", erlenretStatus=" + erlenretStatus +
                 ", ezdUmg=" + ezdUmg +
                 ", ezdEnret=" + ezdEnret +
+                ", rettime=" + rettime.toLocaleString() +
                 ", ezdRestatus=" + ezdRestatus +
                 '}';
     }

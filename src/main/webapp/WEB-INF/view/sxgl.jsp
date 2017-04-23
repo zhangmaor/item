@@ -508,8 +508,9 @@
         $(function(){
 
                 $.ajax({
-                    type: "get", //请求的方式，也有get请求
-                    url: "<%=path%>/enret/ajaxGetAll", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
+                    type: "post", //请求的方式，也有get请求
+                    url: "<%=path%>/enret/ajaxGetEnretTypeAll", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
+					data:"retTypeId="+1,
                     dataType: "json", //json格式，后台返回的数据为json格式的。
                     success: function(result){
                         var dataObj = result, //返回的result为json格式的数据
@@ -538,25 +539,31 @@
         $(function(){
 
             $.ajax({
-                type: "get", //请求的方式，也有get请求
-                url: "<%=path%>/EzdErlenret/ajaxGetAll", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
+                type: "post", //请求的方式，也有get请求
+                url: "<%=path%>/enret/ajaxGetEnretTypeAll", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
+                data:"retTypeId="+1,
                 dataType: "json", //json格式，后台返回的数据为json格式的。
                 success: function(result){
+
+                    console.log(result);
                     var dataObj = result, //返回的result为json格式的数据
                         con = "";
                     $.each(dataObj, function(index, item){
-                        con += "<tr>";
-                        con += "<td>"+item.ezdEnret.ezdPostTwo.ptwoName+"</td>";
-                        con += "<td>"+item.ezdEnret.ezdPostTwo.ptwoName+"</td>";
-                        con += "<td>"+item.ezdUmg.umgName+"</td>";
-                        con += "<td>"+item.ezdUmg.umgUser.userPhone+"</td>";
-                        con += "<td>"+item.ezdUmg.umgSex+"</td>";
-                        con += "<td>"+item.ezdUmg.umgEmail+"</td>";
-                        con += "<td>"+item.ezdRestatus.restatusName+"</td>";
+                      //  console.log(item);
+                        $.each(item.ezdErlenrets, function(index1, item1) {
+                            console.log(item1);
+                            con += "<tr>";
+                            con += "<td>" + item1.ezdEnret.ezdPostTwo.ptwoName + "</td>";
+                            con += "<td>" + item1.ezdEnret.ezdPostTwo.ptwoName + "</td>";
 
-                        con += "</tr>";
+                            con += "<td>" + item1.ezdUmg.umgName + "</td>";
+                            con += "<td>" + item1.ezdUmg.umgUser.userPhone + "</td>";
+                            con += "<td>" + item1.ezdUmg.umgSex + "</td>";
+                            con += "<td>" + new Date(item1.rettime).toLocaleDateString() + "</td>";
+                            con += "<td>" + item1.ezdRestatus.restatusName + "</td>";
+                            con += "</tr>";
+                        });
                     });
-
                     $("#sxbm").html(con); //把内容入到这个div中即完成
                 }
             })
@@ -578,7 +585,7 @@
 			//	$(".right-center").load("sxgl.html .right-mokuai,#one,#two");
 			});
 			$("#qzgl").on("click",function(){
-				$(".right-center").load("<%=path%>/enret/index2");
+				$(".right-center").load("<%=path%>/enret/qzgl");
 			});
 			$("#xxgl").on("click",function(){
 				$(".right-center").load("<%=path%>/enret/xxgl");

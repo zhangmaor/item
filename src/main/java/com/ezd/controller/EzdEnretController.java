@@ -76,9 +76,8 @@ public class EzdEnretController {
     @RequestMapping(value = "/ajaxGetEnretTypeAll",method = RequestMethod.POST)
     @ResponseBody
     public List<EzdEnret> getEnretTypeAll(int retTypeId) throws Exception {
-        EzdRetType ezdRetType = new EzdRetType();
-        ezdRetType.setRetTypeId(retTypeId);
-        List<EzdEnret> enretTypeAll = ezdEnretService.getEnretTypeAll(ezdRetType);
+        List<EzdEnret> enretTypeAll = ezdEnretService.getEnretTypeAll(retTypeId);
+
         return enretTypeAll;
     }
 

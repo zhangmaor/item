@@ -136,11 +136,6 @@ public class EzdUmg {
         this.umgSex = umgSex;
     }
 
-    @Override
-    public String toString() {
-        return "enzUnmg";
-    }
-
     public Date getUmgBirthday() {
         return umgBirthday;
     }
@@ -206,5 +201,30 @@ public class EzdUmg {
     }
 
 
-
+    @Override
+    public String toString() {
+        return "EzdUmg{" +
+                "umgId=" + umgId +
+                ", umgUser=" + umgUser +
+                ", umgPhoto='" + umgPhoto + '\'' +
+                ", umgName='" + umgName + '\'' +
+                ", umgSex='" + umgSex + '\'' +
+                ", umgBirthday=" + umgBirthday +
+                ", umgEmail='" + umgEmail + '\'' +
+                ", umgSchool='" + umgSchool + '\'' +
+                ", umgMajor='" + umgMajor + '\'' +
+                ", umgDegree='" + umgDegree + '\'' +
+                ", umgSayMf='" + umgSayMf + '\'' +
+                ", umgEducation='" + umgEducation + '\'' +
+                ", umgUptime=" + umgUptime +
+                ", userId=" + userId +
+                ", ezdEnmgs=" + ezdEnmgs +
+                ", ezdUnewss=" + ezdUnewss +
+                ", ezdErlenrets=" + ezdErlenrets +
+                ", ezdEnrets=" + ezdEnrets +
+                ", ezdErlbigrets=" + ezdErlbigrets +
+                ", ezdErlschrets=" + ezdErlschrets +
+                ", ezdReadartis=" + ezdReadartis +
+                '}';
+    }
 }

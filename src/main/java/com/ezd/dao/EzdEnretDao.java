@@ -21,7 +21,7 @@ public interface EzdEnretDao {
     public List<EzdEnret> getOneAll(EzdEnmg ezdEnmg);
 
     //根据招聘类型查询出招聘信息
-    public List<EzdEnret> getEnretTypeAll(EzdRetType ezdRetType);
+    public List<EzdEnret> getEnretTypeAll(int retTypeId);
 
     //根据工资的范围进行查询招聘信息
     public List<EzdEnret> getMoneyAll(EzdEnret ezdEnret);

@@ -135,10 +135,12 @@ CREATE TABLE ezd_retType(--  招聘类型表
 	retType_id INT PRIMARY KEY AUTO_INCREMENT,
 	retType_name VARCHAR(20) NOT NULL
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
+
 CREATE TABLE ezd_restatus(--  报名状态表
 	restatus_id INT PRIMARY KEY AUTO_INCREMENT,
 	restatus_name VARCHAR(20) NOT NULL --  已报名 审核 录用 拒绝
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
+
 CREATE TABLE ezd_newsStatus(--  消息状态表
 	newsStatus_id INT PRIMARY KEY AUTO_INCREMENT,
 	newsStatus_name VARCHAR(20)  NOT NULL--  未开始  进行中  已结束
@@ -170,6 +172,7 @@ CREATE TABLE ezd_enret(--  招聘信息表
 	enret_status INT   --  信息状态,( 进行中  已结束)
 	
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
+
 CREATE TABLE ezd_erlenret(--  招聘信息报名表
 	erlenret_id INT PRIMARY KEY AUTO_INCREMENT,
 	erlenret_umg INT , --  谁报名了

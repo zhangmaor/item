@@ -43,8 +43,8 @@
     </select>
 
     <!--根据招聘类型查询出招聘信息-->
-    <select id="getEnretTypeAll" parameterType="com.ezd.model.EzdRetType" resultMap="enret">
-        SELECT * FROM ezd_enret WHERE enret_type = #{retTypeId} ORDER BY enret_creTime DESC;;
+    <select id="getEnretTypeAll" parameterType="int" resultMap="enret">
+        SELECT * FROM ezd_enret WHERE enret_type = #{_parameter} ORDER BY enret_creTime DESC;;
     </select>
 
     <!--根据工资的范围进行查询招聘信息-->

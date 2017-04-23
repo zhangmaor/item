@@ -32,6 +32,10 @@ public class EzdEnretService {
     private EzdEnmgDao ezdEnmgDao;
     @Resource
     private EzdPostTwoDao ezdPostTwoDao;
+    @Resource
+    private EzdUsersDao ezdUsersDao;
+    @Resource
+    private EzdRestatusDao ezdRestatusDao;
 
 
     //查询出所有招聘信息
@@ -74,12 +78,25 @@ public class EzdEnretService {
     }
 
     //根据招聘类型查询出招聘信息
-    public List<EzdEnret> getEnretTypeAll(EzdRetType ezdRetType) throws Exception {
+    public List<EzdEnret> getEnretTypeAll(int retTypeId) throws Exception {
         List<EzdEnret> list = new ArrayList<>();
-        list = ezdEnretDao.getEnretTypeAll(ezdRetType);
+        list = ezdEnretDao.getEnretTypeAll(retTypeId);
         for (EzdEnret li:list) {
             List<EzdErlenret> personList = ezdErlenretDao.getPersonEnrolled(li);
+            for (EzdErlenret p:personList) {
+                EzdUmg ezdUmg = ezdUmgDao.getEzdUmgAll(p.getErlenretUmg());
+                EzdUsers ezdUsersAll = ezdUsersDao.getEzdUsersAll(ezdUmg.getUserId());
+                ezdUmg.setUmgUser(ezdUsersAll);
+                p.setEzdUmg(ezdUmg);
+                EzdEnret ezdEnret = ezdEnretDao.getEzdEnretAll(p.getErlenretEnret());
+                p.setEzdEnret(ezdEnret);
+                EzdPostTwo postTwo = ezdPostTwoDao.findPostTwo(ezdEnret.getEnretPostTwo());
+                ezdEnret.setEzdPostTwo(postTwo);
+                EzdRestatus ezdRestatus = ezdRestatusDao.getEzdRestatusAll(p.getErlenretStatus());
+                p.setEzdRestatus(ezdRestatus);
+            }
             EzdEnmg enmg = ezdEnmgDao.getEnmg(li.getNretEnmg());
+            EzdPostTwo ezdPostTwo = ezdPostTwoDao.findPostTwo(li.getEnretPostTwo());
             List<EzdEnretBrowse> peopleBrowsing = ezdEnretBrowseDao.getPeopleBrowsing(li);
             for (EzdEnretBrowse people:peopleBrowsing) {
                 List<EzdUmg> browsingUsers = ezdUmgDao.getBrowsingUsers(people);
@@ -87,6 +104,8 @@ public class EzdEnretService {
             }
             li.setEzdErlenrets(personList);
             li.setEzdEnmg(enmg);
+            li.setEzdPostTwo(ezdPostTwo);
+            System.out.println(li);
         }
         return list;
     }

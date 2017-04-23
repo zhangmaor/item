@@ -41,6 +41,7 @@ public class EzdErlenretService {
         List<EzdErlenret> list = new ArrayList<>();
         list = ezdErlenretDao.getAll();
         for (EzdErlenret li :list) {
+            System.out.println(li);
             EzdUmg ezdUmg = ezdUmgDao.getEzdUmgAll(li.getErlenretUmg());
             EzdUsers ezdUsersAll = ezdUsersDao.getEzdUsersAll(ezdUmg.getUserId());
             ezdUmg.setUmgUser(ezdUsersAll);
