@@ -77,7 +77,6 @@ public class EzdEnretController {
     @ResponseBody
     public List<EzdEnret> getEnretTypeAll(int retTypeId) throws Exception {
         List<EzdEnret> enretTypeAll = ezdEnretService.getEnretTypeAll(retTypeId);
-
         return enretTypeAll;
     }
 

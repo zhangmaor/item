@@ -394,7 +394,7 @@
         	
        								-->
 		<div class="modal fade" id="update_sx" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
-		  <div class="modal-dialog" role="document">
+		  <div class="modal-dialog" role="document" style="width: 40%">
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -506,7 +506,6 @@
 
 	<script>
         $(function(){
-
                 $.ajax({
                     type: "post", //请求的方式，也有get请求
                     url: "<%=path%>/enret/ajaxGetEnretTypeAll", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
@@ -537,7 +536,6 @@
 
 	<script>
         $(function(){
-
             $.ajax({
                 type: "post", //请求的方式，也有get请求
                 url: "<%=path%>/enret/ajaxGetEnretTypeAll", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
@@ -555,7 +553,6 @@
                             con += "<tr>";
                             con += "<td>" + item1.ezdEnret.ezdPostTwo.ptwoName + "</td>";
                             con += "<td>" + item1.ezdEnret.ezdPostTwo.ptwoName + "</td>";
-
                             con += "<td>" + item1.ezdUmg.umgName + "</td>";
                             con += "<td>" + item1.ezdUmg.umgUser.userPhone + "</td>";
                             con += "<td>" + item1.ezdUmg.umgSex + "</td>";

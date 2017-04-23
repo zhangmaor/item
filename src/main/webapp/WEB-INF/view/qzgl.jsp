@@ -73,53 +73,24 @@
         <p style="color: #858A98;">全职列表</p>
         <table class="table-hover" id="sxlb">
             <thead>
-            <th></th>
-            <th>全职岗位</th>
-            <th>姓名</th>
-            <th>电话</th>
-            <th>性别</th>
-            <th>报名时间</th>
-            <th>状态</th>
+                <th></th>
+                <th>全职岗位</th>
+                <th>姓名</th>
+                <th>电话</th>
+                <th>性别</th>
+                <th>报名时间</th>
+                <th>状态</th>
             </thead>
-
-            <tbody>
-            <tr>
-                <td class="text-center"><img src="img/QQ图片20170308195953.jpg" style="width: 20px;height: 20px;"></td>
-                <td>文员</td>
-                <td>李四</td>
-                <td>2222222222</td>
-                <td>女</td>
-                <td>2014-11-16</td>
-                <td>已报名</td>
-            </tr>
-            <tr>
-                <td class="text-center"><img src="img/QQ图片20170308195953.jpg" style="width: 20px;height: 20px;"></td>
-                <td>文员</td>
-                <td>李四</td>
-                <td>2222222222</td>
-                <td>女</td>
-                <td>2014-11-16</td>
-                <td>已报名</td>
-            </tr>
-            <tr>
-                <td class="text-center"><img src="img/QQ图片20170308195953.jpg" style="width: 20px;height: 20px;"></td>
-                <td>文员</td>
-                <td>李四</td>
-                <td>2222222222</td>
-                <td>女</td>
-                <td>2014-11-16</td>
-                <td>已报名</td>
-            </tr>
-            <tr>
-                <td class="text-center"><img src="img/QQ图片20170308195953.jpg" style="width: 20px;height: 20px;"></td>
-                <td>文员</td>
-                <td>李四</td>
-                <td>2222222222</td>
-                <td>女</td>
-                <td>2014-11-16</td>
-                <td>已报名</td>
-            </tr>
-
+            <tbody id="sxbm">
+                <tr>
+                    <td class="text-center"><img src="img/QQ图片20170308195953.jpg" style="width: 20px;height: 20px;"></td>
+                    <td>文员</td>
+                    <td>李四</td>
+                    <td>2222222222</td>
+                    <td>女</td>
+                    <td>2014-11-16</td>
+                    <td>已报名</td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -153,7 +124,7 @@
             <th>状态</th>
             <th>操作</th>
             </thead>
-            <tbody>
+            <tbody id="qzgw">
             <tr>
                 <td>梦映动漫网络科技有限公司</td>
                 <td>Android高级工程师</td>
@@ -539,6 +510,67 @@
     </div>
 </div>
 </body>
+    <script>
+        $(function(){
+            $.ajax({
+                type: "post", //请求的方式，也有get请求
+                url: "<%=request.getContextPath()%>/enret/ajaxGetEnretTypeAll", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
+                data:"retTypeId="+2,
+                dataType: "json", //json格式，后台返回的数据为json格式的。
+                success: function(result){
+                    var dataObj = result, //返回的result为json格式的数据
+                        con = "";
+                   $.each(dataObj, function(index, item){
+                        console.log(item);
+                        $.each(item.ezdErlenrets, function(index1, item1) {
+                            console.log(item1);
+                            con += "<tr>";
+                            con += "<td>" + item1.ezdEnret.ezdPostTwo.ptwoName + "</td>";
+                            con += "<td>" + item1.ezdEnret.ezdPostTwo.ptwoName + "</td>";
+                            con += "<td>" + item1.ezdUmg.umgName + "</td>";
+                            con += "<td>" + item1.ezdUmg.umgUser.userPhone + "</td>";
+                            con += "<td>" + item1.ezdUmg.umgSex + "</td>";
+                            con += "<td>" + new Date(item1.rettime).toLocaleDateString() + "</td>";
+                            con += "<td>" + item1.ezdRestatus.restatusName + "</td>";
+                            con += "</tr>";
+                        });
+                    });
+                    $("#sxbm").html(con); //把内容入到这个div中即完成
+                }
+            })
+        })
+    </script>
+
+    <script>
+        $(function(){
+            $.ajax({
+                type: "post", //请求的方式，也有get请求
+                url: "<%=request.getContextPath()%>/enret/ajaxGetEnretTypeAll", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
+                data:"retTypeId="+2,
+                dataType: "json", //json格式，后台返回的数据为json格式的。
+                success: function(result){
+                    var dataObj = result, //返回的result为json格式的数据
+                        con = "";
+                    $.each(dataObj, function(index, item){
+                        con += "<tr>";
+                        con += "<td>"+item.ezdEnmg.enmgName+"</td>";
+                        con += "<td>"+item.ezdPostTwo.ptwoName+"</td>";
+                        con += "<td>"+item.enretDemand+"</td>";
+                        con += "<td>"+item.enretDemand+"</td>";
+                        con += "<td>"+item.enretWantNum+"</td>";
+                        con += "<td>"+item.enretWantNum+"</td>";
+                        con += "<td>"+item.enretLwMoney+"-"+item.enretHgMoney+"</td>";
+                        con += "<td><span class='label label-warning'>停招</span></td>";
+                        con += "<td><button type='button' class='btn btn-primary' data-toggle='modal' data-target='#update_sx'>修改</button>"+
+                            "<button type='button' class='btn btn-danger' data-toggle='modal' data-target='#del_sx'>删除</button></td>";
+                        con += "</tr>";
+                    });
+
+                    $("#qzgw").html(con); //把内容入到这个div中即完成
+                }
+            })
+        })
+    </script>
     <script type="text/javascript">
         $(function(){
             $("#fbgw").click(function(){
@@ -551,6 +583,5 @@
                 $("#fb").css("display","none");
             });
         })
-
     </script>
 </html>
