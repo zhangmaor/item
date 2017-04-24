@@ -35,7 +35,12 @@ public class BgBigret {
         List<EzdBigret> bigretList = ezdBigretService.getAll();//这个有问题吧！！！
         HttpSession session = request.getSession();
         session.setAttribute("list", bigretList);
-
+        List<EzdBigret> bigretList1 = ezdBigretService.modeGet(1);
+        for (EzdBigret e:bigretList1
+             ) {
+            System.out.println("eeee="+e);
+            System.out.println("eeqq="+e.getBigretEnmg());
+        }
 
         System.out.println(bigretList);
         return "indexTest";
