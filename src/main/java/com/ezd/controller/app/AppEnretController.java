@@ -1,74 +1,24 @@
-package com.ezd.controller;
+package com.ezd.controller.app;
 
 import com.ezd.model.EzdEnmg;
 import com.ezd.model.EzdEnret;
-import com.ezd.model.EzdRetType;
 import com.ezd.service.EzdEnretService;
-import com.ezd.utils.AjaxUtil;
-import org.json.simple.JSONValue;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
- * Created by Administrator on 2017/4/13.
+ * Created by Administrator on 2017/4/24.
  */
 @Controller
-@RequestMapping("/enret")
-public class EzdEnretController {
-
+@RequestMapping("/app_enret")
+public class AppEnretController {
     @Resource
     private EzdEnretService ezdEnretService;
-
-    @RequestMapping("/index")
-    public String index(){
-        return "sxgl";
-    }
-
-    @RequestMapping("/qzgl")
-    public String index2(){
-        return "qzgl";
-    }
-
-    @RequestMapping("/dzhgl")
-    public String index3(){
-        return "dzhgl";
-    }
-
-    @RequestMapping("/xxgl")
-    public String index4(){
-        return "xxgl";
-    }
-
-
-
-    /**
-     * 查询出所有招聘信息
-     */
-    @RequestMapping(value = "/ajaxGetAll",method = RequestMethod.GET)
-    @ResponseBody
-    public List<EzdEnret> getAll() throws Exception {
-        List<EzdEnret> All = ezdEnretService.getAll();
-        return All;
-    }
-    /**
-     * 根据公司id查询出本公司所有的招聘信息
-     * @param enmgId
-     */
-    @RequestMapping(value = "/ajaxGetOneAll",method = RequestMethod.POST)
-    @ResponseBody
-    public List<EzdEnret> getOneAll(int enmgId) throws Exception {
-        EzdEnmg ezdEnmg = new EzdEnmg();
-        ezdEnmg.setEnmgId(enmgId);
-        List<EzdEnret> oneAll = ezdEnretService.getOneAll(ezdEnmg);
-        return oneAll;
-    }
-
     /**
      * 根据招聘类型查询出招聘信息
      * @param retTypeId
@@ -80,6 +30,7 @@ public class EzdEnretController {
 
         return enretTypeAll;
     }
+
 
     /**
      * 根据工资的范围进行查询招聘信息
@@ -115,29 +66,4 @@ public class EzdEnretController {
         return countAll;
 
     }
-
-    /**
-     * 根据企业删除招聘信息
-     * @param enretId
-     */
-    @RequestMapping(value = "/delete",method = RequestMethod.DELETE)
-    @ResponseBody
-    public boolean delete(int enretId){
-        EzdEnret ezdEnret = new EzdEnret();
-        ezdEnret.setEnretId(enretId);
-        boolean bl = ezdEnretService.delete(ezdEnret);
-        return bl;
-    }
-
-    /**
-     * 根据企业添加招聘信息
-     * @param ezdEnret
-     */
-    @RequestMapping(value = "/insert",method = RequestMethod.POST)
-    @ResponseBody
-    public boolean insert(EzdEnret ezdEnret){
-        boolean bl = ezdEnretService.insert(ezdEnret);
-        return bl;
-    }
-
 }

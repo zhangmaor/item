@@ -35,11 +35,16 @@
     -->
     <select id="modeGet" resultMap="com.ezd.dao.EzdBigretDao.bigret" parameterType="com.ezd.model.EzdNewsStatus">
         select *  from  ezd_bigret
-        <where>
+         left join  ezd_enmg
+        on ezd_enmg.enmg_id = ezd_bigret.bigret_enmg
+        where
+            1=1
             <if test="#{newsStatusId!=null}">
-                newsStatus_id = #{newsStatusId}
+               and  bigret_status = #{newsStatusId}
+
             </if>
-        </where>
+          and ezd_enmg.enmg_id is not null
+
     </select>
     <select id="get" resultMap="com.ezd.dao.EzdBigretDao.bigret">
         select * from ezd_bigret

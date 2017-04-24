@@ -18,7 +18,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/appSchmg")
-public class appSchController {
+public class AppSchController {
 
     @Resource
     private EzdSchmgService ezdSchmgService;
@@ -26,6 +26,11 @@ public class appSchController {
     private EzdBigretService ezdBigretService;
 
     //手机端返回 json 格式
+
+    /**
+     * 全部的学校信息
+     * @return
+     */
     @GetMapping("/allSchmg")
     @ResponseBody
     private List<EzdSchmg> findAllSch(){

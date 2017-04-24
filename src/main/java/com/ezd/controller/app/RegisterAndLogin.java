@@ -49,6 +49,7 @@ public class RegisterAndLogin {
      * @throws Exception
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @ResponseBody
     public String login(EzdUsers user, Model model) throws Exception {
         EzdUsers use = userService.login(user);
         if (use != null) {
