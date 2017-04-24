@@ -10,9 +10,9 @@
         <result property="postOneId" column="ptwo_postOne"/>
         <association property="ezdPostOne" resultMap="com.ezd.dao.EzdPostOneDao.postOne" />
     </resultMap>
-    <!--<select id="findPostTwo" resultMap="com.ezd.dao.EzdPostOneDao.postOne"  parameterType="int">
+    <select id="getPostTwo" resultMap="postTwo"  parameterType="int">
         select * from ezd_postTwo where ptwo_postOne = #{_parameter}
-    </select>-->
+    </select>
 
     <select id="findPostTwo" resultMap="postTwo"  parameterType="int">
         select * from ezd_posttwo where ptwo_id = #{_parameter}

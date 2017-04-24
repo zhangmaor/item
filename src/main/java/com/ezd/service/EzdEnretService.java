@@ -77,7 +77,12 @@ public class EzdEnretService {
         return list;
     }
 
-    //根据招聘类型查询出招聘信息
+    /**
+     * 根据招聘类型查询出招聘信息
+     * @param retTypeId
+     * @return
+     * @throws Exception
+     */
     public List<EzdEnret> getEnretTypeAll(int retTypeId) throws Exception {
         List<EzdEnret> list = new ArrayList<>();
         list = ezdEnretDao.getEnretTypeAll(retTypeId);
