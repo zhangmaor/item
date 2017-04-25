@@ -223,7 +223,7 @@
 					<tr>
 		    			<td>
 		    				<div style="width: 60px; height: 60px;margin: auto;">
-		    					<img src="img/QQ图片20170308195953.jpg" style="width: 100%;height: 100%;border-radius: 50px;">
+		    					<img src="/img/QQ图片20170308195953.jpg" style="width: 100%;height: 100%;border-radius: 50px;">
 		    				</div>
 		    			</td>
 		    		</tr>
@@ -677,7 +677,7 @@
                         $.each(item.ezdErlenrets, function(index1, item1) {
                             //console.log(item1);
                             con += "<tr>";
-                            con += "<td>" + item1.ezdEnret.ezdPostTwo.ptwoName + "</td>";
+                            con += "<td><img src='/img/qq.jpg' style='width: 20px;height: 20px;'></td>";
                             con += "<td>" + item1.ezdEnret.ezdPostTwo.ptwoName + "</td>";
                             con += "<td>" + item1.ezdUmg.umgName + "</td>";
                             con += "<td>" + item1.ezdUmg.umgUser.userPhone + "</td>";

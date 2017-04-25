@@ -16,8 +16,8 @@
 <body>
 <div class="right-mokuai">
     <div class="practice" style="width: 18%;">
-        <span>大招会管理<i class="fa fa-angle-down"></i></span>
-        <span style="float: right;display: none;" id="fb">发布大招会<i class="fa fa-angle-down"></i></span>
+        <span>文章管理<i class="fa fa-angle-down"></i></span>
+        <span style="float: right;display: none;" id="fb">发布文章<i class="fa fa-angle-down"></i></span>
     </div>
 </div>
 
@@ -266,6 +266,43 @@
         });
     });
 
+</script>
+
+<%----%>
+<script>
+    $(function(){
+        $.ajax({
+            type: "get", //请求的方式，也有get请求
+            url: "<%=request.getContextPath()%>/aticle/ajaxGetArticleAll", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
+            dataType: "json", //json格式，后台返回的数据为json格式的。
+            success: function(result){
+                var dataObj = result, //返回的result为json格式的数据
+                    con = "";
+                console.log(result);
+                $.each(dataObj, function(index, item){
+                    con += "<tr>";
+                    con += "<td>"+item.articleId+"</td>";
+                    con += "<td>"+item.articleMtitle+"</td>";
+                    con += "<td></td>";
+                    con += "<td>"+item.articleAuthor+"</td>";
+                    con += "<td>"+item.articleType+"</td>";
+                    con += "<td>"+new Date(item.articleTime).toLocaleDateString()+"</td>";
+                    con += "<td>1</td>";
+                    con += "<td>1</td>";
+                    con += "<td>1</td>";
+                    con += "<td>1</td>";
+                    con += "<td><div class='miniDiv'>显示 </div></td>";
+                    con += "<td><button class='btn btn-warning btn-xs' id='btnHidden'>隐藏</button>"+
+                    "<button class='btn btn-info btn-xs' id='btnEdit' data-toggle='modal' data-target='#edit'>编辑</button>"+
+                        "<button class='btn btn-primary btn-xs' id='btnDetails'>详情</button>"+
+                        "<button class='btn btn-danger btn-xs'' id='btnDelete'>删除</button></td>";
+                    con += "</tr>";
+
+                });
+                $("#tbody").html(con); //把内容入到这个div中即完成
+            }
+        })
+    })
 </script>
 
 </html>

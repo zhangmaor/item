@@ -59,7 +59,7 @@ public class EzdAticleController {
      * 查询文章并按时间排序
      * @return
      */
-    @RequestMapping(value = "/ajaxGetArticleAll",method = RequestMethod.POST)
+    @RequestMapping(value = "/ajaxGetArticleAll",method = RequestMethod.GET)
     @ResponseBody
     public List<EzdArticle> getArticleAll(){
         List<EzdArticle> articleAll = ezdArticleService.getArticleAll();

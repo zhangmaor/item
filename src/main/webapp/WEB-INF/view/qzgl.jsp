@@ -162,7 +162,7 @@
                 <table id="lqsx" cellpadding="0" cellspacing="0" class="table">
                     <tr>
                         <td>
-                            <div style="width: 60px; height: 60px;margin: auto;"><img src="img/QQ图片20170308195953.jpg"
+                            <div style="width: 60px; height: 60px;margin: auto;"><img src="/img/qq.jpg"
                                                                                       style="width: 100%;height: 100%;border-radius: 50px;">
                             </div>
                         </td>
@@ -550,7 +550,7 @@
                     $.each(item.ezdErlenrets, function (index1, item1) {
                         //console.log(item1);
                         con += "<tr>";
-                        con += "<td>" + item1.ezdEnret.ezdPostTwo.ptwoName + "</td>";
+                        con += "<td><img src='/img/qq.jpg' style='width: 20px;height: 20px;'></td>";
                         con += "<td>" + item1.ezdEnret.ezdPostTwo.ptwoName + "</td>";
                         con += "<td>" + item1.ezdUmg.umgName + "</td>";
                         con += "<td>" + item1.ezdUmg.umgUser.userPhone + "</td>";
@@ -706,7 +706,6 @@
             dataType: "json", //json格式，后台返回的数据为json格式的。
             success: function (result) {
                 if (result) {
-                    alert("chengg");
                     $("#del_qz").modal("hide");
                 }
             }
@@ -735,7 +734,7 @@
 </script>
 
 <%--修改实习岗位--%>
-<%--<script>
+<script>
 
     function tjxg() {
         $.ajax({
@@ -762,7 +761,7 @@
         })
     }
 
-</script>--%>
+</script>
 
 <script type="text/javascript">
     $(function () {
