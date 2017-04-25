@@ -70,11 +70,11 @@
           enret_type = #{enretType},
           enret_lwMoney = #{enretLwMoney},
           enret_hgMoney = #{enretHgMoney},
-          enret_postOne = #{enretPostOne}
-          enret_postTwo = #{enretPostTwo}
+          enret_postOne = #{enretPostOne},
+          enret_postTwo = #{enretPostTwo},
           enret_pg = #{enretPg},
           enret_demand = #{enretDemand},
-          enret_status = #{newsStatusId}
+          enret_status = #{enretStatus}
          WHERE enret_id = #{enretId}
     </update>
 

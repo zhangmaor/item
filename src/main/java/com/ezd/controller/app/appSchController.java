@@ -18,7 +18,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/appSchmg")
-public class AppSchController {
+class AppSchController {
 
     @Resource
     private EzdSchmgService ezdSchmgService;
