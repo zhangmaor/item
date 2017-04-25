@@ -5,6 +5,7 @@ import com.ezd.service.EzdEnmgService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -50,17 +51,17 @@ public class BgEnmg {
     }
     /**
      * 进入企业列表的页面
-     *
-     * @param request
+     * 查询所有的企业信息
      * @return
      */
-    @RequestMapping("/enmg")
-    public String getEnmg(HttpServletRequest request) {
+    @RequestMapping(value = "/enmg",method = RequestMethod.GET)
+    @ResponseBody
+    public List<EzdEnmg> getEnmg() {
         List<EzdEnmg> all = ezdEnmgService.getAll();
-        HttpSession session = request.getSession();
-        session.setAttribute("enmgList", all);
-        return "";
+        return all;
     }
+
+
 
     /**
      * 点击某一个企业，然后就执行这个方法

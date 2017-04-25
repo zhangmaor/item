@@ -108,7 +108,7 @@
                     enret_postTwo  ,
                     enret_pg ,
                     enret_demand ,
-                    enret_status,)
+                    enret_status)
         values (#{nretEnmg},
                 #{enretWantNum},
                 #{enretType},

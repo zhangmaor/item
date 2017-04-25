@@ -119,7 +119,7 @@ public class EzdEnretController {
      * 根据企业删除招聘信息
      * @param enretId
      */
-    @RequestMapping(value = "/delete",method = RequestMethod.DELETE)
+    @RequestMapping(value = "/delete",method = RequestMethod.POST)
     @ResponseBody
     public boolean delete(int enretId){
         EzdEnret ezdEnret = new EzdEnret();
@@ -135,6 +135,7 @@ public class EzdEnretController {
     @RequestMapping(value = "/insert",method = RequestMethod.POST)
     @ResponseBody
     public boolean insert(EzdEnret ezdEnret){
+        System.out.println(ezdEnret);
         boolean bl = ezdEnretService.insert(ezdEnret);
         return bl;
     }

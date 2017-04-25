@@ -41,17 +41,17 @@ public class EzdEnmgService {
     }
 
     /**
-     * 获取全部的信息。。。。
+     * 获取全部企业的信息。。。。
      * @return
      */
     public List<EzdEnmg> getAll(){
         List<EzdEnmg> ezdEnmgList = null;
         try {
             ezdEnmgList = ezdEnmgDao.getAll();
-            for (EzdEnmg ezdEnmg:ezdEnmgList) {
+           /* for (EzdEnmg ezdEnmg:ezdEnmgList) {
                 EzdEntype ezdEntype = ezdEntypeDao.getEzdEntype(ezdEnmg.getEnmgType());
                 ezdEnmg.setEzdEntype(ezdEntype);
-            }
+            }*/
         } catch (Exception e) {
             e.printStackTrace();
         }
