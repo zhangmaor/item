@@ -64,7 +64,8 @@
         umg_sayMf = #{umgSayMf},
         umg_education = #{umgEducation},
         umg_uptime = #{umgUptime}
-
+        where
+          umg_id  = #{umgId}
     </update>
 
     <!--根据浏览信息的查询用户-->

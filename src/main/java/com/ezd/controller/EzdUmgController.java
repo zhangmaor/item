@@ -30,7 +30,7 @@ public class EzdUmgController {
     public String insetAll(EzdUmg ezdUmg,Model model)throws Exception{
         int all=0;
         ezdUmg.setUmgUptime(new Date());
-        all=ezdUmgService.insetAll(ezdUmg);
+        all=ezdUmgService.upAll(ezdUmg);
         if(all>0){
             model.addAttribute(ezdUmg);
             return "inset";
