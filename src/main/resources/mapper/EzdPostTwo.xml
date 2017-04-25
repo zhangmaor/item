@@ -17,4 +17,8 @@
     <select id="findPostTwo" resultMap="postTwo"  parameterType="int">
         select * from ezd_posttwo where ptwo_id = #{_parameter}
     </select>
+    <select id="getAll">
+        select * from ezd_postTwo left join ezd_postOne
+        on ezd_postTwo.ptwo_postOne = ezd_postOne.pone_id
+    </select>
 </mapper>

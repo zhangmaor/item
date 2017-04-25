@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -45,7 +46,41 @@ public class EzdUmgService {
      * @return
      */
     public int upAll(EzdUmg ezdUmg) {
-        return ezdUmgDao.upAll(ezdUmg);
+        EzdUmg umg = ezdUmgDao.getEzdUmgAll(ezdUmg.getUmgId());
+        if(ezdUmg.getUmgBirthday()!=null){
+            umg.setUmgBirthday(ezdUmg.getUmgBirthday());
+        }
+        if(ezdUmg.getUmgDegree()!=null){
+            umg.setUmgDegree(ezdUmg.getUmgDegree());
+        }
+        if(ezdUmg.getUmgEducation()!=null){
+            umg.setUmgEducation(ezdUmg.getUmgEducation());
+        }
+        if(ezdUmg.getUmgEmail()!=null){
+            umg.setUmgEmail(ezdUmg.getUmgEmail());
+        }
+        if(ezdUmg.getUmgMajor()!=null){
+            umg.setUmgMajor(ezdUmg.getUmgMajor());
+        }
+        if(ezdUmg.getUmgName()!=null){
+            umg.setUmgName(ezdUmg.getUmgName());
+        }
+        if(ezdUmg.getUmgPhoto()!=null){
+            umg.setUmgPhoto(ezdUmg.getUmgPhoto());
+        }
+        if(ezdUmg.getUmgSayMf()!=null){
+            umg.setUmgSayMf(ezdUmg.getUmgSayMf());
+        }
+        if(ezdUmg.getUmgSchool()!=null){
+            umg.setUmgSchool(ezdUmg.getUmgSchool());
+        }
+        if(ezdUmg.getUmgSex()!=null){
+            umg.setUmgSex(ezdUmg.getUmgSex());
+        }
+        umg.setUmgUptime(new Date());
+        int i = ezdUmgDao.upAll(umg);
+        return i;
+
     }
 
     /**

@@ -67,7 +67,7 @@ public class RegisterAndLogin {
      * @throws Exception
      */
     @RequestMapping("/regist")
-    public String addUser(HttpServletRequest request, @ModelAttribute("users") @Validated EzdUsers users, Errors errors, String codes) throws Exception {
+    public String addUser(HttpServletRequest request, @ModelAttribute("users") @Validated EzdUsers users, Errors errors, String codes,String name) throws Exception {
         int user = 0;
         if (errors.hasErrors()) {
             return "regist";
@@ -78,9 +78,11 @@ public class RegisterAndLogin {
         int ss = Integer.parseInt(codes);
         if (phone.equals(users.getUserPhone()) && code == ss) {
             users.setUserUptime(new Date());
-            user = userService.addUser(users);
+            user = userService.addUser(users,name);
+ 
             if (user > 0) {
                 return "login";
+
             }
         }
         return "error";

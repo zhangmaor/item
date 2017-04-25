@@ -12,4 +12,5 @@
     <select id="findPostOne" resultMap="postOne" >
         select * from ezd_postOne
     </select>
+
 </mapper>
