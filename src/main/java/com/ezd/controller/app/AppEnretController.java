@@ -23,7 +23,7 @@ public class AppEnretController {
      * 根据招聘类型查询出招聘信息
      * @param retTypeId
      */
-    @RequestMapping(value = "/ajaxGetEnretTypeAll",method = RequestMethod.POST)
+    @RequestMapping(value = "/ajaxGetEnretTypeAll",method = RequestMethod.GET)
     @ResponseBody
     public List<EzdEnret> getEnretTypeAll(int retTypeId) throws Exception {
         List<EzdEnret> enretTypeAll = ezdEnretService.getEnretTypeAll(retTypeId);
@@ -65,5 +65,16 @@ public class AppEnretController {
         List<EzdEnret> countAll = ezdEnretService.getCountAll();
         return countAll;
 
+    }
+
+
+    /**
+     * 查询出所有招聘信息
+     */
+    @RequestMapping(value = "/ajaxGetAll",method = RequestMethod.GET)
+    @ResponseBody
+    public List<EzdEnret> getAll() throws Exception {
+        List<EzdEnret> All = ezdEnretService.getAll();
+        return All;
     }
 }
