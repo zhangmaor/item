@@ -31,7 +31,7 @@ public class SchController {
 
         model.addAttribute("ezdSchmgs",ezdSchmgs);
 
-        return "";
+        return "xxgl";
     }
 
     @RequestMapping("/addSchmg")
