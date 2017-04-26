@@ -110,7 +110,7 @@ public class EzdEnretService {
             li.setEzdErlenrets(personList);
             li.setEzdEnmg(enmg);
             li.setEzdPostTwo(ezdPostTwo);
-            System.out.println(li);
+            //System.out.println(li);
         }
         return list;
     }
@@ -170,11 +170,23 @@ public class EzdEnretService {
         return list;
     }
 
-    //根据企业id更改招聘信息
-    public boolean update(EzdEnret e1,EzdEnret e2){
+    //根据enret_id查询出招聘信息
+    public EzdEnret getEzdEnretAll(int enret_id) throws Exception {
+        EzdEnret ezdEnretAll = ezdEnretDao.getEzdEnretAll(enret_id);
+        EzdEnmg enmg = ezdEnmgDao.getEnmg(ezdEnretAll.getNretEnmg());
+        ezdEnretAll.setEzdEnmg(enmg);
+        return ezdEnretAll;
+    }
 
+    //根据企业id更改招聘信息
+    public boolean update(EzdEnret e2){
+        EzdEnret e1= ezdEnretDao.getEzdEnretAll(e2.getEnretId());
+        System.out.println(e1);
         if (e2.getEnretWantNum() == 0){
             e2.setEnretWantNum(e1.getEnretWantNum());
+        }
+        if (e2.getNretEnmg() == 0){
+            e2.setNretEnmg(e1.getNretEnmg());
         }
         if (e2.getEnretCreTime() == null){
             e2.setEnretCreTime(e1.getEnretCreTime());
@@ -203,7 +215,8 @@ public class EzdEnretService {
         if (e2.getEnretStatus() == 0){
             e2.setEnretStatus(e1.getEnretStatus());
         }
-        int row = ezdEnretDao.update(e2.getNretEnmg());
+        System.out.println(e2);
+        int row = ezdEnretDao.update(e2);
         if (row>0){
             return true;
         }

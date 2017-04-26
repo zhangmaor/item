@@ -32,8 +32,8 @@ public interface EzdEnretDao {
     //根据浏览数量进行排序查询招聘信息
     public List<EzdEnret> getCountAll();
 
-    //根据企业id更改招聘信息
-    public int update(int enretId);
+    //根据id更改招聘信息
+    public int update(EzdEnret ezdEnret);
 
     //根据企业删除招聘信息
     public int delete(EzdEnret ezdEnret);

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.util.List;
 
 /**
@@ -105,6 +106,18 @@ public class EzdEnretController {
     }
 
     /**
+     * 根据enret_id查询出招聘信息
+     */
+    @RequestMapping(value = "/ajaxGetEzdEnretAll",method = RequestMethod.POST)
+    @ResponseBody
+    public EzdEnret getEzdEnretAll(int enretId) throws Exception {
+        EzdEnret ezdEnretAll = ezdEnretService.getEzdEnretAll(enretId);
+        return ezdEnretAll;
+    }
+
+
+
+    /**
      * 根据浏览数量进行排序查询招聘信息
      */
     @RequestMapping(value = "/ajaxGetCountAll",method = RequestMethod.POST)
@@ -135,9 +148,23 @@ public class EzdEnretController {
     @RequestMapping(value = "/insert",method = RequestMethod.POST)
     @ResponseBody
     public boolean insert(EzdEnret ezdEnret){
-        System.out.println(ezdEnret);
+        //System.out.println(ezdEnret);
         boolean bl = ezdEnretService.insert(ezdEnret);
         return bl;
+    }
+
+
+    /**
+     * 根据企业id更改招聘信息
+     * @param ezdEnret
+     * @return
+     */
+    @RequestMapping(value = "/update",method = RequestMethod.POST)
+    @ResponseBody
+    public boolean update(EzdEnret ezdEnret){
+        System.out.println(ezdEnret.toString());
+        boolean update = ezdEnretService.update(ezdEnret);
+        return update;
     }
 
 }

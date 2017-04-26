@@ -128,7 +128,7 @@
 					            </thead>
 								
 								<tbody id="sxbm">
-									<tr>
+									<%--<tr>
 										<td class="text-center"><img src="img/QQ图片20170308195953.jpg" style="width: 20px;height: 20px;"></td>
 										<td>文员</td>
 										<td>张三</td>
@@ -136,7 +136,7 @@
 										<td>男</td>
 										<td>2014-11-16</td>
 										<td>已报名</td>
-									</tr>
+									</tr>--%>
 								</tbody>
 							</table>
 						</div>
@@ -170,7 +170,7 @@
 									<th>操作</th>
 								</thead>
 								<tbody id="ssgw">
-									<tr>
+									<%--<tr>
 										<td>广州罗氏网络科技有限公司</td>
 										<td>情感分析师</td>
 										<td>本科</td>
@@ -195,7 +195,7 @@
 											<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#update_sx">修改</button>
 											<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#del_sx">删除</button>
 										</td>
-									</tr>
+									</tr>--%>
 								</tbody>
 							</table>
 							
@@ -223,7 +223,7 @@
 					<tr>
 		    			<td>
 		    				<div style="width: 60px; height: 60px;margin: auto;">
-		    					<img src="img/QQ图片20170308195953.jpg" style="width: 100%;height: 100%;border-radius: 50px;">
+		    					<img src="/img/QQ图片20170308195953.jpg" style="width: 100%;height: 100%;border-radius: 50px;">
 		    				</div>
 		    			</td>
 		    		</tr>
@@ -467,7 +467,7 @@
 						  <div class="col-xs-3 text-right">薪资</div>
 						  <div class="col-xs-3" style="padding-right: 0;">
 							  <div class="input-group">
-								  <input type="text" class="form-control" placeholder="最低工资" aria-describedby="basic-addon1">
+								  <input type="text" class="form-control" placeholder="最低工资" id="zdxz" aria-describedby="basic-addon1">
 								  <span class="input-group-addon" id="basic-addon1">k</span>
 
 							  </div>
@@ -477,16 +477,26 @@
 						  </div>
 						  <div class="col-xs-3" style="padding: 0;">
 							  <div class="input-group">
-								  <input type="text" class="form-control" placeholder="最高工资" aria-describedby="basic-addon2">
+								  <input type="text" class="form-control" placeholder="最高工资" id="zgxz" aria-describedby="basic-addon2">
 								  <span class="input-group-addon" id="basic-addon2">k</span>
 							  </div>
 						  </div>
 					  </div><br>
+
+					  <div class="row">
+						  <div class="col-xs-3 text-right">员工福利</div>
+						  <div class="col-xs-4">
+							  <div class="input-group">
+								  <input type="text" id="fl" class="form-control" placeholder="">
+							  </div>
+						  </div>
+					  </div><br>
+
 					  <div class="row">
 						  <div class="col-xs-3 text-right">招聘人数</div>
 						  <div class="col-xs-3">
 							  <div class="input-group">
-								  <input type="text" class="form-control" placeholder="招聘人数">
+								  <input type="text" class="form-control" id="number" placeholder="招聘人数">
 							  </div>
 						  </div>
 					  </div><br>
@@ -506,11 +516,11 @@
 						  <div class="col-xs-3 text-right">学历要求</div>
 						  <div class="col-xs-7">
 							  <div class="input-group">
-								  <select name="" class="form-control">
-									  <option value="0">不限</option>
-									  <option value="1">本科</option>
-									  <option value="2">大专</option>
-									  <option value="3">高职</option>
+								  <select name="" id="xl" class="form-control">
+									  <option value="不限">不限</option>
+									  <option value="本科">本科</option>
+									  <option value="大专">大专</option>
+									  <option value="高职">高职</option>
 								  </select>
 							  </div>
 						  </div>
@@ -519,7 +529,7 @@
 						  <div class="col-xs-3 text-right">工作要求</div>
 						  <div class="col-xs-7">
 							  <div class="input-group">
-								  <input type="text" class="form-control" placeholder="输入工作要求">
+								  <input type="text" class="form-control" id="gz" placeholder="输入工作要求">
 							  </div>
 						  </div>
 					  </div><br>
@@ -539,7 +549,7 @@
 			  </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-		        <button type="button" class="btn btn-primary">提交修改</button>
+		        <button type="button" class="btn btn-primary" id="tjxg" onclick="tjxg()">提交修改</button>
 		      </div>
 		    </div>
 		  </div>
@@ -567,12 +577,11 @@
 		    </div>
 		  </div>
 		</div>
-		
+
 	</body>
 
 	<script>
 		var a = document.getElementById("qdsc");
-
         $(function(){
                 $.ajax({
                     type: "post", //请求的方式，也有get请求
@@ -589,18 +598,68 @@
                             con += "<td>"+item.enretDemand+"</td>";
                             con += "<td>"+item.enretWantNum+"</td>";
                             con += "<td>"+item.enretWantNum+"</td>";
-                            con += "<td>"+item.enretLwMoney+"-"+item.enretHgMoney+"</td>";
-                            con += "<td><span class='label label-warning'>停招</span></td>";
-                            con += "<td><button type='button' class='btn btn-primary' data-toggle='modal' data-target='#update_sx'>修改</button>"+
-                            "<button type='button' value='"+item.enretId+"' class='btn btn-danger' class='fff' onclick='a.value=this.value' data-toggle='modal' data-target='#del_sx'>删除</button></td>";
+                            con += "<td>"+item.enretLwMoney+"K~"+item.enretHgMoney+"K</td>";
+                            con += "<td><span class='label label-warning'>在招</span></td>";
+                            con += "<td><button type='button' class='btn btn-primary' onclick='xg(this)' value='"+item.enretId+"' data-toggle='modal' data-target='#update_sx'>修改</button>"+
+                            "<button type='button' value='"+item.enretId+"' class='btn btn-danger' onclick='a.value=this.value' data-toggle='modal' data-target='#del_sx'>删除</button></td>";
                             con += "</tr>";
-                        });
 
+                        });
                         $("#ssgw").html(con); //把内容入到这个div中即完成
                     }
                 })
         })
 	</script>
+
+	<%--修改--%>
+	<script>
+        function xg(id){
+            $("#tjxg").val(id.value);
+            $.ajax({
+                type: "post", //请求的方式，也有get请求
+                url: "<%=request.getContextPath()%>/enret/ajaxGetEzdEnretAll", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
+                data:"enretId="+id.value,
+                dataType: "json", //json格式，后台返回的数据为json格式的。
+                success: function(result){
+                    console.log(result);
+                   $("#xgqy").val(result.nretEnmg);
+                   $("#xgyjgw").val(result.enretPostOne);/*
+                   $("#xgejgw").val(result.enretPostTwo);*/
+                }
+            })
+        }
+	</script>
+
+	<%--修改实习岗位--%>
+	<script>
+
+        function tjxg(){
+            $.ajax({
+                type: "post", //请求的方式，也有get请求
+                url: "<%=request.getContextPath()%>/enret/update", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
+                data:{
+                    	enretId			:	$("#tjxg").val(),
+                    	enretPostOne	:	$("#xgyjgw").val()==""? 0:$("#xgyjgw").val(),
+                    	enretPostTwo	:	$("#xgejgw").val()==""? 0:$("#xgejgw").val(),
+                    	enretLwMoney	:	$("#zdxz").val()==""? 0:$("#zdxz").val(),
+                    	enretHgMoney	:	$("#zgxz").val()==""? 0:$("#zgxz").val(),
+                    	enretWantNum	:	$("#number").val()==""? 0:$("#number").val(),
+                    	enretDemand	:	$("#xl").val()+""+$("#gz").val(),
+                    	enretPg			:	$("#fl").val()==""?null:$("#fl").val(),
+                    	enretStatus	:	1
+					  },
+                dataType: "json", //json格式，后台返回的数据为json格式的。
+                success: function(result){
+                    if(result){
+                        $("#update_sx").modal("hide");
+					}
+
+                }
+            })
+        }
+
+	</script>
+
 
 	<script>
         $(function(){
@@ -618,7 +677,7 @@
                         $.each(item.ezdErlenrets, function(index1, item1) {
                             //console.log(item1);
                             con += "<tr>";
-                            con += "<td>" + item1.ezdEnret.ezdPostTwo.ptwoName + "</td>";
+                            con += "<td><img src='/img/qq.jpg' style='width: 20px;height: 20px;'></td>";
                             con += "<td>" + item1.ezdEnret.ezdPostTwo.ptwoName + "</td>";
                             con += "<td>" + item1.ezdUmg.umgName + "</td>";
                             con += "<td>" + item1.ezdUmg.umgUser.userPhone + "</td>";

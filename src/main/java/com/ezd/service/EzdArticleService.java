@@ -79,9 +79,9 @@ public class EzdArticleService {
     public List<EzdArticle> getArticleAll(){
         List<EzdArticle> list = new ArrayList<>();
         list = ezdArticlDao.getArticleAll();
-        for (EzdArticle li :list) {
+       for (EzdArticle li :list) {
             List<EzdReadarti> count = ezdReadartiDao.getCount(li);
-            List<EzdSayart> ezdSayartAll = ezdSayartDao.getEzdSayartAll(li);
+           List<EzdSayart> ezdSayartAll = ezdSayartDao.getEzdSayartAll(li);
             List<EzdPoint> ezdPointCount = ezdPointDao.getEzdPointCount(li);
             li.setEzdReadartis(count);
             li.setEzdSayarts(ezdSayartAll);

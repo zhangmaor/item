@@ -234,6 +234,7 @@ CREATE TABLE ezd_artitype(--  文章类型表
 	artitype_id INT PRIMARY KEY  AUTO_INCREMENT,
 	artitype_name VARCHAR(20)  NOT NULL
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
+
 CREATE TABLE ezd_article(--  文章信息表
 	article_id INT PRIMARY KEY AUTO_INCREMENT, 
 	article_logo VARCHAR(50),--  文章封面
@@ -245,6 +246,7 @@ CREATE TABLE ezd_article(--  文章信息表
 	article_pic VARCHAR(50),--  文章分享图
 	article_content TEXT NOT NULL,--  文章内容
 	article_keywords VARCHAR(50),--  文章关键字
+	TIME Datetime DEFAULT CURRENT_TIMESTAMP ,-- 时间
 	article_status INT  NOT NULL --  文章状态（显示 影藏）
 	
 	
