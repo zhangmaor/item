@@ -93,4 +93,17 @@ public class EzdAticleController {
 
     }
 
+    /**
+     * 更改状态
+     * @param ezdArticle
+     * @return
+     */
+    @RequestMapping(value = "/ajaxUpdateStatus",method = RequestMethod.POST)
+    @ResponseBody
+    public boolean updateStatus(EzdArticle ezdArticle){
+        boolean b = ezdArticleService.updateStatus(ezdArticle);
+        return b;
+    }
+
+
 }

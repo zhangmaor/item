@@ -66,4 +66,16 @@
         SELECT * FROM ezd_article WHERE article_status = #{_parameter} ORDER BY time DESC
     </select>
 
+
+    <!--更改状态-->
+    <update id="updateStatus" parameterType="com.ezd.model.EzdArticle" >
+        UPDATE ezd_article SET article_status = #{articleStatus} WHERE article_id = #{articleId} ORDER BY time DESC
+    </update>
+
+    <!--根据编号查询-->
+    <select id="getArticleId" parameterType="com.ezd.model.EzdArticle" resultMap="article">
+         SELECT * FROM ezd_article WHERE article_id = #{articleId}
+    </select>
+
+
 </mapper>

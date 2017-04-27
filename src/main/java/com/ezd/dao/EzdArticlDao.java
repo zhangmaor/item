@@ -24,4 +24,10 @@ public interface EzdArticlDao {
     //根据状态查询并按时间排序
     public List<EzdArticle> getStatusAll(int status);
 
+    //根据编号查询
+    public EzdArticle getArticleId(EzdArticle ezdArticle);
+
+    //更改状态
+    public int updateStatus(EzdArticle ezdArticle);
+
 }
