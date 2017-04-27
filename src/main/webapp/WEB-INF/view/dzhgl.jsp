@@ -12,9 +12,15 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" type="text/css" href="/css/dzh.css"/>
+
+    <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.min.js"> </script>
+    <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
+    <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+    <script type="text/javascript" charset="utf-8" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
+
 </head>
 <body>
-
 <div class="right-mokuai">
     <div class="practice" >
         <span>文章管理<i class="fa fa-angle-down"></i></span>
@@ -47,22 +53,26 @@
 								</select>
 							</span>
                 <span class="article-list-1-search">
-								<input type="text" name="" class="article-list-1-search-1" id="title"  placeholder="请输入：标题、作者"/>
-								<button id="searchBtn1" type="button" onclick="search()" class="btn btn-warning">搜索</button>
+								<input type="text" name="" class="article-list-1-search-1"  placeholder="请输入：标题、作者"/>
+								<button id="searchBtn1" type="button" class="btn btn-warning">搜索</button>
 								<button id="searchBtn2" type="button" class="btn btn-danger">消除搜索</button>
 							</span>
 
                 <div class="searchRadio">
 								<span>
+
 									<i class='input_style radio_bg radio_bg_check'><input type="radio" name="hot" onclick="qb()" value="全部"></i>
+
+									<i class='input_style radio_bg radio_bg_check'><input type="radio" name="hot" value="全部"></i>
+
 									全部&nbsp;&nbsp;&nbsp;&nbsp;
 								</span>
                     <span>
-									<i class='input_style radio_bg'><input type="radio" name="hot" onclick="xs()" value="显示"></i>
+									<i class='input_style radio_bg'><input type="radio" name="hot" value="显示"></i>
 									显示&nbsp;&nbsp;&nbsp;&nbsp;
 								</span>
                     <span>
-									<i class='input_style radio_bg'><input type="radio" name="hot" onclick="yc()" value="隐藏"></i>
+									<i class='input_style radio_bg'><input type="radio" name="hot" value="隐藏"></i>
 									隐藏
 								</span>
                 </div>
@@ -126,7 +136,7 @@
                         &times;
                     </button>
                     <h4 class="modal-title" id="myModalLabel">
-                        更改文章信息
+                        更改大招会信息
                     </h4>
                 </div>
                 <div class="modal-body">
@@ -153,7 +163,87 @@
 </div>
 
 
+<%--
 
+<!--
+    大招会管理
+-->
+
+
+<div class="right-body" id="dzh_two" style="display: none;">
+    <div class="right-body-main " style="border: 1px solid black;height: 1200px;">
+
+        <!--添加大招会表单-->
+        <table border="0" class="smallAddTab">
+            <tr>
+                <th>*文章类型：</th>
+                <td>
+                    <select name="" class="TabTextBox">
+                        <option value="">请选择</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>*标题：</th>
+                <td><input type="text" name="" class="TabTextBox" value="" /></td>
+            </tr>
+            <tr>
+                <th>*副标题(分享内容)：</th>
+                <td><input type="text" name="" class="TabTextBox" value="" /></td>
+            </tr>
+            <tr>
+                <th>*作者：</th>
+                <td><input type="text" name="" class="TabTextBox" placeholder="请输入：用户名、手机号" /></td>
+            </tr>
+            <tr>
+                <th>*作者邮箱：</th>
+                <td><input type="email" name="" class="TabTextBox" value="" /></td>
+            </tr>
+            <tr>
+                <th>*关键字：</th>
+                <td><input type="text" name="" class="TabTextBox" value="" /></td>
+            </tr>
+            <tr>
+                <th>*显示状态：</th>
+                <td>
+                    <div class="searchRadio">
+									<span>
+										<i class='input_style radio_bg radio_bg_check'><input type="radio" name="hot" value="全部"></i>
+										是&nbsp;&nbsp;&nbsp;&nbsp;
+									</span>
+                        <span>
+										<i class='input_style radio_bg'><input type="radio" name="hot" value="显示"></i>
+										否&nbsp;&nbsp;&nbsp;&nbsp;
+									</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>*外部链接：</th>
+                <td><input type="text" name="" class="TabTextBox" value="" /></td>
+            </tr>
+            <tr>
+                <th>*标签：</th>
+                <td>
+                    <textarea></textarea><i class="icon-info-sign"></i>
+                </td>
+            </tr>
+            <tr>
+                <th>*文章封面图：</th>
+                <td><input type="file" name="" id="" value="" /></td>
+            </tr>
+            <tr>
+                <th>*文章分享图：</th>
+                <td><input type="file" name="" id="" value="" /></td>
+            </tr>
+            <tr>
+                <th>*内容：</th>
+                <td>
+                    <form>
+                        <textarea name="content" style="width:800px;height:400px;visibility:hidden;"></textarea>
+>>>>>>> 26dbea963a96697b88916656756b333372f45e00
+
+--%>
 
 
 
@@ -234,6 +324,7 @@
     }
 </script>
 
+<<<<<<< HEAD
 
 <script>
     function xs() {
@@ -364,4 +455,6 @@
     }
 </script>
 
+=======
+>>>>>>> 26dbea963a96697b88916656756b333372f45e00
 </html>
