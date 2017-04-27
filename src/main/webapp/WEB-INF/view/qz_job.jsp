@@ -233,7 +233,7 @@
                         <div class="col-xs-3 text-right">薪资</div>
                         <div class="col-xs-3" style="padding-right: 0;">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="最低工资"
+                                <input type="text" class="form-control" id="zdxz" placeholder="最低工资"
                                        aria-describedby="basic-addon1">
                                 <span class="input-group-addon" id="basic-addon1">k</span>
 
@@ -244,9 +244,18 @@
                         </div>
                         <div class="col-xs-3" style="padding: 0;">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="最高工资"
+                                <input type="text" class="form-control" id="zgxz" placeholder="最高工资"
                                        aria-describedby="basic-addon2">
                                 <span class="input-group-addon" id="basic-addon2">k</span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-xs-3 text-right">员工福利</div>
+                        <div class="col-xs-4">
+                            <div class="input-group">
+                                <input type="text" id="fl" class="form-control" placeholder="">
                             </div>
                         </div>
                     </div>
@@ -277,7 +286,7 @@
                         <div class="col-xs-3 text-right">学历要求</div>
                         <div class="col-xs-7">
                             <div class="input-group">
-                                <select name="" class="form-control">
+                                <select name="" id="xl" class="form-control">
                                     <option value="不限">不限</option>
                                     <option value="本科">本科</option>
                                     <option value="大专">大专</option>
@@ -291,7 +300,7 @@
                         <div class="col-xs-3 text-right">工作要求</div>
                         <div class="col-xs-7">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="输入工作要求">
+                                <input type="text" class="form-control" id="gz" placeholder="输入工作要求">
                             </div>
                         </div>
                     </div>
@@ -312,7 +321,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-primary">提交修改</button>
+                <button type="button" class="btn btn-primary" id="tjxg" onclick="tjxg()">提交修改</button>
             </div>
         </div>
     </div>
@@ -357,8 +366,9 @@
 </script>
 
 <script>
+    display();
     var a = document.getElementById("qdsc");
-    $(function () {
+    function display() {
         $.ajax({
             type: "post", //请求的方式，也有get请求
             url: "<%=request.getContextPath()%>/enret/ajaxGetEnretTypeAll", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
@@ -385,7 +395,7 @@
                 $("#qzgw").html(con); //把内容入到这个div中即完成
             }
         })
-    })
+    }
 </script>
 
 
@@ -406,7 +416,7 @@
                     con += "<option value='" + item.enmgId + "'>" + item.enmgName + "</option>";
                 });
 
-                $("#xgqy").html(con); //把内容入到这个div中即完成
+                $("#qy,#xgqy").html(con); //把内容入到这个div中即完成
             }
         })
     })
@@ -526,6 +536,7 @@
             success: function (result) {
                 if (result) {
                     $("#add_qz").modal("hide");
+                    display();
                 }
             }
         })
@@ -545,6 +556,7 @@
                 //console.log(result);
                 if (result) {
                     $("#del_qz").modal("hide");
+                    display();
                 }
             }
         })
@@ -573,26 +585,26 @@
 
 <%--修改实习岗位--%>
 <script>
-
     function tjxg() {
         $.ajax({
             type: "post", //请求的方式，也有get请求
             url: "<%=request.getContextPath()%>/enret/update", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
             data: {
-                enretId: $("#tjxg").val(),
-                enretPostOne: $("#xgyjgw").val() == "" ? 0 : $("#xgyjgw").val(),
-                enretPostTwo: $("#xgejgw").val() == "" ? 0 : $("#xgejgw").val(),
-                enretLwMoney: $("#zdxz").val() == "" ? 0 : $("#zdxz").val(),
-                enretHgMoney: $("#zgxz").val() == "" ? 0 : $("#zgxz").val(),
-                enretWantNum: $("#number").val() == "" ? 0 : $("#number").val(),
-                enretDemand: $("#xl").val() + "" + $("#gz").val(),
-                enretPg: $("#fl").val() == "" ? null : $("#fl").val(),
+                enretId         : $("#tjxg").val(),
+                enretPostOne    : $("#xgyjgw").val() == "" ? 0 : $("#xgyjgw").val(),
+                enretPostTwo    : $("#xgejgw").val() == "" ? 0 : $("#xgejgw").val(),
+                enretLwMoney    : $("#zdxz").val() == "" ? 0    : $("#zdxz").val(),
+                enretHgMoney    : $("#zgxz").val() == "" ? 0    : $("#zgxz").val(),
+                enretWantNum    : $("#rs").val() == "" ? 0 : $("#rs").val(),
+                enretDemand     : $("#xl").val() + "" + $("#gz").val(),
+                enretPg         : $("#fl").val() == "" ? null   : $("#fl").val(),
                 enretStatus: 1
             },
             dataType: "json", //json格式，后台返回的数据为json格式的。
             success: function (result) {
                 if (result) {
-                    $("#update_sx").modal("hide");
+                    $("#update_qz").modal("hide");
+                    display();
                 }
             }
         })

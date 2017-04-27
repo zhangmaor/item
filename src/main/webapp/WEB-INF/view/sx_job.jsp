@@ -357,8 +357,9 @@
 </body>
 
 <script>
+    ss();
     var a = document.getElementById("qdsc");
-    $(function () {
+    function ss() {
         $.ajax({
             type: "post", //请求的方式，也有get请求
             url: "<%=request.getContextPath()%>/enret/ajaxGetEnretTypeAll", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
@@ -384,7 +385,7 @@
                 $("#ssgw").html(con); //把内容入到这个div中即完成
             }
         })
-    })
+    }
 
     $(function () {
 
@@ -406,8 +407,8 @@
             success: function (result) {
                 console.log(result);
                 $("#xgqy").val(result.nretEnmg);
-                $("#xgyjgw").val(result.enretPostOne);
-                $("#xgejgw").val(result.enretPostTwo);
+                $("#xgyjgw").val(result.enretPostOne);/*
+                $("#xgejgw").val(result.enretPostTwo);*/
             }
         })
     }
@@ -415,26 +416,26 @@
 
 <%--修改实习岗位--%>
 <script>
-
     function tjxg() {
         $.ajax({
             type: "post", //请求的方式，也有get请求
             url: "<%=request.getContextPath()%>/enret/update", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
             data: {
-                enretId: $("#tjxg").val(),
-                enretPostOne: $("#xgyjgw").val() == "" ? 0 : $("#xgyjgw").val(),
-                enretPostTwo: $("#xgejgw").val() == "" ? 0 : $("#xgejgw").val(),
-                enretLwMoney: $("#zdxz").val() == "" ? 0 : $("#zdxz").val(),
-                enretHgMoney: $("#zgxz").val() == "" ? 0 : $("#zgxz").val(),
-                enretWantNum: $("#number").val() == "" ? 0 : $("#number").val(),
-                enretDemand: $("#xl").val() + "" + $("#gz").val(),
-                enretPg: $("#fl").val() == "" ? null : $("#fl").val(),
-                enretStatus: 1
+                enretId      : $("#tjxg").val(),
+                enretPostOne: $("#xgyjgw").val() == "" ? 0  : $("#xgyjgw").val(),
+                enretPostTwo: $("#xgejgw").val() == "" ? 0  : $("#xgejgw").val(),
+                enretLwMoney: $("#zdxz").val() == "" ? 0    : $("#zdxz").val(),
+                enretHgMoney: $("#zgxz").val() == "" ? 0    : $("#zgxz").val(),
+                enretWantNum: $("#number").val() == "" ? 0  : $("#number").val(),
+                enretDemand : $("#xl").val() + "" + $("#gz").val(),
+                enretPg     : $("#fl").val() == "" ? null : $("#fl").val(),
+                enretStatus : 1
             },
             dataType: "json", //json格式，后台返回的数据为json格式的。
             success: function (result) {
                 if (result) {
                     $("#update_sx").modal("hide");
+                    ss();
                 }
 
             }
@@ -580,6 +581,7 @@
             success: function (result) {
                 if (result) {
                     $("#add_sx").modal("hide");
+                    ss();
                 }
             }
         })
@@ -598,6 +600,7 @@
             success: function (result) {
                 if (result) {
                     $("#del_sx").modal("hide");
+                    ss();
                 }
             }
         })
