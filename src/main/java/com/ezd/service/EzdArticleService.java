@@ -95,9 +95,7 @@ public class EzdArticleService {
         EzdArticle ezdArticle = new EzdArticle();
         ezdArticle.setArticleMtitle(article);
         ezdArticle.setArticleAuthor(article);
-        System.out.println(ezdArticle);
         List<EzdArticle> list = ezdArticlDao.getOrAll(ezdArticle);
-        System.out.println(list);
         for (EzdArticle li :list) {
             List<EzdReadarti> count = ezdReadartiDao.getCount(li);
             List<EzdSayart> ezdSayartAll = ezdSayartDao.getEzdSayartAll(li);
@@ -121,6 +119,23 @@ public class EzdArticleService {
             li.setEzdPoints(ezdPointCount);
         }
         return statusAll;
+    }
+
+
+    //更改状态
+    public boolean updateStatus(EzdArticle ezdArticle){
+        EzdArticle articleId = ezdArticlDao.getArticleId(ezdArticle);
+        if (articleId.getArticleStatus()==1){
+            ezdArticle.setArticleStatus(2);
+        }else {
+            ezdArticle.setArticleStatus(1);
+        }
+        System.out.println(ezdArticle);
+        int i = ezdArticlDao.updateStatus(ezdArticle);
+        if (i>0){
+            return true;
+        }
+        return false;
     }
 
 }

@@ -52,10 +52,10 @@
             <property name="suffix" value=".jsp"/>
         </bean>
 
-        <mvc:resources mapping="/img/*" location="/WEB-INF/img/" />
-        <mvc:resources mapping="/js/*" location="/WEB-INF/js/" />
-        <mvc:resources mapping="/css/*" location="/WEB-INF/css/" />
-        <mvc:resources mapping="/bootstrap/*" location="/WEB-INF/bootstrap-table-master/" />
+        <mvc:resources mapping="/img/**" location="/WEB-INF/img/" />
+        <mvc:resources mapping="/js/**" location="/WEB-INF/js/" />
+        <mvc:resources mapping="/css/**" location="/WEB-INF/css/" />
+        <mvc:resources mapping="/bootstrap/**" location="/WEB-INF/bootstrap-table-master/" />
         <mvc:resources mapping="/fa/**" location="/WEB-INF/Font-Awesome/" />
         <mvc:resources mapping="/ueditor/**" location="/WEB-INF/ueditor1_4_3_3-utf8-jsp/" />
         <mvc:resources mapping="/ditor/*" location="/WEB-INF/ueditor1_4_3_3-utf8-jsp/" />
