@@ -16,13 +16,13 @@
 <body>
 
 <div class="right-mokuai">
-    <div class="practice" style="width: 18%;">
+    <div class="practice" >
         <span>文章管理<i class="fa fa-angle-down"></i></span>
-        <span style="float: right;display: none;" id="fb">发布文章<i class="fa fa-angle-down"></i></span>
+
     </div>
 </div>
 
-<div class="right-body" id="dzh_one">
+<div class="right-body">
     <div class="right-body-main ">
         <div class="main-1">
             <span class="main-1-1">文章列表</span>
@@ -54,7 +54,7 @@
 
                 <div class="searchRadio">
 								<span>
-									<i class='input_style radio_bg radio_bg_check'><input type="radio" name="hot" id="qb" value="全部"></i>
+									<i class='input_style radio_bg radio_bg_check'><input type="radio" name="hot" onclick="qb()" value="全部"></i>
 									全部&nbsp;&nbsp;&nbsp;&nbsp;
 								</span>
                     <span>
@@ -67,7 +67,7 @@
 								</span>
                 </div>
                 <div id="searchAdd">
-                    <button id="searchBtn3" type="button" class="btn btn-warning" href="#tabAdd" aria-controls="tabAdd" data-toggle="tab">
+                    <button id="searchBtn3" type="button" class="btn btn-warning" href="#tabAdd" aria-controls="tabAdd" data-toggle="tab" onclick="wz_load()">
                         添加
                     </button>
                 </div>
@@ -153,89 +153,7 @@
 </div>
 
 
-<!--
-    文章管理
--->
 
-
-<div class="right-body" id="dzh_two" style="display: none;">
-    <div class="right-body-main " style="border: 1px solid black;height: 1200px;">
-
-        <!--添加大招会表单-->
-        <table border="0" class="smallAddTab">
-            <tr>
-                <th>*文章类型：</th>
-                <td>
-                    <select name="" class="TabTextBox">
-                        <option value="">请选择</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <th>*标题：</th>
-                <td><input type="text" name="" class="TabTextBox" value="" /></td>
-            </tr>
-            <tr>
-                <th>*副标题(分享内容)：</th>
-                <td><input type="text" name="" class="TabTextBox" value="" /></td>
-            </tr>
-            <tr>
-                <th>*作者：</th>
-                <td><input type="text" name="" class="TabTextBox" placeholder="请输入：用户名、手机号" /></td>
-            </tr>
-            <tr>
-                <th>*作者邮箱：</th>
-                <td><input type="email" name="" class="TabTextBox" value="" /></td>
-            </tr>
-            <tr>
-                <th>*关键字：</th>
-                <td><input type="text" name="" class="TabTextBox" value="" /></td>
-            </tr>
-            <tr>
-                <th>*显示状态：</th>
-                <td>
-                    <div class="searchRadio">
-									<span>
-										<i class='input_style radio_bg radio_bg_check'><input type="radio" name="hot" value="全部"></i>
-										是&nbsp;&nbsp;&nbsp;&nbsp;
-									</span>
-                        <span>
-										<i class='input_style radio_bg'><input type="radio" name="hot" value="显示"></i>
-										否&nbsp;&nbsp;&nbsp;&nbsp;
-									</span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th>*外部链接：</th>
-                <td><input type="text" name="" class="TabTextBox" value="" /></td>
-            </tr>
-            <tr>
-                <th>*标签：</th>
-                <td>
-                    <textarea></textarea><i class="icon-info-sign"></i>
-                </td>
-            </tr>
-            <tr>
-                <th>*文章封面图：</th>
-                <td><input type="file" name="" id="" value="" /></td>
-            </tr>
-            <tr>
-                <th>*文章分享图：</th>
-                <td><input type="file" name="" id="" value="" /></td>
-            </tr>
-            <tr>
-                <th>*内容：</th>
-                <td>
-                    <form>
-                        <textarea name="content" style="width:800px;height:400px;visibility:hidden;"></textarea>
-
-                    </form>
-                </td>
-            </tr>
-        </table>
-    </div>
-</div>
 
 
 
@@ -271,7 +189,8 @@
 
 <%----%>
 <script>
-    $(function(){
+    all();
+    function all(){
         $.ajax({
             type: "get", //请求的方式，也有get请求
             url: "<%=request.getContextPath()%>/aticle/ajaxGetArticleAll", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
@@ -279,8 +198,10 @@
             success: function(result){
                 var dataObj = result, //返回的result为json格式的数据
                     con = "";
-                console.log(result);
+                var v1 ,v2;
+                //console.log(result);
                 $.each(dataObj, function(index, item){
+                    //console.log(item.articleStatus);
                     con += "<tr>";
                     con += "<td>"+item.articleId+"</td>";
                     con += "<td>"+item.articleMtitle+"</td>";
@@ -292,8 +213,15 @@
                     con += "<td>1</td>";
                     con += "<td>1</td>";
                     con += "<td>1</td>";
-                    con += "<td><div class='miniDiv'>显示 </div></td>";
-                    con += "<td><button class='btn btn-warning btn-xs' id='btnHidden'>隐藏</button>"+
+                    if(item.articleStatus==1){
+                        v1="显示";
+                        v2="隐藏";
+                    }else {
+                        v1="隐藏";
+                        v2="显示";
+                    }
+                    con += "<td><div class='miniDiv'>"+v1+"</div></td>";
+                    con += "<td><button class='btn btn-warning btn-xs' id='btnHidden'>"+v2+"</button>"+
                     "<button class='btn btn-info btn-xs' id='btnEdit' data-toggle='modal' data-target='#edit'>编辑</button>"+
                         "<button class='btn btn-primary btn-xs' id='btnDetails'>详情</button>"+
                         "<button class='btn btn-danger btn-xs'' id='btnDelete'>删除</button></td>";
@@ -303,21 +231,21 @@
                 $("#tbody").html(con); //把内容入到这个div中即完成
             }
         })
-    })
+    }
 </script>
 
 
 <script>
     function xs() {
         $.ajax({
-            type: "get", //请求的方式，也有get请求
+            type: "post", //请求的方式，也有get请求
             url: "<%=request.getContextPath()%>/aticle/ajaxGetStatusAll", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
             data:"status="+1,
             dataType: "json", //json格式，后台返回的数据为json格式的。
             success: function(result){
                 var dataObj = result, //返回的result为json格式的数据
                     con = "";
-                console.log(result);
+                //console.log(result);
                 $.each(dataObj, function(index, item){
                     con += "<tr>";
                     con += "<td>"+item.articleId+"</td>";
@@ -348,14 +276,14 @@
 <script>
     function yc() {
         $.ajax({
-            type: "get", //请求的方式，也有get请求
+            type: "post", //请求的方式，也有get请求
             url: "<%=request.getContextPath()%>/aticle/ajaxGetStatusAll", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
             data:"status="+2,
             dataType: "json", //json格式，后台返回的数据为json格式的。
             success: function(result){
                 var dataObj = result, //返回的result为json格式的数据
                     con = "";
-                console.log(result);
+               // console.log(result);
                 $.each(dataObj, function(index, item){
                     con += "<tr>";
                     con += "<td>"+item.articleId+"</td>";
@@ -395,7 +323,7 @@
                 success: function(result){
                     var dataObj = result, //返回的result为json格式的数据
                         con = "";
-                    console.log(result);
+                    //console.log(result);
                     $.each(dataObj, function(index, item){
                         con += "<tr>";
                         con += "<td>"+item.articleId+"</td>";
@@ -424,5 +352,16 @@
     }
 </script>
 
+<script>
+    function qb() {
+        all();
+    }
+</script>
+
+<script>
+    function wz_load(){
+        $(".right-center").load("<%=request.getContextPath()%>/enret/wz_add");
+    }
+</script>
 
 </html>

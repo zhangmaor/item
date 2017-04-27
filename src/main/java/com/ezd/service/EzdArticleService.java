@@ -95,9 +95,7 @@ public class EzdArticleService {
         EzdArticle ezdArticle = new EzdArticle();
         ezdArticle.setArticleMtitle(article);
         ezdArticle.setArticleAuthor(article);
-        System.out.println(ezdArticle);
         List<EzdArticle> list = ezdArticlDao.getOrAll(ezdArticle);
-        System.out.println(list);
         for (EzdArticle li :list) {
             List<EzdReadarti> count = ezdReadartiDao.getCount(li);
             List<EzdSayart> ezdSayartAll = ezdSayartDao.getEzdSayartAll(li);
