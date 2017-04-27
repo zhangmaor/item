@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="col-xs-2 text-right">*文章类型：</div>
                 <div class="col-xs-8">
-                    <select name="" class="form-control" >
+                    <select name="" id="wzlx" class="form-control" >
                         <option value="">请选择</option>
                     </select>
                 </div>
@@ -34,14 +34,14 @@
             <div class="row">
                 <div class="col-xs-2 text-right">*标题：</div>
                 <div class="col-xs-8">
-                    <input type="text" class="form-control">
+                    <input type="text" id="bt" class="form-control">
                 </div>
             </div><br>
             <div class="row">
                 <div class="col-xs-2 text-right">*副标题(分享内容)：</div>
                 <div class="col-xs-8">
 
-                    <input type="text" class="form-control">
+                    <input type="text" id="fbt" class="form-control">
 
                 </div>
             </div><br>
@@ -49,7 +49,7 @@
                 <div class="col-xs-2 text-right">*作者：</div>
                 <div class="col-xs-8">
 
-                    <input type="text" class="form-control">
+                    <input type="text" id="author" class="form-control">
 
                 </div>
             </div><br>
@@ -57,7 +57,7 @@
                 <div class="col-xs-2 text-right">*作者邮箱：</div>
                 <div class="col-xs-8">
 
-                    <input type="text" class="form-control">
+                    <input type="text" id="email" class="form-control">
 
                 </div>
             </div><br>
@@ -65,7 +65,7 @@
                 <div class="col-xs-2 text-right">*关键字：</div>
                 <div class="col-xs-8">
 
-                    <input type="text" class="form-control">
+                    <input type="text" id="gjz" class="form-control">
 
                 </div>
             </div><br>
@@ -98,7 +98,7 @@
                 <div class="col-xs-2 text-right">*文章封面图：</div>
                 <div class="col-xs-7">
                     <div class="input-group">
-                        <input type="file">
+                        <input type="file" id="logo">
                     </div>
                 </div>
             </div><br>
@@ -106,7 +106,7 @@
                 <div class="col-xs-2 text-right">*文章分享图：</div>
                 <div class="col-xs-7">
                     <div class="input-group">
-                        <input type="file">
+                        <input type="file" id="share">
                     </div>
                 </div>
             </div><br>
@@ -119,7 +119,7 @@
                 </div>
             </div><br>
             <div class="row text-center">
-                <button type="button" class="btn btn-primary">提交</button>
+                <button type="button" class="btn btn-primary" onclick="tj()">提交</button>
             </div>
 
 
@@ -128,6 +128,7 @@
     </div>
 </div>
 </body>
+
 <script>
     var editor = new UE.ui.Editor();
     editor.render("myEditor");
@@ -141,4 +142,35 @@
         });
     })
 </script>
+
+<%--添加文章--%>
+<script>
+    function tj() {
+        alert($("#myEditor").val());
+        /*$.ajax({
+            type: "post", //请求的方式，也有get请求
+            url: "<%=request.getContextPath()%>/aticle/ajaxInsert", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
+            data: {
+                    articleType     :   1/!*$("#wzlx").val()*!/,
+                    articleMtitle   :   $("#bt").val(),
+                    articleStitle   :   $("#fbt").val(),
+                    articleAuthor   :   $("#author").val(),
+                    articleAuemail  :   $("#email").val(),
+                    articleKeywords :   $("#gjz").val(),
+                    articleContent  :   "hahhahhahha"/!*$("#myEditor").val()*!/,
+                    articleLogo     :   $("#logo").val(),
+                    articlePic      :   $("#share").val(),
+                    articleStatus   :   1/!*$("#").val()*!/
+            },
+            dataType: "json", //json格式，后台返回的数据为json格式的。
+            success: function (result) {
+                if (result){
+                    alert(result);
+                    $(".right-center").load("<%=request.getContextPath()%>/enret/dzhgl");
+                }
+            }
+        });*/
+    }
+</script>
+
 </html>

@@ -53,9 +53,9 @@
 								</select>
 							</span>
                 <span class="article-list-1-search">
-								<input type="text" name="" class="article-list-1-search-1"  placeholder="请输入：标题、作者"/>
-								<button id="searchBtn1" type="button" class="btn btn-warning">搜索</button>
-								<button id="searchBtn2" type="button" class="btn btn-danger">消除搜索</button>
+								<input type="text" name="" id="title" class="article-list-1-search-1"  placeholder="请输入：标题、作者"/>
+								<button id="searchBtn1" type="button" onclick="search()" class="btn btn-warning">搜索</button>
+								<button id="searchBtn2" type="button" onclick="clearSearch()" class="btn btn-danger">消除搜索</button>
 							</span>
 
                 <div class="searchRadio">
@@ -393,7 +393,6 @@
 <%--删除--%>
 <script>
     function wz_sc(id) {
-        alert(id.value);
         $("#wzsc").val(id.value);
     }
     function wz() {
@@ -404,7 +403,6 @@
             dataType: "json", //json格式，后台返回的数据为json格式的。
             success: function (result) {
                 if (result){
-                    alert(result);
                     $("#del_wz").modal("hide");
                     all();
                 }
@@ -424,7 +422,6 @@
             dataType: "json", //json格式，后台返回的数据为json格式的。
             success: function (result) {
                 if (result){
-                    alert(result);
                     $("#del_wz").modal("hide");
                     all();
                 }
@@ -433,6 +430,11 @@
     }
 </script>
 
-
+<%--清楚搜索--%>
+<script>
+    function clearSearch() {
+        $("#title").val("");
+    }
+</script>
 
 </html>
