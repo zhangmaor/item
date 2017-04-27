@@ -81,13 +81,46 @@ public class EzdArticleService {
         list = ezdArticlDao.getArticleAll();
        for (EzdArticle li :list) {
             List<EzdReadarti> count = ezdReadartiDao.getCount(li);
-           List<EzdSayart> ezdSayartAll = ezdSayartDao.getEzdSayartAll(li);
+            List<EzdSayart> ezdSayartAll = ezdSayartDao.getEzdSayartAll(li);
             List<EzdPoint> ezdPointCount = ezdPointDao.getEzdPointCount(li);
             li.setEzdReadartis(count);
             li.setEzdSayarts(ezdSayartAll);
             li.setEzdPoints(ezdPointCount);
         }
         return list;
+    }
+
+    //根据作者或者标题查询并按时间排序
+    public List<EzdArticle> getOrAll(String article){
+        EzdArticle ezdArticle = new EzdArticle();
+        ezdArticle.setArticleMtitle(article);
+        ezdArticle.setArticleAuthor(article);
+        System.out.println(ezdArticle);
+        List<EzdArticle> list = ezdArticlDao.getOrAll(ezdArticle);
+        System.out.println(list);
+        for (EzdArticle li :list) {
+            List<EzdReadarti> count = ezdReadartiDao.getCount(li);
+            List<EzdSayart> ezdSayartAll = ezdSayartDao.getEzdSayartAll(li);
+            List<EzdPoint> ezdPointCount = ezdPointDao.getEzdPointCount(li);
+            li.setEzdReadartis(count);
+            li.setEzdSayarts(ezdSayartAll);
+            li.setEzdPoints(ezdPointCount);
+        }
+        return list;
+    }
+
+    //根据状态查询并按时间排序
+    public List<EzdArticle> getStatusAll(int status){
+        List<EzdArticle> statusAll = ezdArticlDao.getStatusAll(status);
+        for (EzdArticle li :statusAll) {
+            List<EzdReadarti> count = ezdReadartiDao.getCount(li);
+            List<EzdSayart> ezdSayartAll = ezdSayartDao.getEzdSayartAll(li);
+            List<EzdPoint> ezdPointCount = ezdPointDao.getEzdPointCount(li);
+            li.setEzdReadartis(count);
+            li.setEzdSayarts(ezdSayartAll);
+            li.setEzdPoints(ezdPointCount);
+        }
+        return statusAll;
     }
 
 }

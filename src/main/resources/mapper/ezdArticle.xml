@@ -55,4 +55,15 @@
     <select id="getArticleAll" resultMap="article">
         SELECT * FROM ezd_article ORDER BY time DESC
     </select>
+
+    <!--根据作者或者标题查询并按时间排序-->
+    <select id="getOrAll" parameterType="com.ezd.model.EzdArticle" resultMap="article">
+        SELECT * FROM ezd_article WHERE article_author = #{articleAuthor} OR article_mtitle LIKE CONCAT('%','${articleMtitle}','%')  ORDER BY time DESC
+    </select>
+
+    <!--根据状态查询并按时间排序-->
+    <select id="getStatusAll" parameterType="int" resultMap="article">
+        SELECT * FROM ezd_article WHERE article_status = #{_parameter} ORDER BY time DESC
+    </select>
+
 </mapper>

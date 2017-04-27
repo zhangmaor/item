@@ -21,6 +21,7 @@
 
 </head>
 <body>
+
 <div class="right-mokuai">
     <div class="practice" style="width: 18%;">
         <span>文章管理<i class="fa fa-angle-down"></i></span>
@@ -53,22 +54,22 @@
 								</select>
 							</span>
                 <span class="article-list-1-search">
-								<input type="text" name="" class="article-list-1-search-1"  placeholder="请输入：标题、作者"/>
-								<button id="searchBtn1" type="button" class="btn btn-warning">搜索</button>
+								<input type="text" name="" class="article-list-1-search-1" id="title"  placeholder="请输入：标题、作者"/>
+								<button id="searchBtn1" type="button" onclick="search()" class="btn btn-warning">搜索</button>
 								<button id="searchBtn2" type="button" class="btn btn-danger">消除搜索</button>
 							</span>
 
                 <div class="searchRadio">
 								<span>
-									<i class='input_style radio_bg radio_bg_check'><input type="radio" name="hot" value="全部"></i>
+									<i class='input_style radio_bg radio_bg_check'><input type="radio" name="hot" id="qb" value="全部"></i>
 									全部&nbsp;&nbsp;&nbsp;&nbsp;
 								</span>
                     <span>
-									<i class='input_style radio_bg'><input type="radio" name="hot" value="显示"></i>
+									<i class='input_style radio_bg'><input type="radio" name="hot" onclick="xs()" value="显示"></i>
 									显示&nbsp;&nbsp;&nbsp;&nbsp;
 								</span>
                     <span>
-									<i class='input_style radio_bg'><input type="radio" name="hot" value="隐藏"></i>
+									<i class='input_style radio_bg'><input type="radio" name="hot" onclick="yc()" value="隐藏"></i>
 									隐藏
 								</span>
                 </div>
@@ -132,7 +133,7 @@
                         &times;
                     </button>
                     <h4 class="modal-title" id="myModalLabel">
-                        更改大招会信息
+                        更改文章信息
                     </h4>
                 </div>
                 <div class="modal-body">
@@ -160,7 +161,7 @@
 
 
 <!--
-    大招会管理
+    文章管理
 -->
 
 
@@ -310,5 +311,124 @@
         })
     })
 </script>
+
+
+<script>
+    function xs() {
+        $.ajax({
+            type: "get", //请求的方式，也有get请求
+            url: "<%=request.getContextPath()%>/aticle/ajaxGetStatusAll", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
+            data:"status="+1,
+            dataType: "json", //json格式，后台返回的数据为json格式的。
+            success: function(result){
+                var dataObj = result, //返回的result为json格式的数据
+                    con = "";
+                console.log(result);
+                $.each(dataObj, function(index, item){
+                    con += "<tr>";
+                    con += "<td>"+item.articleId+"</td>";
+                    con += "<td>"+item.articleMtitle+"</td>";
+                    con += "<td></td>";
+                    con += "<td>"+item.articleAuthor+"</td>";
+                    con += "<td>"+item.articleType+"</td>";
+                    con += "<td>"+new Date(item.articleTime).toLocaleDateString()+"</td>";
+                    con += "<td>1</td>";
+                    con += "<td>1</td>";
+                    con += "<td>1</td>";
+                    con += "<td>1</td>";
+                    con += "<td><div class='miniDiv'>显示 </div></td>";
+                    con += "<td><button class='btn btn-warning btn-xs' id='btnHidden'>隐藏</button>"+
+                        "<button class='btn btn-info btn-xs' id='btnEdit' data-toggle='modal' data-target='#edit'>编辑</button>"+
+                        "<button class='btn btn-primary btn-xs' id='btnDetails'>详情</button>"+
+                        "<button class='btn btn-danger btn-xs'' id='btnDelete'>删除</button></td>";
+                    con += "</tr>";
+
+                });
+                $("#tbody").html(con); //把内容入到这个div中即完成
+            }
+        })
+    }
+</script>
+
+
+<script>
+    function yc() {
+        $.ajax({
+            type: "get", //请求的方式，也有get请求
+            url: "<%=request.getContextPath()%>/aticle/ajaxGetStatusAll", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
+            data:"status="+2,
+            dataType: "json", //json格式，后台返回的数据为json格式的。
+            success: function(result){
+                var dataObj = result, //返回的result为json格式的数据
+                    con = "";
+                console.log(result);
+                $.each(dataObj, function(index, item){
+                    con += "<tr>";
+                    con += "<td>"+item.articleId+"</td>";
+                    con += "<td>"+item.articleMtitle+"</td>";
+                    con += "<td></td>";
+                    con += "<td>"+item.articleAuthor+"</td>";
+                    con += "<td>"+item.articleType+"</td>";
+                    con += "<td>"+new Date(item.articleTime).toLocaleDateString()+"</td>";
+                    con += "<td>1</td>";
+                    con += "<td>1</td>";
+                    con += "<td>1</td>";
+                    con += "<td>1</td>";
+                    con += "<td><div class='miniDiv'>隐藏 </div></td>";
+                    con += "<td><button class='btn btn-warning btn-xs' id='btnHidden'>隐藏</button>"+
+                        "<button class='btn btn-info btn-xs' id='btnEdit' data-toggle='modal' data-target='#edit'>编辑</button>"+
+                        "<button class='btn btn-primary btn-xs' id='btnDetails'>详情</button>"+
+                        "<button class='btn btn-danger btn-xs'' id='btnDelete'>删除</button></td>";
+                    con += "</tr>";
+
+                });
+                $("#tbody").html(con); //把内容入到这个div中即完成
+            }
+        })
+    }
+</script>
+
+<script>
+    function search() {
+        if ($("#title").val() == ""){
+            alert("请输入标题或作者");
+        }else {
+            $.ajax({
+                type: "post", //请求的方式，也有get请求
+                url: "<%=request.getContextPath()%>/aticle/ajaxGetOrAll", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
+                data:"article="+$("#title").val(),
+                dataType: "json", //json格式，后台返回的数据为json格式的。
+                success: function(result){
+                    var dataObj = result, //返回的result为json格式的数据
+                        con = "";
+                    console.log(result);
+                    $.each(dataObj, function(index, item){
+                        con += "<tr>";
+                        con += "<td>"+item.articleId+"</td>";
+                        con += "<td>"+item.articleMtitle+"</td>";
+                        con += "<td></td>";
+                        con += "<td>"+item.articleAuthor+"</td>";
+                        con += "<td>"+item.articleType+"</td>";
+                        con += "<td>"+new Date(item.articleTime).toLocaleDateString()+"</td>";
+                        con += "<td>1</td>";
+                        con += "<td>1</td>";
+                        con += "<td>1</td>";
+                        con += "<td>1</td>";
+                        con += "<td><div class='miniDiv'>隐藏 </div></td>";
+                        con += "<td><button class='btn btn-warning btn-xs' id='btnHidden'>隐藏</button>"+
+                            "<button class='btn btn-info btn-xs' id='btnEdit' data-toggle='modal' data-target='#edit'>编辑</button>"+
+                            "<button class='btn btn-primary btn-xs' id='btnDetails'>详情</button>"+
+                            "<button class='btn btn-danger btn-xs'' id='btnDelete'>删除</button></td>";
+                        con += "</tr>";
+
+                    });
+                    $("#tbody").html(con); //把内容入到这个div中即完成
+                }
+            })
+        }
+
+    }
+</script>
+
 
 </html>

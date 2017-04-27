@@ -18,4 +18,10 @@ public interface EzdArticlDao {
     //查询文章并按时间排序
     public List<EzdArticle> getArticleAll();
 
+    //根据作者或者标题查询并按时间排序
+    public List<EzdArticle> getOrAll(EzdArticle ezdArticle);
+
+    //根据状态查询并按时间排序
+    public List<EzdArticle> getStatusAll(int status);
+
 }
