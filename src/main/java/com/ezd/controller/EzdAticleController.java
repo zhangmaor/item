@@ -66,5 +66,44 @@ public class EzdAticleController {
         return articleAll;
     }
 
+    /**
+     * 根据作者或者标题查询并按时间排序
+     * @param article
+     * @return
+     */
+    @RequestMapping(value = "/ajaxGetOrAll",method = RequestMethod.POST)
+    @ResponseBody
+    public List<EzdArticle> getOrAll(String article){
+        System.out.println(article);
+        List<EzdArticle> orAll = ezdArticleService.getOrAll(article);
+        return orAll;
+    }
+
+
+    /**
+     * 根据状态查询并按时间排序
+     * @param status
+     * @return
+     */
+    @RequestMapping(value = "/ajaxGetStatusAll",method = RequestMethod.POST)
+    @ResponseBody
+    public List<EzdArticle> getStatusAll(int status){
+        List<EzdArticle> statusAll = ezdArticleService.getStatusAll(status);
+        return statusAll;
+
+    }
+
+    /**
+     * 更改状态
+     * @param ezdArticle
+     * @return
+     */
+    @RequestMapping(value = "/ajaxUpdateStatus",method = RequestMethod.POST)
+    @ResponseBody
+    public boolean updateStatus(EzdArticle ezdArticle){
+        boolean b = ezdArticleService.updateStatus(ezdArticle);
+        return b;
+    }
+
 
 }

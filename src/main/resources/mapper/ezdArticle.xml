@@ -25,10 +25,30 @@
 
     <!--添加文章信息-->
     <insert id="insert" parameterType="com.ezd.model.EzdArticle" >
-        INSERT INTO ezd_article(article_logo,article_type,article_mtitle,article_stitle,
-          article_author,article_auemail,article_pic,article_content,article_keywords,article_status)
-          VALUES (#{articleLogo},#{articleType},#{articleMtitle},#{articleStitle},#{articleAuthor}
-          #{articleAuemail},#{articlePic},#{articleContent},#{articleKeywords},#{articleStatus})
+        INSERT INTO ezd_article(
+              article_logo,
+              article_type,
+              article_mtitle,
+              article_stitle,
+              article_author,
+              article_auemail,
+              article_pic,
+              article_content,
+              article_keywords,
+              article_status
+          )
+          VALUES (
+              #{articleLogo},
+              #{articleType},
+              #{articleMtitle},
+              #{articleStitle},
+              #{articleAuthor},
+              #{articleAuemail},
+              #{articlePic},
+              #{articleContent},
+              #{articleKeywords},
+              #{articleStatus}
+          )
     </insert>
 
     <!--删除文章信息-->
@@ -55,4 +75,27 @@
     <select id="getArticleAll" resultMap="article">
         SELECT * FROM ezd_article ORDER BY time DESC
     </select>
+
+    <!--根据作者或者标题查询并按时间排序-->
+    <select id="getOrAll" parameterType="com.ezd.model.EzdArticle" resultMap="article">
+        SELECT * FROM ezd_article WHERE article_author = #{articleAuthor} OR article_mtitle LIKE CONCAT('%','${articleMtitle}','%')  ORDER BY time DESC
+    </select>
+
+    <!--根据状态查询并按时间排序-->
+    <select id="getStatusAll" parameterType="int" resultMap="article">
+        SELECT * FROM ezd_article WHERE article_status = #{_parameter} ORDER BY time DESC
+    </select>
+
+
+    <!--更改状态-->
+    <update id="updateStatus" parameterType="com.ezd.model.EzdArticle" >
+        UPDATE ezd_article SET article_status = #{articleStatus} WHERE article_id = #{articleId} ORDER BY time DESC
+    </update>
+
+    <!--根据编号查询-->
+    <select id="getArticleId" parameterType="com.ezd.model.EzdArticle" resultMap="article">
+         SELECT * FROM ezd_article WHERE article_id = #{articleId}
+    </select>
+
+
 </mapper>

@@ -30,6 +30,20 @@ public class EzdEnretController {
     public String index(){
         return "sxgl";
     }
+    @RequestMapping("/wz_add")
+    public String index7(){
+        return "wz_add";
+    }
+
+    @RequestMapping("/qz_job")
+    public String index6(){
+        return "qz_job";
+    }
+
+    @RequestMapping("/sx_job")
+    public String index5(){
+        return "sx_job";
+    }
 
     @RequestMapping("/qzgl")
     public String index2(){

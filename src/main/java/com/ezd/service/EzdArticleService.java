@@ -81,13 +81,61 @@ public class EzdArticleService {
         list = ezdArticlDao.getArticleAll();
        for (EzdArticle li :list) {
             List<EzdReadarti> count = ezdReadartiDao.getCount(li);
-           List<EzdSayart> ezdSayartAll = ezdSayartDao.getEzdSayartAll(li);
+            List<EzdSayart> ezdSayartAll = ezdSayartDao.getEzdSayartAll(li);
             List<EzdPoint> ezdPointCount = ezdPointDao.getEzdPointCount(li);
             li.setEzdReadartis(count);
             li.setEzdSayarts(ezdSayartAll);
             li.setEzdPoints(ezdPointCount);
         }
         return list;
+    }
+
+    //根据作者或者标题查询并按时间排序
+    public List<EzdArticle> getOrAll(String article){
+        EzdArticle ezdArticle = new EzdArticle();
+        ezdArticle.setArticleMtitle(article);
+        ezdArticle.setArticleAuthor(article);
+        List<EzdArticle> list = ezdArticlDao.getOrAll(ezdArticle);
+        for (EzdArticle li :list) {
+            List<EzdReadarti> count = ezdReadartiDao.getCount(li);
+            List<EzdSayart> ezdSayartAll = ezdSayartDao.getEzdSayartAll(li);
+            List<EzdPoint> ezdPointCount = ezdPointDao.getEzdPointCount(li);
+            li.setEzdReadartis(count);
+            li.setEzdSayarts(ezdSayartAll);
+            li.setEzdPoints(ezdPointCount);
+        }
+        return list;
+    }
+
+    //根据状态查询并按时间排序
+    public List<EzdArticle> getStatusAll(int status){
+        List<EzdArticle> statusAll = ezdArticlDao.getStatusAll(status);
+        for (EzdArticle li :statusAll) {
+            List<EzdReadarti> count = ezdReadartiDao.getCount(li);
+            List<EzdSayart> ezdSayartAll = ezdSayartDao.getEzdSayartAll(li);
+            List<EzdPoint> ezdPointCount = ezdPointDao.getEzdPointCount(li);
+            li.setEzdReadartis(count);
+            li.setEzdSayarts(ezdSayartAll);
+            li.setEzdPoints(ezdPointCount);
+        }
+        return statusAll;
+    }
+
+
+    //更改状态
+    public boolean updateStatus(EzdArticle ezdArticle){
+        EzdArticle articleId = ezdArticlDao.getArticleId(ezdArticle);
+        if (articleId.getArticleStatus()==1){
+            ezdArticle.setArticleStatus(2);
+        }else {
+            ezdArticle.setArticleStatus(1);
+        }
+        System.out.println(ezdArticle);
+        int i = ezdArticlDao.updateStatus(ezdArticle);
+        if (i>0){
+            return true;
+        }
+        return false;
     }
 
 }
