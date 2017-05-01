@@ -18,20 +18,30 @@
 
     <!--查询所有的 学校信息 -->
     <select id="findAll" resultMap="schmap">
-        SELECT * FROM ezd_schmg a JOIN ezd_schType b ON a.schmg_type = b.schtype_id;
+        SELECT * FROM ezd_schmg a
+         JOIN ezd_schType b ON a.schmg_type = b.schtype_id
     </select>
 
-    <!--根据Id查询 学校信息 -->
-    <select id="findSchById" resultMap="schmap" parameterType="int">
-        select * from ezd_schmg a JOIN ezd_schType b ON a.schmg_type = b.schtype_id where  a.schmg_id = #{_paramater}
+    <!--根据层次 或 名称  查询 学校信息 -->
+    <select id="findSchmg" resultMap="schmap" parameterType="EzdSchmg">
+        SELECT * FROM ezd_schmg a
+        LEFT JOIN ezd_schType b ON a.schmg_type = b.schtype_id
+        <where>
+            <if test="typeId != 0 " >
+                a.schmg_type = #{typeId}
+            </if>
+            <if test="schmgName != null and  schmgName !=''">
+                and a.schmg_name  like  concat('%',#{schmgName},'%')
+            </if>
+        </where>
     </select>
 
     <!--保存 学校信息 -->
     <insert id="insertSchmg" parameterType="com.ezd.model.EzdSchmg">
         insert into
-          ezd_schmg (schmg_id, schmg_domain, schmg_name, schmg_mg, schmg_address, schmg_type, schmg_cretime )
+          ezd_schmg ( schmg_domain, schmg_name, schmg_mg, schmg_address, schmg_type, schmg_cretime )
         VALUES
-        (#{schmgId},#{schmgDomain},#{schmgName},#{schmgMg},#{schmgAddress},#{typeId},#{schmgCretime} )
+        (#{schmgDomain},#{schmgName},#{schmgMg},#{schmgAddress},#{typeId},#{schmgCretime} )
     </insert>
 
     <!--更新 学校信息 -->

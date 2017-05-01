@@ -205,7 +205,6 @@ public class EzdUmg {
     public String toString() {
         return "EzdUmg{" +
                 "umgId=" + umgId +
-                ", umgUser=" + umgUser +
                 ", umgPhoto='" + umgPhoto + '\'' +
                 ", umgName='" + umgName + '\'' +
                 ", umgSex='" + umgSex + '\'' +
@@ -218,13 +217,6 @@ public class EzdUmg {
                 ", umgEducation='" + umgEducation + '\'' +
                 ", umgUptime=" + umgUptime +
                 ", userId=" + userId +
-                ", ezdEnmgs=" + ezdEnmgs +
-                ", ezdUnewss=" + ezdUnewss +
-                ", ezdErlenrets=" + ezdErlenrets +
-                ", ezdEnrets=" + ezdEnrets +
-                ", ezdErlbigrets=" + ezdErlbigrets +
-                ", ezdErlschrets=" + ezdErlschrets +
-                ", ezdReadartis=" + ezdReadartis +
                 '}';
     }
 }

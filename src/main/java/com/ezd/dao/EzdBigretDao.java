@@ -65,6 +65,7 @@ public interface EzdBigretDao {
      */
     public List<EzdBigret> get()throws Exception;
 
+    //根据学校的ID查询大招会
     public List<EzdBigret> addressGet(int schoolId)throws Exception;
 
     public int timing1()throws Exception;
