@@ -201,13 +201,7 @@
 </body>
 
 <script type="text/javascript">
-    $(function() {
-        //重置按钮事件
-        $("#resetBtn").on("click", function() {
-            $("#stuLevel").val("");
-            $("#stuTitle").val("");
-        });
-    });
+
 </script>
 
 
