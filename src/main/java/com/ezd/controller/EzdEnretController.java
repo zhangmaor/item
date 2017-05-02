@@ -214,4 +214,16 @@ public class EzdEnretController {
         return update;
     }
 
+    /**
+     * 根据时间查询最近报名的人
+     * @param retTypeId
+     * @return
+     */
+    @RequestMapping(value = "/ajaxGetTimeAll",method = RequestMethod.POST)
+    @ResponseBody
+    public List<EzdEnret> getTimeAll(int retTypeId){
+        List<EzdEnret> list = ezdEnretService.getTimeAll(retTypeId);
+        return list;
+    }
+
 }
