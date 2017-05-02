@@ -9,11 +9,11 @@ import java.util.List;
  */
 public interface EzdSchmgDao {
 
-    public EzdSchmg findSchById(int schmg_id);
+    public int insertSchmg(EzdSchmg ezdSchmg) throws Exception ;
 
-    public int insertSchmg(EzdSchmg ezdSchmg);
+    public List<EzdSchmg> findSchmg(EzdSchmg ezdSchmg) throws Exception ;
 
-    public int updateSchmg(EzdSchmg ezdSchmg);
+    public int updateSchmg(EzdSchmg ezdSchmg) throws Exception ;
 
-    public List<EzdSchmg>  findAll();
+    public List<EzdSchmg>  findAll() throws Exception ;
 }

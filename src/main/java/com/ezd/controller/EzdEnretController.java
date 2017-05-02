@@ -55,6 +55,11 @@ public class EzdEnretController {
         return "wzgl";
     }
 
+    @RequestMapping("/xx_add")
+    public String index12(){
+        return "xx_add";
+    }
+
     @RequestMapping("/xxgl")
     public String index4(){
         return "xxgl";

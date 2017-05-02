@@ -1,17 +1,10 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2017/4/23
-  Time: 20:38
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" type="text/css" href="/css/button.css"/>
 </head>
 <body>
 <div class="right-mokuai">
@@ -38,31 +31,28 @@
 
                     <label class="form-label">层次：</label>&nbsp;&nbsp;&nbsp;&nbsp;
                     <select class="form-control " style="width: 200px;" id="stuLevel">
-                        <option value="0">请选择</option>
-                        <option value="本科">本科</option>
-                        <option value="大专">大专</option>
-                        <option value="高职">高职</option>
+                        <option value="0" selected>请选择</option>
+                        <c:forEach items="${types}" var="a">
+                            <option value="${a.schtypeId}">${a.schtypeName}</option>
+                        </c:forEach>
                     </select>
                     <input class="form-control " id="stuTitle" type="text" placeholder="请填写学校名称" style="width:200px;" />
                     <div class="btn-group">
-                        <button class="btn btn-default button button-primary button-rounded button-small" id="searchBtn" style="background-color: #D88C47; color: white;padding: 0 15px;">搜索</button>
-                        <button class="btn btn-default button button-primary button-rounded button-small" id="resetBtn" style="background-color: #ED5565; color: white;padding: 0 15px;">清除选择</button>
+                        <button class="btn btn-primary" id="searchBtn">搜索</button>
+                        <button class="btn btn-primary" id="resetBtn">清除选择</button>
                     </div>
 
-
-
-
                     <div class="btn-group">
-                        <button type="button" class="btn btn-primary button button-primary button-rounded button-small" id="searchBtn"
-                                data-toggle="modal" data-target="#add_xx" style="background-color: #07A94B; color:white;padding: 0 15px; float: right;">添加</button>
+                        <button type="button" class="btn btn-primary" id="addBtn" data-toggle="modal" data-target="#add_xx">添加</button>
                     </div>
 
                 </div>
             </from>
         </div>
         <br>
-        <div class="main-4">
-            <table class="table table-striped table-responsive">
+
+        <div class="main-4" >
+            <table class="table table-striped table-responsive" id="schmgContent">
                 <tr>
                     <th>序号</th>
                     <th>学校名称</th>
@@ -72,17 +62,19 @@
                     <th>操作</th>
                 </tr>
 
-                <tbody id="for">
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>
-                    <button class="btn btn-default button button-primary button-rounded button-small" data-toggle="modal" data-target="#update_xx" id="updateBtn" style="background-color: #1B8CF2;color: white;padding: 0 15px;margin-right: 10px;">修改</button>
-                    <button class="btn btn-default button button-primary button-rounded button-small" id="delectBtn" data-toggle="modal" data-target="#del_xx"   style="background-color: #F7160E; color: white;padding: 0 15px;" >删除</button>
-                </td>
-                </tbody>
+                   <c:forEach items="${shmgs}" var="mgs"  varStatus="s">
+                        <tr>
+                            <td>${s.count}</td>
+                            <td>${mgs.schmgName}</td>
+                            <td>${mgs.schmgAddress}</td>
+                            <td>${mgs.schmgType.schtypeName}</td>
+                            <td>${mgs.ezdBigrets.size()}</td>
+                            <td>
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#update_xx" id="updateBtn">修改</button>
+                                <button class="btn btn-default" id="delectBtn" data-toggle="modal" data-target="#del_xx">删除</button>
+                            </td>
+                        </tr>
+                   </c:forEach>
 
             </table>
         </div>
@@ -91,49 +83,67 @@
 </div>
 
 <!-- 添加学校 模态框（Modal） -->
-<div class="modal fade" id="add_xx" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+<%--<div class="modal fade" id="add_xx" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog" role="document">
+
         <div class="modal-content">
+
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel"><b>添加学校</b></h4>
             </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label class="form-label">层次：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <select class="form-control " style="width: 200px;" id="addLevel">
-                        <option value="0">请选择</option>
-                        <option value="本科">本科</option>
-                        <option value="大专">大专</option>
-                        <option value="高职">高职</option>
-                    </select>
-                </div>
-                <div class="form-group" style="margin-top: 10px;">
-                    <label class="form-label">学校名称：</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input class="form-control " id="addName" type="text" placeholder="请填写学校名称" style="width:200px;" />
-                </div>
-                <div class="form-group"  style="margin-top: 10px;">
-                    <label class="form-label">学校地址：</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input class="form-control " id="addAdress" type="text" placeholder="请填写学校地址" style="width:200px;" />
+
+            <form id="addSch">
+                <div class="modal-body">
+
+                    <div class="form-group" style="margin-top: 10px;">
+                        <label class="form-label">学校名称：</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input class="form-control " id="addName" name="schmgName" type="text" placeholder="请填写学校名称" style="width:200px;" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">学校层次：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <select class="form-control " style="width: 200px;" id="addLevel" name="typeId">
+                            <option value="0">请选择</option>
+                            <c:forEach items="${types}" var="a">
+                                <option value="${a.schtypeId}">${a.schtypeName}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+
+                    <div class="form-group"  style="margin-top: 10px;">
+                        <label class="form-label">学校网址：</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input class="form-control "  name="schmgDomain" type="text" placeholder="请填写学校网址" style="width:200px;" />
+                    </div>
+
+                    <div class="form-group"  style="margin-top: 10px;">
+                        <label class="form-label">学校详情：</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <textarea class="form-control " placeholder="请填写该校详情....." name="schmgMg"></textarea>
+                    </div>
+
+                    <div class="form-group"  style="margin-top: 10px;">
+                        <label class="form-label">学校成立时间：</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="date" class="form-control "  name="schmgCretime" type="text" placeholder="请填写学校地址" style="width:200px;" />
+                    </div>
+
+                    <div class="form-group"  style="margin-top: 10px;">
+                        <label class="form-label">学校地址：</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input class="form-control " id="addAdress" name="schmgAddress" type="text" placeholder="请填写学校地址" style="width:200px;" />
+                    </div>
 
                 </div>
-                <div class="form-group"  style="margin-top: 10px;">
-                    <label class="form-label">校招会场数：</label>
-                    <input class="form-control " id="addNumber" type="text" placeholder="请填写数字" style="width:200px;" />
-
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" id="submitSchmg">提交</button>
                 </div>
+            </form>
 
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary">提交</button>
-            </div>
         </div>
         <!-- /.modal-content -->
+
     </div>
     <!-- /.modal -->
-</div>
+</div>--%>
 
 <!-- 修改  模态框（Modal） -->
 <div class="modal fade" id="update_xx" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
@@ -148,9 +158,9 @@
                     <label class="form-label">层次：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <select class="form-control " style="width: 200px;" id="addLevel">
                         <option value="0">请选择</option>
-                        <option value="本科">本科</option>
-                        <option value="大专">大专</option>
-                        <option value="高职">高职</option>
+                        <c:forEach items="${types}" var="a">
+                            <option value="${a.schtypeId}">${a.schtypeName}</option>
+                        </c:forEach>
                     </select>
                 </div>
                 <div class="form-group" style="margin-top: 10px;">
@@ -160,11 +170,6 @@
                 <div class="form-group"  style="margin-top: 10px;">
                     <label class="form-label">学校地址：</label>&nbsp;&nbsp;&nbsp;&nbsp;
                     <input class="form-control " id="addAdress" type="text" placeholder="请填写学校地址" style="width:200px;" />
-
-                </div>
-                <div class="form-group"  style="margin-top: 10px;">
-                    <label class="form-label">校招会场数：</label>
-                    <input class="form-control " id="addNumber" type="text" placeholder="请填写数字" style="width:200px;" />
 
                 </div>
 
@@ -202,8 +207,87 @@
 
 <script type="text/javascript">
 
-</script>
 
+</script>
+<script>
+    $(function(){
+        $("#addBtn").on("click",function(){
+            $(".right-center").load("<%=request.getContextPath()%>/enret/xx_add");
+        });
+    })
+
+    $(function() {
+        //重置按钮事件
+        $("#resetBtn").on("click", function() {
+
+            $("#stuLevel").val("");
+            $("#stuTitle").val("");
+        });
+
+        //按层次和名字搜索学校
+
+        $("#searchBtn").click(function(){
+            var cengci =  $("#stuLevel").val();
+            var name =  $("#stuTitle").val();
+
+            $.ajax({
+                method:"POST",
+                url:"${pageContext.request.contextPath}/bgSchmg/search",
+                data:{"name" : name, "cengci" : cengci},
+                success:function(data){
+
+                    var html ="";
+                    html += '<tr>';
+                    html += '<th>序号</th>';
+                    html += '<th>学校名称</th>';
+                    html += '<th>学校地址</th>';
+                    html += '<th>学校层次</th>';
+                    html += '<th>校招会场数</th>';
+                    html += '<th>操作</th>';
+                    html += '</tr>';
+
+                    $.each(data, function(index, content){
+
+                        html += "<tr> ";
+                        html += "<td>" + index +1  +"</td>";
+                        html += "<td>" +content.schmgName+"</td>";
+                        html += "<td>" +content.schmgAddress+"</td>";
+                        html += "<td>" +content.schmgType.schtypeName+"</td>";
+                        html += "<td>" +content.ezdBigrets.length+"</td>";
+                        html +=  "<td>";
+                        html +=  '<button class="btn btn-primary" data-toggle="modal" data-target="#update_xx" id="updateBtn">修改</button>';
+                        html +=  '<button class="btn btn-default" id="delectBtn" data-toggle="modal" data-target="#del_xx">删除</button>';
+                        html +=  "</td>";
+                        html += "</tr>";
+                    });
+                    $("#schmgContent").html(html);
+                },
+                error:function(){
+                    alert("error");
+                }
+            });
+        });
+    });
+
+
+   /* //添加学校信息
+    $("#submitSchmg").click( function(){
+
+        $.ajax({
+            method:"POST",
+            url:"${pageContext.request.contextPath}/bgSchmg/addSchmg",
+            data: $("#addSch").serialize(),
+            success:function(){
+                alert($("#addSch").serialize());
+            },
+            error:function(){
+                alert("error");
+            }
+        });
+
+    });*/
+
+</script>
 
 
 </html>

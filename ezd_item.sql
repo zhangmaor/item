@@ -165,6 +165,7 @@ CREATE TABLE ezd_enret(--  招聘信息表
 	enret_creTime Datetime DEFAULT CURRENT_TIMESTAMP,--  发布时间
 	enret_lwMoney INT  NOT NULL,--  最低工资
 	enret_hgMoney INT  NOT NULL,--  最高工资
+	enret_edu int not null , -- 学历要求
 	enret_postOne int,--  招聘岗位1
 	enret_postTwo int ,--  招聘岗位2
 	enret_pg TEXT,--  待遇

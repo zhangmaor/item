@@ -23,7 +23,7 @@
         </bean>
         <!--将sqlSessionFactory的工作交给spring-->
         <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-                <property name="typeAliasesPackage" value="classpsth:com.ezd.model" />
+                <property name="typeAliasesPackage" value="com.ezd.model" />
                 <property name="dataSource" ref="DataSource" />
                 <property name="mapperLocations" value="classpath:mapper/*.xml" />
         </bean>

@@ -5,8 +5,13 @@
 <!--这里的namespace还没有确定-->
 
 <mapper namespace="com.ezd.dao.EzdSchtypeDao">
-    <resultMap id="schtype" type="com.ezd.model.EzdSchtype">
+    <resultMap id="schtype" type="EzdSchtype">
         <id column="schtype_id" property="schtypeId"/>
         <result column="schtype_name" property="schtypeName"/>
     </resultMap>
+
+    <select id="FindSchType" resultMap="schtype">
+        select * from ezd_schtype order by schtype_id  DESC
+    </select>
+
 </mapper>
