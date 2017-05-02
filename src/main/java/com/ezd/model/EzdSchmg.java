@@ -1,5 +1,7 @@
 package com.ezd.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 import java.util.List;
 
@@ -15,6 +17,7 @@ public class EzdSchmg {
     private String schmgAddress;   //学校地址
     private int typeId;  //学校性质ID
     private EzdSchtype schmgType;         //学校性质
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date schmgCretime;     //学校成立时间
     private List<EzdBigret> ezdBigrets;//在本学校举行的校招会
 

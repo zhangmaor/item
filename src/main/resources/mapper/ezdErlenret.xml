@@ -24,7 +24,14 @@
     <select id="getAll" resultMap="erlenret">
         SELECT * FROM ezd_erlenret
     </select>
+
+    <!--根据时间查询最近报名的人-->
+    <select id="getTimeAll" parameterType="com.ezd.model.EzdEnret" resultMap="erlenret">
+        SELECT * FROM ezd_erlenret WHERE enret_time =(SELECT MAX(enret_time) FROM ezd_erlenret WHERE erlenret_enret =#{enretId}) AND erlenret_enret = #{enretId}
+    </select>
+
     <select id="getHireAll" resultType="int" >
         select count(*),erlenret_enret from ezd_erlenret where erlenret_status = 3  group by erlenret_enret
     </select>
+
 </mapper>

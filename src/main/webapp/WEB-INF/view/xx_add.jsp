@@ -8,22 +8,23 @@
 <div class="right-mokuai">
     <div class="practice" style="width: 16%;">
         <span id="xx_gl">学校管理<i class="fa fa-angle-down"></i></span>&nbsp;
-        <span style="float: right;">添加学校<i class="fa fa-angle-down"></i></span>
+        <span style="float: right;">添加学校<i c  lass="fa fa-angle-down"></i></span>
     </div>
 </div>
 <div class="right-body ">
     <div class="right-body-main ">
-        <form action="">
+        <form id="addSchmg" >
             <div class="row">
                 <div class="col-xs-3 text-right">*学校名称：</div>
                 <div class="col-xs-7">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="schmgName">
                 </div>
             </div><br>
+
             <div class="row">
                 <div class="col-xs-3 text-right">*学校层次：</div>
                 <div class="col-xs-6">
-                    <select class="form-control">
+                    <select class="form-control" name="typeId">
                         <option value="0">请选择</option>
                         <c:forEach items="${types}" var="a">
                             <option value="${a.schtypeId}">${a.schtypeName}</option>
@@ -31,36 +32,34 @@
                     </select>
                 </div>
             </div><br>
-            <div class="row">
-                <div class="col-xs-3 text-right">*学校名称：</div>
-                <div class="col-xs-5">
-                    <input type="text" class="form-control">
-                </div>
-            </div><br>
+
             <div class="row">
                 <div class="col-xs-3 text-right">*学校地址：</div>
                 <div class="col-xs-5">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="schmgAddress">
                 </div>
             </div><br>
+
             <div class="row">
                 <div class="col-xs-3 text-right">*学校网址：</div>
                 <div class="col-xs-5">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="schmgDomain">
                 </div>
             </div><br>
             <div class="row">
                 <div class="col-xs-3 text-right">*学校成立时间：</div>
                 <div class="col-xs-5">
-                    <input type="text" class="form-control">
+                    <input type="date" class="form-control" name="schmgCretime">
                 </div>
             </div><br>
+
             <div class="row">
                 <div class="col-xs-3 text-right">*学校详情：</div>
                 <div class="col-xs-5">
-                    <textarea class="form-control"></textarea>
+                    <textarea class="form-control" name="schmgMg"></textarea>
                 </div>
             </div><br>
+
             <div class="row text-center">
                 <button type="button" class="btn btn-primary" id="submitSchmg">提交</button>
             </div>
@@ -74,26 +73,28 @@
 <script>
     $(function(){
         $("#xx_gl").on("click",function(){
-            $(".right-center").load("<%=request.getContextPath()%>/enret/xxgl");
+            $(".right-center").load("<%=request.getContextPath()%>/bgSchmg");
         });
     })
 
 
     //添加学校信息
-    $("#submitSchmg").click( function(){
+    $("#submitSchmg").on("click", function(){
 
+        var frmparam = $("form").serialize();
+        console.log(frmparam);
         $.ajax({
-            method:"POST",
+            type:"POST",
             url:"${pageContext.request.contextPath}/bgSchmg/addSchmg",
-            data: $("#addSch").serialize(),
-            success:function(){
-                alert($("#addSch").serialize());
-            },
+            data : frmparam,
+            success:function(date){
+                alert(date);
+                $(".right-center").load("<%=request.getContextPath()%>/bgSchmg");
+             },
             error:function(){
                 alert("error");
             }
         });
-
     });
 </script>
 </html>
