@@ -109,6 +109,7 @@ public class EzdSchmgService {
         int i=0;
         try{
             i = ezdSchmgDao.insertSchmg(ezdSchmg);
+            System.out.println("=====insert==="+i);
             a = i>0;
         }catch (Exception e){
             System.out.println("=======EzdSchmgService insertSchmg method========");

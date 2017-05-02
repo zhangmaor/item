@@ -72,20 +72,27 @@ public class SchController {
         return ezdSchmgs;
     }
 
+    /**
+     * 添加学校信息
+     * @param ezdSchmg 学校信息
+     * @return
+     */
     @RequestMapping("/addSchmg")
+    @ResponseBody
     private String  insertSchmg(EzdSchmg ezdSchmg){
 
+       System.out.println(" this is ezdSchmg== "+ezdSchmg.toString());
+
        boolean res = ezdSchmgService.insertSchmg(ezdSchmg);
+       System.out.println(res);
 
-       if(res){
-           return "redirect:/bgSchmg";
-       }
-
-        return "";
+        return "success";
     }
 
     @RequestMapping("/updateSchmg")
     private String  updateSchmg(EzdSchmg ezdSchmg){
+
+       ;
 
         boolean res = ezdSchmgService.updateSchmg(ezdSchmg);
 

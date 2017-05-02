@@ -2,18 +2,17 @@ package com.ezd.controller;
 
 import com.ezd.model.EzdEnmg;
 import com.ezd.model.EzdEnret;
-import com.ezd.model.EzdRetType;
+import com.ezd.model.EzdSchtype;
 import com.ezd.service.EzdEnretService;
-import com.ezd.utils.AjaxUtil;
-import org.json.simple.JSONValue;
+import com.ezd.service.EzdSchTypeService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
-import javax.swing.plaf.synth.SynthOptionPaneUI;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,6 +24,9 @@ public class EzdEnretController {
 
     @Resource
     private EzdEnretService ezdEnretService;
+    @Resource
+    private EzdSchTypeService ezdSchTypeService;
+
 
     @RequestMapping("/index")
     public String index(){
@@ -56,7 +58,11 @@ public class EzdEnretController {
     }
 
     @RequestMapping("/xx_add")
-    public String index12(){
+    public String index12(Model model){
+        List<EzdSchtype> ezdSchtypes = new ArrayList<EzdSchtype>();
+        ezdSchtypes = ezdSchTypeService.findSchType();
+        model.addAttribute("types",ezdSchtypes);
+
         return "xx_add";
     }
 

@@ -82,68 +82,7 @@
     </div>
 </div>
 
-<!-- 添加学校 模态框（Modal） -->
-<%--<div class="modal fade" id="add_xx" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog" role="document">
 
-        <div class="modal-content">
-
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel"><b>添加学校</b></h4>
-            </div>
-
-            <form id="addSch">
-                <div class="modal-body">
-
-                    <div class="form-group" style="margin-top: 10px;">
-                        <label class="form-label">学校名称：</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input class="form-control " id="addName" name="schmgName" type="text" placeholder="请填写学校名称" style="width:200px;" />
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">学校层次：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <select class="form-control " style="width: 200px;" id="addLevel" name="typeId">
-                            <option value="0">请选择</option>
-                            <c:forEach items="${types}" var="a">
-                                <option value="${a.schtypeId}">${a.schtypeName}</option>
-                            </c:forEach>
-                        </select>
-                    </div>
-
-                    <div class="form-group"  style="margin-top: 10px;">
-                        <label class="form-label">学校网址：</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input class="form-control "  name="schmgDomain" type="text" placeholder="请填写学校网址" style="width:200px;" />
-                    </div>
-
-                    <div class="form-group"  style="margin-top: 10px;">
-                        <label class="form-label">学校详情：</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <textarea class="form-control " placeholder="请填写该校详情....." name="schmgMg"></textarea>
-                    </div>
-
-                    <div class="form-group"  style="margin-top: 10px;">
-                        <label class="form-label">学校成立时间：</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="date" class="form-control "  name="schmgCretime" type="text" placeholder="请填写学校地址" style="width:200px;" />
-                    </div>
-
-                    <div class="form-group"  style="margin-top: 10px;">
-                        <label class="form-label">学校地址：</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input class="form-control " id="addAdress" name="schmgAddress" type="text" placeholder="请填写学校地址" style="width:200px;" />
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-primary" id="submitSchmg">提交</button>
-                </div>
-            </form>
-
-        </div>
-        <!-- /.modal-content -->
-
-    </div>
-    <!-- /.modal -->
-</div>--%>
 
 <!-- 修改  模态框（Modal） -->
 <div class="modal fade" id="update_xx" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
@@ -270,22 +209,6 @@
     });
 
 
-   /* //添加学校信息
-    $("#submitSchmg").click( function(){
-
-        $.ajax({
-            method:"POST",
-            url:"${pageContext.request.contextPath}/bgSchmg/addSchmg",
-            data: $("#addSch").serialize(),
-            success:function(){
-                alert($("#addSch").serialize());
-            },
-            error:function(){
-                alert("error");
-            }
-        });
-
-    });*/
 
 </script>
 
