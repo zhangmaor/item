@@ -2,6 +2,7 @@ package com.ezd.controller.background;
 
 import com.ezd.model.EzdBigret;
 import com.ezd.service.EzdBigretService;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,19 +32,12 @@ public class BgBigret {
      * 进入大招会列表页面
      */
     @RequestMapping("/bigret")
-    public String displayBigret(HttpServletRequest request, Model model) {
-        List<EzdBigret> bigretList = ezdBigretService.getAll();//这个有问题吧！！！
-        HttpSession session = request.getSession();
-        session.setAttribute("list", bigretList);
-        List<EzdBigret> bigretList1 = ezdBigretService.modeGet(1);
-        for (EzdBigret e:bigretList1
-             ) {
-            System.out.println("eeee="+e);
-            System.out.println("eeqq="+e.getBigretEnmg());
-        }
+    @ResponseBody
+    public List<EzdBigret> displayBigret() {
+        List<EzdBigret> all = ezdBigretService.getAll();
 
-        System.out.println(bigretList);
-        return "indexTest";
+        System.out.println("大招会信息="+all);
+        return all;
     }
 
     /**

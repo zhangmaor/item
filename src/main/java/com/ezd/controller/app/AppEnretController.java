@@ -20,7 +20,7 @@ public class AppEnretController {
     @Resource
     private EzdEnretService ezdEnretService;
     /**
-     * 根据招聘类型查询出招聘信息/app_enret/ajaxGetEnretTypeAll
+     * 根据招聘类型查询出招聘信息/app_enret/ajaxGetEnretTypeAll?retTypeId=1
      * @param retTypeId
      */
     @RequestMapping(value = "/ajaxGetEnretTypeAll",method = RequestMethod.GET)

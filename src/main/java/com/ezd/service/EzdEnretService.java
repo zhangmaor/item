@@ -88,17 +88,29 @@ public class EzdEnretService {
         list = ezdEnretDao.getEnretTypeAll(retTypeId);
         for (EzdEnret li:list) {
             List<EzdErlenret> personList = ezdErlenretDao.getPersonEnrolled(li);
-            for (EzdErlenret p:personList) {
-                EzdUmg ezdUmg = ezdUmgDao.getEzdUmgAll(p.getErlenretUmg());
+            System.out.println("======================");
+            try {
+                System.out.println(personList.get(0));
+                System.out.println(personList.get(1));
+                System.out.println(personList.get(2));
+            }catch(NullPointerException e){
+                System.out.println("能过则过");
+            }catch(Exception a){
+                System.out.println("出现了其他的错误！！");
+            }
+            System.out.println("=========================");
+            for (int i=0;i<personList.size();i++) {
+                System.out.println("umg的具体的值"+personList.get(i).getErlenretUmg());
+                EzdUmg ezdUmg = ezdUmgDao.getEzdUmgAll(personList.get(i).getErlenretUmg());
                 EzdUsers ezdUsersAll = ezdUsersDao.getEzdUsersAll(ezdUmg.getUserId());
                 ezdUmg.setUmgUser(ezdUsersAll);
-                p.setEzdUmg(ezdUmg);
-                EzdEnret ezdEnret = ezdEnretDao.getEzdEnretAll(p.getErlenretEnret());
-                p.setEzdEnret(ezdEnret);
+                personList.get(i).setEzdUmg(ezdUmg);
+                EzdEnret ezdEnret = ezdEnretDao.getEzdEnretAll(personList.get(i).getErlenretEnret());
+                personList.get(i).setEzdEnret(ezdEnret);
                 EzdPostTwo postTwo = ezdPostTwoDao.findPostTwo(ezdEnret.getEnretPostTwo());
                 ezdEnret.setEzdPostTwo(postTwo);
-                EzdRestatus ezdRestatus = ezdRestatusDao.getEzdRestatusAll(p.getErlenretStatus());
-                p.setEzdRestatus(ezdRestatus);
+                EzdRestatus ezdRestatus = ezdRestatusDao.getEzdRestatusAll(personList.get(i).getErlenretStatus());
+                personList.get(i).setEzdRestatus(ezdRestatus);
             }
             EzdEnmg enmg = ezdEnmgDao.getEnmg(li.getNretEnmg());
             EzdPostTwo ezdPostTwo = ezdPostTwoDao.findPostTwo(li.getEnretPostTwo());
@@ -110,7 +122,7 @@ public class EzdEnretService {
             li.setEzdErlenrets(personList);
             li.setEzdEnmg(enmg);
             li.setEzdPostTwo(ezdPostTwo);
-            //System.out.println(li);
+            System.out.println(li);
         }
         return list;
     }

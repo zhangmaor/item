@@ -21,7 +21,7 @@
         <association property="ezdPostOne" resultMap="com.ezd.dao.EzdPostOneDao.postOne" /><!-- 一级招聘岗位 -->
         <association property="ezdPostTwo" resultMap="com.ezd.dao.EzdPostTwoDao.postTwo" /><!-- 二级招聘岗位 -->
         <association property="ezdEnmg" resultMap="com.ezd.dao.EzdEnmgDao.enmg"/><!--发布信息的公司-->
-        <association property="enretStatus" resultMap="com.ezd.dao.EzdNewsStatusDao.newsStatus" /><!--该招聘信息的状态-->
+        <association property="ezdNewsStatus" resultMap="com.ezd.dao.EzdNewsStatusDao.newsStatus" /><!--该招聘信息的状态-->
         <association property="ezdRetType" resultMap="com.ezd.dao.EzdRetTypeDao.retType" /><!--招聘类型-->
         <collection property="ezdErlenrets" resultMap="com.ezd.dao.EzdErlenretDao.erlenret"/><!--对应的报名信息表-->
         <collection property="ezdUmgs" resultMap="com.ezd.dao.EzdUmgDao.umg"/><!--对应的浏览人列表-->
