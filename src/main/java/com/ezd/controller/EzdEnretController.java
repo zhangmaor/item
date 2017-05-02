@@ -50,15 +50,42 @@ public class EzdEnretController {
         return "qzgl";
     }
 
-    @RequestMapping("/dzhgl")
+    @RequestMapping("/wzgl")
     public String index3(){
-        return "dzhgl";
+        return "wzgl";
+    }
+
+    @RequestMapping("/xx_add")
+    public String index12(){
+        return "xx_add";
     }
 
     @RequestMapping("/xxgl")
     public String index4(){
         return "xxgl";
     }
+
+    @RequestMapping("/dzhgl")
+    public String index8(){
+        return "dzhgl";
+    }
+
+    @RequestMapping("/dzh_add")
+    public String index9(){
+        return "dzh_add";
+    }
+
+    @RequestMapping("/qygl")
+    public String index10(){
+        return "qygl";
+    }
+
+    @RequestMapping("/qy_add")
+    public String index11(){
+        return "qy_add";
+    }
+
+
 
 
 
