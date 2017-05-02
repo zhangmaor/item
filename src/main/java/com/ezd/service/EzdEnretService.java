@@ -242,4 +242,28 @@ public class EzdEnretService {
         return false;
 
     }
+
+
+    //根据时间查询最近报名的人
+    public List<EzdEnret> getTimeAll(int id){
+        List<EzdEnret> list = ezdEnretDao.getEnretTypeAll(id);
+        for (EzdEnret li:list){
+            List<EzdErlenret> timeAll = ezdErlenretDao.getTimeAll();
+            for (EzdErlenret ta:timeAll){
+                EzdUmg ezdUmg = ezdUmgDao.getEzdUmgAll(ta.getErlenretUmg());
+                EzdUsers ezdUsersAll = ezdUsersDao.getEzdUsersAll(ezdUmg.getUserId());
+                ezdUmg.setUmgUser(ezdUsersAll);
+                ta.setEzdUmg(ezdUmg);
+                EzdEnret ezdEnret = ezdEnretDao.getEzdEnretAll(ta.getErlenretEnret());
+                ta.setEzdEnret(ezdEnret);
+                EzdPostTwo postTwo = ezdPostTwoDao.findPostTwo(ezdEnret.getEnretPostTwo());
+                ezdEnret.setEzdPostTwo(postTwo);
+                EzdRestatus ezdRestatus = ezdRestatusDao.getEzdRestatusAll(ta.getErlenretStatus());
+                ta.setEzdRestatus(ezdRestatus);
+
+            }
+            li.setEzdErlenrets(timeAll);
+        }
+        return list;
+    }
 }

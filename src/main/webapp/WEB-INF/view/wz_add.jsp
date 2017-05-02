@@ -147,20 +147,20 @@
 <script>
     function tj() {
         alert($("#myEditor").val());
-        /*$.ajax({
+        $.ajax({
             type: "post", //请求的方式，也有get请求
             url: "<%=request.getContextPath()%>/aticle/ajaxInsert", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
             data: {
-                    articleType     :   1/!*$("#wzlx").val()*!/,
+                    articleType     :   1/*$("#wzlx").val()*/,
                     articleMtitle   :   $("#bt").val(),
                     articleStitle   :   $("#fbt").val(),
                     articleAuthor   :   $("#author").val(),
                     articleAuemail  :   $("#email").val(),
                     articleKeywords :   $("#gjz").val(),
-                    articleContent  :   "hahhahhahha"/!*$("#myEditor").val()*!/,
+                    articleContent  :   "hahhahhahha"/*$("#myEditor").val()*/,
                     articleLogo     :   $("#logo").val(),
                     articlePic      :   $("#share").val(),
-                    articleStatus   :   1/!*$("#").val()*!/
+                    articleStatus   :   1/*$("#").val()*/
             },
             dataType: "json", //json格式，后台返回的数据为json格式的。
             success: function (result) {
@@ -169,7 +169,7 @@
                     $(".right-center").load("<%=request.getContextPath()%>/enret/dzhgl");
                 }
             }
-        });*/
+        });
     }
 </script>
 

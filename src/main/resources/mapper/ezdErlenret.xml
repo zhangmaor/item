@@ -25,4 +25,9 @@
         SELECT * FROM ezd_erlenret
     </select>
 
+    <!--根据时间查询最近报名的人-->
+    <select id="getTimeAll" resultMap="erlenret">
+        SELECT * FROM ezd_erlenret WHERE enret_time = (SELECT MAX (enret_time) FROM ezd_erlenret)
+    </select>
+
 </mapper>
