@@ -248,9 +248,9 @@
                     var dataObj = result, //返回的result为json格式的数据
                         con = "";
                     $.each(dataObj, function(index, item){
-                      //  console.log(item);
+                      	//console.log(item);
                         $.each(item.ezdErlenrets, function(index1, item1) {
-                            //console.log(item1);
+                           // console.log(item1);
                             con += "<tr>";
                             con += "<td><img src='/img/qq.jpg' style='width: 20px;height: 20px;'></td>";
                             con += "<td>" + item1.ezdEnret.ezdPostTwo.ptwoName + "</td>";
