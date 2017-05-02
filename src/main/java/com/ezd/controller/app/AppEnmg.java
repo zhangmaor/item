@@ -22,7 +22,7 @@ public class AppEnmg {
     private EzdEnmgService ezdEnmgService;
 
     /**
-     * 显示全部的企业列表
+     * 显示全部的企业列表/app_enmg/getEnmgAll
      * @return
      */
     @RequestMapping("/getEnmgAll")
