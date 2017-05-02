@@ -1,13 +1,16 @@
 package com.ezd.service;
 
+import com.ezd.dao.EzdBigretDao;
 import com.ezd.dao.EzdEnmgDao;
 import com.ezd.dao.EzdSchmgDao;
 import com.ezd.dao.EzdUmindenDao;
+import com.ezd.model.EzdBigret;
 import com.ezd.model.EzdEnmg;
 import com.ezd.model.EzdSchmg;
 import com.ezd.model.EzdUminden;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -25,13 +28,25 @@ public class EzdSchmgService {
 
     @Resource
     private EzdSchmgDao ezdSchmgDao;
+    @Resource
+    private EzdBigretDao ezdBigretDao;
+
+    private  List<EzdSchmg> schmgs = new ArrayList<EzdSchmg>() ;
 
 
 
     public List<EzdSchmg> findAll(){
-        List<EzdSchmg> schmgs = new ArrayList<EzdSchmg>() ;
+
         try{
             schmgs = ezdSchmgDao.findAll();
+
+            for(EzdSchmg sch :schmgs ){
+
+                //通过学校的ID 查询 对应的 大招会
+                List<EzdBigret>  ezdBigrets = ezdBigretDao.addressGet(sch.getSchmgId());
+
+                sch.setEzdBigrets(ezdBigrets);
+            }
         }catch (Exception e){
             System.out.println("=======EzdSchmgService findSchmgById method========");
         }
@@ -43,18 +58,27 @@ public class EzdSchmgService {
 
     /**
      *
-     * @param schmg_id 学校信息的ID
+     * @param ezdSchmg 学校信息
      *  findSchmgById 根据id找学校信息
      */
 
-    public EzdSchmg findSchmgById(int schmg_id){
-        EzdSchmg schmg = new EzdSchmg();
+    public List<EzdSchmg> findSchmg(EzdSchmg ezdSchmg){
+       List<EzdSchmg>  schmgs = null;
         try{
-            schmg = ezdSchmgDao.findSchById(schmg_id);
+            schmgs = ezdSchmgDao.findSchmg(ezdSchmg);
+                for(EzdSchmg sch :schmgs ){
+
+                    //通过学校的ID 查询 对应的 大招会
+                    List<EzdBigret>  ezdBigrets = ezdBigretDao.addressGet(sch.getSchmgId());
+
+                    sch.setEzdBigrets(ezdBigrets);
+                }
         }catch (Exception e){
             System.out.println("=======EzdSchmgService findSchmgById method========");
+            e.printStackTrace();
         }
-        return schmg;
+
+        return schmgs;
     }
 
     /**

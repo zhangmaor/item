@@ -88,7 +88,7 @@
 
 
     <!--通过学校的id来查询匹配的大招会-->
-    <select id="addressGet" resultMap="bigret" parameterType="int" >
+    <select id="addressGet" resultType="EzdBigret" parameterType="int" >
         select * from ezd_bigret
         where bigret_address = #{_parameter}
     </select>

@@ -18,20 +18,7 @@ public class EzdSchmg {
     private Date schmgCretime;     //学校成立时间
     private List<EzdBigret> ezdBigrets;//在本学校举行的校招会
 
-    public int getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(int typeId) {
-        this.typeId = typeId;
-    }
-
-    public List<EzdBigret> getEzdBigrets() {
-        return ezdBigrets;
-    }
-
-    public void setEzdBigrets(List<EzdBigret> ezdBigrets) {
-        this.ezdBigrets = ezdBigrets;
+    public EzdSchmg() {
     }
 
     @Override
@@ -42,18 +29,11 @@ public class EzdSchmg {
                 ", schmgName='" + schmgName + '\'' +
                 ", schmgMg='" + schmgMg + '\'' +
                 ", schmgAddress='" + schmgAddress + '\'' +
+                ", typeId=" + typeId +
                 ", schmgType=" + schmgType +
                 ", schmgCretime=" + schmgCretime +
-                ", ezdSchrets=" + ezdBigrets +
+                ", ezdBigrets=" + ezdBigrets +
                 '}';
-    }
-
-    public List<EzdBigret> getEzdSchrets() {
-        return ezdBigrets;
-    }
-
-    public void setEzdSchrets(List<EzdBigret> ezdBigrets) {
-        this.ezdBigrets = ezdBigrets;
     }
 
     public int getSchmgId() {
@@ -96,6 +76,14 @@ public class EzdSchmg {
         this.schmgAddress = schmgAddress;
     }
 
+    public int getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(int typeId) {
+        this.typeId = typeId;
+    }
+
     public EzdSchtype getSchmgType() {
         return schmgType;
     }
@@ -112,4 +100,11 @@ public class EzdSchmg {
         this.schmgCretime = schmgCretime;
     }
 
+    public List<EzdBigret> getEzdBigrets() {
+        return ezdBigrets;
+    }
+
+    public void setEzdBigrets(List<EzdBigret> ezdBigrets) {
+        this.ezdBigrets = ezdBigrets;
+    }
 }
