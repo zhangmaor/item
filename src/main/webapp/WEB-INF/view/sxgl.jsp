@@ -46,7 +46,8 @@
 					</div>
 					
 					<div class="center-mokuai">
-						<div class="mokuai"><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;企业管理</div>	
+
+						<div class="mokuai" id="qygl"><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;企业管理</div>
 					</div>
 					
 					<div class="center-mokuai">
@@ -282,16 +283,26 @@
 			//	$(".right-center").load("sxgl.html .right-mokuai,#one,#two");
 			});
             $("#fbgw").on("click",function(){
+               
                 $(".right-center").load("<%=request.getContextPath()%>/enret/sx_job");
             });
 			$("#qzgl").on("click",function(){
+               
 				$(".right-center").load("<%=request.getContextPath()%>/enret/qzgl");
 			});
 			$("#xxgl").on("click",function(){
+               
 				$(".right-center").load("<%=request.getContextPath()%>/bgSchmg");
 			});
             $("#wzgl").on("click",function(){
+
+                $(".right-center").load("<%=request.getContextPath()%>/enret/wzgl");
+            });
+            $("#dzhgl").on("click",function(){
                 $(".right-center").load("<%=request.getContextPath()%>/enret/dzhgl");
+            });
+            $("#qygl").on("click",function(){
+                $(".right-center").load("<%=request.getContextPath()%>/enret/qygl");
             });
 		})
 		

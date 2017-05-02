@@ -5,7 +5,6 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" type="text/css" href="/css/button.css"/>
 </head>
 <body>
 <div class="right-mokuai">
@@ -39,13 +38,12 @@
                     </select>
                     <input class="form-control " id="stuTitle" type="text" placeholder="请填写学校名称" style="width:200px;" />
                     <div class="btn-group">
-                        <button class="btn btn-default button button-primary button-rounded button-small" id="searchBtn"  style="background-color: #D88C47; color: white;padding: 0 15px;">搜索</button>
-                        <button class="btn btn-default button button-primary button-rounded button-small" id="resetBtn" style="background-color: #ED5565; color: white;padding: 0 15px;">清除选择</button>
+                        <button class="btn btn-primary" id="searchBtn">搜索</button>
+                        <button class="btn btn-primary" id="resetBtn">清除选择</button>
                     </div>
 
                     <div class="btn-group">
-                        <button type="button" class="btn btn-primary button button-primary button-rounded button-small" id="addBtn"
-                                data-toggle="modal" data-target="#add_xx" style="background-color: #07A94B; color:white;padding: 0 15px; float: right;">添加</button>
+                        <button type="button" class="btn btn-primary" id="addBtn" data-toggle="modal" data-target="#add_xx">添加</button>
                     </div>
 
                 </div>
@@ -72,8 +70,8 @@
                             <td>${mgs.schmgType.schtypeName}</td>
                             <td>${mgs.ezdBigrets.size()}</td>
                             <td>
-                                <button class="btn btn-default button button-primary button-rounded button-small" data-toggle="modal" data-target="#update_xx" id="updateBtn" style="background-color: #1B8CF2;color: white;padding: 0 15px;margin-right: 10px;">修改</button>
-                                <button class="btn btn-default button button-primary button-rounded button-small" id="delectBtn" data-toggle="modal" data-target="#del_xx"   style="background-color: #F7160E; color: white;padding: 0 15px;" >删除</button>
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#update_xx" id="updateBtn">修改</button>
+                                <button class="btn btn-default" id="delectBtn" data-toggle="modal" data-target="#del_xx">删除</button>
                             </td>
                         </tr>
                    </c:forEach>
@@ -85,7 +83,7 @@
 </div>
 
 <!-- 添加学校 模态框（Modal） -->
-<div class="modal fade" id="add_xx" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+<%--<div class="modal fade" id="add_xx" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog" role="document">
 
         <div class="modal-content">
@@ -145,7 +143,7 @@
 
     </div>
     <!-- /.modal -->
-</div>
+</div>--%>
 
 <!-- 修改  模态框（Modal） -->
 <div class="modal fade" id="update_xx" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
@@ -208,6 +206,16 @@
 </body>
 
 <script type="text/javascript">
+
+
+</script>
+<script>
+    $(function(){
+        $("#addBtn").on("click",function(){
+            $(".right-center").load("<%=request.getContextPath()%>/enret/xx_add");
+        });
+    })
+
     $(function() {
         //重置按钮事件
         $("#resetBtn").on("click", function() {
@@ -247,8 +255,8 @@
                         html += "<td>" +content.schmgType.schtypeName+"</td>";
                         html += "<td>" +content.ezdBigrets.length+"</td>";
                         html +=  "<td>";
-                        html +=  '<button class="btn btn-default button button-primary button-rounded button-small" data-toggle="modal" data-target="#update_xx" id="updateBtn" style="background-color: #1B8CF2;color: white;padding: 0 15px;margin-right: 10px;">修改</button>';
-                        html +=  '<button class="btn btn-default button button-primary button-rounded button-small" id="delectBtn" data-toggle="modal" data-target="#del_xx"   style="background-color: #F7160E; color: white;padding: 0 15px;" >删除</button>';
+                        html +=  '<button class="btn btn-primary" data-toggle="modal" data-target="#update_xx" id="updateBtn">修改</button>';
+                        html +=  '<button class="btn btn-default" id="delectBtn" data-toggle="modal" data-target="#del_xx">删除</button>';
                         html +=  "</td>";
                         html += "</tr>";
                     });
@@ -261,7 +269,8 @@
         });
     });
 
-    //添加学校信息
+
+   /* //添加学校信息
     $("#submitSchmg").click( function(){
 
         $.ajax({
@@ -276,7 +285,7 @@
             }
         });
 
-    });
+    });*/
 
 </script>
 

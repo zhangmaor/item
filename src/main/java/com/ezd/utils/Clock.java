@@ -18,9 +18,9 @@ public class Clock {
             int i1 = ezdBigretDao.timing3();
             int i2 = ezdBigretDao.timing2();
             int i3 = ezdBigretDao.timing1();
-            System.out.println("timing3修改了="+i1);
-            System.out.println("timing2修改了="+i2);
-            System.out.println("timing1修改了="+i3);
+            System.out.println("timing3修改了="+i1+"时间是："+new java.util.Date());
+            System.out.println("timing2修改了="+i2+"时间是："+new java.util.Date());
+            System.out.println("timing1修改了="+i3+"时间是："+new java.util.Date());
         } catch (Exception e) {
             e.printStackTrace();
         }

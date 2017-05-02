@@ -5,6 +5,8 @@ import com.ezd.utils.Sendsms;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.*;
 
 /**
@@ -12,7 +14,11 @@ import java.util.*;
  */
 public class MyTest {
     public Map<String, String> loads(String url,String ... attributes ){
-
+        try {
+            InetAddress localHost = InetAddress.getLocalHost();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
         String ul = url+".properties";
         //("../../../../resources/dataBase.properties");
         InputStream is = MyTest.class.getClassLoader().getResourceAsStream(ul);
