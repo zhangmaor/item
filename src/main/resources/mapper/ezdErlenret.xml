@@ -16,7 +16,7 @@
     </resultMap>
 
     <!--根据招聘信息查出报名的人-->
-    <select id="getPersonEnrolled" resultType="com.ezd.model.EzdErlenret" resultMap="erlenret">
+    <select id="getPersonEnrolled" resultMap="erlenret">
         SELECT * FROM ezd_erlenret WHERE erlenret_enret = #{enretId}
     </select>
 
@@ -26,8 +26,8 @@
     </select>
 
     <!--根据时间查询最近报名的人-->
-    <select id="getTimeAll" resultMap="erlenret">
-        SELECT * FROM ezd_erlenret WHERE enret_time = (SELECT MAX (enret_time) FROM ezd_erlenret)
+    <select id="getTimeAll" parameterType="com.ezd.model.EzdEnret" resultMap="erlenret">
+        SELECT * FROM ezd_erlenret WHERE enret_time =(SELECT MAX(enret_time) FROM ezd_erlenret WHERE erlenret_enret =#{enretId}) AND erlenret_enret = #{enretId}
     </select>
 
 </mapper>

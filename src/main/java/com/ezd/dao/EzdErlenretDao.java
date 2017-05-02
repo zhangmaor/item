@@ -17,6 +17,6 @@ public interface EzdErlenretDao {
     public List<EzdErlenret> getAll();
 
     //根据时间查询最近报名的人
-    public List<EzdErlenret> getTimeAll();
+    public List<EzdErlenret> getTimeAll(EzdEnret ezdEnret);
 
 }

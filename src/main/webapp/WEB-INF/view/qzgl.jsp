@@ -42,7 +42,7 @@
             </div>
         </div>
 
-        <div class="col-xs-4 text-center">
+        <div class="col-xs-4 text-center" onclick="qzinfo()">
             <div class="btn" data-toggle="modal" data-target="#qzjl">
                 <div class="pull-left">
                     <i class="icon-eye-open"></i>
@@ -87,43 +87,6 @@
         </table>
     </div>
 </div>
-
-<!--
-
-        二级菜单 发布界面
-
-                        -->
-<%--<div class="right-body" id="two" style="display: none;">
-    <div class="right-body-main">
-        <div class="main-1">
-            <span class="main-1-1">岗位列表</span>
-        </div>
-        <div style="width: 100%;line-height: 70px;">
-
-            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#add_qz">
-                发布全职岗位
-            </button>
-        </div>
-        <table class="table table-bordered">
-            <thead>
-            <th>单位/企业名</th>
-            <th>工作岗位</th>
-            <th>学历要求</th>
-            <th>经验要求</th>
-            <th>招聘人数</th>
-            <th>性别要求</th>
-            <th>薪资</th>
-            <th>状态</th>
-            <th>操作</th>
-            </thead>
-            <tbody id="qzgw">
-            &lt;%&ndash;显示数据&ndash;%&gt;
-            </tbody>
-        </table>
-
-
-    </div>
-</div>--%>
 
 
 <!-- 全职简历 (模态框)Modal -->
@@ -255,9 +218,6 @@
     })
 </script>
 
-
-
-
 <script type="text/javascript">
     $(function(){
         $("#fbgw").on("click",function(){
@@ -265,4 +225,29 @@
         });
     })
 </script>
+
+<script>
+    function qzinfo(){
+        $.ajax({
+            type: "post", //请求的方式，也有get请求
+            url: "<%=request.getContextPath()%>/enret/ajaxGetTimeAll", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
+            data:"retTypeId="+2,
+            dataType: "json", //json格式，后台返回的数据为json格式的。
+            success: function(result){
+                var dataObj = result, //返回的result为json格式的数据
+                    con = "";
+                console.log(dataObj);
+                $.each(dataObj, function(index, item){
+
+                    $.each(item.ezdErlenrets, function(index1, item1) {
+                        console.log(item1);
+                    });
+                });
+
+            }
+        })
+    }
+</script>
+
+
 </html>
