@@ -288,7 +288,7 @@
 				$(".right-center").load("<%=request.getContextPath()%>/enret/qzgl");
 			});
 			$("#xxgl").on("click",function(){
-				$(".right-center").load("<%=request.getContextPath()%>/enret/xxgl");
+				$(".right-center").load("<%=request.getContextPath()%>/bgSchmg");
 			});
             $("#wzgl").on("click",function(){
                 $(".right-center").load("<%=request.getContextPath()%>/enret/dzhgl");
