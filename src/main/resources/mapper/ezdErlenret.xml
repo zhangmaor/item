@@ -24,5 +24,7 @@
     <select id="getAll" resultMap="erlenret">
         SELECT * FROM ezd_erlenret
     </select>
-
+    <select id="getHireAll" resultType="int" >
+        select count(*),erlenret_enret from ezd_erlenret where erlenret_status = 3  group by erlenret_enret
+    </select>
 </mapper>
