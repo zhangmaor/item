@@ -16,4 +16,6 @@ public interface EzdSchmgDao {
     public int updateSchmg(EzdSchmg ezdSchmg) throws Exception ;
 
     public List<EzdSchmg>  findAll() throws Exception ;
+
+    public int del(int schmgId)throws Exception;
 }

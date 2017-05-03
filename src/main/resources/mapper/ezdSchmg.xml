@@ -46,28 +46,26 @@
 
     <!--更新 学校信息 -->
     <update id="updateSchmg" parameterType="com.ezd.model.EzdSchmg">
-      updata ezd_schmg
+      update ezd_schmg
        <set>
-           <if test="schmgDomain != null">
-               schmg_domain = #{schmgDomain}
-           </if>
            <if test="schmgName != null">
                schmg_name = #{schmgName}
            </if>
-           <if test="schmgMg != null">
-               schmg_mg = #{schmgMg}
+           <if test="schmgType != 0 or schmgType != null">
+               , schmg_type = #{typeId}
            </if>
-           <if test="schmgAddress != null">
-               schmg_address = #{schmgAddress}
+           <if test="schmgAddress != null or schmgAddress !=''">
+              , schmg_address = #{schmgAddress}
            </if>
-           <if test="schmgType != null">
-               schmg_type = #{typeId}
-           </if>
-           <if test="schmgCretime != null">
-               schmg_cretime = #{schmgCretime}
-           </if>
+
        </set>
         where schmg_id = #{schmgId}
     </update>
+
+    <!-- 根据ID 删除学校-->
+    <delete id="del" parameterType="int">
+        DELETE from ezd_schmg where schmg_id = #{_paramater}
+    </delete>
+
 
 </mapper>
