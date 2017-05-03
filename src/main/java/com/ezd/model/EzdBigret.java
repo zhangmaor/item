@@ -1,5 +1,7 @@
 package com.ezd.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.Date;
 import java.util.List;
 
@@ -7,6 +9,7 @@ import java.util.List;
  * Created by Administrator on 2017/4/6.
  * 大招会
  */
+@JsonIgnoreProperties({"ezdErlbigrets"})
 public class EzdBigret {
     private int bigretId;
     private String bigretLogo;//logo图片

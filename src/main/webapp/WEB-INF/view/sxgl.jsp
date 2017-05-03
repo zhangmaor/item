@@ -299,6 +299,7 @@
                 $(".right-center").load("<%=request.getContextPath()%>/enret/wzgl");
             });
             $("#dzhgl").on("click",function(){
+                alert("aa");
                 $(".right-center").load("<%=request.getContextPath()%>/enret/dzhgl");
             });
             $("#qygl").on("click",function(){

@@ -1,7 +1,10 @@
 package com.ezd.controller;
 
+import com.ezd.model.EzdBigret;
 import com.ezd.model.EzdEnmg;
 import com.ezd.model.EzdEnret;
+import com.ezd.model.EzdRetType;
+import com.ezd.service.EzdBigretService;
 import com.ezd.model.EzdSchtype;
 import com.ezd.service.EzdEnretService;
 import com.ezd.service.EzdSchTypeService;
@@ -25,6 +28,7 @@ public class EzdEnretController {
     @Resource
     private EzdEnretService ezdEnretService;
     @Resource
+    private EzdBigretService ezdBigretService;
     private EzdSchTypeService ezdSchTypeService;
 
 
@@ -72,7 +76,10 @@ public class EzdEnretController {
     }
 
     @RequestMapping("/dzhgl")
-    public String index8(){
+    public String index8(Model model){
+        List<EzdBigret> all = ezdBigretService.getAll();
+        System.out.println("大招会的全部信息："+all+"大招会的数量="+all.size());
+        model.addAttribute("bigret",all);
         return "dzhgl";
     }
 

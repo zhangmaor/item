@@ -91,7 +91,7 @@ public class EzdErlenret {
                 ", erlenretStatus=" + erlenretStatus +
                 ", ezdUmg=" + ezdUmg +
                 ", ezdEnret=" + ezdEnret +
-                ", rettime=" + rettime.toLocaleString() +
+                ", rettime=" + rettime +
                 ", ezdRestatus=" + ezdRestatus +
                 '}';
     }
