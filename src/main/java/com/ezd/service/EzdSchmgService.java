@@ -88,6 +88,7 @@ public class EzdSchmgService {
      */
 
     public boolean updateSchmg(EzdSchmg ezdSchmg){
+        System.out.println("updateSchmg==="+ezdSchmg);
         boolean a = false;
         int i=0;
         try{
@@ -95,6 +96,7 @@ public class EzdSchmgService {
             a = i>0;
         }catch (Exception e){
             System.out.println("=======EzdSchmgService updateSchmg method========");
+            e.printStackTrace();
         }
         return a;
     }
@@ -116,5 +118,17 @@ public class EzdSchmgService {
         }
         return a;
     }
+
+    public boolean del(int schmgId){
+        boolean i = false;
+        try{
+            i = ezdSchmgDao.del(schmgId) > 0;
+        }catch (Exception e){
+            System.out.println("========this is EzdSchmgService > del method=========");
+            e.printStackTrace();
+        }
+        System.out.println("boolean========="+i);
+        return i;
+     }
 
 }

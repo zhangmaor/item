@@ -64,14 +64,14 @@
 
                    <c:forEach items="${shmgs}" var="mgs"  varStatus="s">
                         <tr>
-                            <td>${s.count}</td>
+                            <td>${s.index+1}</td>
                             <td>${mgs.schmgName}</td>
                             <td>${mgs.schmgAddress}</td>
                             <td>${mgs.schmgType.schtypeName}</td>
                             <td>${mgs.ezdBigrets.size()}</td>
                             <td>
-                                <button class="btn btn-primary" data-toggle="modal" data-target="#update_xx" id="updateBtn">修改</button>
-                                <button class="btn btn-default" id="delectBtn" data-toggle="modal" data-target="#del_xx">删除</button>
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#update_xx" id="updateBtn" onclick="change(${mgs.schmgId})">修改</button>
+                                <button class="btn btn-default" id="delectBtn" data-toggle="modal" data-target="#del_xx"  onclick="change(${mgs.schmgId})">删除</button>
                             </td>
                         </tr>
                    </c:forEach>
@@ -92,30 +92,32 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel"><b>学校信息修改</b></h4>
             </div>
+
             <div class="modal-body">
+
+                <div class="form-group" style="margin-top: 10px;">
+                    <label class="form-label">学校名称：</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input class="form-control " id="schmgName" type="text" placeholder="请填写学校名称" style="width:200px;" />
+                </div>
+
                 <div class="form-group">
                     <label class="form-label">层次：</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <select class="form-control " style="width: 200px;" id="addLevel">
+                    <select class="form-control " style="width: 200px;" id="typeId">
                         <option value="0">请选择</option>
                         <c:forEach items="${types}" var="a">
                             <option value="${a.schtypeId}">${a.schtypeName}</option>
                         </c:forEach>
                     </select>
                 </div>
-                <div class="form-group" style="margin-top: 10px;">
-                    <label class="form-label">学校名称：</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input class="form-control " id="addName" type="text" placeholder="请填写学校名称" style="width:200px;" />
-                </div>
+
                 <div class="form-group"  style="margin-top: 10px;">
                     <label class="form-label">学校地址：</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input class="form-control " id="addAdress" type="text" placeholder="请填写学校地址" style="width:200px;" />
-
+                    <input class="form-control " id="schmgAddress" type="text" placeholder="请填写学校地址" style="width:200px;" />
                 </div>
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary">提交更改</button>
+                <button type="button" class="btn btn-primary" id="update" data-dismiss="modal">提交更改</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -134,7 +136,7 @@
             <div class="modal-body">确实选择要删除数据吗！</div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-danger">确定</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" id="delete">确定</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -186,16 +188,17 @@
                     html += '</tr>';
 
                     $.each(data, function(index, content){
-
+                      /*  console.log(index)*/
+                        var i = index + 1;
                         html += "<tr> ";
-                        html += "<td>" + index +1  +"</td>";
+                        html += "<td>" + i  +"</td>";
                         html += "<td>" +content.schmgName+"</td>";
                         html += "<td>" +content.schmgAddress+"</td>";
                         html += "<td>" +content.schmgType.schtypeName+"</td>";
                         html += "<td>" +content.ezdBigrets.length+"</td>";
                         html +=  "<td>";
                         html +=  '<button class="btn btn-primary" data-toggle="modal" data-target="#update_xx" id="updateBtn">修改</button>';
-                        html +=  '<button class="btn btn-default" id="delectBtn" data-toggle="modal" data-target="#del_xx">删除</button>';
+                        html +=  '<button class="btn btn-default" id="delectBtn" data-toggle="modal" data-target="">删除</button>';
                         html +=  "</td>";
                         html += "</tr>";
                     });
@@ -207,7 +210,48 @@
             });
         });
     });
+    function change(schmgId){
+      $("#delete").val(schmgId);
+      $("#update").val(schmgId);
+    };
 
+    $("#delete").click(function(){
+        console.log($("#delete").val());
+            $.ajax({
+                type:"POTH",
+                url:"${pageContext.request.contextPath}/bgSchmg/del/"+$("#delete").val(),
+                success:function(data){
+                    if(data){
+                        alert("删除成功!!");
+                    }else{
+                        alert("系统繁忙请稍后重试!!");
+                    }
+                    $(".right-center").load("<%=request.getContextPath()%>/bgSchmg");
+                }
+            });
+    });
+    $("#update").click(function(){
+        console.log($("#update").val()+$("#schmgName").val()+$("#typeId").val()+$("#schmgAddress").val());
+        $.ajax({
+            type:"POST",
+            url:"${pageContext.request.contextPath}/bgSchmg/updateSchmg",
+            data:{
+                "schmgId": $("#update").val(),
+                "schmgName" : $("#schmgName").val(),
+                "typeId": $("#typeId").val(),
+                "schmgAddress":$("#schmgAddress").val(),
+            },
+
+            success:function(data){
+                if(data){
+                    alert("修改成功!!");
+                }else{
+                    alert("系统繁忙请稍后重试!!");
+                }
+                $(".right-center").load("<%=request.getContextPath()%>/bgSchmg");
+            }
+        });
+    });
 
 
 </script>

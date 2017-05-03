@@ -6,10 +6,7 @@ import com.ezd.service.EzdSchTypeService;
 import com.ezd.service.EzdSchmgService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -90,18 +87,24 @@ public class SchController {
     }
 
     @RequestMapping("/updateSchmg")
-    private String  updateSchmg(EzdSchmg ezdSchmg){
-
-       ;
-
+    @ResponseBody
+    private boolean  updateSchmg(EzdSchmg ezdSchmg){
+        System.out.println(ezdSchmg.toString());
         boolean res = ezdSchmgService.updateSchmg(ezdSchmg);
 
         if(res){
-            return "";
+            return res;
         }
-
-        return "";
+        return false;
     }
 
+    @RequestMapping("/del/{id}")
+    @ResponseBody
+    public boolean del(@PathVariable int id){
+        System.out.println("=========="+id);
+        if(ezdSchmgService.del(id))
+            return true;
+        return false;
+    }
 
 }

@@ -75,7 +75,7 @@
         $("#xx_gl").on("click",function(){
             $(".right-center").load("<%=request.getContextPath()%>/bgSchmg");
         });
-    })
+    });
 
 
     //添加学校信息
