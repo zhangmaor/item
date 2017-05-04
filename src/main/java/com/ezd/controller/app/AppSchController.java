@@ -47,7 +47,7 @@ public class AppSchController {
     /**
      * 点击某个学校
      * 然后就进入到该学校的大招会列表
-     * @param id
+     * @param id 学校的ID
      */
     @RequestMapping("/schoolebigret")
     @ResponseBody

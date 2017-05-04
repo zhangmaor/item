@@ -64,9 +64,9 @@ public class EzdUmgController {
     }
     //上传头像
     @RequestMapping(value = "upfile",method = RequestMethod.GET)
-    public String upFile(String name, MultipartFile file, HttpServletRequest request, ModelMap modelMap,int type)throws Exception{
+    public String upFile(String name, MultipartFile file, HttpServletRequest request,int type)throws Exception{
         Upload up = new Upload();
-        String url = up.fildUpload(name,file,request,modelMap,type);
+        String url = up.fildUpload(name,file,request,type);
         return url;
     }
 }

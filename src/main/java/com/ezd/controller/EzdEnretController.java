@@ -29,7 +29,8 @@ public class EzdEnretController {
     private EzdEnretService ezdEnretService;
     @Resource
     private EzdBigretService ezdBigretService;
-    private EzdSchTypeService ezdSchTypeService;
+    @Resource
+    private EzdSchTypeService schTypeService;
 
 
     @RequestMapping("/index")
@@ -64,7 +65,7 @@ public class EzdEnretController {
     @RequestMapping("/xx_add")
     public String index12(Model model){
         List<EzdSchtype> ezdSchtypes = new ArrayList<EzdSchtype>();
-        ezdSchtypes = ezdSchTypeService.findSchType();
+        ezdSchtypes = schTypeService.findSchType();
         model.addAttribute("types",ezdSchtypes);
 
         return "xx_add";

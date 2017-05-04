@@ -93,9 +93,10 @@ CREATE TABLE ezd_schmg(--  学校信息表
 	schmg_id  INT PRIMARY KEY AUTO_INCREMENT,
 	schmg_domain VARCHAR(20), --   学校网址
 	schmg_name VARCHAR(10)  NOT NULL,--  学校名称
+	schmg_logo VARCHAR(40) , -- 学校logo
 	schmg_mg TEXT,--  学校详情
-	schmg_address VARCHAR(50),--  学校地址
-	schmg_type INT ,--  学校性质 
+	schmg_address VARCHAR(50),--
+	schmg_type INT ,--  学校性质 学校地址
 	schmg_cretime Datetime DEFAULT CURRENT_TIMESTAMP --  学校成立时间
 	
 )ENGINE=INNODB DEFAULT CHARSET=utf8;

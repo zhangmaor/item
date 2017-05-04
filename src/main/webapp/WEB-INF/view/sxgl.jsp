@@ -271,6 +271,12 @@
 	<script type="text/javascript">
 		
 		$(function(){
+		    var a = <%=session.getAttribute("status")%> == 666;
+		    if( a){
+                $(".right-center").load("<%=request.getContextPath()%>/bgSchmg");
+			}
+
+
 			$(".mokuai").click(function(){
 				$(".mokuai").removeClass("mokuai-active");
 				$(this).addClass("mokuai-active");

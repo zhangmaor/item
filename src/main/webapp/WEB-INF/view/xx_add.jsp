@@ -13,7 +13,15 @@
 </div>
 <div class="right-body ">
     <div class="right-body-main ">
-        <form id="addSchmg" >
+
+        <form id="addSchmg" action="${pageContext.request.contextPath}/bgSchmg/addSchmg" method="POST" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-xs-3 text-right">*学校logo：</div>
+                <div class="col-xs-7">
+                    <input type="file"  name="file" >
+                </div>
+            </div><br>
+
             <div class="row">
                 <div class="col-xs-3 text-right">*学校名称：</div>
                 <div class="col-xs-7">
@@ -26,7 +34,7 @@
                 <div class="col-xs-6">
                     <select class="form-control" name="typeId">
                         <option value="0">请选择</option>
-                        <c:forEach items="${types}" var="a">
+                            <c:forEach items="${types}" var="a">
                             <option value="${a.schtypeId}">${a.schtypeName}</option>
                         </c:forEach>
                     </select>
@@ -61,7 +69,7 @@
             </div><br>
 
             <div class="row text-center">
-                <button type="button" class="btn btn-primary" id="submitSchmg">提交</button>
+                <input type="submit" class="btn btn-primary" id="submitSchmg" value="提交"/>
             </div>
 
 
@@ -78,15 +86,16 @@
     });
 
 
-    //添加学校信息
+    /* //添加学校信息
     $("#submitSchmg").on("click", function(){
 
-        var frmparam = $("form").serialize();
+
+     var frmparam = $("form").serialize();
         console.log(frmparam);
         $.ajax({
             type:"POST",
             url:"${pageContext.request.contextPath}/bgSchmg/addSchmg",
-            data : frmparam,
+            data: frmparam ,
             success:function(date){
                 alert(date);
                 $(".right-center").load("<%=request.getContextPath()%>/bgSchmg");
@@ -94,7 +103,7 @@
             error:function(){
                 alert("error");
             }
-        });
+        });*/
     });
 </script>
 </html>

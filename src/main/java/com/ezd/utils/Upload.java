@@ -44,7 +44,6 @@ public class Upload {
      *                             该参数是用来作为图片的名称的！！
      * @param file      --------  这个暂时不管
      * @param request   --------
-     * @param modelMap
      * @param type      ---------  用户的类型（用户，企业，学校，文章）
      *                              分别用0,1,2,3,4来区分，
      *                              详情见本类的第11行；
@@ -52,7 +51,7 @@ public class Upload {
      * @throws Exception
      */
     public String fildUpload(String userName , MultipartFile file,
-                              HttpServletRequest request , ModelMap modelMap,int type)throws Exception{
+                             HttpServletRequest request , int type)throws Exception{
 
         //获得物理路径webapp所在路径
         String pathRoot = request.getServletContext().getRealPath("/");
@@ -89,7 +88,7 @@ public class Upload {
             file2.createNewFile();
             file.transferTo(file2);
         }
-       // modelMap.addAttribute("imagesPath",url);
+        // modelMap.addAttribute("imagesPath",url);
         return url;
     }
 }

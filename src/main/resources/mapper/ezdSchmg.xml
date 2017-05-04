@@ -8,6 +8,7 @@
         <id column="schmg_id" property="schmgId" /><!--编号-->
         <result column="schmg_domain" property="schmgDomain"/><!--网址-->
         <result column="schmg_name" property="schmgName"/><!--学校名字-->
+        <result column="schmg_logo" property="schmgLogo"/><!--学校logo-->
         <result column="schmg_mg" property="schmgMg"/><!--学校详情-->
         <result column="schmg_type" property="typeId"/><!-- 学校性质的Id-->
         <result column="schmg_address" property="schmgAddress"/><!--学校地址-->
@@ -20,6 +21,13 @@
     <select id="findAll" resultMap="schmap">
         SELECT * FROM ezd_schmg a
          JOIN ezd_schType b ON a.schmg_type = b.schtype_id
+    </select>
+
+    <!-- 根据学校的Id 查询学校信息-->
+    <select id="findById" parameterType="int" resultMap="schmap">
+         SELECT * FROM ezd_schmg a
+         JOIN ezd_schType b ON a.schmg_type = b.schtype_id
+         WHERE  schmg_id = #{_paramater}
     </select>
 
     <!--根据层次 或 名称  查询 学校信息 -->
@@ -39,9 +47,9 @@
     <!--保存 学校信息 -->
     <insert id="insertSchmg" parameterType="com.ezd.model.EzdSchmg">
         insert into
-          ezd_schmg ( schmg_domain, schmg_name, schmg_mg, schmg_address, schmg_type, schmg_cretime )
+          ezd_schmg ( schmg_domain, schmg_name, schmg_logo, schmg_mg, schmg_address, schmg_type, schmg_cretime )
         VALUES
-        (#{schmgDomain},#{schmgName},#{schmgMg},#{schmgAddress},#{typeId},#{schmgCretime} )
+        (#{schmgDomain},#{schmgName},#{schmgLogo},#{schmgMg},#{schmgAddress},#{typeId},#{schmgCretime} )
     </insert>
 
     <!--更新 学校信息 -->

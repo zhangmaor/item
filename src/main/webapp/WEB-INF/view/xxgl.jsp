@@ -23,7 +23,6 @@
         <div class="main-3">
             <ul class="pagination-lg page-list" lyid="page-list"></ul>
         </div>
-
         <div class="main-2">
 
             <from class="form-inline" role="from">

@@ -74,11 +74,29 @@ public class EzdSchmgService {
                     sch.setEzdBigrets(ezdBigrets);
                 }
         }catch (Exception e){
-            System.out.println("=======EzdSchmgService findSchmgById method========");
             e.printStackTrace();
+            System.out.println("=======EzdSchmgService findSchmgById method========");
+
         }
 
         return schmgs;
+    }
+
+
+
+    public  EzdSchmg findById(int id){
+        EzdSchmg ezdSchmg =  new EzdSchmg();
+        try{
+            ezdSchmg = ezdSchmgDao.findById(id);
+
+            //通过学校的ID 查询 对应的 大招会
+            List<EzdBigret>  ezdBigrets = ezdBigretDao.addressGet(ezdSchmg.getSchmgId());
+            ezdSchmg.setEzdBigrets(ezdBigrets);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return ezdSchmg;
     }
 
     /**
