@@ -25,6 +25,8 @@ public class AppSchController {
     @Resource
     private EzdBigretService ezdBigretService;
 
+
+
     //手机端返回 json 格式
 
     /**
@@ -37,10 +39,12 @@ public class AppSchController {
 
         List<EzdSchmg> ezdSchmgs = new ArrayList<EzdSchmg>();
 
+       /* List<EzdBigret> ezdBigrets = ezdBigretService.addressGet(42);
+        return ezdBigrets;*/
         ezdSchmgs =  ezdSchmgService.findAll();
 
         return ezdSchmgs;
-    }
+}
 
 
 

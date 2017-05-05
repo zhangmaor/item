@@ -43,11 +43,13 @@ public class EzdSchmgService {
             for(EzdSchmg sch :schmgs ){
 
                 //通过学校的ID 查询 对应的 大招会
+                System.out.println(sch.getSchmgId());
                 List<EzdBigret>  ezdBigrets = ezdBigretDao.addressGet(sch.getSchmgId());
-
+             /*   System.out.println("ezdBigret===="+ ezdBigrets);*/
                 sch.setEzdBigrets(ezdBigrets);
             }
         }catch (Exception e){
+            e.printStackTrace();
             System.out.println("=======EzdSchmgService findSchmgById method========");
         }
         return schmgs;
@@ -113,8 +115,9 @@ public class EzdSchmgService {
             i = ezdSchmgDao.updateSchmg(ezdSchmg);
             a = i>0;
         }catch (Exception e){
-            System.out.println("=======EzdSchmgService updateSchmg method========");
+
             e.printStackTrace();
+            System.out.println("=======EzdSchmgService updateSchmg method========");
         }
         return a;
     }
@@ -132,6 +135,7 @@ public class EzdSchmgService {
             System.out.println("=====insert==="+i);
             a = i>0;
         }catch (Exception e){
+            e.printStackTrace();
             System.out.println("=======EzdSchmgService insertSchmg method========");
         }
         return a;

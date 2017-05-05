@@ -271,10 +271,7 @@
 	<script type="text/javascript">
 		
 		$(function(){
-		    var a = <%=session.getAttribute("status")%> == 666;
-		    if( a){
-                $(".right-center").load("<%=request.getContextPath()%>/bgSchmg");
-			}
+
 
 
 			$(".mokuai").click(function(){
@@ -311,6 +308,14 @@
             $("#qygl").on("click",function(){
                 $(".right-center").load("<%=request.getContextPath()%>/enret/qygl");
             });
+
+
+            var a = <%=session.getAttribute("status")%> == 666;
+            <%session.removeAttribute("status");%>
+            if(a){
+                alert("asdfas");
+                $("#xxgl").click();
+            }
 		})
 		
 

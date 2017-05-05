@@ -99,7 +99,7 @@ CREATE TABLE ezd_schtype(--  学校类型表（大专 本科 中专）
 ALTER TABLE ezd_schtype ADD UNIQUE(schtype_name);
 
  -- 学校性质
-INSERT INTO ezd_schtype VALUES(1, '本科'),(2, '大专'),(3,'中专');
+INSERT INTO ezd_schtype VALUES(1, '本科'),(2, '大专'),(3,'中专'),(4,'其他');
 
 CREATE TABLE ezd_schmg(--  学校信息表
 	schmg_id  INT PRIMARY KEY AUTO_INCREMENT,
