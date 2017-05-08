@@ -81,7 +81,7 @@
          WHERE enret_id = #{enretId}
     </update>
 
-    <!-- 删除 ->
+    <!-- 删除 -->
     <delete id="delete" parameterType="com.ezd.model.EzdEnret">
         DELETE FROM ezd_enret WHERE enret_id = #{enretId};
     </delete>

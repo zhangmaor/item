@@ -299,7 +299,7 @@
                 var dataObj = result, //返回的result为json格式的数据
                     con = "";
                 var v1 ,v2;
-                //console.log(result);
+                console.log(result);
                 $.each(dataObj, function(index, item){
                     //console.log(item.articleStatus);
                     con += "<tr>";
