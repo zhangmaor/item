@@ -21,38 +21,39 @@
         <association property="ezdPostTwo" resultMap="com.ezd.dao.EzdPostTwoDao.postTwo"/><!-- 二级招聘岗位 -->
         <association property="bigretStatus" resultMap="com.ezd.dao.EzdNewsStatusDao.newsStatus"/><!--大招会的状态-->
         <association property="bigretEnmg" resultMap="com.ezd.dao.EzdEnmgDao.enmg"/> <!--哪家公司发布的-->
-        <collection property="ezdErlbigrets" resultMap="com.ezd.dao.EzdUmgDao.umg"/><!--浏览本大招会的人员列表-->
+        <association property="ezdSchmg" resultMap="com.ezd.dao.EzdSchmgDao.schmap"/><!--在哪个学校进行发布会-->
+        <collection property="ezdErlbigrets" resultMap="com.ezd.dao.EzdErlbigretDao.erlbigret"/><!--浏览本大招会的人员列表-->
+
     </resultMap>
     <!--通过编号显示详细信息-->
     <select id="idGet" parameterType="int" resultMap="bigret">
-        select * from ezd_bigret
-        where
-            bigret_id = #{_parameter}
+        SELECT * FROM ezd_bigret LEFT JOIN ezd_enmg
+                                    ON ezd_bigret.bigret_enmg = ezd_enmg.enmg_id
+                              LEFT JOIN ezd_schmg
+                                    ON ezd_schmg.schmg_id = ezd_bigret.bigret_address
+                              LEFT JOIN ezd_newsStatus
+                                    ON ezd_bigret.bigret_status = ezd_newsStatus.newsStatus_id
+                              LEFT  join ezd_postTwo
+                                    on ezd_postTwo.ptwo_id = ezd_bigret.bigret_postTwo
+                              left join ezd_erlbigret
+                                    on ezd_erlbigret.erlbigret_mes = ezd_bigret.bigret_id
+                      where ezd_bigret.bigret_status !=4
+                      and ezd_bigret.bigret_id = #{_parameter}
     </select>
     <!--根据大招会的状态进行大招会的查询
         这个需要测试，如果参数是空的话会执行下面的条件吗？？？
 
     -->
     <select id="modeGet" resultMap="com.ezd.dao.EzdBigretDao.bigret" parameterType="com.ezd.model.EzdNewsStatus">
-        select * from ezd_bigret
-        left join ezd_enmg
-        on ezd_enmg.enmg_id = ezd_bigret.bigret_enmg
-        where
-        1=1
+       <include refid="sql"/>
         <if test="#{newsStatusId!=null}">
             and bigret_status = #{newsStatusId}
-
         </if>
         and ezd_enmg.enmg_id is not null
 
     </select>
     <select id="get" resultMap="bigret">
-    SELECT * FROM ezd_bigret LEFT JOIN ezd_enmg
-                                    ON ezd_bigret.bigret_enmg = ezd_enmg.enmg_id
-                              LEFT JOIN ezd_schmg
-                                    ON ezd_schmg.schmg_id = ezd_bigret.bigret_address
-                              LEFT JOIN ezd_newsStatus
-                                    ON ezd_bigret.bigret_status = ezd_newsStatus.newsStatus_id
+      <include refid="sql"/>
     </select>
     <!--根据公司的编号id获取大招会信息列表-->
     <select id="enmgGet" resultMap="com.ezd.dao.EzdBigretDao.bigret" parameterType="com.ezd.model.EzdEnmg">
@@ -105,7 +106,7 @@
     <update id="timing3">
         UPDATE ezd_bigret
         SET bigret_status = 3
-        WHERE bigret_status !=3 AND  DATE_ADD(NOW(), INTERVAL 2 HOUR) > bigret_time
+        WHERE bigret_status !=3 AND bigret_status !=4 AND  DATE_ADD(NOW(), INTERVAL 2 HOUR) > bigret_time
     </update>
 
     <!--将状态不是2(未开始的)且符合条件的该为条件为2-->
@@ -113,6 +114,7 @@
         UPDATE ezd_bigret
         SET bigret_status = 2
         WHERE bigret_status != 2
+        AND bigret_status !=4
         AND  NOW() >= bigret_time
         AND  bigret_time > DATE_ADD(NOW(), INTERVAL 2 HOUR)
     </update>
@@ -121,6 +123,20 @@
         UPDATE ezd_bigret
         SET bigret_status =  1
         WHERE bigret_status != 1
+         AND bigret_status !=4
         AND bigret_time > NOW()
     </update>
+    <sql id="sql">
+         SELECT * FROM ezd_bigret LEFT JOIN ezd_enmg
+                                    ON ezd_bigret.bigret_enmg = ezd_enmg.enmg_id
+                              LEFT JOIN ezd_schmg
+                                    ON ezd_schmg.schmg_id = ezd_bigret.bigret_address
+                              LEFT JOIN ezd_newsStatus
+                                    ON ezd_bigret.bigret_status = ezd_newsStatus.newsStatus_id
+                              LEFT  join ezd_postTwo
+                                    on ezd_postTwo.ptwo_id = ezd_bigret.bigret_postTwo
+                              left join ezd_erlbigret
+                                    on ezd_erlbigret.erlbigret_mes = ezd_bigret.bigret_id
+                      where ezd_bigret.bigret_status !=4
+    </sql>
 </mapper>

@@ -5,11 +5,11 @@
 <!--这里的namespace还没有确定-->
 <mapper namespace="com.ezd.dao.EzdEntypeDao">
     <resultMap id="entype" type="com.ezd.model.EzdEntype"><!--企业类型-->
-        <id column="entity_id" property="entityId" /><!--编号-->
-        <result column="entity_name" property="entityName"/><!--类型名-->
+        <id column="entype_id" property="enTypeId" /><!--编号-->
+        <result column="entype_name" property="enTypeName"/><!--类型名-->
     </resultMap>
     <insert id="insertEntype" parameterType="com.ezd.model.EzdArtittype">
-        insert into ezd_entype(entity_name) values(#{entityName})
+        insert into ezd_entype(entype_name) values(#{entityName})
     </insert>
 
     <select id="getAll" resultMap="entype">

@@ -17,7 +17,7 @@
         <result column="enmg_address" property="enmgAddress"/><!--公司地址-->
         <result column="enmg_scale" property="enmgScale"/><!--公司规模-->
         <result column="enmg_cretime" property="enmgCretime"/><!--注册时间-->
-        <association property="enmgType" resultMap="com.ezd.dao.EzdEntypeDao.entype"/><!--企业类型-->
+        <association property="ezdEntype" resultMap="com.ezd.dao.EzdEntypeDao.entype"/><!--企业类型-->
         <association property="ezdIndustry" resultMap="com.ezd.dao.EzdIndustryDao.industry"/><!--一级行业类型-->
         <association property="ezdSeindustry" resultMap="com.ezd.dao.EzdSeindustryDao.seindustry"/><!--二级行业类型-->
         <collection property="ezdUmgs" resultMap="com.ezd.dao.EzdUmgDao.umg"/><!--关注本公司的人员列表-->
@@ -36,12 +36,12 @@
     </select>
     <!--根据企业所在行业的二级编号获取企业列表-->
     <select id="industryGet"  resultMap="enmg" parameterType="int" >
-        SELECT * from ezd_enmg
+        <include refid="connection"/>
         where enmg_industry = #{_parameter}
     </select>
     <!--根据企业的类型来匹配-->
     <select id="typeGet" resultMap="enmg" parameterType="int">
-        select * from ezd_enmg
+        <include refid="connection"/>
 
         <choose>
             <when test="#{_parameter==-1}"/>
@@ -52,7 +52,8 @@
     </select>
     <!--通过一个企业编号查询该企业的详细信息-->
     <select id="getEnmg" parameterType="int" resultMap="enmg">
-        select * from ezd_enmg WHERE enmg_id = #{_parameter}
+       <include refid="connection"/>
+              and ezd_enmg.enmg_id = #{_parameter}
     </select>
     <!--修改数据!!更新一个企业的信息-->
     <update id="update" parameterType="com.ezd.model.EzdEnmg">
@@ -65,7 +66,7 @@
 	      enmg_wcontact = #{enmgWcontact},
 	      enmg_detail = #{enmgDetail},
 	      enmg_address = #{enmgAddress},
-	      enmg_type =#{enmgType.enTypeId},
+	      enmg_type =#{enmgType},
 	      enmg_scale =#{enmgScale},
 	      enmg_cretime =#{enmgCretime},
 	      enmg_industry =#{enmgIndustry}
@@ -100,6 +101,20 @@
     </insert>
     <!--查询全部的信息-->
     <select id="getAll" resultMap="enmg">
-        select * from ezd_enmg
+        <include refid="connection"/>
     </select>
+    <delete id="del" parameterType="int">
+        DELETE FROM ezd_enmg
+        WHERE enmg_id = #{_parameter}
+    </delete>
+    <sql id="connection">
+        SELECT * FROM ezd_enmg
+            LEFT JOIN ezd_entype
+              ON ezd_entype.entype_id = ezd_enmg.enmg_type
+            LEFT JOIN ezd_seindustry
+              ON ezd_seindustry.se_id = enmg_industry
+             LEFT JOIN ezd_enret
+             ON ezd_enmg.enmg_id = ezd_enret.nret_enmg
+             where ezd_enmg.enmg_id IS NOT NULL
+    </sql>
 </mapper>

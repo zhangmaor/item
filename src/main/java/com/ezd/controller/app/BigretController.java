@@ -1,8 +1,10 @@
 
 package com.ezd.controller.app;
 
-import com.ezd.model.EzdBigret;
+import com.ezd.jackonInterface.*;
+import com.ezd.model.*;
 import com.ezd.service.EzdBigretService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.List;
 
 /**
@@ -33,11 +37,28 @@ public class BigretController {
         EzdBigret ezdBigret = ezdBigretService.get(id);
         return ezdBigret;
     }
-    @RequestMapping(value = "/ajaxBigretList", method = RequestMethod.POST)
-    @ResponseBody
-    public List<EzdBigret> statusGet(int status){
+    /*
+        bigret/ajaxBigretList
+    * */
+    @RequestMapping(value = "/ajaxBigretList", method = RequestMethod.GET)
+    public void statusGet(int status,HttpServletResponse response){
         List<EzdBigret> bigretList = ezdBigretService.modeGet(status);
-        return bigretList;
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.addMixInAnnotations(EzdBigret.class, BigretFilterGetAll.class);
+        mapper.addMixInAnnotations(EzdEnmg.class, BigretEnmgFilter.class);
+        mapper.addMixInAnnotations(EzdErlbigret.class, BigretErlbigretFilter.class);
+        mapper.addMixInAnnotations(EzdUmg.class, BigretUmgFilter.class);
+        OutputStream outputStream = null;
+        try {
+            outputStream =  response.getOutputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            mapper.writeValue(outputStream,bigretList);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

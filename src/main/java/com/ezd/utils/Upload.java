@@ -51,6 +51,7 @@ public class Upload {
      * @throws Exception
      */
     public String fildUpload(String userName , MultipartFile file,
+
                              HttpServletRequest request , int type)throws Exception{
 
         //获得物理路径webapp所在路径

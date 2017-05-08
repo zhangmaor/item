@@ -5,6 +5,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>e职多就业管理系统</title>
+
 		<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 		<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 		<script src="${pageContext.request.contextPath}/js/bootstrap-paginator.js"></script>
@@ -14,7 +15,6 @@
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/fa/css/font-awesome.css" />
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/font-awesome.css" />
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/sxgl.css" />
-		
 	</head>
 	
 	<body>
@@ -302,7 +302,7 @@
                 $(".right-center").load("<%=request.getContextPath()%>/enret/wzgl");
             });
             $("#dzhgl").on("click",function(){
-                alert("aa");
+
                 $(".right-center").load("<%=request.getContextPath()%>/enret/dzhgl");
             });
             $("#qygl").on("click",function(){
@@ -348,4 +348,19 @@
             })
         }
 	</script>
+	<c:if test="${redreticPoin!=null}">
+		<script type="text/javascript">
+
+        $(function(){
+            $("#dzhgl").click();
+        })
+	</script>
+	</c:if>
+	<c:if test="${addEnmgResult!=null}">
+		<script type="text/javascript">
+			$(function(){
+			    $("#qygl").click();
+			})
+		</script>
+	</c:if>
 </html>

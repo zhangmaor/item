@@ -368,19 +368,21 @@
             success: function (result) {
                 var dataObj = result, //返回的result为json格式的数据
                     con = "";
+                    console.log(dataObj);
                 $.each(dataObj, function (index, item) {
-                    con += "<tr>";
-                    con += "<td>" + item.ezdEnmg.enmgName + "</td>";
-                    con += "<td>" + item.ezdPostTwo.ptwoName + "</td>";
-                    con += "<td>" + item.enretDemand + "</td>";
-                    con += "<td>" + item.enretWantNum + "</td>";
-                    con += "<td>" + item.enretWantNum + "</td>";
-                    con += "<td>" + item.enretLwMoney + "K~" + item.enretHgMoney + "K</td>";
-                    con += "<td><span class='label label-warning'>在招</span></td>";
-                    con += "<td><button type='button' class='btn btn-primary' onclick='xg(this)' value='" + item.enretId + "' data-toggle='modal' data-target='#update_sx'>修改</button>" +
-                        "<button type='button' value='" + item.enretId + "' class='btn btn-danger' onclick='a.value=this.value' data-toggle='modal' data-target='#del_sx'>删除</button></td>";
-                    con += "</tr>";
-
+                   if(item.ezdEnmg!=null) {
+                       con += "<tr>";
+                       con += "<td>" + item.ezdEnmg.enmgName + "</td>";
+                       con += "<td>" + item.ezdPostTwo.ptwoName + "</td>";
+                       con += "<td>" + item.enretDemand + "</td>";
+                       con += "<td>" + item.enretWantNum + "</td>";
+                       con += "<td>" + item.enretWantNum + "</td>";
+                       con += "<td>" + item.enretLwMoney + "K~" + item.enretHgMoney + "K</td>";
+                       con += "<td><span class='label label-warning'>在招</span></td>";
+                       con += "<td><button type='button' class='btn btn-primary' onclick='xg(this)' value='" + item.enretId + "' data-toggle='modal' data-target='#update_sx'>修改</button>" +
+                           "<button type='button' value='" + item.enretId + "' class='btn btn-danger' onclick='a.value=this.value' data-toggle='modal' data-target='#del_sx'>删除</button></td>";
+                       con += "</tr>";
+                   }
                 });
                 $("#ssgw").html(con); //把内容入到这个div中即完成
             }
