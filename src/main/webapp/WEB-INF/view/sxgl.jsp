@@ -274,6 +274,9 @@
 	<script type="text/javascript">
 		
 		$(function(){
+
+
+
 			$(".mokuai").click(function(){
 				$(".mokuai").removeClass("mokuai-active");
 				$(this).addClass("mokuai-active");
@@ -308,6 +311,14 @@
             $("#qygl").on("click",function(){
                 $(".right-center").load("<%=request.getContextPath()%>/enret/qygl");
             });
+
+
+            var a = <%=session.getAttribute("status")%> == 666;
+            <%session.removeAttribute("status");%>
+            if(a){
+                alert("asdfas");
+                $("#xxgl").click();
+            }
 		})
 		
 

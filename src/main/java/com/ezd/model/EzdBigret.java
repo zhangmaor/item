@@ -19,7 +19,6 @@ public class EzdBigret {
     private Date bigretTime;//大招会时间
     private int bigretAddress;//大招会地址
     private int retStatus; // 大招会消息状态的ID
-    private EzdNewsStatus bigretStatus;//references ezd_newsStatus(newsStatus_id),--  大招会状态(未开始  进行中 已结束)
     private Date bigretCreTime;//发布时间
     private String bigretDetail;//大招会详情
     private int postOne; //一级招聘岗位的id
@@ -30,6 +29,7 @@ public class EzdBigret {
     private EzdEnmg bigretEnmg;//references ezd_enmg(enmg_id)--   哪家公司发布的
     private List<EzdErlbigret> ezdErlbigrets;//报名本大招会的人的列表信息；
     private EzdSchmg ezdSchmg; // 那个学校发的大招会
+    private EzdNewsStatus bigretStatus;//references ezd_newsStatus(newsStatus_id),--  大招会状态(未开始  进行中 已结束)
 
     public int getEnmgId() {
         return enmgId;

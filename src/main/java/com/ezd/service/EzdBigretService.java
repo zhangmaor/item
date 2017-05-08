@@ -196,6 +196,7 @@ public class EzdBigretService {
         List<EzdBigret> bigretList = null;
         try {
             bigretList = ezdBigretDao.addressGet(id);
+            System.out.println("bitretList ezdBigretservice"+bigretList);
         } catch (Exception e) {
             e.printStackTrace();
         }

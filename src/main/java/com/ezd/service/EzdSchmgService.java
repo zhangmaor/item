@@ -43,11 +43,13 @@ public class EzdSchmgService {
             for(EzdSchmg sch :schmgs ){
 
                 //通过学校的ID 查询 对应的 大招会
+                System.out.println(sch.getSchmgId());
                 List<EzdBigret>  ezdBigrets = ezdBigretDao.addressGet(sch.getSchmgId());
-
+             /*   System.out.println("ezdBigret===="+ ezdBigrets);*/
                 sch.setEzdBigrets(ezdBigrets);
             }
         }catch (Exception e){
+            e.printStackTrace();
             System.out.println("=======EzdSchmgService findSchmgById method========");
         }
         return schmgs;
@@ -74,11 +76,29 @@ public class EzdSchmgService {
                     sch.setEzdBigrets(ezdBigrets);
                 }
         }catch (Exception e){
-            System.out.println("=======EzdSchmgService findSchmgById method========");
             e.printStackTrace();
+            System.out.println("=======EzdSchmgService findSchmgById method========");
+
         }
 
         return schmgs;
+    }
+
+
+
+    public  EzdSchmg findById(int id){
+        EzdSchmg ezdSchmg =  new EzdSchmg();
+        try{
+            ezdSchmg = ezdSchmgDao.findById(id);
+
+            //通过学校的ID 查询 对应的 大招会
+            List<EzdBigret>  ezdBigrets = ezdBigretDao.addressGet(ezdSchmg.getSchmgId());
+            ezdSchmg.setEzdBigrets(ezdBigrets);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return ezdSchmg;
     }
 
     /**
@@ -88,12 +108,15 @@ public class EzdSchmgService {
      */
 
     public boolean updateSchmg(EzdSchmg ezdSchmg){
+        System.out.println("updateSchmg==="+ezdSchmg);
         boolean a = false;
         int i=0;
         try{
             i = ezdSchmgDao.updateSchmg(ezdSchmg);
             a = i>0;
         }catch (Exception e){
+
+            e.printStackTrace();
             System.out.println("=======EzdSchmgService updateSchmg method========");
         }
         return a;
@@ -112,9 +135,22 @@ public class EzdSchmgService {
             System.out.println("=====insert==="+i);
             a = i>0;
         }catch (Exception e){
+            e.printStackTrace();
             System.out.println("=======EzdSchmgService insertSchmg method========");
         }
         return a;
     }
+
+    public boolean del(int schmgId){
+        boolean i = false;
+        try{
+            i = ezdSchmgDao.del(schmgId) > 0;
+        }catch (Exception e){
+            System.out.println("========this is EzdSchmgService > del method=========");
+            e.printStackTrace();
+        }
+        System.out.println("boolean========="+i);
+        return i;
+     }
 
 }

@@ -13,6 +13,7 @@ public class EzdSchmg {
     private int schmgId;
     private String schmgDomain;    // 学校网址
     private String schmgName ;     //学校名称
+    private String schmgLogo ;    //学校logo
     private String schmgMg;        //学校详情
     private String schmgAddress;   //学校地址
     private int typeId;  //学校性质ID
@@ -109,5 +110,13 @@ public class EzdSchmg {
 
     public void setEzdBigrets(List<EzdBigret> ezdBigrets) {
         this.ezdBigrets = ezdBigrets;
+    }
+
+    public String getSchmgLogo() {
+        return schmgLogo;
+    }
+
+    public void setSchmgLogo(String schmgLogo) {
+        this.schmgLogo = schmgLogo;
     }
 }

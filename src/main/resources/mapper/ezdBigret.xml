@@ -103,6 +103,7 @@
         set bigret_status = #{bigretStatus.newsStatusId}
          WHERE bigret_id = #{bigretId}
     </update>
+
     <!--生成一个大招会-->
     <insert id="add" parameterType="com.ezd.model.EzdBigret">
         INSERT  into ezd_bigret(bigret_logo , bigret_title, bigret_time , bigret_address , bigret_status  , bigret_creTime ,bigret_detail,bigret_postOne,bigret_postTwo ,bigret_enmg  )
@@ -111,10 +112,12 @@
 
 
     <!--通过学校的id来查询匹配的大招会-->
-    <select id="addressGet" resultType="EzdBigret" parameterType="int">
-        select * from ezd_bigret
+    <select id="addressGet" resultMap="bigret" parameterType="int">
+        select bigret_id, bigret_logo,bigret_title, bigret_time, bigret_address,bigret_status, bigret_creTime, bigret_detail, enret_postOne, enret_postTwo,bigret_enmg
+            from ezd_bigret
         where bigret_address = #{_parameter}
     </select>
+
     <!--定时任务-->
     <!--将状态不是3(未开始的)且符合条件的该为条件为3-->
     <update id="timing3">

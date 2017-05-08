@@ -4,14 +4,15 @@ import com.ezd.model.EzdSchmg;
 import com.ezd.model.EzdSchtype;
 import com.ezd.service.EzdSchTypeService;
 import com.ezd.service.EzdSchmgService;
+import com.ezd.utils.Upload;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,23 +52,23 @@ public class SchController {
     @RequestMapping(value = "/search",method = RequestMethod.POST)
     @ResponseBody
     private List<EzdSchmg> search(String name, int cengci){
-
-        System.out.println("name ="+ name + "type="+ cengci );
+/*
+        System.out.println("name ="+ name + "type="+ cengci );*/
 
         EzdSchmg ezdSchmg = new EzdSchmg();
         ezdSchmg.setSchmgName(name);
 
         ezdSchmg.setTypeId(cengci);
-
-        System.out.println("name ===" + ezdSchmg.getSchmgName());
+/*
+        System.out.println("name ===" + ezdSchmg.getSchmgName());*/
 
         List<EzdSchmg> ezdSchmgs = ezdSchmgService.findSchmg(ezdSchmg);
 
-        for(EzdSchmg s :ezdSchmgs ){
+    /*    for(EzdSchmg s :ezdSchmgs ){
             System.out.println(s.getSchmgName()+"======="+s.getEzdBigrets().size());
 
             System.out.println("ezdshcmg==="+s);
-        }
+        }*/
 
         return ezdSchmgs;
     }
@@ -78,30 +79,47 @@ public class SchController {
      * @return
      */
     @RequestMapping("/addSchmg")
-    @ResponseBody
-    private String  insertSchmg(EzdSchmg ezdSchmg){
+    private String  insertSchmg(EzdSchmg ezdSchmg,@RequestParam("file") MultipartFile  file,  HttpServletRequest request)  {
 
+        Upload upload = new Upload();
+        String url;
+       try{
+           url = upload.fildUpload(ezdSchmg.getSchmgName(),file,request,3);
+           System.out.println(url);
+           ezdSchmg.setSchmgLogo(url);
+
+       }catch (Exception e){
+           e.printStackTrace();
+       }
+        String name = file.getOriginalFilename();
+
+       request.getSession().setAttribute("status",666);
        System.out.println(" this is ezdSchmg== "+ezdSchmg.toString());
 
        boolean res = ezdSchmgService.insertSchmg(ezdSchmg);
        System.out.println(res);
-
-        return "success";
+       return "redirect:/enret/index";
     }
 
     @RequestMapping("/updateSchmg")
-    private String  updateSchmg(EzdSchmg ezdSchmg){
-
-       ;
-
+    @ResponseBody
+    private boolean  updateSchmg(EzdSchmg ezdSchmg){
+        System.out.println(ezdSchmg.toString());
         boolean res = ezdSchmgService.updateSchmg(ezdSchmg);
 
         if(res){
-            return "";
+            return res;
         }
-
-        return "";
+        return false;
     }
 
+    @RequestMapping("/del/{id}")
+    @ResponseBody
+    public boolean del(@PathVariable int id){
+        System.out.println("=========="+id);
+        if(ezdSchmgService.del(id))
+            return true;
+        return false;
+    }
 
 }
