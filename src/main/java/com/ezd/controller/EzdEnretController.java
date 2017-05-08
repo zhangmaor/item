@@ -126,10 +126,10 @@ public class EzdEnretController {
     }
 
     /**
-     * 根据招聘类型查询出招聘信息
+     * 根据招聘类型查询出招聘信息/enret/ajaxGetEnretTypeAll?retTypeId=1
      * @param retTypeId
      */
-    @RequestMapping(value = "/ajaxGetEnretTypeAll",method = RequestMethod.POST)
+    @RequestMapping(value = "/ajaxGetEnretTypeAll",method = RequestMethod.GET)
     @ResponseBody
     public List<EzdEnret> getEnretTypeAll(int retTypeId) throws Exception {
         List<EzdEnret> enretTypeAll = ezdEnretService.getEnretTypeAll(retTypeId);

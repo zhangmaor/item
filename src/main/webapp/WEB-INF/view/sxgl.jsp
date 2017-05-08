@@ -244,7 +244,7 @@
                 data:"retTypeId="+1,
                 dataType: "json", //json格式，后台返回的数据为json格式的。
                 success: function(result){
-
+					console.log(result);
                     var dataObj = result, //返回的result为json格式的数据
                         con = "";
                     $.each(dataObj, function(index, item){
@@ -263,7 +263,10 @@
                         });
                     });
                     $("#sxbm").html(con); //把内容入到这个div中即完成
-                }
+                },
+				error : function(data){
+                    console.log(data);
+				}
             })
         })
 	</script>
