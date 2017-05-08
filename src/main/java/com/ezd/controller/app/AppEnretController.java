@@ -77,4 +77,11 @@ public class AppEnretController {
         List<EzdEnret> All = ezdEnretService.getAll();
         return All;
     }
+
+    @RequestMapping(value = "/ajaxGetAll",method = RequestMethod.POST)
+    @ResponseBody
+    public List<EzdEnret> postAll() throws Exception {
+        List<EzdEnret> All = ezdEnretService.getAll();
+        return All;
+    }
 }

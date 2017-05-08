@@ -41,6 +41,13 @@ public class AppArticleController {
         return articleAll;
     }
 
+    @RequestMapping(value = "/ajaxGetArticleAll",method = RequestMethod.GET)
+    @ResponseBody
+    public List<EzdArticle> postArticleAll(){
+        List<EzdArticle> articleAll = ezdArticleService.getArticleAll();
+        return articleAll;
+    }
+
     /**
      * 添加评论
      * @param ezdSayart

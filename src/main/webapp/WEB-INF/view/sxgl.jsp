@@ -252,7 +252,7 @@
                         $.each(item.ezdErlenrets, function(index1, item1) {
                            // console.log(item1);
                             con += "<tr>";
-                            con += "<td><img src='/img/qq.jpg' style='width: 20px;height: 20px;'></td>";
+                            con += "<td><img src='${pageContext.request.contextPath}/img/qq.jpg' style='width: 20px;height: 20px;'></td>";
                             con += "<td>" + item1.ezdEnret.ezdPostTwo.ptwoName + "</td>";
                             con += "<td>" + item1.ezdUmg.umgName + "</td>";
                             con += "<td>" + item1.ezdUmg.umgUser.userPhone + "</td>";

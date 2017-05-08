@@ -5,7 +5,7 @@ package com.ezd.model;
  * 点赞信息表
  */
 public class EzdPoint {
-    private int pintId;
+    private int pointId;
     private int pointArticle;// references ezd_article(article_id)
     private int pointUmg;//references ezd_umg(umg_id)
     private int pintTouser;//为其他用户点赞
@@ -13,12 +13,12 @@ public class EzdPoint {
     private EzdArticle ezdArticle;// references ezd_article(article_id)
     private EzdUmg ezdUmg;//references ezd_umg(umg_id)
 
-    public int getPintId() {
-        return pintId;
+    public int getPointId() {
+        return pointId;
     }
 
-    public void setPintId(int pintId) {
-        this.pintId = pintId;
+    public void setPointId(int pointId) {
+        this.pointId = pointId;
     }
 
     public int getPointArticle() {
@@ -72,7 +72,7 @@ public class EzdPoint {
     @Override
     public String toString() {
         return "EzdPoint{" +
-                "pintId=" + pintId +
+                "pintId=" + pointId +
                 ", pointArticle=" + pointArticle +
                 ", pointUmg=" + pointUmg +
                 ", pintTouser=" + pintTouser +

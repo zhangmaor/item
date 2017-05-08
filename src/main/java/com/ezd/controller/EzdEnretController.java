@@ -136,6 +136,15 @@ public class EzdEnretController {
         return enretTypeAll;
     }
 
+
+
+
+    @RequestMapping(value = "/ajaxGetEnretTypeAll",method = RequestMethod.GET)
+    @ResponseBody
+    public List<EzdEnret> postEnretTypeAll(int retTypeId) throws Exception {
+        List<EzdEnret> enretTypeAll = ezdEnretService.getEnretTypeAll(retTypeId);
+        return enretTypeAll;
+    }
     /**
      * 根据工资的范围进行查询招聘信息
      * @param ezdEnret
