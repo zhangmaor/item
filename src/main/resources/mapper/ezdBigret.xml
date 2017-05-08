@@ -45,32 +45,15 @@
 
     -->
     <select id="modeGet" resultMap="com.ezd.dao.EzdBigretDao.bigret" parameterType="com.ezd.model.EzdNewsStatus">
-        select * from ezd_bigret
-        left join ezd_enmg
-        on ezd_enmg.enmg_id = ezd_bigret.bigret_enmg
-        where
-        1=1
+       <include refid="sql"/>
         <if test="#{newsStatusId!=null}">
             and bigret_status = #{newsStatusId}
-
         </if>
         and ezd_enmg.enmg_id is not null
 
     </select>
     <select id="get" resultMap="bigret">
-    SELECT * FROM ezd_bigret LEFT JOIN ezd_enmg
-                                    ON ezd_bigret.bigret_enmg = ezd_enmg.enmg_id
-                              LEFT JOIN ezd_schmg
-                                    ON ezd_schmg.schmg_id = ezd_bigret.bigret_address
-                              LEFT JOIN ezd_newsStatus
-                                    ON ezd_bigret.bigret_status = ezd_newsStatus.newsStatus_id
-                              LEFT  join ezd_postTwo
-                                    on ezd_postTwo.ptwo_id = ezd_bigret.bigret_postTwo
-                              left join ezd_erlbigret
-                                    on ezd_erlbigret.erlbigret_mes = ezd_bigret.bigret_id
-                      where ezd_bigret.bigret_status !=4
-
-
+      <include refid="sql"/>
     </select>
     <!--根据公司的编号id获取大招会信息列表-->
     <select id="enmgGet" resultMap="com.ezd.dao.EzdBigretDao.bigret" parameterType="com.ezd.model.EzdEnmg">
@@ -143,4 +126,17 @@
          AND bigret_status !=4
         AND bigret_time > NOW()
     </update>
+    <sql id="sql">
+         SELECT * FROM ezd_bigret LEFT JOIN ezd_enmg
+                                    ON ezd_bigret.bigret_enmg = ezd_enmg.enmg_id
+                              LEFT JOIN ezd_schmg
+                                    ON ezd_schmg.schmg_id = ezd_bigret.bigret_address
+                              LEFT JOIN ezd_newsStatus
+                                    ON ezd_bigret.bigret_status = ezd_newsStatus.newsStatus_id
+                              LEFT  join ezd_postTwo
+                                    on ezd_postTwo.ptwo_id = ezd_bigret.bigret_postTwo
+                              left join ezd_erlbigret
+                                    on ezd_erlbigret.erlbigret_mes = ezd_bigret.bigret_id
+                      where ezd_bigret.bigret_status !=4
+    </sql>
 </mapper>

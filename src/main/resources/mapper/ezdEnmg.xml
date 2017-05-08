@@ -53,7 +53,7 @@
     <!--通过一个企业编号查询该企业的详细信息-->
     <select id="getEnmg" parameterType="int" resultMap="enmg">
        <include refid="connection"/>
-              WHERE ezd_enmg.enmg_id = #{_parameter}
+              and ezd_enmg.enmg_id = #{_parameter}
     </select>
     <!--修改数据!!更新一个企业的信息-->
     <update id="update" parameterType="com.ezd.model.EzdEnmg">
@@ -115,5 +115,6 @@
               ON ezd_seindustry.se_id = enmg_industry
              LEFT JOIN ezd_enret
              ON ezd_enmg.enmg_id = ezd_enret.nret_enmg
+             where ezd_enmg.enmg_id IS NOT NULL
     </sql>
 </mapper>

@@ -53,7 +53,6 @@ public class BgBigret {
      * 进入大招会列表页面
      */
     @RequestMapping(value = "/bigret", method = RequestMethod.GET)
-    @ResponseBody
     public void displayBigret(HttpServletRequest request, HttpServletResponse response) {
         List<EzdBigret> all = ezdBigretService.getAll();
         System.out.println("加载过的=====");
@@ -61,7 +60,7 @@ public class BgBigret {
         SerializationConfig serializationConfig = mapper.getSerializationConfig();
         //  mapper.addMixInAnnotations(EzdBigret.class,BigretFilter.class);
         mapper.addMixInAnnotations(EzdErlbigret.class, BigretFilterGetAll.class);
-        mapper.addMixInAnnotations(EzdEnmg.class, BigretEnmgFilter.class);
+        mapper.addMixInAnnotations(EzdEnmg.class, BigretEnmgsFilter.class);
         mapper.addMixInAnnotations(EzdSchmg.class, BigretSchmgFilter.class);
         ServletOutputStream outputStream = null;
         try {
@@ -89,7 +88,7 @@ public class BgBigret {
         SerializationConfig serializationConfig = mapper.getSerializationConfig();
         //  mapper.addMixInAnnotations(EzdBigret.class,BigretFilter.class);
         mapper.addMixInAnnotations(EzdErlbigret.class, BigretFilterGetAll.class);
-        mapper.addMixInAnnotations(EzdEnmg.class, BigretEnmgFilter.class);
+        mapper.addMixInAnnotations(EzdEnmg.class, BigretEnmgsFilter.class);
         mapper.addMixInAnnotations(EzdSchmg.class, BigretSchmgFilter.class);
         ServletOutputStream outputStream = null;
         try {
@@ -123,7 +122,7 @@ public class BgBigret {
         List<EzdEnmg> all = ezdEnmgService.getAll();
         ObjectMapper mapper = new ObjectMapper();
         SerializationConfig serializationConfig = mapper.getSerializationConfig();
-        mapper.addMixInAnnotations(EzdEnmg.class, BigretEnmgFilter.class);
+        mapper.addMixInAnnotations(EzdEnmg.class, BigretEnmgsFilter.class);
         ServletOutputStream outputStream = null;
         try {
             outputStream = response.getOutputStream();
