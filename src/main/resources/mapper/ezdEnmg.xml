@@ -111,8 +111,8 @@
         SELECT * FROM ezd_enmg
             LEFT JOIN ezd_entype
               ON ezd_entype.entype_id = ezd_enmg.enmg_type
-            LEFT JOIN ezd_seindustry
-              ON ezd_seindustry.se_id = enmg_industry
+            LEFT JOIN ezd_industry
+              ON ezd_industry.in_id = ezd_enmg.enmg_industry
              LEFT JOIN ezd_enret
              ON ezd_enmg.enmg_id = ezd_enret.nret_enmg
              where ezd_enmg.enmg_id IS NOT NULL

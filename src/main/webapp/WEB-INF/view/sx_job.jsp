@@ -496,7 +496,7 @@
 <script>
     function gradeChange() {
         $.ajax({
-            type: "post", //请求的方式，也有get请求
+            type: "get", //请求的方式，也有get请求
             url: "<%=request.getContextPath()%>/post/ajaxGetPostTwo", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
             data: "pone_id=" + $("#yjgw").val(),
             dataType: "json", //json格式，后台返回的数据为json格式的。
@@ -542,7 +542,7 @@
 <script>
     function gradeChanges() {
         $.ajax({
-            type: "post", //请求的方式，也有get请求
+            type: "get", //请求的方式，也有get请求
             url: "<%=request.getContextPath()%>/post/ajaxGetPostTwo", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
             data: "pone_id=" + $("#xgyjgw").val(),
             dataType: "json", //json格式，后台返回的数据为json格式的。
