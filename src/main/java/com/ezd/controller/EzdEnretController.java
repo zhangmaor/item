@@ -203,7 +203,7 @@ public class EzdEnretController {
     @RequestMapping(value = "/insert",method = RequestMethod.POST)
     @ResponseBody
     public boolean insert(EzdEnret ezdEnret){
-        //System.out.println(ezdEnret);
+        System.out.println("=========="+ezdEnret);
         boolean bl = ezdEnretService.insert(ezdEnret);
         return bl;
     }

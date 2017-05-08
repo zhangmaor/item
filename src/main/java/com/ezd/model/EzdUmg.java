@@ -31,78 +31,6 @@ public class EzdUmg {
     private List<EzdErlschret> ezdErlschrets;//本用户报名了那个校招会
     private List<EzdReadarti> ezdReadartis;//本用户阅读了那些文章
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public void setUmgUser(EzdUsers umgUser) {
-        this.umgUser = umgUser;
-    }
-
-    public List<EzdReadarti> getEzdReadartis() {
-        return ezdReadartis;
-    }
-
-    public void setEzdReadartis(List<EzdReadarti> ezdReadartis) {
-        this.ezdReadartis = ezdReadartis;
-    }
-
-    public List<EzdErlschret> getEzdErlschrets() {
-        return ezdErlschrets;
-    }
-
-    public void setEzdErlschrets(List<EzdErlschret> ezdErlschrets) {
-        this.ezdErlschrets = ezdErlschrets;
-    }
-
-    public List<EzdErlbigret> getEzdErlbigrets() {
-        return ezdErlbigrets;
-    }
-
-    public void setEzdErlbigrets(List<EzdErlbigret> ezdErlbigrets) {
-        this.ezdErlbigrets = ezdErlbigrets;
-    }
-
-    public List<EzdEnret> getEzdEnrets() {
-        return ezdEnrets;
-    }
-
-    public void setEzdEnrets(List<EzdEnret> ezdEnrets) {
-        this.ezdEnrets = ezdEnrets;
-    }
-
-    public List<EzdErlenret> getEzdErlenrets() {
-        return ezdErlenrets;
-    }
-
-    public void setEzdErlenrets(List<EzdErlenret> ezdErlenrets) {
-        this.ezdErlenrets = ezdErlenrets;
-    }
-
-
-    public List<EzdUnews> getEzdUnewss() {
-        return ezdUnewss;
-    }
-
-    public void setEzdUnewss(List<EzdUnews> ezdUnewss) {
-        this.ezdUnewss = ezdUnewss;
-    }
-
-    public EzdUsers getUmgUser() {
-        return umgUser;
-    }
-
-    public List<EzdEnmg> getEzdEnmgs() {
-        return ezdEnmgs;
-    }
-
-    public void setEzdEnmgs(List<EzdEnmg> ezdEnmgs) {
-        this.ezdEnmgs = ezdEnmgs;
-    }
 
     public int getUmgId() {
         return umgId;
@@ -110,6 +38,14 @@ public class EzdUmg {
 
     public void setUmgId(int umgId) {
         this.umgId = umgId;
+    }
+
+    public EzdUsers getUmgUser() {
+        return umgUser;
+    }
+
+    public void setUmgUser(EzdUsers umgUser) {
+        this.umgUser = umgUser;
     }
 
     public String getUmgPhoto() {
@@ -200,6 +136,69 @@ public class EzdUmg {
         this.umgUptime = umgUptime;
     }
 
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public List<EzdEnmg> getEzdEnmgs() {
+        return ezdEnmgs;
+    }
+
+    public void setEzdEnmgs(List<EzdEnmg> ezdEnmgs) {
+        this.ezdEnmgs = ezdEnmgs;
+    }
+
+    public List<EzdUnews> getEzdUnewss() {
+        return ezdUnewss;
+    }
+
+    public void setEzdUnewss(List<EzdUnews> ezdUnewss) {
+        this.ezdUnewss = ezdUnewss;
+    }
+
+    public List<EzdErlenret> getEzdErlenrets() {
+        return ezdErlenrets;
+    }
+
+    public void setEzdErlenrets(List<EzdErlenret> ezdErlenrets) {
+        this.ezdErlenrets = ezdErlenrets;
+    }
+
+    public List<EzdEnret> getEzdEnrets() {
+        return ezdEnrets;
+    }
+
+    public void setEzdEnrets(List<EzdEnret> ezdEnrets) {
+        this.ezdEnrets = ezdEnrets;
+    }
+
+    public List<EzdErlbigret> getEzdErlbigrets() {
+        return ezdErlbigrets;
+    }
+
+    public void setEzdErlbigrets(List<EzdErlbigret> ezdErlbigrets) {
+        this.ezdErlbigrets = ezdErlbigrets;
+    }
+
+    public List<EzdErlschret> getEzdErlschrets() {
+        return ezdErlschrets;
+    }
+
+    public void setEzdErlschrets(List<EzdErlschret> ezdErlschrets) {
+        this.ezdErlschrets = ezdErlschrets;
+    }
+
+    public List<EzdReadarti> getEzdReadartis() {
+        return ezdReadartis;
+    }
+
+    public void setEzdReadartis(List<EzdReadarti> ezdReadartis) {
+        this.ezdReadartis = ezdReadartis;
+    }
 
     @Override
     public String toString() {

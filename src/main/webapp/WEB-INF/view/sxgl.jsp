@@ -5,15 +5,15 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>e职多就业管理系统</title>
-		<script src="/js/jquery.min.js"></script>
-		<script src="/js/bootstrap.min.js"></script>
-		<script src="/js/bootstrap-paginator.js"></script>
-		<script src="/js/jquery.nouislider.js"></script>
-		<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
-		<link rel="stylesheet" type="text/css" href="/css/index.css" />
-		<link rel="stylesheet" type="text/css" href="/fa/css/font-awesome.css" />
-		<link rel="stylesheet" type="text/css" href="/css/font-awesome.css" />
-		<link rel="stylesheet" type="text/css" href="/css/sxgl.css" />
+		<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+		<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+		<script src="${pageContext.request.contextPath}/js/bootstrap-paginator.js"></script>
+		<script src="${pageContext.request.contextPath}/js/jquery.nouislider.js"></script>
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/index.css" />
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/fa/css/font-awesome.css" />
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/font-awesome.css" />
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/sxgl.css" />
 		
 	</head>
 	
@@ -155,7 +155,7 @@
 					<tr>
 		    			<td>
 		    				<div style="width: 60px; height: 60px;margin: auto;">
-		    					<img src="/img/QQ图片20170308195953.jpg" style="width: 100%;height: 100%;border-radius: 50px;">
+		    					<img src="${pageContext.request.contextPath}/img/QQ图片20170308195953.jpg" style="width: 100%;height: 100%;border-radius: 50px;">
 		    				</div>
 		    			</td>
 		    		</tr>

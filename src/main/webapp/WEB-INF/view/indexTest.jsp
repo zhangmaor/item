@@ -15,7 +15,7 @@
     <h1>
         大招会列表
     </h1>
-<form action="/bg/bigretDetail" method="get">
+<form action="${pageContext.request.contextPath}/bg/bigretDetail" method="get">
 <c:forEach items="${list}" var="a">
 
     <p>${a}</p>
@@ -24,7 +24,7 @@
     <font>aaaa</font>
 </c:forEach>
 
-    <script src="/js/jquery.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery.js"></script>
 </form>
 </body>
 </html>
