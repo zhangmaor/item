@@ -59,4 +59,6 @@ public interface EzdEnmgDao {
      * @throws Exception
      */
     public List<EzdEnmg> industryGet(int industryGetId)throws Exception;
+    /*删除数据*/
+    public int del(int id)throws Exception;
 }

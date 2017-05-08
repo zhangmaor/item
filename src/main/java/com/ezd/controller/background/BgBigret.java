@@ -1,16 +1,32 @@
 package com.ezd.controller.background;
 
-import com.ezd.model.EzdBigret;
+import com.ezd.jackonInterface.*;
+import com.ezd.model.*;
 import com.ezd.service.EzdBigretService;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.ezd.service.EzdEnmgService;
+import com.ezd.service.EzdSchmgService;
+import com.ezd.utils.RandomName;
+import com.ezd.utils.Upload;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationConfig;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -22,6 +38,11 @@ public class BgBigret {
     @Resource
     private EzdBigretService ezdBigretService;
 
+    @Resource
+    private EzdEnmgService ezdEnmgService;
+    @Resource
+    private EzdSchmgService ezdSchmgService;
+
     @RequestMapping("/index")
     public String aaaa(HttpServletRequest request) {
         System.out.println("aaaaaa");
@@ -31,31 +52,57 @@ public class BgBigret {
     /**
      * 进入大招会列表页面
      */
-    @RequestMapping("/bigret")
+    @RequestMapping(value = "/bigret", method = RequestMethod.GET)
     @ResponseBody
-    public List<EzdBigret> displayBigret() {
+    public void displayBigret(HttpServletRequest request, HttpServletResponse response) {
         List<EzdBigret> all = ezdBigretService.getAll();
-
-        System.out.println("大招会信息="+all);
-        return all;
+        System.out.println("加载过的=====");
+        ObjectMapper mapper = new ObjectMapper();
+        SerializationConfig serializationConfig = mapper.getSerializationConfig();
+        //  mapper.addMixInAnnotations(EzdBigret.class,BigretFilter.class);
+        mapper.addMixInAnnotations(EzdErlbigret.class, BigretFilterGetAll.class);
+        mapper.addMixInAnnotations(EzdEnmg.class, BigretEnmgFilter.class);
+        mapper.addMixInAnnotations(EzdSchmg.class, BigretSchmgFilter.class);
+        ServletOutputStream outputStream = null;
+        try {
+            outputStream = response.getOutputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            mapper.writeValue(outputStream, all);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //System.out.println("大招会信息="+all);
+        //  return all;
     }
 
     /**
-     * 点击其中一个大招会信息
+     * 点击其中一个大招会信息/bg/bigretDetail
      * 进入大招会详情
      */
     @RequestMapping("/bigretDetail")
-    public String datail(HttpServletRequest request, int id, Model model) {
-        //EzdBigret ezdBigret = ezdBigretService.get(id);
-        List<EzdBigret> list = (List<EzdBigret>) request.getSession().getAttribute("list");
-        for (EzdBigret e : list
-                ) {
-            if (e.getBigretId() == id) {
-                model.addAttribute("ezdBigret", e);
-            }
+    public void datail(HttpServletResponse response, int id) {
+        EzdBigret ezdBigret = ezdBigretService.get(id);
+        ObjectMapper mapper = new ObjectMapper();
+        SerializationConfig serializationConfig = mapper.getSerializationConfig();
+        //  mapper.addMixInAnnotations(EzdBigret.class,BigretFilter.class);
+        mapper.addMixInAnnotations(EzdErlbigret.class, BigretFilterGetAll.class);
+        mapper.addMixInAnnotations(EzdEnmg.class, BigretEnmgFilter.class);
+        mapper.addMixInAnnotations(EzdSchmg.class, BigretSchmgFilter.class);
+        ServletOutputStream outputStream = null;
+        try {
+            outputStream = response.getOutputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            mapper.writeValue(outputStream, ezdBigret);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        return "forward:redirectBig";
     }
 
     @RequestMapping("/redirectBig")
@@ -63,6 +110,56 @@ public class BgBigret {
         // Map<String, Object> stringObjectMap = model.asMap();
         //System.out.println(stringObjectMap.get("list"));
         return "bret";
+    }
+
+    /**
+     * 获取全部的企业信息/bg/getAllEnmg
+     *
+     * @param request
+     * @param response
+     */
+    @RequestMapping("/getAllEnmg")
+    public void getEnmg(HttpServletRequest request, HttpServletResponse response) {
+        List<EzdEnmg> all = ezdEnmgService.getAll();
+        ObjectMapper mapper = new ObjectMapper();
+        SerializationConfig serializationConfig = mapper.getSerializationConfig();
+        mapper.addMixInAnnotations(EzdEnmg.class, BigretEnmgFilter.class);
+        ServletOutputStream outputStream = null;
+        try {
+            outputStream = response.getOutputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            mapper.writeValue(outputStream, all);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 查询全部的学校信息
+     * 主要是显示全部的学校/bg/getAllSch
+     *
+     * @param response
+     */
+
+    @RequestMapping("/getAllSch")
+    public void getSch(HttpServletResponse response) {
+        List<EzdSchmg> all = ezdSchmgService.findAll();
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.addMixInAnnotations(EzdSchmg.class, BigretSchmgFilter.class);
+        ServletOutputStream outputStream = null;
+        try {
+            outputStream = response.getOutputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            mapper.writeValue(outputStream, all);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -76,7 +173,7 @@ public class BgBigret {
     }
 
     /**
-     * 提交修改的数据
+     * 提交修改的数据/bg/actionUpdate
      * 看返回值
      *
      * @param
@@ -84,11 +181,30 @@ public class BgBigret {
      * @param id
      */
 
-    @RequestMapping("/actionUpdate")
+    @RequestMapping(value = "/actionUpdate", method=RequestMethod.POST)
     @ResponseBody
-    public boolean actionUp(EzdBigret ezdBigret, int id) {
+    public void actionUp(EzdBigret ezdBigret, String btime, int id,HttpServletResponse response) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        if (btime != null) {
+            try {
+                ezdBigret.setBigretTime(sdf.parse(btime));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
         boolean update = ezdBigretService.update(ezdBigret, id);
-        return update;
+        ObjectMapper mapper = new ObjectMapper();
+        OutputStream outputStream = null;
+        try {
+            outputStream = response.getOutputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            mapper.writeValue(outputStream,update);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -102,15 +218,91 @@ public class BgBigret {
     }
 
     /**
-     * 提交添加页面
+     * 提交添加页面/bg/actionInsert
      *
-     * @param ezdBigret
+     * @param
      * @return
      */
-    @RequestMapping("/actionInsert")
-    public String add(EzdBigret ezdBigret, Model model) {
+    @RequestMapping(value = "/actionInsert", method = RequestMethod.POST)
+    public String add(EzdBigret ezdBigret, String btime, @RequestParam(value = "file", required = false) MultipartFile file, HttpServletRequest request, HttpServletResponse response) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            ezdBigret.setBigretTime(sdf.parse(btime));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Upload upload = new Upload();
+
+        String random = new RandomName().getRandom();
+        String url = null;
+        try {
+            url = upload.fildUpload(random, file, request, 2);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        ezdBigret.setBigretLogo(url);
+        ezdBigret.setBigretCreTime(new Date());
+        ezdBigret.setRetStatus(1);
         boolean add = ezdBigretService.add(ezdBigret);
-        model.addAttribute("result", add);
-        return "";
+        HttpSession session = request.getSession();
+        if (add) {
+            session.setAttribute("redreticPoin", 1);
+        } else {
+            session.setAttribute("redreticPoin", 0);
+
+        }
+        return "sxgl";
+    }
+
+    /**
+     * 删除指定的大招会/bg/update
+     *
+     * @param status
+     * @param id
+     * @param response
+     */
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public void updateStatus(int status, int id, HttpServletResponse response) {
+        boolean b = ezdBigretService.updateStatus(status, id);
+        ObjectMapper mapper = new ObjectMapper();
+        OutputStream outputStream = null;
+        try {
+            outputStream = response.getOutputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            mapper.writeValue(outputStream, b);
+            System.out.println("是否删除成功" + b);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 通过大招会的id编号获取报名该大招会的人员信息/bg/getErlbigret?bigretId=2
+     * @param bigretId
+     * @return
+     */
+    @RequestMapping("/getErlbigret")
+
+    public void getErlBigret(int bigretId,HttpServletResponse response){
+        List<EzdErlbigret> erlbigretList = ezdBigretService.getErlbigretList(bigretId);
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.addMixInAnnotations(EzdErlbigret.class, BigretErlbigretFilter.class);
+        mapper.addMixInAnnotations(EzdUmg.class, BigretUmgFilter.class);
+        mapper.addMixInAnnotations(EzdUsers.class,BigretUsersFilter.class);
+        OutputStream outputStream = null;
+        try {
+            outputStream = response.getOutputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            mapper.writeValue(outputStream,erlbigretList);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }

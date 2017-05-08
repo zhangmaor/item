@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -22,7 +23,7 @@ public class EzdPostController {
     private EzdPostService ezdPostService;
 
     /**
-     * 查询出所有的一级岗位
+     * 查询出所有的一级岗位/post/ajaxFindPostOne
      * @return
      */
     @RequestMapping(value = "/ajaxFindPostOne",method = RequestMethod.GET)
@@ -33,11 +34,11 @@ public class EzdPostController {
     }
 
     /**
-     * 根据一级岗位查询出二级岗位
-     * @param pone_id
+     * 根据一级岗位查询出二级岗位/post/ajaxGetPostTwo
+     * @param
      * @return
      */
-    @RequestMapping(value = "/ajaxGetPostTwo",method = RequestMethod.POST)
+    @RequestMapping(value = "/ajaxGetPostTwo",method = RequestMethod.GET)
     @ResponseBody
     public List<EzdPostTwo> getPostTwo(int pone_id){
         List<EzdPostTwo> list = ezdPostService.getPostTwo(pone_id);

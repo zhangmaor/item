@@ -52,7 +52,7 @@ public class Upload {
      * @throws Exception
      */
     public String fildUpload(String userName , MultipartFile file,
-                              HttpServletRequest request , ModelMap modelMap,int type)throws Exception{
+                              HttpServletRequest request , int type)throws Exception{
 
         //获得物理路径webapp所在路径
         String pathRoot = request.getServletContext().getRealPath("/");

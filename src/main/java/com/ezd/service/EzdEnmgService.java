@@ -159,4 +159,13 @@ public class EzdEnmgService {
         return enmgList;
     }
 
+    public boolean del(int id){
+        int i = 0;
+        try {
+            i= ezdEnmgDao.del(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return i>0;
+    }
 }

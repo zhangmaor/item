@@ -9,7 +9,6 @@ import java.util.List;
  * Created by Administrator on 2017/4/6.
  */
 //企业信息表
-    @JsonIgnoreProperties({"ezdUmgs","ezdEnrets","ezdBigrets","ezdSchrets"})
 public class EzdEnmg {
 
     private int enmgId ;

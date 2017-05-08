@@ -1,6 +1,7 @@
 package com.ezd.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 import java.util.List;
@@ -9,11 +10,12 @@ import java.util.List;
  * Created by Administrator on 2017/4/6.
  * 大招会
  */
-@JsonIgnoreProperties({"ezdErlbigrets"})
+//@JsonIgnoreProperties({"ezdErlbigrets"})
 public class EzdBigret {
     private int bigretId;
     private String bigretLogo;//logo图片
     private String bigretTitle;//大招会标题
+    @DateTimeFormat(pattern = "yyyy/MM/dd")
     private Date bigretTime;//大招会时间
     private int bigretAddress;//大招会地址
     private int retStatus; // 大招会消息状态的ID

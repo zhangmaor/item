@@ -1,8 +1,10 @@
 package com.ezd.service;
 
 import com.ezd.dao.EzdBigretDao;
+import com.ezd.dao.EzdErlbigretDao;
 import com.ezd.model.EzdBigret;
 import com.ezd.model.EzdEnmg;
+import com.ezd.model.EzdErlbigret;
 import com.ezd.model.EzdNewsStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +22,23 @@ public class EzdBigretService {
     @Resource
     private EzdBigretDao ezdBigretDao;
 
+    @Resource
+    private EzdErlbigretDao ezdErlbigretDao;
+
+    /**
+     * 根据大招会的id编号获取该大招会报名的人员信息列表
+     * @param bigretId
+     * @return
+     */
+    public List<EzdErlbigret> getErlbigretList(int bigretId){
+        List<EzdErlbigret> ezdErlbigrets = null;
+        try {
+            ezdErlbigrets = ezdErlbigretDao.idGet(bigretId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ezdErlbigrets;
+    }
     /**
      * 根据传递过来的参数statusId进行大招会的的查询
      *
@@ -159,6 +178,7 @@ public class EzdBigretService {
     public List<EzdBigret> getAll(){
         List<EzdBigret> bigretList = null;
         try {
+
             bigretList = ezdBigretDao.get();
         } catch (Exception e) {
             e.printStackTrace();

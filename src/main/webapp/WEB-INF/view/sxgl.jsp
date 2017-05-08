@@ -8,7 +8,10 @@
 		<script src="/js/jquery.min.js"></script>
 		<script src="/js/bootstrap.min.js"></script>
 		<script src="/js/bootstrap-paginator.js"></script>
-		<script src="/js/jquery.nouislider.js"></script>
+		<script src="/js/jquery.nouislider.js" type="text/javascript"></script>
+		<script src="/js/jquery-form.js"></script>
+
+
 		<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="/css/index.css" />
 		<link rel="stylesheet" type="text/css" href="/fa/css/font-awesome.css" />
@@ -299,7 +302,7 @@
                 $(".right-center").load("<%=request.getContextPath()%>/enret/wzgl");
             });
             $("#dzhgl").on("click",function(){
-                alert("aa");
+
                 $(".right-center").load("<%=request.getContextPath()%>/enret/dzhgl");
             });
             $("#qygl").on("click",function(){
@@ -337,4 +340,19 @@
             })
         }
 	</script>
+	<c:if test="${redreticPoin!=null}">
+		<script type="text/javascript">
+
+        $(function(){
+            $("#dzhgl").click();
+        })
+	</script>
+	</c:if>
+	<c:if test="${addEnmgResult!=null}">
+		<script type="text/javascript">
+			$(function(){
+			    $("#qygl").click();
+			})
+		</script>
+	</c:if>
 </html>

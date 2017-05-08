@@ -1,5 +1,7 @@
 package com.ezd.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.Date;
 
 /**

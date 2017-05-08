@@ -368,6 +368,7 @@
             success: function (result) {
                 var dataObj = result, //返回的result为json格式的数据
                     con = "";
+                    console.log(dataObj);
                 $.each(dataObj, function (index, item) {
                     con += "<tr>";
                     con += "<td>" + item.ezdEnmg.enmgName + "</td>";

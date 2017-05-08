@@ -5,13 +5,21 @@
 <!--这里的namespace还没有确定-->
 <mapper namespace="com.ezd.dao.EzdErlbigretDao">
     <resultMap id="erlbigret" type="com.ezd.model.EzdErlbigret"><!--大招会报名表-->
-        <id column="erlbigret_id" property="erlbigretId" /><!--编号-->
-        <result column="erlbigret_time" property="erlbigretTime" /><!--报名时间-->
-        <result column="erlbigret_mes" property="bigMgId" /><!-- 报名的大招会ID-->
-        <result column="erlbigret_user" property="userMgId" /><!-- 用户的Id-->
-        <result column="erlbigret_status" property="statusId" /><!-- 状态的Id-->
+        <id column="erlbigret_id" property="erlbigretId"/><!--编号-->
+        <result column="erlbigret_time" property="erlbigretTime"/><!--报名时间-->
+        <result column="erlbigret_mes" property="bigMgId"/><!-- 报名的大招会ID-->
+        <result column="erlbigret_user" property="userMgId"/><!-- 用户的Id-->
+        <result column="erlbigret_status" property="statusId"/><!-- 状态的Id-->
         <association property="erlbigretUser" resultMap="com.ezd.dao.EzdUmgDao.umg"/><!--谁报名的这个大招会-->
         <association property="erlbigretMes" resultMap="com.ezd.dao.EzdBigretDao.bigret"/><!--哪个大招会-->
         <association property="erlbigretStatus" resultMap="com.ezd.dao.EzdRestatusDao.restatus"/><!--报名状态-->
     </resultMap>
+    <select id="idGet" parameterType="int" resultMap="erlbigret">
+        SELECT * FROM ezd_erlbigret
+                LEFT JOIN ezd_umg
+	                  ON ezd_erlbigret.erlbigret_user = ezd_umg.umg_id
+                LEFT JOIN ezd_users
+                      ON ezd_users.user_id = ezd_umg.umg_user
+        WHERE ezd_erlbigret.erlbigret_mes = #{_parameter}
+    </select>
 </mapper>

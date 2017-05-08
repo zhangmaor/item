@@ -1,16 +1,29 @@
 package com.ezd.controller.background;
 
 import com.ezd.model.EzdEnmg;
+import com.ezd.model.EzdEntype;
+import com.ezd.model.EzdIndustry;
 import com.ezd.service.EzdEnmgService;
+import com.ezd.service.EzdIndustryService;
+import com.ezd.utils.RandomName;
+import com.ezd.utils.Upload;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -22,36 +35,34 @@ public class BgEnmg {
     @Resource
     private EzdEnmgService ezdEnmgService;
 
+    @Resource
+    private EzdIndustryService ezdIndustryService;
+
+    @RequestMapping("/getIndustry")
+    @ResponseBody
+    public List<EzdIndustry> getIndustry(){
+        List<EzdIndustry> all = ezdIndustryService.getAll();
+        return all;
+    }
+    @RequestMapping("/getType")
+    @ResponseBody
+    public List<EzdEntype> getType(){
+        List<EzdEntype> type = ezdIndustryService.getType();
+        return type;
+    }
+
     /**
      * 通过指定的企业编号获取指定的信息
      * 比如修改企业信息的时候，
      * 显示企业详细信息的时候；
-     * @param request
      * @param id
-     * @param model
      */
-    private void getOneEnmg(HttpServletRequest request,int id ,Model model){
-        EzdEnmg ezdEnmg = null;
-        try {
-            List<EzdEnmg> enmgs = (List<EzdEnmg>) request.getSession().getAttribute("enmgList");
-            for (EzdEnmg e : enmgs) {
-                //循环，将enmgs里面的每个元素的EnmgId与id进行比较
-                if (e.getEnmgId() == id) {
-                    ezdEnmg = e;//如果成立的话就将该元素赋给ezdEnmg
-                    break; //并且循环结束
-                }
-            }
-        } catch (Exception e) {
-            //如果enmgs是空的话就会通过id从数据库中重新查询数据
-            e.printStackTrace();
-            ezdEnmg = ezdEnmgService.getEnmg(id);
-        } finally {
-            model.addAttribute("enmg", ezdEnmg);
-        }
+    private EzdEnmg getOneEnmg(int id){
+        return ezdEnmgService.getEnmg(id);
     }
     /**
      * 进入企业列表的页面
-     * 查询所有的企业信息
+     * 查询所有的企业信息/bgEnmg/enmg
      * @return
      */
     @RequestMapping(value = "/enmg",method = RequestMethod.GET)
@@ -66,15 +77,13 @@ public class BgEnmg {
     /**
      * 点击某一个企业，然后就执行这个方法
      * 进入详细的企业信息列表
-     * @param request
      * @param id   ----- 点击的那个企业的详细信息
-     * @param model ---- 存储该企业的详细信息（全部信息）
-     * @return
+     * @return/getEnmg
      */
     @RequestMapping("/getEnmg")
-    public String getEnmg(HttpServletRequest request, int id, Model model) {
-        this.getOneEnmg(request,id,model);
-        return "";
+    @ResponseBody
+    public EzdEnmg getEnmg( int id) {
+        return this.getOneEnmg(id);
     }
 
     /**
@@ -87,15 +96,38 @@ public class BgEnmg {
     }
 
     /**
-     * 创建（添加，生成）一个企业
+     * 创建（添加，生成）一个企业/bgEnmg/add
      * @param ezdEnmg
      * @return
      */
-    @RequestMapping("/add")
-    @ResponseBody
-    public boolean add(EzdEnmg ezdEnmg){
-        boolean add = ezdEnmgService.add(ezdEnmg);
-        return add;
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public String add(EzdEnmg ezdEnmg, @RequestParam("file") MultipartFile file,HttpServletRequest request,int scaleMin,int scaleMax,String createTime){
+        ezdEnmg.setEnmgScale(scaleMin+"-"+scaleMax);
+        Upload upload = new Upload();
+        RandomName randomName = new RandomName();
+        String url = "";
+        try {
+            url = upload.fildUpload(randomName.getRandom(),file,request,2);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if(createTime!=null){
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                ezdEnmg.setEnmgCretime(sdf.parse(createTime));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+        ezdEnmg.setEnmgLogo(url);
+            boolean add = ezdEnmgService.add(ezdEnmg);
+            HttpSession session = request.getSession();
+            if(add){
+                session.setAttribute("addEnmgResult",1);
+            }else{
+                session.setAttribute("addEnmgResult",0);
+            }
+            return "sxgl";
     }
 
     /**
@@ -107,22 +139,56 @@ public class BgEnmg {
      */
     @RequestMapping("/getUpdate")
     public String getUpdate(HttpServletRequest request,int id ,Model model){
-        this.getOneEnmg(request,id,model);
+        //this.getOneEnmg(request,id,model);
         return "";
     }
 
     /**
      * 对修改进行提交
-     * @param ezdEnmg  ---修改后的一部分信息
+     * @param ezdEnmg  ---修改后的一部分信息/bgEnmg/update
      * @return
      */
-    @RequestMapping("/update")
-    @ResponseBody
-    public boolean update(EzdEnmg ezdEnmg){
+    @RequestMapping(value = "/update" ,method=RequestMethod.POST)
+
+    public void update(EzdEnmg ezdEnmg, HttpServletResponse response){
         EzdEnmg enmg = ezdEnmgService.getEnmg(ezdEnmg.getEnmgId());
         boolean update = ezdEnmgService.update(enmg, ezdEnmg);
-        return update;
+        ObjectMapper mapper = new ObjectMapper();
+        OutputStream outputStream = null;
+        try {
+            outputStream = response.getOutputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            mapper.writeValue(outputStream,update);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-
+    /**
+     * /bgEnmg/del
+     * @param id
+     * @return
+     */
+    @RequestMapping("/del")
+    public void del(HttpServletResponse response,@RequestParam("id")String id){
+        int i = 0;
+        if(id!=null)
+            i = Integer.parseInt(id);
+        boolean enmgdel = ezdEnmgService.del(i);
+        ObjectMapper mapper = new ObjectMapper();
+        OutputStream outputStream = null;
+        try {
+            outputStream = response.getOutputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            mapper.writeValue(outputStream,enmgdel);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
