@@ -288,10 +288,10 @@
                         <div class="col-xs-7">
                             <div class="input-group">
                                 <select name="" id="xl" class="form-control">
-                                    <option value="不限">不限</option>
-                                    <option value="本科">本科</option>
-                                    <option value="大专">大专</option>
-                                    <option value="高职">高职</option>
+                                    <option value="0">不限</option>
+                                    <option value="3">本科</option>
+                                    <option value="2">大专</option>
+                                    <option value="1">高职</option>
                                 </select>
                             </div>
                         </div>
@@ -423,15 +423,16 @@
             type: "post", //请求的方式，也有get请求
             url: "<%=request.getContextPath()%>/enret/update", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
             data: {
-                enretId      : $("#tjxg").val(),
-                enretPostOne: $("#xgyjgw").val() == "" ? 0  : $("#xgyjgw").val(),
-                enretPostTwo: $("#xgejgw").val() == "" ? 0  : $("#xgejgw").val(),
-                enretLwMoney: $("#zdxz").val() == "" ? 0    : $("#zdxz").val(),
-                enretHgMoney: $("#zgxz").val() == "" ? 0    : $("#zgxz").val(),
-                enretWantNum: $("#number").val() == "" ? 0  : $("#number").val(),
-                enretDemand : $("#xl").val() + "" + $("#gz").val(),
-                enretPg     : $("#fl").val() == "" ? null : $("#fl").val(),
-                enretStatus : 1
+                "enretId"      : $("#tjxg").val(),
+                "enretPostOne": $("#xgyjgw").val() == "" ? 0  : $("#xgyjgw").val(),
+                "enretPostTwo": $("#xgejgw").val() == "" ? 0  : $("#xgejgw").val(),
+                "enretLwMoney": $("#zdxz").val() == "" ? 0    : $("#zdxz").val(),
+                "enretHgMoney": $("#zgxz").val() == "" ? 0    : $("#zgxz").val(),
+                "enretWantNum": $("#number").val() == "" ? 0  : $("#number").val(),
+                "enretDemand" : $("#xl").val() + "" + $("#gz").val(),
+                "endretEdu" : $("#xl").val() ,
+                "enretPg"     : $("#fl").val() == "" ? null : $("#fl").val(),
+                "enretStatus" : 1
             },
             dataType: "json", //json格式，后台返回的数据为json格式的。
             success: function (result) {
@@ -574,10 +575,11 @@
                 "enretPostTwo": $("#ejgw").val(),
                 "enretLwMoney": $("#zdgz").val(),
                 "enretHgMoney": $("#zggz").val(),
+                "enretEdu":$("#xlyq").val(),
                 "enretWantNum": $("#zprs").val(),
                 "enretDemand": $("#xlyq").val() + "," + $("#gzyq").val(),
                 "enretPg": $("#ygfl").val(),
-                enretStatus: 1
+                "enretStatus": 1
             },
             dataType: "json", //json格式，后台返回的数据为json格式的。
             success: function (result) {

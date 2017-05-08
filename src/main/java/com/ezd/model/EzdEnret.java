@@ -17,6 +17,7 @@ public class EzdEnret {
     private int enretHgMoney;//最高工资
     private int enretPostOne;//一级招聘岗位
     private int enretPostTwo;//二级招聘岗位
+    private  int enretEdu; // 学历要求
     private String enretPg;//待遇
     private String enretDemand;//招聘要求
     private int enretStatus;//references ezd_newsStatus(newsStatus_id)
@@ -28,6 +29,14 @@ public class EzdEnret {
     private List<EzdErlenret> ezdErlenrets;//对应的报名信息表
     private List<EzdUmg> ezdUmgs ;//对本信息浏览的人列表
 
+
+    public int getEnretEdu() {
+        return enretEdu;
+    }
+
+    public void setEnretEdu(int enretEdu) {
+        this.enretEdu = enretEdu;
+    }
 
     public int getEnretId() {
         return enretId;

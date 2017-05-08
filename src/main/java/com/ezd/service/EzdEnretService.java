@@ -88,19 +88,20 @@ public class EzdEnretService {
         list = ezdEnretDao.getEnretTypeAll(retTypeId);
         for (EzdEnret li:list) {
             List<EzdErlenret> personList = ezdErlenretDao.getPersonEnrolled(li);
-            System.out.println("======================");
-            try {
+           /*  System.out.println("======================");
+           try {
                 System.out.println(personList.get(0));
                 System.out.println(personList.get(1));
                 System.out.println(personList.get(2));
             }catch(NullPointerException e){
                 System.out.println("能过则过");
             }catch(Exception a){
+                a.printStackTrace();
                 System.out.println("出现了其他的错误！！");
             }
-            System.out.println("=========================");
+            System.out.println("=========================");*/
             for (int i=0;i<personList.size();i++) {
-                System.out.println("umg的具体的值"+personList.get(i).getErlenretUmg());
+
                 EzdUmg ezdUmg = ezdUmgDao.getEzdUmgAll(personList.get(i).getErlenretUmg());
                 EzdUsers ezdUsersAll = ezdUsersDao.getEzdUsersAll(ezdUmg.getUserId());
                 ezdUmg.setUmgUser(ezdUsersAll);
@@ -247,7 +248,13 @@ public class EzdEnretService {
 
     //根据企业添加招聘信息
     public boolean insert(EzdEnret ezdEnret){
-        int row = ezdEnretDao.add(ezdEnret);
+        int row=0;
+        try{
+            row= ezdEnretDao.add(ezdEnret);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         if (row>0){
             return true;
         }
