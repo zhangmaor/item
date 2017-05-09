@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -127,6 +129,7 @@ public class EzdEnretController {
         List<EzdEnret> oneAll = ezdEnretService.getOneAll(ezdEnmg);
         return oneAll;
     }
+
 
     /**
      * 根据招聘类型查询出招聘信息/enret/ajaxGetEnretTypeAll?retTypeId=1
@@ -262,6 +265,40 @@ public class EzdEnretController {
         List<EzdEnret> list = ezdEnretService.getTimeAll(umgId);
         return list;
     }
-
+    /*请求获取每个状态的招聘信息的数量
+    * /enret/getcount
+    * */
+    @RequestMapping(value = "getcount" ,method = RequestMethod.GET)
+    public void getcount(EzdEnret ezdEnret,HttpServletResponse response){
+        int count = ezdEnretService.getcount(ezdEnret);
+        ObjectMapper mapper = new ObjectMapper();
+        OutputStream outputStream = null;
+        try {
+            outputStream = response.getOutputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            mapper.writeValue(outputStream,count);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @RequestMapping(value = "/getResultCount" , method = RequestMethod.GET)
+    public void gResultCount(int id ,HttpServletResponse response){
+        int resultCount = ezdEnretService.getResultCount(id);
+        ObjectMapper mapper = new ObjectMapper();
+        OutputStream outputStream = null;
+        try {
+            outputStream = response.getOutputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            mapper.writeValue(outputStream,resultCount);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

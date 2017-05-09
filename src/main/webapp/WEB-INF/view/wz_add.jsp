@@ -139,20 +139,36 @@
 <script>
     $(function(){
         $("#wz_gl").on("click",function(){
-            $(".right-center").load("<%=request.getContextPath()%>/enret/dzhgl");
+            $(".right-center").load("<%=request.getContextPath()%>/enret/wzgl");
         });
     })
 </script>
 
 <%--添加文章--%>
 <script>
+    $(function(){
+       $.ajax({
+           url : "<%=request.getContextPath()%>/aticle/getArtitTypeAll",
+           method : "get",
+           dataType : "json",
+           success : function(datas){
+               var html = "";
+               $.each(datas,function (index,data) {
+                   html += "<option value='"+data.rtitypeId+"'>"+data.artitypeName+"</option>"
+               });
+               $("#wzlx").html(html);
+           }
+       })
+    });
+
+
     function tj() {
         alert($("#myEditor").val());
         $.ajax({
             type: "post", //请求的方式，也有get请求
             url: "<%=request.getContextPath()%>/aticle/ajaxInsert", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
             data: {
-                    articleType     :   1/*$("#wzlx").val()*/,
+                    articleType     :   $("#wzlx").val(),
                     articleMtitle   :   $("#bt").val(),
                     articleStitle   :   $("#fbt").val(),
                     articleAuthor   :   $("#author").val(),

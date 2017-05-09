@@ -206,15 +206,7 @@ public class BgBigret {
         }
     }
 
-    /**
-     * 进入添加页面
-     *
-     * @return
-     */
-    @RequestMapping("/insert")
-    public String getAdd() {
-        return "";
-    }
+
 
     /**
      * 提交添加页面/bg/actionInsert
@@ -238,6 +230,9 @@ public class BgBigret {
             url = upload.fildUpload(random, file, request, 2);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        if(url==null){
+            url = "/img/userDefault.png";
         }
         ezdBigret.setBigretLogo(url);
         ezdBigret.setBigretCreTime(new Date());

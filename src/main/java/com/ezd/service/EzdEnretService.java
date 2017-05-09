@@ -284,4 +284,22 @@ public class EzdEnretService {
         }
         return list;
     }
+    public int getcount(EzdEnret ezdEnret){
+        int count = 0;
+        try {
+            count = ezdEnretDao.getcount(ezdEnret);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+    public int getResultCount(int id){
+        int count = 0;
+        try {
+            count = ezdEnretDao.getResultCount(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
 }

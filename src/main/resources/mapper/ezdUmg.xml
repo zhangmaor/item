@@ -39,9 +39,9 @@
     </select>
 
     <!--根据umg_id查询出个人信息-->
-    <select id="getEzdUmgAll" parameterType="int" resultMap="umg">
-        SELECT * FROM ezd_umg WHERE umg_id = #{_parameter}
-    </select>
+    <!--<select id="getEzdUmgAll" parameterType="int" resultMap="umg">-->
+        <!--SELECT * FROM ezd_umg WHERE umg_id = #{_parameter}-->
+    <!--</select>-->
 
 
   <!--根据umg_id查询出个人信息和用户兼职记录信息   -->

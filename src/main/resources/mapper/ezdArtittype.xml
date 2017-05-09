@@ -11,4 +11,11 @@
     <insert id="inserType" parameterType="com.ezd.model.EzdArtittype">
         insert into ezd_artitype(artitype_name) values(#{artitypeName})
     </insert>
+    <select id="getOne" resultMap="artittype" parameterType="int">
+        SELECT * from ezd_artitype
+        WHERE artitype_id = #{_parameter}
+    </select>
+    <select id="getAll" resultMap="artittype">
+        SELECT * from ezd_artitype
+    </select>
 </mapper>
