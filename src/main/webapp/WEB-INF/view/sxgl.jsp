@@ -22,7 +22,7 @@
 			<div class="header">
 				<div class="container">
 					<div class="font-hearder">
-						欢迎回来，e职多就业管理系统&nbsp;&nbsp;&nbsp;<i class="fa fa-unlock"><a href="#" style="color:#5AB0F9">&nbsp;&nbsp;登出</a></i>
+						欢迎回来，e职多就业管理系统&nbsp;&nbsp;&nbsp;<i class="fa fa-unlock"><a href="${pageContext.request.contextPath}/login" style="color:#5AB0F9">&nbsp;&nbsp;登录</a></i>
 					</div>
 				</div>
 			</div>

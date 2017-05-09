@@ -6,7 +6,7 @@ package com.ezd.model;
  */
 public class EzdPostOne {
 
-    private int poneId ; //INT PRIMARY KEY AUTO_INCREMENT,
+    private int poneId ; // INT PRIMARY KEY AUTO_INCREMENT,
     private String  poneName; // VARCHAR(20) NOT NULL
 
     public int getPoneId() {

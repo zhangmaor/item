@@ -7,6 +7,7 @@ import com.ezd.service.EzdSchmgService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -53,9 +54,16 @@ public class AppSchController {
      * 然后就进入到该学校的大招会列表
      * @param id 学校的ID
      */
-    @RequestMapping("/schoolebigret")
+    @RequestMapping(value = "/schoolebigret",method = RequestMethod.POST)
     @ResponseBody
     public List<EzdBigret> getschoolBigret(int id){
+        List<EzdBigret> bigretList = ezdBigretService.addressGet(id);
+        return bigretList;
+    }
+
+    @RequestMapping(value = "/schoolebigret",method = RequestMethod.GET)
+    @ResponseBody
+    public List<EzdBigret> postschoolBigret(int id){
         List<EzdBigret> bigretList = ezdBigretService.addressGet(id);
         return bigretList;
     }

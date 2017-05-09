@@ -46,4 +46,16 @@ public class EzdUserService {
        return ezdUsersDao.getEzdUsersAll(id);
     }
 
+
+    //根据号码 获取 usrs
+    public EzdUsers getByPhone(String phone){
+            EzdUsers ezdUsers = new EzdUsers();
+
+        try{
+            ezdUsers = ezdUsersDao.getByPhone(phone);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return ezdUsers;
+    }
 }

@@ -96,8 +96,7 @@
 
     <!--通过学校的id来查询匹配的大招会-->
     <select id="addressGet" resultMap="bigret" parameterType="int">
-        select bigret_id, bigret_logo,bigret_title, bigret_time, bigret_address,bigret_status, bigret_creTime, bigret_detail, enret_postOne, enret_postTwo,bigret_enmg
-            from ezd_bigret
+        select *  from ezd_bigret
         where bigret_address = #{_parameter}
     </select>
 

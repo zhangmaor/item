@@ -60,4 +60,10 @@
     <select id="getEzdUsersAll" parameterType="int" resultMap="users">
         SELECT * FROM ezd_users WHERE user_id = #{_parameter}
     </select>
+
+    <!-- 根据电话号码查询 users-->
+    <select id="getByPhone" parameterType="String" resultMap="users">
+        select * from ezd_users where user_phone = #{_paramater}
+    </select>
+
 </mapper>
