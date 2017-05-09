@@ -17,7 +17,11 @@
         <result column="umg_sayMf" property="umgSayMf"/><!--自我评价-->
         <result column="umg_education" property="umgEducation"/><!--教育经历-->
         <result column="umg_uptime" property="umgUptime"/><!--修改时间-->
+        <result column="umg_idCard1" property="umgIdCard1"/><!--用户身份证的正面地址-->
+        <result column="umg_idCard2" property="umgIdCard2"/><!--用户身份证的背面地址-->
+        <result column="umg_status" property="umgStatus"/><!--用户的状态  是否实名认证-->
         <result column="umg_user" property="userId"/><!--用户表的ID-->
+        <result column="umg_address" property="umgAddress"/><!--用户表的ID-->
         <association property="umgUser" resultMap="com.ezd.dao.EzdUsersDao.users"/><!--对应的是用户ezdusers.xml(用户表)-->
         <collection property="ezdUnewss" resultMap="com.ezd.dao.EzdUnewsDao.unews"/><!--对应的是(消息)信息表（ezdUnews.xml）-->
         <collection property="ezdEnmgs" resultMap="com.ezd.dao.EzdEnmgDao.enmg"/><!--关注的公司-->
@@ -43,20 +47,12 @@
         <!--SELECT * FROM ezd_umg WHERE umg_id = #{_parameter}-->
     <!--</select>-->
 
-
-  <!--根据umg_id查询出个人信息和用户兼职记录信息   -->
-    <select id="getEzdUmgAll" parameterType="int" resultMap="umg">
-        SELECT * FROM ezd_umg, ezd_jobmg WHERE  umg_id =jobmg_user and umg_id = #{_parameter}
-    </select>
-
-
-
     <!--添加个人信息-->
     <insert id="insetUmg" parameterType="com.ezd.model.EzdUmg">
         inset into ezd_umg(umg_user,umg_photo,umg_name,umg_sex,umg_birthday
-        umg_emial,umg_school,umg_major,umg_degree,umg_sayMf,umg_education)
+        umg_emial,umg_school,umg_major,umg_degree,umg_sayMf,umg_education,umg_address)
         VALUES(umgPhoto,umgName,umgSex,umgBirthday,umgEmial,umgSchool,umgMajor,
-        umgDegree,umgSayMf,umgEducation)
+        umgDegree,umgSayMf,umgEducation,umgAddress)
     </insert>
 
     <!--更新所有的个人数据-->
@@ -71,6 +67,7 @@
         umg_degree = #{umgDegree},
         umg_sayMf = #{umgSayMf},
         umg_education = #{umgEducation},
+        umg_address = #{umgAddress},
         umg_uptime = #{umgUptime}
         where
           umg_id  = #{umgId}

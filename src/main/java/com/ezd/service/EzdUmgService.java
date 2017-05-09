@@ -1,6 +1,7 @@
 package com.ezd.service;
 
 import com.ezd.dao.EzdUmgDao;
+import com.ezd.dao.EzdUsersDao;
 import com.ezd.model.EzdEnretBrowse;
 import com.ezd.model.EzdUmg;
 import com.ezd.model.EzdUsers;
@@ -19,6 +20,8 @@ import java.util.List;
 public class EzdUmgService {
     @Resource
     private EzdUmgDao ezdUmgDao;
+    @Resource
+    private EzdUsersDao ezdUsersDao;
 
     /**
      * 根据用户查询所有的个人信息
@@ -91,6 +94,24 @@ public class EzdUmgService {
      */
     public List<EzdUmg> getBrowsingUsers(EzdEnretBrowse ezdEnretBrowse) {
         return ezdUmgDao.getBrowsingUsers(ezdEnretBrowse);
+    }
+
+
+    /**
+     * 根据浏览信息的查询用户和用户兼职信息
+     *
+     * @param umgId
+     * @return
+     */
+
+    public EzdUmg getUmgById(int  umgId) {
+        EzdUmg ezdUmg = ezdUmgDao.getEzdUmgAll(umgId);
+        EzdUsers ezdUsers = ezdUsersDao.getEzdUsersAll(ezdUmg.getUserId());
+        System.out.println("============="+ezdUsers);
+        ezdUmg.setUmgUser(ezdUsers);
+
+
+        return ezdUmg;
     }
 
 

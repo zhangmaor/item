@@ -7,6 +7,7 @@ import com.ezd.model.*;
 import com.ezd.service.EzdBigretService;
 import com.ezd.service.EzdEnretService;
 import com.ezd.service.EzdSchTypeService;
+import com.ezd.service.EzdUmgService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,6 +37,8 @@ public class EzdEnretController {
     private EzdBigretService ezdBigretService;
     @Resource
     private EzdSchTypeService schTypeService;
+    @Resource
+    private EzdUmgService ezdUmgService;
 
 
     @RequestMapping("/index")
@@ -261,9 +264,18 @@ public class EzdEnretController {
      */
     @RequestMapping(value = "/ajaxGetUmg/{umgId}",method = RequestMethod.POST)
     @ResponseBody
-    public List<EzdEnret> getUmgById(@PathVariable int umgId){
-        List<EzdEnret> list = ezdEnretService.getTimeAll(umgId);
-        return list;
+    public EzdUmg getUmgById(@PathVariable int umgId){
+        EzdUmg ezdUmg =  ezdUmgService.getUmgById(umgId);
+        System.out.println(" ezdEnretCOntroller   getUmgById    ++++  "+ezdUmg);
+        return ezdUmg;
+    }
+
+    @RequestMapping(value = "/ajaxGetUmg/{umgId}",method = RequestMethod.GET)
+    @ResponseBody
+    public EzdUmg postUmgById(@PathVariable int umgId){
+        EzdUmg ezdUmg =  ezdUmgService.getUmgById(umgId);
+        System.out.println(" ezdEnretCOntroller   getUmgById    ++++  "+ezdUmg);
+        return ezdUmg;
     }
     /*请求获取每个状态的招聘信息的数量
     * /enret/getcount
