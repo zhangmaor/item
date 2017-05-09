@@ -29,7 +29,7 @@ public class UsersFunction {
     /*获取当前用户下的全部的消息列表
     * 可以多次使用 192.168.5.147:8080/user/ajaxUnews?umgId=   post请求
     * */
-    @RequestMapping(value = "/ajaxUnews", method = RequestMethod.POST)
+    @RequestMapping(value = "/ajaxUnews", method = RequestMethod.GET)
     @ResponseBody
     public List<EzdUnews> getUnewsList(int umgId) {
         List<EzdUnews> ezdUnewss = ezdUnewsService.displayUnews(umgId);

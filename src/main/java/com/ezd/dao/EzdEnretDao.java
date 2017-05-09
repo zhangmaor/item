@@ -40,4 +40,8 @@ public interface EzdEnretDao {
 
     //根据企业添加招聘信息
     public int add(EzdEnret ezdEnret);
+    /*根据不同的招聘信息的状态得出数量*/
+    public int getcount(EzdEnret ezdEnret)throws Exception;
+    /*根据类型获得数量*/
+    public int getResultCount(int id) throws Exception;
 }

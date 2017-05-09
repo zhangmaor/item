@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ezd.dao.EzdPermissionDao">
+
+    <resultMap id="permission" type="EzdPermission">
+        <id column="per_id" property="perId" />
+        <result property="per_id" column="perName" />
+    </resultMap>
+
+    <!-- 根据角色Id 查找权限-->
+    <select id="getPerByRoleId" resultMap="permission" parameterType="int">
+        select * from ezd_permission a join ezd_tole_permission b on a.per_id = b.reper_perm WHERE roper_role = #{_paramater}
+    </select>
+
+
+</mapper>

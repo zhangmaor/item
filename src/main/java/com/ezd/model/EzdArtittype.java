@@ -5,15 +5,15 @@ package com.ezd.model;
  * 文章类型
  */
 public class EzdArtittype {
-    private int rtitypeId ;
+    private int artitypeId ;
     private String artitypeName ;//文章类型名称
 
     public int getRtitypeId() {
-        return rtitypeId;
+        return artitypeId;
     }
 
-    public void setRtitypeId(int rtitypeId) {
-        this.rtitypeId = rtitypeId;
+    public void setRtitypeId(int artitypeId) {
+        this.artitypeId = artitypeId;
     }
 
     public String getArtitypeName() {

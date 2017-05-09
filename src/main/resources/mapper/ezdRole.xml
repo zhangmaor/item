@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--这里的namespace还没有确定-->
+<mapper namespace="com.ezd.dao.EzdRoleDao">
+
+    <resultMap id="roles" type="EzdRole">
+        <id column="role_id" property="roleId" />
+        <result column="role_name" property="roleName" />
+        <collection  property="ezdPermissions" ofType="EzdPermission" >
+            <id column="per_id" property="perId"  />
+            <result column="per_name" property="perName" />
+        </collection>
+        <collection  property="ezdUserss" resultMap="com.ezd.dao.EzdUsersDao.users" />
+    </resultMap>
+
+
+
+    <!-- 根据用户ID 查询角色 -->
+    <select id="getRoleByUserId" resultMap="roles" parameterType="int">
+        select * from ezd_role a LEFT join ezd_role_user b ON a.role_id = b.uper_role WHERE  uper_umg = #{_paramater}
+    </select>
+
+
+
+
+
+
+
+</mapper>

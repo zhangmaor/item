@@ -10,6 +10,8 @@
 <html>
 <head>
     <title>Title</title>
+    <script src="/js/getEnretCount.js"></script>
+
 </head>
 <body>
 <div class="right-mokuai">
@@ -21,12 +23,12 @@
 <div class="right-body" >
     <div class="right-body-main">
         <div class="main-1">
-            <span class="main-1-1">共发布全职12个</span>
+            <span class="main-1-1">共发布全职<font id="counts">12</font>个</span>
 
             <span class="main-1-2">
-						<span class="main-1-2-1">0个正在审核</span>
-						<span class="main-1-2-1">3个正在招聘</span>
-						<span class="main-1-2-1">0个下架</span>
+						<span class="main-1-2-1"><font id="sh">0</font>个正在审核</span>
+						<span class="main-1-2-1"><font id="ks">3</font>个正在招聘</span>
+						<span class="main-1-2-1"><font id="xj">0</font>个下架</span>
 					</span>
         </div>
 
@@ -221,6 +223,10 @@
         $("#fbgw").on("click",function(){
             $(".right-center").load("<%=request.getContextPath()%>/enret/qz_job");
         });
+        getCount(2,3,$("#sh"));
+        getCount(2,1,$("#ks"));
+        getCount(2,2,$("#xj"));
+        getResultCount(2,$("#counts"));
     })
 </script>
 

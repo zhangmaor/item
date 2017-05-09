@@ -1,13 +1,7 @@
 package com.ezd.service;
 
-import com.ezd.dao.EzdArticlDao;
-import com.ezd.dao.EzdPointDao;
-import com.ezd.dao.EzdReadartiDao;
-import com.ezd.dao.EzdSayartDao;
-import com.ezd.model.EzdArticle;
-import com.ezd.model.EzdPoint;
-import com.ezd.model.EzdReadarti;
-import com.ezd.model.EzdSayart;
+import com.ezd.dao.*;
+import com.ezd.model.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,7 +25,8 @@ public class EzdArticleService {
     @Resource
     private EzdPointDao ezdPointDao;
 
-
+    @Resource
+    private EzdArtittypeDao ezdArtittypeDao;
     //添加文章信息
     public boolean insert(EzdArticle ezdArticle){
 
@@ -83,7 +78,13 @@ public class EzdArticleService {
             List<EzdReadarti> count = ezdReadartiDao.getCount(li);
             List<EzdSayart> ezdSayartAll = ezdSayartDao.getEzdSayartAll(li);
             List<EzdPoint> ezdPointCount = ezdPointDao.getEzdPointCount(li.getArticleId());
-            li.setEzdReadartis(count);
+           try {
+               EzdArtittype artittype = ezdArtittypeDao.getOne(li.getArticleType());
+               li.setEzdarticleType(artittype);
+           } catch (Exception e) {
+               e.printStackTrace();
+           }
+           li.setEzdReadartis(count);
             li.setEzdSayarts(ezdSayartAll);
             li.setEzdPoints(ezdPointCount);
         }
@@ -138,4 +139,16 @@ public class EzdArticleService {
         return false;
     }
 
+    /**
+     * 获取全部的文章类型
+     * */
+    public List<EzdArtittype> getArtitTypeAll(){
+       List<EzdArtittype> all = null;
+        try {
+            all = ezdArtittypeDao.getAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return all;
+    }
 }

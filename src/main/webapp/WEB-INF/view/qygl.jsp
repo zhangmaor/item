@@ -199,11 +199,13 @@
     function displayEnmgList(){
         $.ajax({
             url : "<%=request.getContextPath()%>/bgEnmg/enmg",
-            dataType : "json",
+            dataType : "text",
             method : "get",
-            success :function(data){
+            success :function(dataList){
                 var html = "";
+                var data = JSON.parse(dataList);
                 console.log(data);
+
                 html +="<tr>";
                 html +="<th>企业名字</th>";
                 html +="<th>行业类型</th>";

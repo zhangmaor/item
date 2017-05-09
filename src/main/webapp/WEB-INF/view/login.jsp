@@ -92,6 +92,7 @@
 			<div id="top"></div>
 			<form:form action="${pageContext.request.contextPath}/login/commit" method="post">
 			<div id="content">
+				<p>${message}</p>
 				<div id="div1">
 					账号：<input type="text" placeholder="请输入账号" name="userPhone" /><form:errors path="userPhone" element="p" /><br>
 					密码：<input type="password" placeholder="请输入密码" name="userPwd" /><form:errors path="userPwd" element="p" />

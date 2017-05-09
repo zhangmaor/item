@@ -44,7 +44,7 @@
             <div class="article-list-1">
 							<span class="article-list-1-bigType">
 								<b>类型：</b>
-								<select name="" class="article-list-1-type">
+								<select name="" id="wzlx" class="article-list-1-type">
 									<option value="">请选择</option>
 								</select>
 							</span>
@@ -287,7 +287,23 @@
     });
 
 </script>
-
+<script>
+    $(function(){
+        $.ajax({
+            url : "<%=request.getContextPath()%>/aticle/getArtitTypeAll",
+            method : "get",
+            dataType : "json",
+            success : function(datas){
+                var html = "";
+                html += "<option value='0'>请选择</option>";
+                $.each(datas,function (index,data) {
+                    html += "<option value='"+data.rtitypeId+"'>"+data.artitypeName+"</option>"
+                });
+                $("#wzlx").html(html);
+            }
+        })
+    });
+</script>
 <%----%>
 <script>
     all();
@@ -303,17 +319,18 @@
                 console.log(result);
                 $.each(dataObj, function(index, item){
                     //console.log(item.articleStatus);
+                    var ix = index+1;
                     con += "<tr>";
-                    con += "<td>"+item.articleId+"</td>";
+                    con += "<td>"+ix+"</td>";
                     con += "<td>"+item.articleMtitle+"</td>";
                     con += "<td></td>";
                     con += "<td>"+item.articleAuthor+"</td>";
-                    con += "<td>"+item.articleType+"</td>";
+                    con += "<td>"+item.ezdarticleType.artitypeName+"</td>";
                     con += "<td>"+new Date(item.articleTime).toLocaleDateString()+"</td>";
                     con += "<td>1</td>";
-                    con += "<td>1</td>";
-                    con += "<td>1</td>";
-                    con += "<td>1</td>";
+                    con += "<td>"+item.ezdReadartis.length+"</td>";
+                    con += "<td>"+item.ezdPoints.length+"</td>";
+                    con += "<td>"+item.ezdSayarts.length+"</td>";
                     if(item.articleStatus==1){
                         v1="显示";
                         v2="隐藏";
@@ -386,7 +403,7 @@
                // console.log(result);
                 $.each(dataObj, function(index, item){
                     con += "<tr>";
-                    con += "<td>"+item.articleId+"</td>";
+                    con += "<td>"+index+"</td>";
                     con += "<td>"+item.articleMtitle+"</td>";
                     con += "<td></td>";
                     con += "<td>"+item.articleAuthor+"</td>";
@@ -424,9 +441,11 @@
                     var dataObj = result, //返回的result为json格式的数据
                         con = "";
                     //console.log(result);
+                    var ix = 0;
                     $.each(dataObj, function(index, item){
+                        ix++;
                         con += "<tr>";
-                        con += "<td>"+item.articleId+"</td>";
+                        con += "<td>"+ix+"</td>";
                         con += "<td>"+item.articleMtitle+"</td>";
                         con += "<td></td>";
                         con += "<td>"+item.articleAuthor+"</td>";

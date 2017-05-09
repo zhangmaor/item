@@ -1,6 +1,7 @@
 package com.ezd.controller;
 
 import com.ezd.model.EzdArticle;
+import com.ezd.model.EzdArtittype;
 import com.ezd.service.EzdArticleService;
 import com.ezd.utils.RandomName;
 import com.ezd.utils.Upload;
@@ -42,12 +43,13 @@ public class EzdAticleController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("路径1="+url);
-        System.out.println("路径2="+url2);
-        ezdArticle.setArticleLogo(url);
-        ezdArticle.setArticlePic(url2);
-        ezdArticle.setArticleTime(new Date());
-        boolean bl = ezdArticleService.insert(ezdArticle);
+        boolean bl =false;
+        if(url!=null){
+            ezdArticle.setArticleLogo(url);
+            ezdArticle.setArticlePic(url2);
+            ezdArticle.setArticleTime(new Date());
+             bl = ezdArticleService.insert(ezdArticle);
+        }
         HttpSession session = request.getSession();
         if(bl){
             session.setAttribute("articleResult",1);
@@ -130,6 +132,12 @@ public class EzdAticleController {
         boolean b = ezdArticleService.updateStatus(ezdArticle);
         return b;
     }
-
-
+        /* /aticle/getArtitTypeAll
+            * */
+    @RequestMapping(value = "/getArtitTypeAll",method = RequestMethod.GET)
+    @ResponseBody
+    public List<EzdArtittype> getType(){
+        List<EzdArtittype> artitTypeAll = ezdArticleService.getArtitTypeAll();
+        return artitTypeAll;
+    }
 }

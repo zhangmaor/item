@@ -20,7 +20,7 @@
               unews_user =  #{umgId}
           </if>
       </where>
-        ORDER BY unews_user ,unews_time DESC
+        ORDER BY unews_status  ,unews_time DESC
     </select>
     <!--查询当前用户中未读的消息条数-->
     <select id="getOne" resultMap="unews" parameterType="int">

@@ -10,6 +10,7 @@
 		<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 		<script src="${pageContext.request.contextPath}/js/bootstrap-paginator.js"></script>
 		<script src="${pageContext.request.contextPath}/js/jquery.nouislider.js"></script>
+		<script src="/js/getEnretCount.js" type="text/javascript"></script>
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/index.css" />
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/fa/css/font-awesome.css" />
@@ -70,11 +71,11 @@
 					<div class="right-body" id="one">
 						<div class="right-body-main">
 							<div class="main-1">
-								<span class="main-1-1">共发布实习11个</span>
+								<span class="main-1-1">共发布实习<font id="counts">11</font>个</span>
 								<span class="main-1-2">
-									<span class="main-1-2-1">0个正在审核</span>
-									<span class="main-1-2-1">3个正在招聘</span>
-									<span class="main-1-2-1">0个下架</span>
+									<span class="main-1-2-1"><font id="sh">1</font>个正在审核</span>
+									<span class="main-1-2-1"><font id="ks">3</font>个正在招聘</span>
+									<span class="main-1-2-1"><font id="xj">1</font>个下架</span>
 								</span>
 							</div>
 							
@@ -325,7 +326,17 @@
 
 
 	</script>
+<script>
+	$(function () {
+       // $("#sh").html();
+		getCount(1,1,$("#ks"));
+		getCount(1,2,$("#xj"));
+        getCount(1,3,$("#sh"));
 
+        getResultCount(1,$("#counts"));
+    });
+
+</script>
 
 	<%--获取最近报名用户的信息--%>
 	<script>

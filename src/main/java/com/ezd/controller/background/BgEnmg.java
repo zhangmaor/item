@@ -1,8 +1,9 @@
 package com.ezd.controller.background;
 
-import com.ezd.model.EzdEnmg;
-import com.ezd.model.EzdEntype;
-import com.ezd.model.EzdIndustry;
+import com.ezd.jackonInterface.BigretEnmgFilter;
+import com.ezd.jackonInterface.BigretFilterGetAll;
+import com.ezd.jackonInterface.EnmgEnretFilter;
+import com.ezd.model.*;
 import com.ezd.service.EzdEnmgService;
 import com.ezd.service.EzdIndustryService;
 import com.ezd.utils.RandomName;
@@ -66,10 +67,23 @@ public class BgEnmg {
      * @return
      */
     @RequestMapping(value = "/enmg",method = RequestMethod.GET)
-    @ResponseBody
-    public List<EzdEnmg> getEnmg() {
+    public void getEnmg(HttpServletResponse response) {
         List<EzdEnmg> all = ezdEnmgService.getAll();
-        return all;
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.addMixIn(EzdEnmg.class, BigretEnmgFilter.class);
+        mapper.addMixIn(EzdEnret.class, EnmgEnretFilter.class);
+        OutputStream outputStream = null;
+        try {
+            outputStream = response.getOutputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            mapper.writeValue(outputStream,all);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 
@@ -118,6 +132,9 @@ public class BgEnmg {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
+        }
+        if(url==null){
+            url = "/img/userDefault.png";
         }
         ezdEnmg.setEnmgLogo(url);
             boolean add = ezdEnmgService.add(ezdEnmg);

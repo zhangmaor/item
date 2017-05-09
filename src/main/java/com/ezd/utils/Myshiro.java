@@ -1,5 +1,7 @@
 package com.ezd.utils;
 
+import com.ezd.model.EzdPermission;
+import com.ezd.model.EzdRole;
 import com.ezd.model.EzdUsers;
 import com.ezd.service.EzdUserService;
 import org.apache.shiro.authc.*;
@@ -8,9 +10,6 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.stereotype.Service;
-import testDemo.model.TPermission;
-import testDemo.model.TRole;
-import testDemo.model.TUser;
 
 import javax.annotation.Resource;
 import java.util.HashSet;
@@ -29,7 +28,7 @@ public class Myshiro extends AuthorizingRealm {
         String userName=(String) principalCollection.fromRealm(getName()).iterator().next();
 
         //到数据库查是否有此对象
-        EzdUsers user= ezdUserService.getByPhone(userName)
+        EzdUsers user= ezdUserService.getByPhone(userName);
         System.out.println("this is AuthorizationInfo"+user);
 
         if(user!=null){
@@ -37,17 +36,17 @@ public class Myshiro extends AuthorizingRealm {
             SimpleAuthorizationInfo info=new SimpleAuthorizationInfo();
             //用户的角色集合
             Set<String> roles = new HashSet<String>();
-            for(TRole s : user.getRoles()){
-                roles.add(s.getName());
+            for(EzdRole s : user.getEzdRoles()){
+                roles.add(s.getRoleName());
             }
             info.setRoles(roles);
 
             //用户的角色对应的所有权限，如果只使用角色定义访问权限，下面的四行可以不要
-            List<TRole> roleList= user.getRoles();
-            for (TRole role : roleList) {
-                for(TPermission per : role.gettPermissions()){
-                    System.out.println("permission name ="+per.getPermissionName());
-                    info.addStringPermission(per.getPermissionName());
+            List<EzdRole> roleList= user.getEzdRoles();
+            for (EzdRole role : roleList) {
+                for(EzdPermission per : role.getEzdPermissions()){
+                    System.out.println("permission name ="+per.getPerName());
+                    info.addStringPermission(per.getPerName());
                 }
             }
 
@@ -63,6 +62,7 @@ public class Myshiro extends AuthorizingRealm {
      **/
 
 
+
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(
             AuthenticationToken authenticationToken) throws AuthenticationException {
@@ -71,11 +71,11 @@ public class Myshiro extends AuthorizingRealm {
         //查出是否有此用户
         System.out.println("this is AuthenticationInfo"+token.getUsername());
         System.out.println("this name is "+token.getUsername());
-       TUser user=userService.findUserByName(token.getUsername());
+        EzdUsers user= ezdUserService.getByPhone(token.getUsername());
 
         if(user!=null){
             //若存在，将此用户存放到登录认证info中
-            return new SimpleAuthenticationInfo(user.getName(), user.getPassword(), getName());
+            return new SimpleAuthenticationInfo(user.getUserPhone(), user.getUserPwd(), getName());
         }
         return null;
     }
