@@ -78,18 +78,18 @@
 
     <!--根据作者或者标题查询并按时间排序-->
     <select id="getOrAll" parameterType="com.ezd.model.EzdArticle" resultMap="article">
-        SELECT * FROM ezd_article WHERE article_author = #{articleAuthor} OR article_mtitle LIKE CONCAT('%','${articleMtitle}','%')  ORDER BY time DESC
+        SELECT * FROM ezd_article WHERE article_author = #{articleAuthor} OR article_mtitle LIKE CONCAT('%','${articleMtitle}','%')  ORDER BY times DESC
     </select>
 
     <!--根据状态查询并按时间排序-->
     <select id="getStatusAll" parameterType="int" resultMap="article">
-        SELECT * FROM ezd_article WHERE article_status = #{_parameter} ORDER BY time DESC
+        SELECT * FROM ezd_article WHERE article_status = #{_parameter} ORDER BY times DESC
     </select>
 
 
     <!--更改状态-->
     <update id="updateStatus" parameterType="com.ezd.model.EzdArticle" >
-        UPDATE ezd_article SET article_status = #{articleStatus} WHERE article_id = #{articleId} ORDER BY time DESC
+        UPDATE ezd_article SET article_status = #{articleStatus} WHERE article_id = #{articleId} ORDER BY times DESC
     </update>
 
     <!--根据编号查询-->

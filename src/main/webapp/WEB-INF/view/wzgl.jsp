@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -509,5 +510,15 @@
         $("#title").val("");
     }
 </script>
+<c:if test="${articleResult==1}">
+    <script>
+        $(function () {
+            alert("添加成功！！！！");
+        })
+    </script>
+</c:if>
+<%
+    session.removeAttribute("articleResult");
+%>
 
 </html>

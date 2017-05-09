@@ -21,12 +21,14 @@ public class RigisterValiddator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         EzdUsers ezdUsers = (EzdUsers) target;
+        System.out.println("是否经过此次验证！！！");
         //注册的时候判断手机号是否符合要求
         if(!PhoneValidators.isMobileNO(ezdUsers.getUserPhone())){
             errors.rejectValue("userPhone", null, "手机号码错误");
         }
         //密码不能为空
-        if (ezdUsers.getUserPwd().isEmpty() || ezdUsers.getUserPwd() == null) {
+        if (ezdUsers.getUserPwd().isEmpty() ||ezdUsers.getUserPwd().length()<=4 ) {
+            System.out.println("密码错误++++++++++++++++++++++++++");
             errors.rejectValue("userPwd", null, "密码不能为空");
         }
         }

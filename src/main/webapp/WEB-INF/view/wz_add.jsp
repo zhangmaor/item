@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +23,7 @@
 </div>
 <div class="right-body">
     <div class="right-body-main " style="height: 1200px;">
-        <form action="">
+        <form action="<%=request.getContextPath()%>/aticle/ajaxInsert" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-xs-2 text-right">*文章类型：</div>
                 <div class="col-xs-8">
@@ -34,14 +35,14 @@
             <div class="row">
                 <div class="col-xs-2 text-right">*标题：</div>
                 <div class="col-xs-8">
-                    <input type="text" id="bt" class="form-control">
+                    <input type="text" name="articleMtitle" id="bt" class="form-control">
                 </div>
             </div><br>
             <div class="row">
                 <div class="col-xs-2 text-right">*副标题(分享内容)：</div>
                 <div class="col-xs-8">
 
-                    <input type="text" id="fbt" class="form-control">
+                    <input type="text" name="articleStitle" id="fbt" class="form-control">
 
                 </div>
             </div><br>
@@ -49,7 +50,7 @@
                 <div class="col-xs-2 text-right">*作者：</div>
                 <div class="col-xs-8">
 
-                    <input type="text" id="author" class="form-control">
+                    <input type="text" name="articleAuthor" id="author" class="form-control">
 
                 </div>
             </div><br>
@@ -57,7 +58,7 @@
                 <div class="col-xs-2 text-right">*作者邮箱：</div>
                 <div class="col-xs-8">
 
-                    <input type="text" id="email" class="form-control">
+                    <input type="text" name="articleAuemail" id="email" class="form-control">
 
                 </div>
             </div><br>
@@ -65,7 +66,7 @@
                 <div class="col-xs-2 text-right">*关键字：</div>
                 <div class="col-xs-8">
 
-                    <input type="text" id="gjz" class="form-control">
+                    <input type="text" name="articleKeywords" id="gjz" class="form-control">
 
                 </div>
             </div><br>
@@ -73,8 +74,8 @@
                 <div class="col-xs-2 text-right">*显示状态：</div>
                 <div class="col-xs-2">
 
-                    <input type="radio" name="state" value="1">是&nbsp;&nbsp;&nbsp;
-                    <input type="radio" name="state" value="2">否
+                    <input type="radio" name="articleStatus" value="1">是&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="articleStatus" value="2">否
 
                 </div>
             </div><br>
@@ -98,7 +99,7 @@
                 <div class="col-xs-2 text-right">*文章封面图：</div>
                 <div class="col-xs-7">
                     <div class="input-group">
-                        <input type="file" id="logo">
+                        <input type="file" name="file" id="logo">
                     </div>
                 </div>
             </div><br>
@@ -106,7 +107,7 @@
                 <div class="col-xs-2 text-right">*文章分享图：</div>
                 <div class="col-xs-7">
                     <div class="input-group">
-                        <input type="file" id="share">
+                        <input type="file" name="file2" id="share">
                     </div>
                 </div>
             </div><br>
@@ -114,12 +115,12 @@
                 <div class="col-xs-2 text-right">*内容：</div>
                 <div class="col-xs-7">
                     <div class="input-group">
-                        <textarea id="myEditor" style="width:800px;height:300px;"></textarea>
+                        <textarea  name="articleContent" id="myEditor" style="width:800px;height:300px;"></textarea>
                     </div>
                 </div>
             </div><br>
             <div class="row text-center">
-                <button type="button" class="btn btn-primary" onclick="tj()">提交</button>
+                <button type="submit" class="btn btn-primary" >提交</button>
             </div>
 
 
@@ -172,5 +173,14 @@
         });
     }
 </script>
-
+<c:if test="${articleResult==0}">
+    <script>
+        $(function () {
+            alert("添加失败！！！！");
+        })
+    </script>
+    <%
+        session.removeAttribute("articleResult");
+    %>
+</c:if>
 </html>
