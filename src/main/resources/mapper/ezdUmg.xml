@@ -43,6 +43,14 @@
         SELECT * FROM ezd_umg WHERE umg_id = #{_parameter}
     </select>
 
+
+  <!--根据umg_id查询出个人信息和用户兼职记录信息   -->
+    <select id="getEzdUmgAll" parameterType="int" resultMap="umg">
+        SELECT * FROM ezd_umg, ezd_jobmg WHERE  umg_id =jobmg_user and umg_id = #{_parameter}
+    </select>
+
+
+
     <!--添加个人信息-->
     <insert id="insetUmg" parameterType="com.ezd.model.EzdUmg">
         inset into ezd_umg(umg_user,umg_photo,umg_name,umg_sex,umg_birthday

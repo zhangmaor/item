@@ -10,6 +10,7 @@ import com.ezd.service.EzdSchTypeService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -143,6 +144,15 @@ public class EzdEnretController {
         mapper.writeValue(outputStream,enretTypeAll);
     }
 
+
+
+
+    @RequestMapping(value = "/ajaxGetEnretTypeAll",method = RequestMethod.GET)
+    @ResponseBody
+    public List<EzdEnret> postEnretTypeAll(int retTypeId) throws Exception {
+        List<EzdEnret> enretTypeAll = ezdEnretService.getEnretTypeAll(retTypeId);
+        return enretTypeAll;
+    }
     /**
      * 根据工资的范围进行查询招聘信息
      * @param ezdEnret
@@ -240,5 +250,18 @@ public class EzdEnretController {
         List<EzdEnret> list = ezdEnretService.getTimeAll(retTypeId);
         return list;
     }
+
+    /**
+     * 根据用户ID查询用户信息
+     * @param umgId
+     * @return
+     */
+    @RequestMapping(value = "/ajaxGetUmg/{umgId}",method = RequestMethod.POST)
+    @ResponseBody
+    public List<EzdEnret> getUmgById(@PathVariable int umgId){
+        List<EzdEnret> list = ezdEnretService.getTimeAll(umgId);
+        return list;
+    }
+
 
 }

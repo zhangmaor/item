@@ -198,8 +198,9 @@ CREATE TABLE ezd_bigret(--  大招会信息表
 	bigret_status INT ,--  大招会状态(未开始  进行中 已结束)
 	bigret_creTime DATETIME DEFAULT CURRENT_TIMESTAMP,--  发布时间
 	bigret_detail TEXT  NOT NULL,--  大招会详情
-	enret_postOne INT,--  招聘岗位1
-	enret_postTwo INT ,--  招聘岗位2
+
+	bigret_postOne int,--  招聘岗位1
+	bigret_postTwo int ,--  招聘岗位2
 	bigret_enmg INT --   哪家公司发布的
 	
 )ENGINE=INNODB DEFAULT CHARSET=utf8;

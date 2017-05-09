@@ -13,19 +13,6 @@ public class EzdPoint {
     private EzdArticle ezdArticle;// references ezd_article(article_id)
     private EzdUmg ezdUmg;//references ezd_umg(umg_id)
 
-    @Override
-    public String toString() {
-        return "EzdPoint{" +
-                "pointId=" + pointId +
-                ", pointArticle=" + pointArticle +
-                ", pointUmg=" + pointUmg +
-                ", pointTouser=" + pointTouser +
-                ", pointStatus=" + pointStatus +
-                ", ezdArticle=" + ezdArticle +
-                ", ezdUmg=" + ezdUmg +
-                '}';
-    }
-
     public int getPointId() {
         return pointId;
     }
@@ -82,7 +69,16 @@ public class EzdPoint {
         this.ezdUmg = ezdUmg;
     }
 
-    public EzdPoint() {
-
+    @Override
+    public String toString() {
+        return "EzdPoint{" +
+                "pointId=" + pointId +
+                ", pointArticle=" + pointArticle +
+                ", pointUmg=" + pointUmg +
+                ", pointTouser=" + pointTouser +
+                ", pointStatus=" + pointStatus +
+                ", ezdArticle=" + ezdArticle +
+                ", ezdUmg=" + ezdUmg +
+                '}';
     }
 }

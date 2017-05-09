@@ -15,7 +15,7 @@ public interface EzdPointDao {
     //取消点赞
     public int update(EzdPoint ezdPoint);
     //查询点赞数量
-    public List<EzdPoint> getEzdPointCount(EzdArticle ezdArticle);
+    public List<EzdPoint> getEzdPointCount(int ezdArticleId);
     //用于判断用户是否已经点过赞
     public int isThere(EzdPoint ezdPoint);
 }

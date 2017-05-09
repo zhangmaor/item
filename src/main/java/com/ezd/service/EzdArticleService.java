@@ -82,7 +82,7 @@ public class EzdArticleService {
        for (EzdArticle li :list) {
             List<EzdReadarti> count = ezdReadartiDao.getCount(li);
             List<EzdSayart> ezdSayartAll = ezdSayartDao.getEzdSayartAll(li);
-            List<EzdPoint> ezdPointCount = ezdPointDao.getEzdPointCount(li);
+            List<EzdPoint> ezdPointCount = ezdPointDao.getEzdPointCount(li.getArticleId());
             li.setEzdReadartis(count);
             li.setEzdSayarts(ezdSayartAll);
             li.setEzdPoints(ezdPointCount);
@@ -99,7 +99,7 @@ public class EzdArticleService {
         for (EzdArticle li :list) {
             List<EzdReadarti> count = ezdReadartiDao.getCount(li);
             List<EzdSayart> ezdSayartAll = ezdSayartDao.getEzdSayartAll(li);
-            List<EzdPoint> ezdPointCount = ezdPointDao.getEzdPointCount(li);
+            List<EzdPoint> ezdPointCount = ezdPointDao.getEzdPointCount(li.getArticleId());
             li.setEzdReadartis(count);
             li.setEzdSayarts(ezdSayartAll);
             li.setEzdPoints(ezdPointCount);
@@ -113,7 +113,7 @@ public class EzdArticleService {
         for (EzdArticle li :statusAll) {
             List<EzdReadarti> count = ezdReadartiDao.getCount(li);
             List<EzdSayart> ezdSayartAll = ezdSayartDao.getEzdSayartAll(li);
-            List<EzdPoint> ezdPointCount = ezdPointDao.getEzdPointCount(li);
+            List<EzdPoint> ezdPointCount = ezdPointDao.getEzdPointCount(li.getArticleId());
             li.setEzdReadartis(count);
             li.setEzdSayarts(ezdSayartAll);
             li.setEzdPoints(ezdPointCount);

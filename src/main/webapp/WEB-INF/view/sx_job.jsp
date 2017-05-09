@@ -36,7 +36,7 @@
             <th>工作岗位</th>
             <th>学历要求</th>
             <th>招聘人数</th>
-            <th>性别要求</th>
+            <th>招聘类型</th>
             <th>薪资</th>
             <th>状态</th>
             <th>操作</th>
@@ -371,12 +371,14 @@
                     console.log(dataObj);
                 $.each(dataObj, function (index, item) {
                    if(item.ezdEnmg!=null) {
+                       var type =  item.enretType ==1?"实习":"全职";
+
                        con += "<tr>";
                        con += "<td>" + item.ezdEnmg.enmgName + "</td>";
                        con += "<td>" + item.ezdPostTwo.ptwoName + "</td>";
                        con += "<td>" + item.enretDemand + "</td>";
                        con += "<td>" + item.enretWantNum + "</td>";
-                       con += "<td>" + item.enretWantNum + "</td>";
+                       con += "<td>" + type+ "</td>";
                        con += "<td>" + item.enretLwMoney + "K~" + item.enretHgMoney + "K</td>";
                        con += "<td><span class='label label-warning'>在招</span></td>";
                        con += "<td><button type='button' class='btn btn-primary' onclick='xg(this)' value='" + item.enretId + "' data-toggle='modal' data-target='#update_sx'>修改</button>" +
@@ -483,7 +485,6 @@
                 //console.log(dataObj);
                 con += "<option>请选择</option>";
                 $.each(dataObj, function (index, item) {
-
                     con += "<option value='" + item.poneId + "' id='" + item.poneId + "'>" + item.poneName + "</option>";
                 });
 

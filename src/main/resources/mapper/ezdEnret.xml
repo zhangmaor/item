@@ -65,7 +65,7 @@
         SELECT * FROM (SELECT COUNT(*) numbers,t.* FROM ezd_enret e1,ezd_enret_browse e2 WHERE e2.browse_en = e1.enret_id GROUP BY e2.browse_en) f ORDER BY f.numbers DESC
     </select>
 
-    <!--根据id更改招聘信息-->
+    <!--根据企业id更改招聘信息-->
     <update id="update" parameterType="com.ezd.model.EzdEnret" >
         UPDATE ezd_enret SET
           enret_wantNum = #{enretWantNum},

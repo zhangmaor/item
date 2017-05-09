@@ -91,8 +91,8 @@
 								</div>
 							</div>
 								
-							<div class="col-xs-4 text-center" onclick="info()">
-								<div class="btn" data-toggle="modal" data-target="#sxjl">
+							<div class="col-xs-4 text-center" >
+								<div class="btn" >
 									<div class="pull-left">
 										<i class="icon-eye-open"></i>
 									</div>
@@ -140,7 +140,7 @@
 		</div>
 		<!-- 
 			
-			实习简历 (模态框)Modal 
+			实习简历 (模态框)Modal
 								
 								-->
 		<div class="modal fade" id="sxjl" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
@@ -155,7 +155,7 @@
 					<tr>
 		    			<td>
 		    				<div style="width: 60px; height: 60px;margin: auto;">
-		    					<img src="${pageContext.request.contextPath}/img/QQ图片20170308195953.jpg" style="width: 100%;height: 100%;border-radius: 50px;">
+		    					<img src="${pageContext.request.contextPath}/img/logo.png" style="width: 100%;height: 100%;border-radius: 50px;" />
 		    				</div>
 		    			</td>
 		    		</tr>
@@ -249,9 +249,11 @@
                     $.each(dataObj, function(index, item){
                       	//console.log(item);
                         $.each(item.ezdErlenrets, function(index1, item1) {
+                            var umgId =item1.ezdUmg.umgId ;
+                            console.log("id++++"+umgId)
                            // console.log(item1);
-                            con += "<tr>";
-                            con += "<td><img src='/img/qq.jpg' style='width: 20px;height: 20px;'></td>";
+                            con += "<tr  data-toggle='modal' data-target='#sxjl' onclick='info("+umgId+")'>";
+                            con += "<td><img src='${pageContext.request.contextPath}/img/logo.png' style='width: 20px;height: 20px;'></td>";
                             con += "<td>" + item1.ezdEnret.ezdPostTwo.ptwoName + "</td>";
                             con += "<td>" + item1.ezdUmg.umgName + "</td>";
                             con += "<td>" + item1.ezdUmg.umgUser.userPhone + "</td>";
@@ -321,17 +323,17 @@
 		})
 		
 
-		
+
 	</script>
 
 
 	<%--获取最近报名用户的信息--%>
 	<script>
-        function info(){
-            $.ajax({
+        function info(umgId){
+            alert(umgId);
+           $.ajax({
                 type: "post", //请求的方式，也有get请求
-                url: "<%=request.getContextPath()%>/enret/ajaxGetTimeAll", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
-                data:"retTypeId="+1,
+                url: "<%=request.getContextPath()%>/enret/ajaxGetUmg/{"+umgId+"}", //请求地址，后台提供的,根据用户的ID查询用户信息
                 dataType: "json", //json格式，后台返回的数据为json格式的。
                 success: function(result){
 
@@ -347,7 +349,7 @@
                     });
 
                 }
-            })
+            });
         }
 	</script>
 	<c:if test="${redreticPoin!=null}">
