@@ -19,6 +19,7 @@ public interface EzdUsersDao {
     //根据user_id获取一个用户信息
     public EzdUsers getEzdUsersAll(int userId);
 
+
     /*获取一个用户信息*/
     public EzdUsers getAll(EzdUsers ezdUsers);
     public Integer getCount(EzdUsers ezdUsers);

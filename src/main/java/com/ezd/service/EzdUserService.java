@@ -40,4 +40,10 @@ public class EzdUserService {
     public int checkUser(String userPhone){
         return ezdUsersDao.checkUser(userPhone);
     }
+
+    //根据umgId获取user的信息
+    public EzdUsers getUsers(int id){
+       return ezdUsersDao.getEzdUsersAll(id);
+    }
+
 }

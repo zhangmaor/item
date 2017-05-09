@@ -34,7 +34,7 @@ CREATE TABLE ezd_umg(--  用户信息表 5
 	umg_user INT ,--   引用用户的主键
 	umg_photo VARCHAR(50),--  头像
 	umg_name  VARCHAR(20),--  姓名
-	umg_sex VARCHAR(10)  ,
+	umg_sex VARCHAR(10)  , -- 姓别
 	umg_birthday Datetime ,--  生日
 	umg_email VARCHAR(20),--  邮箱
 	umg_school VARCHAR(20),--  学校
@@ -42,6 +42,10 @@ CREATE TABLE ezd_umg(--  用户信息表 5
 	umg_degree VARCHAR(20),--  学历
 	umg_sayMf VARCHAR(500),--  自我评价
 	umg_education VARCHAR(200),--  教育经历
+	umg_address varchar(100), -- 家庭地址
+	umg_idCard1 varchar(100), -- 省份证 正面地址
+	umg_idCard2 varchar(100), -- 省份证 背面地址
+	umg_status int default 0, -- 是否实名 1 已实名认证  0 未认证
 	umg_uptime TIMESTAMP DEFAULT CURRENT_TIMESTAMP --  修改时间
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 CREATE TABLE ezd_role_user(--  用户角色关系表
@@ -270,8 +274,6 @@ CREATE TABLE ezd_sayart(--  文章评论
 	sayart_time Datetime DEFAULT CURRENT_TIMESTAMP
 	
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
-
-
 
 CREATE TABLE ezd_point(--  点赞信息表
 	point_id INT PRIMARY KEY AUTO_INCREMENT,

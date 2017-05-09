@@ -92,7 +92,7 @@
 							</div>
 								
 							<div class="col-xs-4 text-center" >
-								<div class="btn" >
+								<div class="btn"  data-toggle='modal' data-target='#sxjl' id="tankuang">
 									<div class="pull-left">
 										<i class="icon-eye-open"></i>
 									</div>
@@ -155,33 +155,33 @@
 					<tr>
 		    			<td>
 		    				<div style="width: 60px; height: 60px;margin: auto;">
-		    					<img src="${pageContext.request.contextPath}/img/logo.png" style="width: 100%;height: 100%;border-radius: 50px;" />
+		    					<img src="${pageContext.request.contextPath}/img/logo.png" style="width: 100%;height: 100%;border-radius: 50px;" id="uphoto"/>
 		    				</div>
 		    			</td>
 		    		</tr>
 		    		<tr>
 		    			<td>
-		    				<span>13425520042JCH</span>&nbsp;
-		    				<span>未实名认证</span>&nbsp;
+		    				<span id="uname">13425520042JCH</span>&nbsp;
+		    				<span id="ustatus">未实名认证</span>&nbsp;
 		    			</td>
 		    		</tr>
 		    		<tr>
 		    			<td>
-		    				<span>女</span>&nbsp;
-		    				<span>未知</span>&nbsp;
-		    				<span>专科</span>&nbsp;
-		    				<span>珠海</span>
+		    				<span id="usex">女</span>&nbsp;
+		    				<span id="uschool">未知</span>&nbsp;
+		    				<span id="udegree">专科</span>&nbsp;
+		    				<span id="uaddress">珠海</span>
 		    			</td>
 		    		</tr>
 		    		<tr>
 		    			<td>
-		    				<span>国际贸易与实务</span>
+		    				<span id="umajor">国际贸易与实务</span>
 		    			</td>
 		    		</tr>
 		    		<tr>
 		    			<td>
-		    				<span>13425520042</span>
-		    				<span>790847005@qq.com</span>
+		    				<span id="uphone">13425520042</span>
+		    				<span id="uemail">790847005@qq.com</span>
 		    			</td>
 		    		</tr>
 		    		<tr>
@@ -192,7 +192,7 @@
 		    		</tr>
 		    		<tr>
 		    			<td class="text-left">
-		    				<span>2008年9-2011年6 实验中学 2011年9-2014 濠头中学 2014年9-至今 广东工商职业学院 专科-国际贸易与实务</span>
+		    				<span id="ueducation">2008年9-2011年6 实验中学 2011年9-2014 濠头中学 2014年9-至今 广东工商职业学院 专科-国际贸易与实务</span>
 		    			</td>
 		    		</tr>
 		    		<tr>
@@ -251,9 +251,9 @@
                       	//console.log(item);
                         $.each(item.ezdErlenrets, function(index1, item1) {
                             var umgId =item1.ezdUmg.umgId ;
-                            console.log("id++++"+umgId)
-                           // console.log(item1);
-                            con += "<tr  data-toggle='modal' data-target='#sxjl' onclick='info("+umgId+")'>";
+                           /* console.log("id++++"+umgId)*/
+                            console.log(item1);
+                            con += "<tr onclick='info("+umgId+")'>";
                             con += "<td><img src='${pageContext.request.contextPath}/img/logo.png' style='width: 20px;height: 20px;'></td>";
                             con += "<td>" + item1.ezdEnret.ezdPostTwo.ptwoName + "</td>";
                             con += "<td>" + item1.ezdUmg.umgName + "</td>";
@@ -328,25 +328,32 @@
 	<%--获取最近报名用户的信息--%>
 	<script>
         function info(umgId){
-            alert(umgId);
+            console.log("this is umgId="+umgId);
+
+
            $.ajax({
-                type: "post", //请求的方式，也有get请求
-                url: "<%=request.getContextPath()%>/enret/ajaxGetUmg/{"+umgId+"}", //请求地址，后台提供的,根据用户的ID查询用户信息
+                type: "GET", //请求的方式，也有get请求
+                url: "<%=request.getContextPath()%>/enret/ajaxGetUmg/"+umgId, //请求地址，后台提供的,根据用户的ID查询用户信息
                 dataType: "json", //json格式，后台返回的数据为json格式的。
                 success: function(result){
+                   console.log(result);
+                    $("#uname").text(result.umgName);
+                    $("#usex").text(result.umgSex);
+                    $("#umajor").text(result.umgMajor);
+                    $("#udegree").text(result.umgDegree);
+                    $("#uschool").text(result.umgSchool);
+                    $("#ueducation").text(result.umgEducation);
+                    $("#ustatus").text(result.umgStatus==0?'未实名':'已实名' );
+                    $("#uaddress").text(result.umgAddress);
+                    $("#uphone").text(result.umgUser.userPhone);
+                    $("#uemail").text(result.umgEmail);
+                    $("#uphoto").attr("src","${pageContext.request.contextPath}/img/"+result.umgPhoto);
 
-                    var dataObj = result, //返回的result为json格式的数据
-                        con = "";
-                    console.log(dataObj);
-                    $.each(dataObj, function(index, item){
-
-                        $.each(item.ezdErlenrets, function(index1, item1) {
-                            console.log(item1);
-
-                        });
-                    });
-
-                }
+					$("#tankuang").click();
+                },
+			   error:function(){
+                    alert("error");
+			   }
             });
         }
 	</script>

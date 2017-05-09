@@ -12,7 +12,6 @@ import java.util.List;
 public class EzdUmg {
 
     private int umgId;
-    private EzdUsers umgUser; //references ezd_users(user_id),-- 引用用户的主键
     private String umgPhoto ;//头像
     private String umgName  ;//姓名
     private String umgSex ; //性别
@@ -23,9 +22,13 @@ public class EzdUmg {
     private String umgDegree ;//学历
     private String umgSayMf ;//自我评价
     private String umgEducation ;//教育经历
+    private String umgAddress; //家庭地址
     private Date umgUptime ; //修改时间
+    private String umgIdCard1; // 用户身份证正面
+    private String umgIdCard2; // 用户身份证背面
+    private int umgStatus; // 用户的状态  1已认证 0 未认证
     private int userId; // 用户表的Id
-    private List<EzdJobmg> ezdJobmgs; //用户兼职信息表
+    private EzdUsers umgUser; //references ezd_users(user_id),-- 引用用户的主键
     private List<EzdEnmg> ezdEnmgs;//关注的公司
     private List<EzdUnews> ezdUnewss ;//收到的信息（消息
     private List<EzdErlenret> ezdErlenrets;//对应的报名信息表
@@ -35,12 +38,36 @@ public class EzdUmg {
     private List<EzdReadarti> ezdReadartis;//本用户阅读了那些文章
 
 
-    public List<EzdJobmg> getEzdJobmgs() {
-        return ezdJobmgs;
+    public String getUmgIdCard1() {
+        return umgIdCard1;
     }
 
-    public void setEzdJobmgs(List<EzdJobmg> ezdJobmgs) {
-        this.ezdJobmgs = ezdJobmgs;
+    public void setUmgIdCard1(String umgIdCard1) {
+        this.umgIdCard1 = umgIdCard1;
+    }
+
+    public String getUmgIdCard2() {
+        return umgIdCard2;
+    }
+
+    public void setUmgIdCard2(String umgIdCard2) {
+        this.umgIdCard2 = umgIdCard2;
+    }
+
+    public int getUmgStatus() {
+        return umgStatus;
+    }
+
+    public void setUmgStatus(int umgStatus) {
+        this.umgStatus = umgStatus;
+    }
+
+    public String getUmgAddress() {
+        return umgAddress;
+    }
+
+    public void setUmgAddress(String umgAddress) {
+        this.umgAddress = umgAddress;
     }
 
     public int getUmgId() {

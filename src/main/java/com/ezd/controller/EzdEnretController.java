@@ -1,13 +1,10 @@
 package com.ezd.controller;
 
-import com.ezd.model.EzdBigret;
-import com.ezd.model.EzdEnmg;
-import com.ezd.model.EzdEnret;
-import com.ezd.model.EzdRetType;
+import com.ezd.model.*;
 import com.ezd.service.EzdBigretService;
-import com.ezd.model.EzdSchtype;
 import com.ezd.service.EzdEnretService;
 import com.ezd.service.EzdSchTypeService;
+import com.ezd.service.EzdUmgService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,6 +29,8 @@ public class EzdEnretController {
     private EzdBigretService ezdBigretService;
     @Resource
     private EzdSchTypeService schTypeService;
+    @Resource
+    private EzdUmgService ezdUmgService;
 
 
     @RequestMapping("/index")
@@ -251,9 +250,18 @@ public class EzdEnretController {
      */
     @RequestMapping(value = "/ajaxGetUmg/{umgId}",method = RequestMethod.POST)
     @ResponseBody
-    public List<EzdEnret> getUmgById(@PathVariable int umgId){
-        List<EzdEnret> list = ezdEnretService.getTimeAll(umgId);
-        return list;
+    public EzdUmg getUmgById(@PathVariable int umgId){
+        EzdUmg ezdUmg =  ezdUmgService.getUmgById(umgId);
+        System.out.println(" ezdEnretCOntroller   getUmgById    ++++  "+ezdUmg);
+        return ezdUmg;
+    }
+
+    @RequestMapping(value = "/ajaxGetUmg/{umgId}",method = RequestMethod.GET)
+    @ResponseBody
+    public EzdUmg postUmgById(@PathVariable int umgId){
+        EzdUmg ezdUmg =  ezdUmgService.getUmgById(umgId);
+        System.out.println(" ezdEnretCOntroller   getUmgById    ++++  "+ezdUmg);
+        return ezdUmg;
     }
 
 
