@@ -16,7 +16,7 @@
         <result column="article_content" property="articleContent"/><!--文章内容-->
         <result column="article_keywords" property="articleKeywords"/><!--文章关键字-->
         <result column="article_status" property="articleStatus"/><!--文章状态-->
-        <result column="time" property="articleTime"/><!--文章状态-->
+        <result column="times" property="articleTime"/><!--文章状态-->
         <association property="ezdarticleType" resultMap="com.ezd.dao.EzdArtittypeDao.artittype"/><!--文章类型-->
         <collection property="ezdReadartis" resultMap="com.ezd.dao.EzdReadartiDao.readarti"/><!--阅读本文章的信息-->
         <collection property="ezdSayarts" resultMap="com.ezd.dao.EzdSayartDao.sayart" /><!--这篇文章之下的评论-->
@@ -73,7 +73,7 @@
 
     <!--查询文章并按时间排序-->
     <select id="getArticleAll" resultMap="article">
-        SELECT * FROM ezd_article ORDER BY time DESC
+        SELECT * FROM ezd_article ORDER BY times DESC
     </select>
 
     <!--根据作者或者标题查询并按时间排序-->

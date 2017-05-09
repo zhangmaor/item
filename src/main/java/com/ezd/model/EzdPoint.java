@@ -8,8 +8,8 @@ public class EzdPoint {
     private int pointId;
     private int pointArticle;// references ezd_article(article_id)
     private int pointUmg;//references ezd_umg(umg_id)
-    private int pintTouser;//为其他用户点赞
-    private int poingStatus; //状态 0 1
+    private int pointTouser;//为其他用户点赞
+    private int pointStatus; //状态 0 1
     private EzdArticle ezdArticle;// references ezd_article(article_id)
     private EzdUmg ezdUmg;//references ezd_umg(umg_id)
 
@@ -37,20 +37,20 @@ public class EzdPoint {
         this.pointUmg = pointUmg;
     }
 
-    public int getPintTouser() {
-        return pintTouser;
+    public int getPointTouser() {
+        return pointTouser;
     }
 
-    public void setPintTouser(int pintTouser) {
-        this.pintTouser = pintTouser;
+    public void setPointTouser(int pointTouser) {
+        this.pointTouser = pointTouser;
     }
 
-    public int getPoingStatus() {
-        return poingStatus;
+    public int getPointStatus() {
+        return pointStatus;
     }
 
-    public void setPoingStatus(int poingStatus) {
-        this.poingStatus = poingStatus;
+    public void setPointStatus(int pointStatus) {
+        this.pointStatus = pointStatus;
     }
 
     public EzdArticle getEzdArticle() {
@@ -72,11 +72,11 @@ public class EzdPoint {
     @Override
     public String toString() {
         return "EzdPoint{" +
-                "pintId=" + pointId +
+                "pointId=" + pointId +
                 ", pointArticle=" + pointArticle +
                 ", pointUmg=" + pointUmg +
-                ", pintTouser=" + pintTouser +
-                ", poingStatus=" + poingStatus +
+                ", pointTouser=" + pointTouser +
+                ", pointStatus=" + pointStatus +
                 ", ezdArticle=" + ezdArticle +
                 ", ezdUmg=" + ezdUmg +
                 '}';

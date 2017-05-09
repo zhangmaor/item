@@ -37,7 +37,7 @@
             <th>学历要求</th>
             <th>经验要求</th>
             <th>招聘人数</th>
-            <th>性别要求</th>
+            <th>招聘类型</th>
             <th>薪资</th>
             <th>状态</th>
             <th>操作</th>
@@ -48,8 +48,6 @@
         </table>
     </div>
 </div>
-
-
 
 
 <!--
@@ -353,13 +351,11 @@
 </div>
 
 
-
-
 </body>
 
 <script>
-    $(function(){
-        $("#qz_gl").on("click",function(){
+    $(function () {
+        $("#qz_gl").on("click", function () {
             $(".right-center").load("<%=request.getContextPath()%>/enret/qzgl");
         });
     })
@@ -375,21 +371,25 @@
             data: "retTypeId=" + 2,
             dataType: "json", //json格式，后台返回的数据为json格式的。
             success: function (result) {
-                var dataObj = result, //返回的result为json格式的数据
+                var dataObj = result; //返回的result为json格式的数据
+
                     con = "";
                 $.each(dataObj, function (index, item) {
-                    con += "<tr>";
-                    con += "<td>" + item.ezdEnmg.enmgName + "</td>";
-                    con += "<td>" + item.ezdPostTwo.ptwoName + "</td>";
-                    con += "<td>" + item.enretDemand + "</td>";
-                    con += "<td>" + item.enretDemand + "</td>";
-                    con += "<td>" + item.enretWantNum + "</td>";
-                    con += "<td>" + item.enretWantNum + "</td>";
-                    con += "<td>" + item.enretLwMoney + "-" + item.enretHgMoney + "</td>";
-                    con += "<td><span class='label label-warning'>停招</span></td>";
-                    con += "<td><button type='button' class='btn btn-primary' onclick='xg(this)' value='"+item.enretId+"' data-toggle='modal' data-target='#update_qz'>修改</button>" +
-                        "<button type='button' value='" + item.enretId + "' class='btn btn-danger' data-toggle='modal' onclick='a.value=this.value' data-target='#del_qz'>删除</button></td>";
-                    con += "</tr>";
+                    if (item.ezdEnmg != null) {
+                        var type =  item.enretType ==1?"实习":"全职";
+                        con += "<tr>";
+                        con += "<td>" + item.ezdEnmg.enmgName + "</td>";
+                        con += "<td>" + item.ezdPostTwo.ptwoName + "</td>";
+                        con += "<td>" + item.enretDemand + "</td>";
+                        con += "<td>" + item.enretDemand + "</td>";
+                        con += "<td>" + item.enretWantNum + "</td>";
+                        con += "<td>" + type + "</td>";
+                        con += "<td>" + item.enretLwMoney + "-" + item.enretHgMoney + "</td>";
+                        con += "<td><span class='label label-warning'>停招</span></td>";
+                        con += "<td><button type='button' class='btn btn-primary' onclick='xg(this)' value='" + item.enretId + "' data-toggle='modal' data-target='#update_qz'>修改</button>" +
+                            "<button type='button' value='" + item.enretId + "' class='btn btn-danger' data-toggle='modal' onclick='a.value=this.value' data-target='#del_qz'>删除</button></td>";
+                        con += "</tr>";
+                    }
                 });
 
                 $("#qzgw").html(con); //把内容入到这个div中即完成
@@ -448,29 +448,33 @@
 <%--二级岗位级联--%>
 <script>
     function gradeChange() {
-        $.ajax({
-            type: "post", //请求的方式，也有get请求
-            url: "<%=request.getContextPath()%>/post/ajaxGetPostTwo", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
-            data: "pone_id=" + $("#yjgw").val(),
-            dataType: "json", //json格式，后台返回的数据为json格式的。
-            success: function (result) {
-                var dataObj = result, //返回的result为json格式的数据
-                    con = "";
-                //console.log(dataObj);
-                $.each(dataObj, function (index, item) {
+        alert("aaaa=" + $("#yjgw").val());
+        if ($("#yjgw").val() != "") {
+            $.ajax({
+                method: "get", //请求的方式，也有get请求
+                url: "<%=request.getContextPath()%>/post/ajaxGetPostTwo", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
+                data: "pone_id=" + $("#yjgw").val(),
+                dataType: "json", //json格式，后台返回的数据为json格式的。
+                success: function (result) {
+                    var dataObj = result, //返回的result为json格式的数据
+                        con = "";
+                    //console.log(dataObj);
+                    $.each(dataObj, function (index, item) {
 
-                    con += "<option value='" + item.ptwoId + "'>" + item.ptwoName + "</option>";
-                });
+                        con += "<option value='" + item.ptwoId + "'>" + item.ptwoName + "</option>";
+                    });
 
-                $("#ejgw").html(con); //把内容入到这个div中即完成
-            }
-        })
+                    $("#ejgw").html(con); //把内容入到这个div中即完成
+                }
+            })
+        }
     }
 </script>
 
 <%--修改一级岗位级联--%>
 <script>
     $(function () {
+
         $.ajax({
             type: "get", //请求的方式，也有get请求
             url: "<%=request.getContextPath()%>/post/ajaxFindPostOne", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
@@ -494,23 +498,26 @@
 <%--修改二级岗位级联--%>
 <script>
     $(function gradeChanges() {
-        $.ajax({
-            type: "post", //请求的方式，也有get请求
-            url: "<%=request.getContextPath()%>/post/ajaxGetPostTwo", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
-            data: "pone_id=" + $("#xgyjgw").val(),
-            dataType: "json", //json格式，后台返回的数据为json格式的。
-            success: function (result) {
-                var dataObj = result, //返回的result为json格式的数据
-                    con = "";
-                //console.log(dataObj);
-                $.each(dataObj, function (index, item) {
+        if ($("#xgyjgw").val()!="") {
+            alert("bbbbbb="+$("#xgyjgw").val());
+            $.ajax({
+                method: "get", //请求的方式，也有get请求
+                url: "<%=request.getContextPath()%>/post/ajaxGetPostTwo", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
+                data: "pone_id=" + $("#xgyjgw").val(),
+                dataType: "json", //json格式，后台返回的数据为json格式的。
+                success: function (result) {
+                    var dataObj = result, //返回的result为json格式的数据
+                        con = "";
+                    //console.log(dataObj);
+                    $.each(dataObj, function (index, item) {
 
-                    con += "<option value='" + item.ptwoId + "'>" + item.ptwoName + "</option>";
-                });
+                        con += "<option value='" + item.ptwoId + "'>" + item.ptwoName + "</option>";
+                    });
 
-                $("#xgejgw").html(con); //把内容入到这个div中即完成
-            }
-        })
+                    $("#xgejgw").html(con); //把内容入到这个div中即完成
+                }
+            })
+        }
     })
 </script>
 
@@ -575,8 +582,9 @@
             success: function (result) {
                 //console.log(result);
                 $("#xgqy").val(result.nretEnmg);
-                $("#xgyjgw").val(result.enretPostOne);/*
-                $("#xgejgw").val(result.enretPostTwo);*/
+                $("#xgyjgw").val(result.enretPostOne);
+                /*
+                 $("#xgejgw").val(result.enretPostTwo);*/
 
             }
         })
@@ -590,14 +598,14 @@
             type: "post", //请求的方式，也有get请求
             url: "<%=request.getContextPath()%>/enret/update", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
             data: {
-                enretId         : $("#tjxg").val(),
-                enretPostOne    : $("#xgyjgw").val() == "" ? 0 : $("#xgyjgw").val(),
-                enretPostTwo    : $("#xgejgw").val() == "" ? 0 : $("#xgejgw").val(),
-                enretLwMoney    : $("#zdxz").val() == "" ? 0    : $("#zdxz").val(),
-                enretHgMoney    : $("#zgxz").val() == "" ? 0    : $("#zgxz").val(),
-                enretWantNum    : $("#rs").val() == "" ? 0 : $("#rs").val(),
-                enretDemand     : $("#xl").val() + "" + $("#gz").val(),
-                enretPg         : $("#fl").val() == "" ? null   : $("#fl").val(),
+                enretId: $("#tjxg").val(),
+                enretPostOne: $("#xgyjgw").val() == "" ? 0 : $("#xgyjgw").val(),
+                enretPostTwo: $("#xgejgw").val() == "" ? 0 : $("#xgejgw").val(),
+                enretLwMoney: $("#zdxz").val() == "" ? 0 : $("#zdxz").val(),
+                enretHgMoney: $("#zgxz").val() == "" ? 0 : $("#zgxz").val(),
+                enretWantNum: $("#rs").val() == "" ? 0 : $("#rs").val(),
+                enretDemand: $("#xl").val() + "" + $("#gz").val(),
+                enretPg: $("#fl").val() == "" ? null : $("#fl").val(),
                 enretStatus: 1
             },
             dataType: "json", //json格式，后台返回的数据为json格式的。

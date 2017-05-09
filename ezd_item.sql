@@ -248,7 +248,7 @@ CREATE TABLE ezd_article(--  文章信息表
 	article_pic VARCHAR(50),--  文章分享图
 	article_content TEXT NOT NULL,--  文章内容
 	article_keywords VARCHAR(50),--  文章关键字
-	TIME Datetime DEFAULT CURRENT_TIMESTAMP ,-- 时间
+	TIMEs Datetime DEFAULT CURRENT_TIMESTAMP ,-- 时间
 	article_status INT  NOT NULL --  文章状态（显示 影藏）
 	
 	

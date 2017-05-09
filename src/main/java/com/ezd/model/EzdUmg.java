@@ -25,6 +25,7 @@ public class EzdUmg {
     private String umgEducation ;//教育经历
     private Date umgUptime ; //修改时间
     private int userId; // 用户表的Id
+    private List<EzdJobmg> ezdJobmgs; //用户兼职信息表
     private List<EzdEnmg> ezdEnmgs;//关注的公司
     private List<EzdUnews> ezdUnewss ;//收到的信息（消息
     private List<EzdErlenret> ezdErlenrets;//对应的报名信息表
@@ -33,6 +34,14 @@ public class EzdUmg {
     private List<EzdErlschret> ezdErlschrets;//本用户报名了那个校招会
     private List<EzdReadarti> ezdReadartis;//本用户阅读了那些文章
 
+
+    public List<EzdJobmg> getEzdJobmgs() {
+        return ezdJobmgs;
+    }
+
+    public void setEzdJobmgs(List<EzdJobmg> ezdJobmgs) {
+        this.ezdJobmgs = ezdJobmgs;
+    }
 
     public int getUmgId() {
         return umgId;
