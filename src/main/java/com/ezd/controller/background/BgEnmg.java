@@ -127,7 +127,7 @@ public class BgEnmg {
             }else{
                 session.setAttribute("addEnmgResult",0);
             }
-            return "sxgl";
+            return "redirect:/enret/index";
     }
 
     /**

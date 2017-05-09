@@ -1,9 +1,12 @@
 package com.ezd.controller.app;
 
+import com.ezd.jackonInterface.LogUmg;
+import com.ezd.model.EzdUmg;
 import com.ezd.model.EzdUsers;
 import com.ezd.service.EzdUserService;
 import com.ezd.utils.Sendsms;
 import com.ezd.validators.RigisterValiddator;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.DataBinder;
@@ -11,13 +14,17 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 /**
  * Created by Administrator on 2017/4/7.
  */
 @Controller
+@RequestMapping("/logandrigret")
 public class RegisterAndLogin {
 
     @Resource
@@ -29,10 +36,25 @@ public class RegisterAndLogin {
     protected void init(DataBinder binder) {
         binder.setValidator(new RigisterValiddator());
     }
-
-    @RequestMapping("/log")
-    public String log() {
-        return "login";
+    /*/logandrigret/log?phone=15979791514&pwd=123456789
+    * */
+    @RequestMapping(value = "/log",method = RequestMethod.GET)
+    public void log(@Validated EzdUsers ezdUsers,HttpServletResponse response) {
+        EzdUsers users = userService.login(ezdUsers);
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.addMixInAnnotations(EzdUmg.class, LogUmg.class);
+        OutputStream outputStream = null;
+        try {
+            outputStream = response.getOutputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            mapper.writeValue(outputStream,users);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+       // return users;
     }
 
     @RequestMapping("/reg")

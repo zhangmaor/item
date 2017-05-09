@@ -242,10 +242,9 @@
                 type: "post", //请求的方式，也有get请求
                 url: "<%=request.getContextPath()%>/enret/ajaxGetEnretTypeAll", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
                 data:"retTypeId="+1,
-                dataType: "json", //json格式，后台返回的数据为json格式的。
+                dataType: "text", //json格式，后台返回的数据为json格式的。
                 success: function(result){
-
-                    var dataObj = result, //返回的result为json格式的数据
+                    var dataObj = JSON.parse(result); //返回的result为json格式的数据
                         con = "";
                     $.each(dataObj, function(index, item){
                       	//console.log(item);
@@ -265,7 +264,10 @@
                         });
                     });
                     $("#sxbm").html(con); //把内容入到这个div中即完成
-                }
+                },
+				error : function(data){
+                    console.log(data);
+				}
             })
         })
 	</script>
@@ -359,17 +361,23 @@
 	</script>
 	<c:if test="${redreticPoin!=null}">
 		<script type="text/javascript">
-
-        $(function(){
-            $("#dzhgl").click();
-        })
+			$(function () {
+                $("#dzhgl").click();
+            })
 	</script>
 	</c:if>
 	<c:if test="${addEnmgResult!=null}">
 		<script type="text/javascript">
-			$(function(){
-			    $("#qygl").click();
-			})
+			$(function () {
+                $("#qygl").click();
+            })
 		</script>
 	</c:if>
+<c:if test="${articleResult!=null}">
+	<script>
+		$(function () {
+            $("#wzgl").click();
+        })
+	</script>
+</c:if>
 </html>

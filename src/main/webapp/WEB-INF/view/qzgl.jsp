@@ -43,8 +43,8 @@
             </div>
         </div>
 
-        <div class="col-xs-4 text-center" onclick="qzinfo()">
-            <div class="btn" data-toggle="modal" data-target="#qzjl">
+        <div class="col-xs-4 text-center" >
+            <div class="btn" data-toggle="modal" data-target="#qzjl" id="tankuang">
                 <div class="pull-left">
                     <i class="icon-eye-open"></i>
                 </div>
@@ -91,58 +91,56 @@
 
 
 <!-- 全职简历 (模态框)Modal -->
-<div class="modal fade" id="qzjl" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="qzjl" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog" role="document" style="width: 40%;">
         <div class="modal-content">
 
             <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;&times;</span></button>-->
-            <div id="xxx">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
+            <div id="xxx"><button type="button" class="close" data-dismiss="modal">&times;</button></div>
 
             <div class="modal-body">
                 <table id="lqsx" cellpadding="0" cellspacing="0" class="table">
                     <tr>
                         <td>
-                            <div style="width: 60px; height: 60px;margin: auto;"><img src="/img/qq.jpg"
-                                                                                      style="width: 100%;height: 100%;border-radius: 50px;">
+                            <div style="width: 60px; height: 60px;margin: auto;">
+                                <img src="${pageContext.request.contextPath}/img/logo.png" style="width: 100%;height: 100%;border-radius: 50px;" id="uphoto"/>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <span>13425520042JCH</span>&nbsp;
-                            <span>未实名认证</span>&nbsp;
+                            <span id="uname">13425520042JCH</span>&nbsp;
+                            <span id="ustatus">未实名认证</span>&nbsp;
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <span>男</span>&nbsp;
-                            <span>未知</span>&nbsp;
-                            <span>本科</span>&nbsp;
-                            <span>珠海</span>
+                            <span id="usex">女</span>&nbsp;
+                            <span id="uschool">未知</span>&nbsp;
+                            <span id="udegree">专科</span>&nbsp;
+                            <span id="uaddress">珠海</span>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <span>国际贸易与实务</span>
+                            <span id="umajor">国际贸易与实务</span>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <span>13425520042</span>
-                            <span>790847005@qq.com</span>
+                            <span id="uphone">13425520042</span>
+                            <span id="uemail">790847005@qq.com</span>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <span>教育经历</span>
-                            <hr style="border:1px dashed #E7EAEC;margin: 0;padding: 0;">
+                            <hr  style="border:1px dashed #E7EAEC;margin: 0;padding: 0;">
                         </td>
                     </tr>
                     <tr>
                         <td class="text-left">
-                            <span>2008年9-2011年6 实验中学 2011年9-2014 濠头中学 2014年9-至今 广东工商职业学院 专科-国际贸易与实务</span>
+                            <span id="ueducation">2008年9-2011年6 实验中学 2011年9-2014 濠头中学 2014年9-至今 广东工商职业学院 专科-国际贸易与实务</span>
                         </td>
                     </tr>
                     <tr>
@@ -178,7 +176,6 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                 <button type="button" class="btn btn-primary">录取</button>
-                <button type="button" class="btn btn-primary btn-danger">拒绝</button>
             </div>
         </div>
     </div>
@@ -202,7 +199,7 @@
                     //console.log(item);
                     $.each(item.ezdErlenrets, function (index1, item1) {
                         //console.log(item1);
-                        con += "<tr>";
+                        con += "<tr onclick='qzinfo("+item1.ezdUmg.umgId+")'>";
                         con += "<td><img src='/img/qq.jpg' style='width: 20px;height: 20px;'></td>";
                         con += "<td>" + item1.ezdEnret.ezdPostTwo.ptwoName + "</td>";
                         con += "<td>" + item1.ezdUmg.umgName + "</td>";
@@ -228,25 +225,34 @@
 </script>
 
 <script>
-    function qzinfo(){
+    function qzinfo(umgId){
+        console.log("this is umgId="+umgId);
+
+
         $.ajax({
-            type: "post", //请求的方式，也有get请求
-            url: "<%=request.getContextPath()%>/enret/ajaxGetTimeAll", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
-            data:"retTypeId="+2,
+            type: "GET", //请求的方式，也有get请求
+            url: "<%=request.getContextPath()%>/enret/ajaxGetUmg/"+umgId, //请求地址，后台提供的,根据用户的ID查询用户信息
             dataType: "json", //json格式，后台返回的数据为json格式的。
             success: function(result){
-                var dataObj = result, //返回的result为json格式的数据
-                    con = "";
-                //console.log(dataObj);
-                $.each(dataObj, function(index, item){
+                console.log(result);
+                $("#uname").text(result.umgName);
+                $("#usex").text(result.umgSex);
+                $("#umajor").text(result.umgMajor);
+                $("#udegree").text(result.umgDegree);
+                $("#uschool").text(result.umgSchool);
+                $("#ueducation").text(result.umgEducation);
+                $("#ustatus").text(result.umgStatus==0?'未实名':'已实名' );
+                $("#uaddress").text(result.umgAddress);
+                $("#uphone").text(result.umgUser.userPhone);
+                $("#uemail").text(result.umgEmail);
+                $("#uphoto").attr("src","${pageContext.request.contextPath}/img/"+result.umgPhoto);
 
-                    $.each(item.ezdErlenrets, function(index1, item1) {
-                       // console.log(item1);
-                    });
-                });
-
+                $("#tankuang").click();
+            },
+            error:function(){
+                alert("error");
             }
-        })
+        });
     }
 </script>
 

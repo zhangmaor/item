@@ -25,7 +25,7 @@ CREATE TABLE ezd_users(--  用户表 4
 	user_id INT PRIMARY KEY AUTO_INCREMENT, --  主键
 	user_phone VARCHAR(11)  NOT NULL, --  电话
 	user_Pwd VARCHAR(20)  NOT NULL,--  密码
-	user_uptime Datetime DEFAULT CURRENT_TIMESTAMP	--  创建时间	
+	user_uptime DATETIME DEFAULT CURRENT_TIMESTAMP	--  创建时间	
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 ALTER TABLE ezd_users ADD UNIQUE(user_phone);
 
@@ -82,7 +82,7 @@ CREATE TABLE ezd_enmg(--  企业信息表
 	enmg_address VARCHAR(200),--  公司地址
 	enmg_type INT  ,--  企业类型	
 	enmg_scale VARCHAR(20) ,--  公司规模
-	enmg_cretime Datetime DEFAULT CURRENT_TIMESTAMP, --  公司成立时间
+	enmg_cretime DATETIME DEFAULT CURRENT_TIMESTAMP, --  公司成立时间
 	enmg_industry INT  -- 企业所在行业
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 ALTER TABLE ezd_enmg ADD UNIQUE(enmg_name);
@@ -101,7 +101,7 @@ CREATE TABLE ezd_schmg(--  学校信息表
 	schmg_mg TEXT,--  学校详情
 	schmg_address VARCHAR(50),--
 	schmg_type INT ,--  学校性质 学校地址
-	schmg_cretime Datetime DEFAULT CURRENT_TIMESTAMP --  学校成立时间
+	schmg_cretime DATETIME DEFAULT CURRENT_TIMESTAMP --  学校成立时间
 	
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 ALTER TABLE ezd_schmg ADD UNIQUE(schmg_name);
@@ -111,7 +111,7 @@ CREATE TABLE ezd_uminden(--  关注记录表
 	uminden_user  INT ,--  谁关注的 对应用户信息
 	uminden_en INT , --  关注了谁 对应公司信息表	
 	uminden_status INT  NOT NULL, -- 是否关注
-	uminden_time Datetime DEFAULT CURRENT_TIMESTAMP
+	uminden_time DATETIME DEFAULT CURRENT_TIMESTAMP
 	
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 
@@ -133,7 +133,7 @@ CREATE TABLE ezd_unews(--  用户消息表
 	unews_from VARCHAR(20)  NOT NULL,--  （默认系统） 发件人
 	unews_content TEXT  NOT NULL,-- 信息内容
 	unews_status INT CHECK(unews_status=0 OR unews_status=1 ), --  消息状态（0未读 1已读）	
-	unews_time Datetime DEFAULT CURRENT_TIMESTAMP
+	unews_time DATETIME DEFAULT CURRENT_TIMESTAMP
 	
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 CREATE TABLE ezd_retType(--  招聘类型表
@@ -167,12 +167,12 @@ CREATE TABLE ezd_enret(--  招聘信息表
 	nret_enmg INT ,
 	enret_wantNum INT  NOT NULL,--  招聘人数
 	enret_type INT ,--   招聘类型 （实习 兼职 全职）
-	enret_creTime Datetime DEFAULT CURRENT_TIMESTAMP,--  发布时间
+	enret_creTime DATETIME DEFAULT CURRENT_TIMESTAMP,--  发布时间
 	enret_lwMoney INT  NOT NULL,--  最低工资
 	enret_hgMoney INT  NOT NULL,--  最高工资
-	enret_edu int not null , -- 学历要求
-	enret_postOne int,--  招聘岗位1
-	enret_postTwo int ,--  招聘岗位2
+	enret_edu INT NOT NULL , -- 学历要求
+	enret_postOne INT,--  招聘岗位1
+	enret_postTwo INT ,--  招聘岗位2
 	enret_pg TEXT,--  待遇
 	enret_demand TEXT NOT NULL,--  招聘要求
 	enret_status INT   --  信息状态,( 进行中  已结束)
@@ -183,7 +183,7 @@ CREATE TABLE ezd_erlenret(--  招聘信息报名表
 	erlenret_id INT PRIMARY KEY AUTO_INCREMENT,
 	erlenret_umg INT , --  谁报名了
 	erlenret_enret INT , --  报名的是那个招聘信息	
-	enret_time Datetime DEFAULT CURRENT_TIMESTAMP  , -- 报名时间
+	enret_time DATETIME DEFAULT CURRENT_TIMESTAMP  , -- 报名时间
 	erlenret_status INT --  报名状态 (已报名 审核 录用 拒绝)	
 	
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
@@ -197,11 +197,12 @@ CREATE TABLE ezd_bigret(--  大招会信息表
 	bigret_id INT PRIMARY KEY AUTO_INCREMENT,
 	bigret_logo VARCHAR(50),
 	bigret_title VARCHAR(100),--  大招会标题
-	bigret_time Datetime  NOT NULL,--  大招会时间
-	bigret_address int,--  大招会地址
+	bigret_time DATETIME  NOT NULL,--  大招会时间
+	bigret_address INT,--  大招会地址
 	bigret_status INT ,--  大招会状态(未开始  进行中 已结束)
-	bigret_creTime Datetime DEFAULT CURRENT_TIMESTAMP,--  发布时间
+	bigret_creTime DATETIME DEFAULT CURRENT_TIMESTAMP,--  发布时间
 	bigret_detail TEXT  NOT NULL,--  大招会详情
+
 	bigret_postOne int,--  招聘岗位1
 	bigret_postTwo int ,--  招聘岗位2
 	bigret_enmg INT --   哪家公司发布的
@@ -212,7 +213,7 @@ CREATE TABLE ezd_erlbigret(--  大招会报名表
 	erlbigret_mes INT , --  报名了那个大招会
 	erlbigret_user INT, --   谁报名了大招会
 	erlbigret_status INT , --  报名状态 (已报名 审核 录用 拒绝)
-	erlbigret_time Datetime DEFAULT CURRENT_TIMESTAMP
+	erlbigret_time DATETIME DEFAULT CURRENT_TIMESTAMP
 	
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 CREATE TABLE ezd_schret(--  校招会
@@ -221,8 +222,8 @@ CREATE TABLE ezd_schret(--  校招会
 	schret_enmg INT ,--  那家公司在招聘
 	schret_status INT,--  校招聘状态 （未开始 已结束 进行中)
 	schret_detail TEXT,--  校招会详情
-	schret_time Datetime NOT NULL,--  校招会始时间
-	schret_cretime Datetime DEFAULT CURRENT_TIMESTAMP,--   校招会发布时间
+	schret_time DATETIME NOT NULL,--  校招会始时间
+	schret_cretime DATETIME DEFAULT CURRENT_TIMESTAMP,--   校招会发布时间
 	bigret_post VARCHAR(20) --  招聘职位
 	
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
@@ -233,7 +234,7 @@ CREATE TABLE ezd_erlschret(--  校招会包名表
 	erlschret_user INT ,--   谁报名了
 	erlschret_schret INT ,--   报名了那个校招会\
 	erlschret_status INT , --  包名状态 (已报名 审核 录用 拒绝)
-	erlschret_time Datetime DEFAULT CURRENT_TIMESTAMP
+	erlschret_time DATETIME DEFAULT CURRENT_TIMESTAMP
 		
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 CREATE TABLE ezd_artitype(--  文章类型表
@@ -252,7 +253,7 @@ CREATE TABLE ezd_article(--  文章信息表
 	article_pic VARCHAR(50),--  文章分享图
 	article_content TEXT NOT NULL,--  文章内容
 	article_keywords VARCHAR(50),--  文章关键字
-	TIMEs Datetime DEFAULT CURRENT_TIMESTAMP ,-- 时间
+	TIMEs DATETIME DEFAULT CURRENT_TIMESTAMP ,-- 时间
 	article_status INT  NOT NULL --  文章状态（显示 影藏）
 	
 	
@@ -261,7 +262,7 @@ CREATE TABLE ezd_readarti( -- 文章阅读信息表
 	readarti_id INT PRIMARY KEY AUTO_INCREMENT,
 	readarti_article INT , -- 阅读了那篇文章
 	readarti_user INT ,-- 谁阅读了
-	readarti_time Datetime DEFAULT CURRENT_TIMESTAMP 
+	readarti_time DATETIME DEFAULT CURRENT_TIMESTAMP 
 	
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 CREATE TABLE ezd_sayart(--  文章评论
@@ -271,7 +272,7 @@ CREATE TABLE ezd_sayart(--  文章评论
 	sayart_content VARCHAR(500) ,--  评论内容
 	sayart_touser INT ,--  可为null 评论其他用户
 	sayart_status INT  NOT NULL,--   评论状态表 需要管理员审核
-	sayart_time Datetime DEFAULT CURRENT_TIMESTAMP
+	sayart_time DATETIME DEFAULT CURRENT_TIMESTAMP
 	
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 

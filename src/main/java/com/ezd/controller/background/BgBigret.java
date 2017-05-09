@@ -250,7 +250,7 @@ public class BgBigret {
             session.setAttribute("redreticPoin", 0);
 
         }
-        return "sxgl";
+        return "redirect:/enret/index";
     }
 
     /**

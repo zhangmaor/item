@@ -1,10 +1,14 @@
 package com.ezd.controller;
 
+import com.ezd.jackonInterface.BigretEnmgFilter;
+import com.ezd.jackonInterface.BigretEnmgsFilter;
+import com.ezd.jackonInterface.BigretUmgFilter;
 import com.ezd.model.*;
 import com.ezd.service.EzdBigretService;
 import com.ezd.service.EzdEnretService;
 import com.ezd.service.EzdSchTypeService;
 import com.ezd.service.EzdUmgService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -126,14 +132,19 @@ public class EzdEnretController {
     }
 
     /**
-     * 根据招聘类型查询出招聘信息
+     * 根据招聘类型查询出招聘信息/enret/ajaxGetEnretTypeAll?retTypeId=1
      * @param retTypeId
      */
     @RequestMapping(value = "/ajaxGetEnretTypeAll",method = RequestMethod.POST)
-    @ResponseBody
-    public List<EzdEnret> getEnretTypeAll(int retTypeId) throws Exception {
+
+    public void getEnretTypeAll(int retTypeId, HttpServletResponse response) throws Exception {
         List<EzdEnret> enretTypeAll = ezdEnretService.getEnretTypeAll(retTypeId);
-        return enretTypeAll;
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.addMixInAnnotations(EzdEnmg.class, BigretEnmgsFilter.class);
+        mapper.addMixInAnnotations(EzdUmg.class, BigretUmgFilter.class);
+        OutputStream outputStream = null;
+        outputStream = response.getOutputStream();
+        mapper.writeValue(outputStream,enretTypeAll);
     }
 
 

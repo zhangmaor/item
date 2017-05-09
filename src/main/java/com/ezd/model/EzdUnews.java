@@ -12,8 +12,7 @@ public class EzdUnews {
     private String unewsContent;//信件内容
     private Date unewsTime;
     private int unewsStatus;//int default(unews_status=0 or unews_status=1 )--消息状态（0未读 1已读）
-    public EzdUnews() {
-    }
+
 
     @Override
     public String toString() {
@@ -25,6 +24,11 @@ public class EzdUnews {
                 ", unewsTime=" + unewsTime +
                 ", unewsStatus=" + unewsStatus +
                 '}';
+    }
+
+
+
+   public EzdUnews() {
     }
 
     public int getUnewsId() {
