@@ -37,4 +37,7 @@
                 <property name="dataSource" ref="DataSource"/>
         </bean>
         <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+
+
+        <import resource="spring-shiro.xml" />
 </beans>

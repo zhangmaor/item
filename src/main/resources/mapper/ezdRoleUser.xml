@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ezd.dao.EzdRoleUserDao">
+    <resultMap id="roleUser" type="EzdRoleUser">
+        <id property="uperId" column="uper_id" />
+        <result property="userRole" column="user_role" />
+        <result property="userUmg" column="user_umg" />
+        <association property="uperRole" resultMap="com.ezd.dao.EzdRoleDao.roles"/>
+        <association property="ezdUsers" resultMap="com.ezd.dao.EzdUsersDao.users"/>
+    </resultMap>
+
+
+
+
+</mapper>

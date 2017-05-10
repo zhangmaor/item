@@ -7,8 +7,27 @@ package com.ezd.model;
 public class EzdRoleUser {
 
     private int uperId;
+    private int userRole;
+    private int userUmg;
     private EzdRole uperRole; //int references ezd_role(role_id),
     private EzdUsers ezdUsers; //int references ezd_users(user_id)
+
+
+    public int getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(int userRole) {
+        this.userRole = userRole;
+    }
+
+    public int getUserUmg() {
+        return userUmg;
+    }
+
+    public void setUserUmg(int userUmg) {
+        this.userUmg = userUmg;
+    }
 
     public int getUperId() {
         return uperId;

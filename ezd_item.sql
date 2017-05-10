@@ -16,8 +16,8 @@ ALTER TABLE ezd_permission ADD UNIQUE(per_name);
 
 CREATE TABLE ezd_tole_permission(--   角色权限关系表 3
 	roper_id INT PRIMARY KEY AUTO_INCREMENT,
-	roper_role INT , --  对应的那个权限
-	reper_perm  INT 	--  那个角色对应了权限
+	roper_role INT , -- 那个角色对应了权限
+	reper_perm  INT 	--   对应的那个权限
 		
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 

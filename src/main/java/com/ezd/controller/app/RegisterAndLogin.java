@@ -35,7 +35,7 @@ public class RegisterAndLogin {
     @InitBinder
     protected void init(DataBinder binder) {
         binder.setValidator(new RigisterValiddator());
-    }
+}
     /*/logandrigret/log?phone=15979791514&pwd=123456789
     * */
     @RequestMapping(value = "/log",method = RequestMethod.GET)

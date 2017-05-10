@@ -2,6 +2,7 @@ package com.ezd.dao;
 
 import com.ezd.model.EzdUmg;
 import com.ezd.model.EzdUnews;
+import com.ezd.model.EzdUsers;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -22,4 +23,6 @@ public interface EzdUnewsDao {
     public int getCount(int userId) throws Exception;
     /*插入数据*/
     public int insertOne(EzdUnews ezdUnews)throws Exception;
+
+
 }

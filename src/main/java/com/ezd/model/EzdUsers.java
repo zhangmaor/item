@@ -3,6 +3,7 @@ package com.ezd.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/4/6.
@@ -15,6 +16,16 @@ public class EzdUsers {
     private String userPwd; //密码
     private Date userUptime; //创建时间
     private EzdUmg ezdUmg;
+    private List<EzdRole> ezdRoles;
+
+
+    public List<EzdRole> getEzdRoles() {
+        return ezdRoles;
+    }
+
+    public void setEzdRoles(List<EzdRole> ezdRoles) {
+        this.ezdRoles = ezdRoles;
+    }
 
     @Override
     public String toString() {

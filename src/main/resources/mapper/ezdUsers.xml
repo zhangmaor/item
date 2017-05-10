@@ -9,7 +9,8 @@
         <result column="user_phone" property="userPhone" /><!--手机号-->
         <result column="user_Pwd" property="userPwd" /><!--密码-->
         <result column="user_uptime" property="userUptime" /><!--创建时间-->
-        <association property="ezdUmg" resultMap="com.ezd.dao.EzdUmgDao.umg" />
+        <association property="ezdUmg" resultMap="com.ezd.dao.EzdUmgDao.umg" /> <!-- 用户信息-->
+        <collection property="ezdRoles" resultMap="com.ezd.dao.EzdRoleDao.roles" /><!-- 用户权限 -->
     </resultMap>
     <!-- 此处select标签的id值对应DAO类中检查登录方法名 -->
     <select id="login" parameterType="com.ezd.model.EzdUsers" resultMap="users">
@@ -60,4 +61,10 @@
     <select id="getEzdUsersAll" parameterType="int" resultMap="users">
         SELECT * FROM ezd_users WHERE user_id = #{_parameter}
     </select>
+
+    <!-- 根据电话号码查询 users-->
+    <select id="getByPhone" parameterType="String" resultMap="users">
+        select * from ezd_users where user_phone = #{_paramater}
+    </select>
+
 </mapper>

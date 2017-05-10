@@ -45,7 +45,6 @@ public class BgBigret {
 
     @RequestMapping("/index")
     public String aaaa(HttpServletRequest request) {
-        System.out.println("aaaaaa");
         return "sxgl";
     }
 
