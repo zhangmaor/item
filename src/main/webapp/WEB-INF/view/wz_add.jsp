@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/js/utf8-jsp/themes/default/css/ueditor.css">
 </head>
 <style>
+
     .center{
         height: 1400px;
     }
@@ -27,7 +28,7 @@
             <div class="row">
                 <div class="col-xs-2 text-right">*文章类型：</div>
                 <div class="col-xs-8">
-                    <select name="" id="wzlx" class="form-control" >
+                    <select name="articleType" id="wzlx" class="form-control" >
                         <option value="">请选择</option>
                     </select>
                 </div>
@@ -154,7 +155,7 @@
            success : function(datas){
                var html = "";
                $.each(datas,function (index,data) {
-                   html += "<option value='"+data.rtitypeId+"'>"+data.artitypeName+"</option>"
+                   html += "<option value="+data.rtitypeId+">"+data.artitypeName+"</option>"
                });
                $("#wzlx").html(html);
            }
@@ -163,30 +164,30 @@
 
 
     function tj() {
-        alert($("#myEditor").val());
-        $.ajax({
-            type: "post", //请求的方式，也有get请求
-            url: "<%=request.getContextPath()%>/aticle/ajaxInsert", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子
-            data: {
-                    articleType     :   $("#wzlx").val(),
-                    articleMtitle   :   $("#bt").val(),
-                    articleStitle   :   $("#fbt").val(),
-                    articleAuthor   :   $("#author").val(),
-                    articleAuemail  :   $("#email").val(),
-                    articleKeywords :   $("#gjz").val(),
-                    articleContent  :   "hahhahhahha"/*$("#myEditor").val()*/,
-                    articleLogo     :   $("#logo").val(),
-                    articlePic      :   $("#share").val(),
-                    articleStatus   :   1/*$("#").val()*/
-            },
-            dataType: "json", //json格式，后台返回的数据为json格式的。
-            success: function (result) {
-                if (result){
-                    alert(result);
-                    $(".right-center").load("<%=request.getContextPath()%>/enret/dzhgl");
-                }
-            }
-        });
+        <%--alert($("#myEditor").val());--%>
+        <%--$.ajax({--%>
+            <%--type: "post", //请求的方式，也有get请求--%>
+            <%--url: "<%=request.getContextPath()%>/aticle/ajaxInsert", //请求地址，后台提供的,这里我在本地自己建立了个json的文件做例子--%>
+            <%--data: {--%>
+                    <%--articleType     :   $("#wzlx").val(),--%>
+                    <%--articleMtitle   :   $("#bt").val(),--%>
+                    <%--articleStitle   :   $("#fbt").val(),--%>
+                    <%--articleAuthor   :   $("#author").val(),--%>
+                    <%--articleAuemail  :   $("#email").val(),--%>
+                    <%--articleKeywords :   $("#gjz").val(),--%>
+                    <%--articleContent  :   "hahhahhahha"/*$("#myEditor").val()*/,--%>
+                    <%--articleLogo     :   $("#logo").val(),--%>
+                    <%--articlePic      :   $("#share").val(),--%>
+                    <%--articleStatus   :   1/*$("#").val()*/--%>
+            <%--},--%>
+            <%--dataType: "json", //json格式，后台返回的数据为json格式的。--%>
+            <%--success: function (result) {--%>
+                <%--if (result){--%>
+                    <%--alert(result);--%>
+                    <%--$(".right-center").load("<%=request.getContextPath()%>/enret/dzhgl");--%>
+                <%--}--%>
+            <%--}--%>
+        <%--});--%>
     }
 </script>
 <c:if test="${articleResult==0}">

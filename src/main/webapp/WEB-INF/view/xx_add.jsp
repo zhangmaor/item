@@ -12,6 +12,7 @@
     </div>
 </div>
 <div class="right-body ">
+
     <div class="right-body-main ">
 
         <form id="addSchmg" action="${pageContext.request.contextPath}/bgSchmg/addSchmg" method="POST" enctype="multipart/form-data">
@@ -104,6 +105,6 @@
                 alert("error");
             }
         });*/
-    });
+   // });
 </script>
 </html>

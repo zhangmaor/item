@@ -9,6 +9,7 @@
 </head>
 <body>
 <div class="right-mokuai">
+
     <div class="practice">
         <span>企业管理<i class="fa fa-angle-down"></i></span>&nbsp;
     </div>
@@ -75,7 +76,7 @@
                     互联网服务有限公司
                 </h4>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="details">
                 杭州互联网金融服务有限公司获浙江省政府批准成立于2014年11月，是浙江省首批拥有互联网金融服务行业资质的企业，公司专业从事金融理财、投融资类等多元化互联网金融服务。
 
             </div>
@@ -205,6 +206,7 @@
                 var html = "";
                 var data = JSON.parse(dataList);
                 console.log(data);
+                var details = $("#details");
 
                 html +="<tr>";
                 html +="<th>企业名字</th>";
@@ -225,7 +227,7 @@
                    html +="<td>"+list.enmgWcontact+"("+list.enmgUser+")</td>";
                    html +='<td>' +
                        '' +
-                       '<button class="btn btn-info" value="'+list.enmgId+'" data-toggle="modal" data-target="#qy_details">公司介绍</button>' +
+                       '<button class="btn btn-info" value="'+list.enmgDetail+'" onclick="details(this.value);" data-toggle="modal" data-target="#qy_details">公司介绍</button>' +
                        '<button class="btn btn-primary" value="'+list.enmgId+'" id="update" onclick="update(this.value)" data-toggle="modal" data-target="#qy_update">编辑</button>' +
                        '<button class="btn btn-danger" value="'+list.enmgId+'" onclick="delEnmg(this.value)" data-toggle="modal" data-target="#qy_del">删除</button>' +
                        '</td>';
@@ -235,7 +237,14 @@
         });
     }
     displayEnmgList();
+    /*显示详情*/
+
+function details(v) {
+    $("#details").html(v);
+}
+
     /*点击修改时调用的函数*/
+
     function update(value){
         var id = value;
         document.getElementById("getUp").value = value;
