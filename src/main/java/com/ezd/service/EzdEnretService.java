@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -37,6 +38,8 @@ public class EzdEnretService {
     @Resource
     private EzdRestatusDao ezdRestatusDao;
 
+    @Resource
+    private EzdUnewsDao ezdUnewsDao;
 
     //查询出所有招聘信息
     public List<EzdEnret> getAll() throws Exception{
@@ -301,5 +304,41 @@ public class EzdEnretService {
             e.printStackTrace();
         }
         return count;
+    }
+
+    /*修改报名信息的状态*/
+    public boolean accepted(EzdErlenret ezdErlenret){
+        boolean result = false;
+        try {
+            int i = ezdErlenretDao.updateStatus(ezdErlenret);
+            EzdErlenret one = ezdErlenretDao.getOne(ezdErlenret.getErlenretId());
+            EzdUmg ezdUmgAll = ezdUmgDao.getEzdUmgAll(one.getErlenretUmg());//获取这个报名信息表的用户信息
+            EzdEnret ezdEnretAll = ezdEnretDao.getEzdEnretAll(one.getErlenretEnret());//得出了对应的招聘信息
+            String enmgName = ezdEnmgDao.getEnmg(ezdEnretAll.getNretEnmg()).getEnmgName();//得到了企业的名字
+            EzdUnews ezdUnews = new EzdUnews();
+            ezdUnews.setUnewsStatus(0);
+            ezdUnews.setUnewsTime(new Date());
+            ezdUnews.setUnewsContent("尊敬的"+ezdUmgAll.getUmgName()+";你好。你已被<"+enmgName+">公司看中录取；请及时与该公司取得联系。预祝你工作顺利！！");
+            ezdUnews.setUnewsFrom("系统");
+            ezdUnews.setUnewsUser(ezdUmgAll.getUserId());
+            int i1 = ezdUnewsDao.insertOne(ezdUnews);
+            result = i+i1>1;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+    public int add(EzdErlenret ezdErlenret){
+        ezdErlenret.setRettime(new Date());
+        ezdErlenret.setErlenretStatus(1);
+        int add = 0;
+        try {
+            if(ezdErlenret.getErlenretUmg()!=0 && ezdErlenret.getErlenretEnret()!=0){
+                add = ezdErlenretDao.add(ezdErlenret);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return add;
     }
 }

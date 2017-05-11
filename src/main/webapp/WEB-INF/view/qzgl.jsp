@@ -176,8 +176,8 @@
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-primary">录取</button>
+                <button type="button"  id="qaccepted" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" id="accepted" class="btn btn-primary">录取</button>
             </div>
         </div>
     </div>
@@ -198,10 +198,13 @@
                 var dataObj = result, //返回的result为json格式的数据
                     con = "";
                 $.each(dataObj, function (index, item) {
-                    //console.log(item);
+                    //
+
                     $.each(item.ezdErlenrets, function (index1, item1) {
+                        var erlenretId = item1.erlenretId;
                         //console.log(item1);
-                        con += "<tr onclick='qzinfo("+item1.ezdUmg.umgId+")'>";
+                        var status = item1.erlenretStatus;
+                        con += "<tr onclick='qzinfo("+item1.ezdUmg.umgId+","+erlenretId+","+status+")'>";
                         con += "<td><img src='/img/qq.jpg' style='width: 20px;height: 20px;'></td>";
                         con += "<td>" + item1.ezdEnret.ezdPostTwo.ptwoName + "</td>";
                         con += "<td>" + item1.ezdUmg.umgName + "</td>";
@@ -231,9 +234,13 @@
 </script>
 
 <script>
-    function qzinfo(umgId){
+    function qzinfo(umgId,erlenretId,status){
         console.log("this is umgId="+umgId);
-
+        if(status==3){
+            $("#accepted").val(-1);
+            $("#accepted").attr("disabled","disabled");
+        }
+        $("#accepted").val(erlenretId);
 
         $.ajax({
             type: "GET", //请求的方式，也有get请求
@@ -260,6 +267,27 @@
             }
         });
     }
+
+    $("#accepted").click(function(){
+        $("#qaccepted").click();
+        $.ajax({
+            url : "<%=request.getContextPath()%>/enret/accepted",
+            data : {
+                "erlenretId" : $("#accepted").val(),
+                "status" : 3
+            },
+            method : "get",
+            dataType : "text",
+            success : function(datas){
+
+                if(datas==true || datas == "true"){
+                    alert("已成功录取，并发送消息");
+                }else{
+                    alert("服务器繁忙，请重试");
+                }
+            }
+        })
+    })
 </script>
 
 

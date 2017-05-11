@@ -6,6 +6,7 @@ import com.ezd.jackonInterface.EnmgEnretFilter;
 import com.ezd.model.*;
 import com.ezd.service.EzdEnmgService;
 import com.ezd.service.EzdIndustryService;
+import com.ezd.utils.LocalhostIp;
 import com.ezd.utils.RandomName;
 import com.ezd.utils.Upload;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -69,6 +70,7 @@ public class BgEnmg {
     @RequestMapping(value = "/enmg",method = RequestMethod.GET)
     public void getEnmg(HttpServletResponse response) {
         List<EzdEnmg> all = ezdEnmgService.getAll();
+
         ObjectMapper mapper = new ObjectMapper();
         mapper.addMixIn(EzdEnmg.class, BigretEnmgFilter.class);
         mapper.addMixIn(EzdEnret.class, EnmgEnretFilter.class);

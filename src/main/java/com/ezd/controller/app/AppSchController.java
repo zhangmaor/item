@@ -4,6 +4,7 @@ import com.ezd.model.EzdBigret;
 import com.ezd.model.EzdSchmg;
 import com.ezd.service.EzdBigretService;
 import com.ezd.service.EzdSchmgService;
+import com.ezd.utils.LocalhostIp;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,7 +44,11 @@ public class AppSchController {
        /* List<EzdBigret> ezdBigrets = ezdBigretService.addressGet(42);
         return ezdBigrets;*/
         ezdSchmgs =  ezdSchmgService.findAll();
-
+        String ip = new LocalhostIp().getIp();
+        for (EzdSchmg e: ezdSchmgs
+             ) {
+            e.setSchmgLogo(ip+e.getSchmgLogo());
+        }
         return ezdSchmgs;
 }
 
@@ -58,6 +63,11 @@ public class AppSchController {
     @ResponseBody
     public List<EzdBigret> getschoolBigret(int id){
         List<EzdBigret> bigretList = ezdBigretService.addressGet(id);
+        String ip = new LocalhostIp().getIp();
+        for (EzdBigret e: bigretList
+                ) {
+            e.setBigretLogo(ip+e.getBigretLogo());
+        }
         return bigretList;
     }
 
@@ -65,6 +75,11 @@ public class AppSchController {
     @ResponseBody
     public List<EzdBigret> postschoolBigret(int id){
         List<EzdBigret> bigretList = ezdBigretService.addressGet(id);
+        String ip = new LocalhostIp().getIp();
+        for (EzdBigret e: bigretList
+                ) {
+            e.setBigretLogo(ip+e.getBigretLogo());
+        }
         return bigretList;
     }
 

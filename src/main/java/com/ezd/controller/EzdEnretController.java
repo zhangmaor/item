@@ -151,7 +151,8 @@ public class EzdEnretController {
     }
 
 
-
+    /*/
+    * */
 
     @RequestMapping(value = "/ajaxGetEnretTypeAll",method = RequestMethod.GET)
     @ResponseBody
@@ -312,5 +313,28 @@ public class EzdEnretController {
             e.printStackTrace();
         }
     }
+    /*
+    * 添加一条消息
+    * 并修改报名信息表的状态/enret/accepted
+    * */
+    @RequestMapping(value = "/accepted",method = RequestMethod.GET)
+    public void accepted(int erlenretId ,int status,HttpServletResponse response){
+        EzdErlenret ezdErlenret = new EzdErlenret();
+        ezdErlenret.setErlenretId(erlenretId);
+        ezdErlenret.setErlenretStatus(status);
+        boolean b = ezdEnretService.accepted(ezdErlenret);
+        ObjectMapper mapper = new ObjectMapper();
+        OutputStream outputStream = null;
+        try {
+            outputStream = response.getOutputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            mapper.writeValue(outputStream,b);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-}
+   }

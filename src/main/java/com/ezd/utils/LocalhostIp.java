@@ -16,8 +16,8 @@ public class LocalhostIp {
         }
         //System.out.println("本地IP地址是【="+localHost);
         String ip = localHost.getHostAddress();
-        System.out.println(ip);
-        return ip;
+        String getlocalhostIp = ip+":8080";
+        return getlocalhostIp;
     }
 
     public static void main(String[] args) {

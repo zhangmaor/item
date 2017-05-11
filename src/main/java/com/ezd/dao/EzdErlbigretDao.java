@@ -10,4 +10,6 @@ import java.util.List;
 public interface EzdErlbigretDao {
     /*根据大招会的id获取报名的信息*/
     public List<EzdErlbigret> idGet(int bigretId) throws Exception;
+    /*添加信息*/
+    public int add(EzdErlbigret ezdErlbigret)throws Exception;
 }

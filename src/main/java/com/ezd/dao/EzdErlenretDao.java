@@ -18,5 +18,11 @@ public interface EzdErlenretDao {
 
     //根据时间查询最近报名的人
     public List<EzdErlenret> getTimeAll(EzdEnret ezdEnret);
+/*修改状态*/
+    public int updateStatus(EzdErlenret ezdErlenret)throws Exception;
+
+    public EzdErlenret getOne(int erlenretId)throws Exception;
+    /*添加一条数据招聘信息报名表*/
+    public int add(EzdErlenret ezdErlenret)throws Exception;
 
 }

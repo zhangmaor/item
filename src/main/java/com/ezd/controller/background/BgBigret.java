@@ -5,6 +5,7 @@ import com.ezd.model.*;
 import com.ezd.service.EzdBigretService;
 import com.ezd.service.EzdEnmgService;
 import com.ezd.service.EzdSchmgService;
+import com.ezd.utils.LocalhostIp;
 import com.ezd.utils.RandomName;
 import com.ezd.utils.Upload;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -49,11 +50,17 @@ public class BgBigret {
     }
 
     /**
-     * 进入大招会列表页面
+     * 进入大招会列表页面/bg/bigret
      */
     @RequestMapping(value = "/bigret", method = RequestMethod.GET)
     public void displayBigret(HttpServletRequest request, HttpServletResponse response) {
         List<EzdBigret> all = ezdBigretService.getAll();
+        String ip = new LocalhostIp().getIp();
+        for (EzdBigret e: all
+             ) {
+            //e.getBigretLogo();
+            e.setBigretLogo(ip+e.getBigretLogo());
+        }
         System.out.println("加载过的=====");
         ObjectMapper mapper = new ObjectMapper();
         SerializationConfig serializationConfig = mapper.getSerializationConfig();

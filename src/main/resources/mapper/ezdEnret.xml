@@ -12,7 +12,7 @@
         <result column="enret_postOne" property="enretPostOne" /><!--一级招聘岗位-->
         <result column="enret_postTwo" property="enretPostTwo" /><!--二级招聘岗位-->
         <result column="enret_status" property="enretStatus"/> <!--信息状态-->
-        <result column="enret_edu" property="enretEdu"/> <!--招聘要求-->
+        <result column="enret_edu" property="enretEdu"/> <!--学历-->
         <result column="enret_wantNum" property="enretWantNum"/><!--招聘人数-->
         <result column="enret_creTime" property="enretCreTime"/><!--发布时间-->
         <result column="enret_lwMoney" property="enretLwMoney"/><!--最低工资-->

@@ -227,8 +227,8 @@
 	    		</table>
 		    </div>
 			  <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-		        <button type="button" class="btn btn-primary">录取</button>
+		        <button type="button" id="qaccepted" class="btn btn-default" data-dismiss="modal">取消</button>
+		        <button type="button" id="accepted" class="btn btn-primary">录取</button>
 		      </div>
 		    </div>
 		  </div>
@@ -247,14 +247,17 @@
                 success: function(result){
                     var dataObj = JSON.parse(result); //返回的result为json格式的数据
                         con = "";
+                    console.log(dataObj);
+
                     $.each(dataObj, function(index, item){
-                      	//console.log(item);
                         $.each(item.ezdErlenrets, function(index1, item1) {
                             var umgId =item1.ezdUmg.umgId ;
+                            var erlenretId = item1.erlenretId;
                            /* console.log("id++++"+umgId)*/
+                            var status = item1.erlenretStatus;
                             console.log(item1);
-                            con += "<tr onclick='info("+umgId+")'>";
-                            con += "<td><img src='${pageContext.request.contextPath}/img/logo.png' style='width: 20px;height: 20px;'></td>";
+                            con += "<tr onclick='info("+umgId+","+erlenretId+","+status+")'>";
+                            con += "<td><img src='${pageContext.request.contextPath}/img/userDefault.png' style='width: 20px;height: 20px;'></td>";
                             con += "<td>" + item1.ezdEnret.ezdPostTwo.ptwoName + "</td>";
                             con += "<td>" + item1.ezdUmg.umgName + "</td>";
                             con += "<td>" + item1.ezdUmg.umgUser.userPhone + "</td>";
@@ -267,7 +270,7 @@
                     $("#sxbm").html(con); //把内容入到这个div中即完成
                 },
 				error : function(data){
-                    console.log(data);
+                    console.log("出错="+data);
 				}
             })
         })
@@ -340,9 +343,13 @@
 
 	<%--获取最近报名用户的信息--%>
 	<script>
-        function info(umgId){
-            console.log("this is umgId="+umgId);
-
+        function info(umgId,erlenretId,status){
+            console.log("this is erlenretId="+erlenretId);
+			if(status==3){
+                $("#accepted").val(-1);
+                $("#accepted").attr("disabled","disabled");
+			}
+            $("#accepted").val(erlenretId);
 
            $.ajax({
                 type: "GET", //请求的方式，也有get请求
@@ -369,6 +376,26 @@
 			   }
             });
         }
+        $("#accepted").click(function(){
+            $("#qaccepted").click();
+            $.ajax({
+                url : "<%=request.getContextPath()%>/enret/accepted",
+				data : {
+                    "erlenretId" : $("#accepted").val(),
+					"status" : 3
+				},
+				method : "get",
+				dataType : "text",
+				success : function(datas){
+
+                    if(datas==true || datas == "true"){
+                        alert("已成功录取，并发送消息");
+					}else{
+                        alert("服务器繁忙，请重试");
+					}
+				}
+			})
+		})
 	</script>
 	<c:if test="${redreticPoin!=null}">
 		<script type="text/javascript">

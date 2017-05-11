@@ -22,4 +22,9 @@
                       ON ezd_users.user_id = ezd_umg.umg_user
         WHERE ezd_erlbigret.erlbigret_mes = #{_parameter}
     </select>
+
+    <insert id="add" parameterType="com.ezd.model.EzdErlbigret">
+        INSERT  into ezd_erlbigret(erlbigret_mes,erlbigret_user,erlbigret_status,erlbigret_time)
+        values(#{bigMgId},#{userMgId},#{statusId},#{erlbigretTime})
+    </insert>
 </mapper>

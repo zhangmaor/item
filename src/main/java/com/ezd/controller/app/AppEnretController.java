@@ -2,13 +2,18 @@ package com.ezd.controller.app;
 
 import com.ezd.model.EzdEnmg;
 import com.ezd.model.EzdEnret;
+import com.ezd.model.EzdErlenret;
 import com.ezd.service.EzdEnretService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.List;
 
 /**
@@ -84,4 +89,29 @@ public class AppEnretController {
         List<EzdEnret> All = ezdEnretService.getAll();
         return All;
     }
+
+    /**
+     *     /app_enret/insert     int erlenretUmg ,int erlenretEnret
+     * @param ezdErlenret
+     * @param response
+     */
+    @RequestMapping(value = "/insert",method = RequestMethod.GET)
+    public void insert(EzdErlenret ezdErlenret, HttpServletResponse response){
+        int add = ezdEnretService.add(ezdErlenret);
+        ObjectMapper mapper = new ObjectMapper();
+        OutputStream outputStream = null;
+        try {
+            outputStream = response.getOutputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            mapper.writeValue(outputStream,add);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
 }

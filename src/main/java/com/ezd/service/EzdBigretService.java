@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -201,5 +202,19 @@ public class EzdBigretService {
             e.printStackTrace();
         }
         return bigretList;
+    }
+    /*添加一个大招会报名信息*/
+    public int add(EzdErlbigret ezdErlbigret){
+        ezdErlbigret.setStatusId(1);
+        ezdErlbigret.setErlbigretTime(new Date());
+        int i=0;
+        try {
+            if(ezdErlbigret.getBigMgId()!=0 && ezdErlbigret.getUserMgId()!=0){
+                i = ezdErlbigretDao.add(ezdErlbigret);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return i;
     }
 }

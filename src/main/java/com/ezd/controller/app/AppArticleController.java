@@ -2,11 +2,13 @@ package com.ezd.controller.app;
 
 import com.ezd.dao.EzdArticlDao;
 import com.ezd.model.EzdArticle;
+import com.ezd.model.EzdEnmg;
 import com.ezd.model.EzdPoint;
 import com.ezd.model.EzdSayart;
 import com.ezd.service.EzdArticleService;
 import com.ezd.service.EzdPointService;
 import com.ezd.service.EzdSayartService;
+import com.ezd.utils.LocalhostIp;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,6 +40,11 @@ public class AppArticleController {
     @ResponseBody
     public List<EzdArticle> getArticleAll(){
         List<EzdArticle> articleAll = ezdArticleService.getArticleAll();
+        String ip = new LocalhostIp().getIp();
+        for (EzdArticle e: articleAll                ) {
+            //e.getBigretLogo();
+            e.setArticleLogo(ip+e.getArticleLogo());
+        }
         return articleAll;
     }
 
@@ -45,6 +52,11 @@ public class AppArticleController {
     @ResponseBody
     public List<EzdArticle> postArticleAll(){
         List<EzdArticle> articleAll = ezdArticleService.getArticleAll();
+        String ip = new LocalhostIp().getIp();
+        for (EzdArticle e: articleAll                ) {
+            //e.getBigretLogo();
+            e.setArticleLogo(ip+e.getArticleLogo());
+        }
         return articleAll;
     }
 

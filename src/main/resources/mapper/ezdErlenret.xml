@@ -30,8 +30,22 @@
         SELECT * FROM ezd_erlenret WHERE enret_time =(SELECT MAX(enret_time) FROM ezd_erlenret WHERE erlenret_enret =#{enretId}) AND erlenret_enret = #{enretId}
     </select>
 
+    <!--<select id="getOntUmg">-->
+        <!--SELECT * from ezd_-->
+    <!--</select>-->
+
     <select id="getHireAll" resultType="int" >
         select count(*),erlenret_enret from ezd_erlenret where erlenret_status = 3  group by erlenret_enret
     </select>
-
+    <select id="getOne" parameterType="int" resultMap="erlenret">
+        select * from ezd_erlenret where erlenret_id = #{_parameter}
+    </select>
+    <update id="updateStatus" parameterType="com.ezd.model.EzdErlenret">
+        update ezd_erlenret set erlenret_status = #{erlenretStatus}
+        where erlenret_id = #{erlenretId}
+    </update>
+    <insert id="add" parameterType="com.ezd.model.EzdErlenret">
+        insert into ezd_erlenret(erlenret_umg,erlenret_enret,enret_time,erlenret_status)
+        values(#{erlenretUmg},#{erlenretEnret},#{rettime},#{erlenretStatus})
+    </insert>
 </mapper>

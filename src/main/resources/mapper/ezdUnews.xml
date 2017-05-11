@@ -42,7 +42,7 @@
 
 
     <insert id="insertOne" parameterType="com.ezd.model.EzdUnews">
-        INSERT into ezd_unmews(<include refid="row"/> )
+        INSERT into ezd_unews(<include refid="row"/> )
         values(#{unewsUser},#{unewsFrom},#{unewsContent},#{unewsStatus},#{unewsTime})
     </insert>
 
