@@ -11,10 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationConfig;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -42,6 +39,11 @@ public class BgBigret {
     private EzdEnmgService ezdEnmgService;
     @Resource
     private EzdSchmgService ezdSchmgService;
+
+    @GetMapping
+    public String index() {
+        return "sxgl";
+    }
 
     @RequestMapping("/index")
     public String aaaa(HttpServletRequest request) {

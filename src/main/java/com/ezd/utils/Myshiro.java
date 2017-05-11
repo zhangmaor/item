@@ -22,6 +22,10 @@ public class Myshiro extends AuthorizingRealm {
     @Resource
     private EzdUserService ezdUserService;
 
+    /**
+     *  权限论证
+     */
+
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         //获取登录时输入的用户名
