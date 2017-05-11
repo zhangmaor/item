@@ -60,10 +60,16 @@ public class EzdEnretController {
         return "sx_job";
     }
 
+    @RequestMapping("/403")
+    public String noPer(){
+        return "403";
+    }
+
     @RequestMapping("/qzgl")
     public String index2(){
         return "qzgl";
     }
+
 
     @RequestMapping("/wzgl")
     public String index3(){
@@ -87,7 +93,7 @@ public class EzdEnretController {
     @RequestMapping("/dzhgl")
     public String index8(Model model){
         List<EzdBigret> all = ezdBigretService.getAll();
-        System.out.println("大招会的全部信息："+all+"大招会的数量="+all.size());
+
         model.addAttribute("bigret",all);
         return "dzhgl";
     }
@@ -227,7 +233,7 @@ public class EzdEnretController {
     @RequestMapping(value = "/insert",method = RequestMethod.POST)
     @ResponseBody
     public boolean insert(EzdEnret ezdEnret){
-        System.out.println("=========="+ezdEnret);
+
         boolean bl = ezdEnretService.insert(ezdEnret);
         return bl;
     }
@@ -241,7 +247,7 @@ public class EzdEnretController {
     @RequestMapping(value = "/update",method = RequestMethod.POST)
     @ResponseBody
     public boolean update(EzdEnret ezdEnret){
-        System.out.println(ezdEnret.toString());
+
         boolean update = ezdEnretService.update(ezdEnret);
         return update;
     }
@@ -267,7 +273,7 @@ public class EzdEnretController {
     @ResponseBody
     public EzdUmg getUmgById(@PathVariable int umgId){
         EzdUmg ezdUmg =  ezdUmgService.getUmgById(umgId);
-        System.out.println(" ezdEnretCOntroller   getUmgById    ++++  "+ezdUmg);
+
         return ezdUmg;
     }
 
@@ -275,7 +281,7 @@ public class EzdEnretController {
     @ResponseBody
     public EzdUmg postUmgById(@PathVariable int umgId){
         EzdUmg ezdUmg =  ezdUmgService.getUmgById(umgId);
-        System.out.println(" ezdEnretCOntroller   getUmgById    ++++  "+ezdUmg);
+
         return ezdUmg;
     }
     /*请求获取每个状态的招聘信息的数量

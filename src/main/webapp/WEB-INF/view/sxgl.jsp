@@ -23,7 +23,7 @@
 			<div class="header">
 				<div class="container">
 					<div class="font-hearder">
-						欢迎回来，e职多就业管理系统&nbsp;&nbsp;&nbsp;<i class="fa fa-unlock"><a href="${pageContext.request.contextPath}/login" style="color:#5AB0F9">&nbsp;&nbsp;登录</a></i>
+						欢迎回来，e职多就业管理系统&nbsp;&nbsp;&nbsp;<i class="fa fa-unlock"><a href="${pageContext.request.contextPath}/login/logout" style="color:#5AB0F9">&nbsp;&nbsp;登出</a></i>
 					</div>
 				</div>
 			</div>
@@ -280,8 +280,6 @@
 		
 		$(function(){
 
-
-
 			$(".mokuai").click(function(){
 				$(".mokuai").removeClass("mokuai-active");
 				$(this).addClass("mokuai-active");
@@ -290,7 +288,7 @@
 		
 		$(function(){
 			$("#sxgl").on("click",function(){
-				window.location.href="index";
+				window.location.href="/bg/index";
 			//	$(".right-center").load("sxgl.html .right-mokuai,#one,#two");
 			});
             $("#fbgw").on("click",function(){
@@ -319,8 +317,9 @@
 
 
             var a = <%=session.getAttribute("status")%> == 666;
-            <%session.removeAttribute("status");%>
+
             if(a){
+                <%session.removeAttribute("status");%>
                 alert("asdfas");
                 $("#xxgl").click();
             }

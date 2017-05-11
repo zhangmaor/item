@@ -22,24 +22,41 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
         <!-- 配置我们的登录请求地址 -->
         <property name="loginUrl" value="/login"/>
         <!-- 配置我们在登录页登录成功后的跳转地址，如果你访问的是非/login地址，则跳到您访问的地址 -->
-        <property name="successUrl" value="/user"/>
+        <property name="successUrl" value="/bg"/>
         <!-- 如果您请求的资源不再您的权限范围，则跳转到/403请求地址 -->
         <property name="unauthorizedUrl" value="/login/403"/>
         <!-- 权限配置 -->
         <property name="filterChainDefinitions">
-            <value>
-                <!-- anon表示此地址不需要任何权限即可访问 -->
+        <value>
+
+            <!-- 只有当有quanzhi角色时才能访问 -->
+            /enret/qzgl = roles[quanzhi]
+
+            <!-- 只有当有xuexiao角色时才能访问 -->
+            /bgSchmg = roles[xuexiao]
+
+            <!-- 只有当有wenzhang角色时才能访问 -->
+            /enret/wzgl = roles[wenzhang]
+
+            <!-- 只有当有dahzaohui角色时才能访问 -->
+            /enret/dzhgl = roles[dahzaohui]
+
+            <!-- 只有当有qiye角色时才能访问 -->
+            /enret/qygl = roles[qiye]
+
+            <!--所有的请求(除去配置的静态资源请求或请求地址为anon的请求)都要通过登录验证,如果未登录则跳到/login-->
+            /** = authc
+            <!--    &lt;!&ndash; anon表示此地址不需要任何权限即可访问 &ndash;&gt;
                 /static/**=anon
-                <!--  /user = perms[query]perms[user:query]表示访问此连接需要权限为user:query的用户 -->
+                &lt;!&ndash;  /user = perms[query]perms[user:query]表示访问此连接需要权限为user:query的用户 &ndash;&gt;
 
                 /user=roles[manager]
-                <!-- roles[manager]表示访问此连接需要用户的角色为manager -->
+                &lt;!&ndash; roles[manager]表示访问此连接需要用户的角色为manager &ndash;&gt;
                 /user/add=roles[manager]
-                /user/edit/**=roles[manager]
-                <!--所有的请求(除去配置的静态资源请求或请求地址为anon的请求)都要通过登录验证,如果未登录则跳到/login-->
-                /** = authc
-            </value>
-        </property>
+                /user/edit/**=roles[manager]-->
+
+        </value>
+    </property>
     </bean>
 
     <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>

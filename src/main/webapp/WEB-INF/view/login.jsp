@@ -90,7 +90,7 @@
 	<body>
 		<div id="height">
 			<div id="top"></div>
-			<form:form action="${pageContext.request.contextPath}/login/commit" method="post">
+			<form:form action="${pageContext.request.contextPath}/login" method="post">
 			<div id="content">
 				<p>${message}</p>
 				<div id="div1">
