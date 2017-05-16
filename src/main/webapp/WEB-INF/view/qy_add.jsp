@@ -85,6 +85,7 @@
                     <textarea name="enmgDetail" style="width: 500px;height: 150px;"></textarea>
                 </div>
             </div>
+            <img src="">
             <div class="row text-center">
                 <button type="submit" class="btn btn-primary">提交</button>
             </div>
@@ -105,6 +106,7 @@
 <c:if test="${addEnmgResult==0}">
     <script type="text/javascript">
         alert("添加失败！！");
+        new w
     </script>
     <%
         session.removeAttribute("addEnmgResult");

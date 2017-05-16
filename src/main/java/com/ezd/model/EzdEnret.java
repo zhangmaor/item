@@ -204,16 +204,10 @@ public class EzdEnret {
                 ", enretHgMoney=" + enretHgMoney +
                 ", enretPostOne=" + enretPostOne +
                 ", enretPostTwo=" + enretPostTwo +
+                ", enretEdu=" + enretEdu +
                 ", enretPg='" + enretPg + '\'' +
                 ", enretDemand='" + enretDemand + '\'' +
                 ", enretStatus=" + enretStatus +
-                ", ezdPostOne=" + ezdPostOne +
-                ", ezdPostTwo=" + ezdPostTwo +
-                ", ezdRetType=" + ezdRetType +
-                ", ezdEnmg=" + ezdEnmg +
-                ", ezdNewsStatus=" + ezdNewsStatus +
-                ", ezdErlenrets=" + ezdErlenrets +
-                ", ezdUmgs=" + ezdUmgs +
                 '}';
     }
 }

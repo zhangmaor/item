@@ -1,64 +1,64 @@
 
 
 
-insert into ezd_retType values(default ,'实习'), (default ,'全职'); -- 招聘类型表
+INSERT INTO ezd_retType VALUES(DEFAULT ,'实习'), (DEFAULT ,'全职'); -- 招聘类型表
 
 
 /* 行业数据添加开始*/
-insert into ezd_industry values (default , 'it/互联网'),(default , '政府/非营业机构'),(default , '电子/通信/硬件'),(default , '农/林、牧 、渔'),(default , '广告/传媒/影视/文化'),(default , '房地产/商业中心'),(default , '房建'),(default , '教育/培训/科研/院校'),(default , '专业服务'),(default , '生活服务'),(default , '金融业'),(default , '贸易/物流/交通/运输'),(default , '快速/耐用消费品'),(default , '医学/生物'),(default , '能源/水利/化工/环保'),(default , '仪器/仪表/工业自动化/电器'),(default , '汽车/摩托车/电动车'),(default , '机械制造物/机电/重工'),(default , '航空/航天研究与制造'); -- 一级行业信息表
+INSERT INTO ezd_industry VALUES (DEFAULT , 'it/互联网'),(DEFAULT , '政府/非营业机构'),(DEFAULT , '电子/通信/硬件'),(DEFAULT , '农/林、牧 、渔'),(DEFAULT , '广告/传媒/影视/文化'),(DEFAULT , '房地产/商业中心'),(DEFAULT , '房建'),(DEFAULT , '教育/培训/科研/院校'),(DEFAULT , '专业服务'),(DEFAULT , '生活服务'),(DEFAULT , '金融业'),(DEFAULT , '贸易/物流/交通/运输'),(DEFAULT , '快速/耐用消费品'),(DEFAULT , '医学/生物'),(DEFAULT , '能源/水利/化工/环保'),(DEFAULT , '仪器/仪表/工业自动化/电器'),(DEFAULT , '汽车/摩托车/电动车'),(DEFAULT , '机械制造物/机电/重工'),(DEFAULT , '航空/航天研究与制造'); -- 一级行业信息表
 
-insert into ezd_seindustry(se_in,se_name) values (1,'o2o生活服务'),(1,'电子商务'),(1,'网络招聘'),(1,'网络安全'),(1,'计算机软件'),(1,'IT服务/体统集成'),(1,'网游/手游'),(1,'在线教育'),(1,'云计算/大数据'),(1,'互联网金融'),(1,'在线旅游'),(1,'门户网络/搜索引擎'),(1,'智能硬件/机器人'),(1,'SNS/社交');
-
-
-insert into ezd_seindustry(se_in,se_name) values (2,'政府职能部门/公共事业'),(2,'各国华政机构'),(2,'协会'),(2,'部队/警察'),(2,'公益组织'),(2,'其他');
+INSERT INTO ezd_seindustry(se_in,se_name) VALUES (1,'o2o生活服务'),(1,'电子商务'),(1,'网络招聘'),(1,'网络安全'),(1,'计算机软件'),(1,'IT服务/体统集成'),(1,'网游/手游'),(1,'在线教育'),(1,'云计算/大数据'),(1,'互联网金融'),(1,'在线旅游'),(1,'门户网络/搜索引擎'),(1,'智能硬件/机器人'),(1,'SNS/社交');
 
 
-
-insert into ezd_seindustry(se_in,se_name) values (3,'运营商/增值服务'),(3,'计算机硬件/网络设备'),(3,'通信设备'),(3,'电子/半导体/集成电路');
-
-
-insert into ezd_seindustry(se_in,se_name) values (4,'样值/种植/水产'),(4,'园林/园艺/花卉'),(4,'种子/化肥/农药'),(4,'饲料/添加剂'),(4,'其他');
+INSERT INTO ezd_seindustry(se_in,se_name) VALUES (2,'政府职能部门/公共事业'),(2,'各国华政机构'),(2,'协会'),(2,'部队/警察'),(2,'公益组织'),(2,'其他');
 
 
 
-insert into ezd_seindustry(se_in,se_name) values (5,'广告/公关/会展'),(5,'影视/媒体'),(5,'文化/艺术'),(5,'出版');
+INSERT INTO ezd_seindustry(se_in,se_name) VALUES (3,'运营商/增值服务'),(3,'计算机硬件/网络设备'),(3,'通信设备'),(3,'电子/半导体/集成电路');
 
 
-insert into ezd_seindustry(se_in,se_name) values (6,'地产经纪/中介'),(6,'物业管理/商业中心'),(6,'房地产开发');
+INSERT INTO ezd_seindustry(se_in,se_name) VALUES (4,'样值/种植/水产'),(4,'园林/园艺/花卉'),(4,'种子/化肥/农药'),(4,'饲料/添加剂'),(4,'其他');
 
 
-insert into ezd_seindustry(se_in,se_name) values (7,'建材'),(7,'建筑设计'),(7,'装修装饰'),(7,'工程施工'),(7,'园林景观'),(7,'环境工程'),(7,'路桥/隧道'),(7,'高铁/地铁');
+
+INSERT INTO ezd_seindustry(se_in,se_name) VALUES (5,'广告/公关/会展'),(5,'影视/媒体'),(5,'文化/艺术'),(5,'出版');
 
 
-insert into ezd_seindustry(se_in,se_name) values (8,'学前教育'),(8,'出国留学'),(8,'外语培训'),(8,'IT培训'),(8,'k12/中专'),(8,'高等院校'),(8,'学术/科研'),(8,'其他技能培训');
+INSERT INTO ezd_seindustry(se_in,se_name) VALUES (6,'地产经纪/中介'),(6,'物业管理/商业中心'),(6,'房地产开发');
 
 
-insert into ezd_seindustry(se_in,se_name) values (9,'咨询'),(9,'财务/审计/税务'),(9,'法律'),(9,'人才服务'),(9,'外包服务'),(9,'翻译'),(9,'专利/知识产权/商标'),(9,'检测/认证');
+INSERT INTO ezd_seindustry(se_in,se_name) VALUES (7,'建材'),(7,'建筑设计'),(7,'装修装饰'),(7,'工程施工'),(7,'园林景观'),(7,'环境工程'),(7,'路桥/隧道'),(7,'高铁/地铁');
 
 
-insert into ezd_seindustry(se_in,se_name) values (10,'餐饮'),(10,'酒店'),(10,'家政服务'),(10,'汽车租赁'),(10,'旅游'),(10,'中介服务'),(10,'娱乐/休闲/体育'),(10,'婚庆/摄影'),(10,'宠物行业'),(10,'丽人/美容/美发'),(10,'婚庆/摄影');
+INSERT INTO ezd_seindustry(se_in,se_name) VALUES (8,'学前教育'),(8,'出国留学'),(8,'外语培训'),(8,'IT培训'),(8,'k12/中专'),(8,'高等院校'),(8,'学术/科研'),(8,'其他技能培训');
 
 
-insert into ezd_seindustry(se_in,se_name) values (11,'银行'),(11,'投资/融资'),(11,'保险'),(11,'证券/基金'),(11,'租赁/信托'),(11,'期贷/外汇'),(11,'担保/典当/拍卖');
-
-insert into ezd_seindustry(se_in,se_name) values (12,'交通/运输'),(12,'物流/仓储/快递'),(12,'贸易/进出口');
+INSERT INTO ezd_seindustry(se_in,se_name) VALUES (9,'咨询'),(9,'财务/审计/税务'),(9,'法律'),(9,'人才服务'),(9,'外包服务'),(9,'翻译'),(9,'专利/知识产权/商标'),(9,'检测/认证');
 
 
-insert into ezd_seindustry(se_in,se_name) values (13,'办公用品及设备'),(13,'家电'),(13,'服装/服饰/纺织/皮革'),(13,'奢侈品/收藏品'),(13,'零售（超市）/批发'),(13,'玩具/礼品'),(13,'食品/饮料/烟酒/日化'),(13,'家具/家居'),(13,'珠宝/首饰/工艺品');
+INSERT INTO ezd_seindustry(se_in,se_name) VALUES (10,'餐饮'),(10,'酒店'),(10,'家政服务'),(10,'汽车租赁'),(10,'旅游'),(10,'中介服务'),(10,'娱乐/休闲/体育'),(10,'婚庆/摄影'),(10,'宠物行业'),(10,'丽人/美容/美发'),(10,'婚庆/摄影');
 
 
-insert into ezd_seindustry(se_in,se_name) values (14,'制药（生物/化学））'),(14,'医疗器械'),(14,'医院/医疗卫生'),(14,'保健');
+INSERT INTO ezd_seindustry(se_in,se_name) VALUES (11,'银行'),(11,'投资/融资'),(11,'保险'),(11,'证券/基金'),(11,'租赁/信托'),(11,'期贷/外汇'),(11,'担保/典当/拍卖');
 
-insert into ezd_seindustry(se_in,se_name) values (15,'新能源（太阳能/风能）'),(15,'环保'),(15,'电力/水利'),(15,'石油/石化/化工'),(15,'矿产/地质/采掘/冶炼'),(15,'原材料和加工');
-
-insert into ezd_seindustry(se_in,se_name) values (16,'集成电路ic设计/应用工程师'),(16,'ic验证工程师'),(16,'电子工程师/技术员'),(16,'电子技术研发工程师'),(16,'射频工程师'),(16,'电子/电器维修工程师/技师'),(16,'变压器与磁电工程师'),(16,'版图设计工程师'),(16,'电器工程师/技术员'),(16,'电路工程师/技术员（模拟/数字）'),(16,'电声/音响工程师/技术员'),(16,'激光/光电子技术'),(16,'半导体技术'),(16,'自动控制工程师/技术员'),(16,'电子软件开发（ARM/MCU...'),(16,'嵌入式软件开发（linux/单片机/plc/dsp...）'),(16,'电池/电源开发'),(16,'fae现场应用工程师'),(16,'工艺工程师'),(16,'家用电器/数码产品研发'),(16,'仪器/仪表/计量分析师'),(16,'测试工程师'),(16,'安防系统工程师'),(16,'其他');
-
-insert into ezd_seindustry(se_in,se_name) values (17,'汽车销售'),(17,'汽车维修/美容'),(17,'汽车用品'),(17,'汽车生产'),(17,'汽车零部件'),(17,'摩托'),(17,'电动车');
+INSERT INTO ezd_seindustry(se_in,se_name) VALUES (12,'交通/运输'),(12,'物流/仓储/快递'),(12,'贸易/进出口');
 
 
-insert into ezd_seindustry(se_in,se_name) values (18,'机械及工业制品'),(18,'机电设备'),(18,'重工业');
+INSERT INTO ezd_seindustry(se_in,se_name) VALUES (13,'办公用品及设备'),(13,'家电'),(13,'服装/服饰/纺织/皮革'),(13,'奢侈品/收藏品'),(13,'零售（超市）/批发'),(13,'玩具/礼品'),(13,'食品/饮料/烟酒/日化'),(13,'家具/家居'),(13,'珠宝/首饰/工艺品');
 
-insert into ezd_seindustry(se_in,se_name) values (19,'研究/设计'),(19,'销售部门'),(19,'生产与维修'),(19,'实验与试飞基地'),(19,'管理部门');
+
+INSERT INTO ezd_seindustry(se_in,se_name) VALUES (14,'制药（生物/化学））'),(14,'医疗器械'),(14,'医院/医疗卫生'),(14,'保健');
+
+INSERT INTO ezd_seindustry(se_in,se_name) VALUES (15,'新能源（太阳能/风能）'),(15,'环保'),(15,'电力/水利'),(15,'石油/石化/化工'),(15,'矿产/地质/采掘/冶炼'),(15,'原材料和加工');
+
+INSERT INTO ezd_seindustry(se_in,se_name) VALUES (16,'集成电路ic设计/应用工程师'),(16,'ic验证工程师'),(16,'电子工程师/技术员'),(16,'电子技术研发工程师'),(16,'射频工程师'),(16,'电子/电器维修工程师/技师'),(16,'变压器与磁电工程师'),(16,'版图设计工程师'),(16,'电器工程师/技术员'),(16,'电路工程师/技术员（模拟/数字）'),(16,'电声/音响工程师/技术员'),(16,'激光/光电子技术'),(16,'半导体技术'),(16,'自动控制工程师/技术员'),(16,'电子软件开发（ARM/MCU...'),(16,'嵌入式软件开发（linux/单片机/plc/dsp...）'),(16,'电池/电源开发'),(16,'fae现场应用工程师'),(16,'工艺工程师'),(16,'家用电器/数码产品研发'),(16,'仪器/仪表/计量分析师'),(16,'测试工程师'),(16,'安防系统工程师'),(16,'其他');
+
+INSERT INTO ezd_seindustry(se_in,se_name) VALUES (17,'汽车销售'),(17,'汽车维修/美容'),(17,'汽车用品'),(17,'汽车生产'),(17,'汽车零部件'),(17,'摩托'),(17,'电动车');
+
+
+INSERT INTO ezd_seindustry(se_in,se_name) VALUES (18,'机械及工业制品'),(18,'机电设备'),(18,'重工业');
+
+INSERT INTO ezd_seindustry(se_in,se_name) VALUES (19,'研究/设计'),(19,'销售部门'),(19,'生产与维修'),(19,'实验与试飞基地'),(19,'管理部门');
 
 /* 行业数据添加结束*/
 
@@ -198,152 +198,5 @@ VALUES('软件工程师',1),('程序员',1),('实施工程师',1),('网页设计
 
 ('网店店长',38),('淘宝客服',38),('淘宝美工',38),('店铺文案编辑',38),('店铺推广',38),('活动策划',38);
 
-
---   用户表
-insert into ezd_users VALUES (1,'15179791514','123',DEFAULT );
-insert into ezd_users VALUES (2,'13679791514','1234',DEFAULT );
-insert into ezd_users VALUES (3,'15979791514','12345',DEFAULT );
-insert into ezd_users VALUES (4,'17679791514','123456',DEFAULT );
-
-
---   用户信息表
-insert into ezd_umg VALUES (1,1,'touxiang1.png','刘小峰','男','1996-08-26','1336629729@qq.com','南方','java','大专','菜的一波','广东南方科贸培训学院就读于南1学院',DEFAULT );
-insert into ezd_umg VALUES (2,2,'touxiang2.png','刘小花','男','1997-08-26','1534354542@qq.com','南方小','php','大学','精英','广东南方科贸培训学院就读于南方2学院',DEFAULT );
-insert into ezd_umg VALUES (3,3,'touxiang3.png','刘小帽','男','1998-08-26','5342543543@qq.com','南方中','ui','博士','牛逼','广东南方科贸培训学院就读于南方3学院',DEFAULT );
-insert into ezd_umg VALUES (4,4,'touxiang4.png','刘小永','男','1999-08-26','5435435466@qq.com','南方大','前端','硕士','boss','广东南方科贸培训学院就读于南方4学院',DEFAULT );
-
-
-
---     企业类型表
-insert into ezd_entype VALUES (1,'内资企业');
-insert into ezd_entype VALUES (2,'国有企业');
-insert into ezd_entype VALUES (3,'集体企业');
-insert into ezd_entype VALUES (4,'股份合作企业');
-insert into ezd_entype VALUES (5,'2股份合作企业');
-insert into ezd_entype VALUES (6,'联营企业');
-insert into ezd_entype VALUES (7,'有限责任公司');
-insert into ezd_entype VALUES (8,'贡发集团');
-insert into ezd_entype VALUES (9,'私营企业');
-insert into ezd_entype VALUES (10,'其他企业');
-insert into ezd_entype VALUES (11,'港、澳、台商投资企业');
-
-
---     企业信息表
-insert into ezd_enmg VALUES (1,'logo1.png','大华企业','www.n1f.com','刘先生','15179791514','一家成立100周年的上市公司','珠海市香洲区唐家湾',3,'比南方学院大',DEFAULT ,1);
-insert into ezd_enmg VALUES (2,'logo2.png','大帽企业','www.n2f.com','张先生','15435432532','一家成立99周年的上市公司','珠海市香洲区拱北',2,'比南方学院大',DEFAULT ,2);
-insert into ezd_enmg VALUES (3,'logo3.png','大海企业','www.n3f.com','李先生','15954353353','一家成立88周年的上市公司','珠海市斗门区白蕉',4,'比南方学院大',DEFAULT ,1);
-
-
-
- -- 学校性质
-INSERT INTO ezd_schtype VALUES(1, '本科'),(2, '大专'),(3,'中专'),(4,'其他');
-
---     学校信息表
-INSERT INTO ezd_schmg VALUES (1,'www.1nf.com','南方学院',NULL,'这里是学校的详情','位于斗门白蕉南方',2,DEFAULT );
-INSERT INTO ezd_schmg VALUES (2,'www.2nf.com','北方学院',NULL,'这里是学校的详情','位于香洲白蕉南方',1,DEFAULT );
-INSERT INTO ezd_schmg VALUES (3,'www.3nf.com','西方学院',NULL,'这里是学校的详情','位于金湾白蕉南方',3,DEFAULT );
-
-
---     关注记录表
-insert into ezd_uminden VALUES (1,1,1,1,DEFAULT );
-insert into ezd_uminden VALUES (2,1,2,1,DEFAULT );
-insert into ezd_uminden VALUES (3,2,3,1,DEFAULT );
-
-
-
---     用户兼职记录信息表
-insert into ezd_jobmg VALUES (1,1,20,7,5,6,7,8);
-insert into ezd_jobmg VALUES (2,2,30,7,5,6,7,8);
-insert into ezd_jobmg VALUES (3,3,20,7,5,6,7,8);
-
-
-
-
---     用户消息表
-INSERT INTO ezd_unews VALUES (1,1,2,'今天天气很好',1,DEFAULT );
-INSERT INTO ezd_unews VALUES (2,3, 1,'今天天气很好吧',0,DEFAULT );
-INSERT INTO ezd_unews VALUES (3,3,1,'今天天气很好那当然',1,DEFAULT );
-
-
---     报名状态表
-insert into ezd_restatus VALUES (1,'已报名');
-insert into ezd_restatus VALUES (2,'审核');
-insert into ezd_restatus VALUES (3,'录用');
-insert into ezd_restatus VALUES (4,'拒绝');
-
-
-
---     消息状态表
-insert into ezd_newsStatus VALUES (1,'未开始');
-insert into ezd_newsStatus VALUES (2,'进行中');
-insert into ezd_newsStatus VALUES (3,'已结束');
-
-
-
---     招聘信息表
-insert into ezd_enret VALUES (1,1,5,1,DEFAULT ,2000,5000,1,2,3,'五险一金','精通java',1);
-insert into ezd_enret VALUES (2,2,10,1,DEFAULT ,5000,8000,2,3,1,'包吃住','会扫地',1);
-insert into ezd_enret VALUES (3,3,40,2,DEFAULT ,10000,15000,3,1,2,'包接送','会上天',1);
-
-
---     招聘信息报名表
-insert into ezd_erlenret VALUES (1,1,1,DEFAULT ,2);
-insert into ezd_erlenret VALUES (2,2,2,DEFAULT ,1);
-insert into ezd_erlenret VALUES (3,3,3,DEFAULT ,3);
-
-
-
---     浏览记录表
-insert into ezd_enret_browse VALUES (1,1,1);
-insert into ezd_enret_browse VALUES (2,2,2);
-insert into ezd_enret_browse VALUES (3,3,3);
-
-
---     大招会信息表
-insert into ezd_bigret VALUES (1,'logo11.png','我是大标题','2017-3-4' ,1,1,DEFAULT ,'很好玩',1,2,1);
-insert into ezd_bigret VALUES (2,'logo22.png','我是大大标题','2017-4-4' ,2,2,DEFAULT ,'来呀快活呀',1,3,2);
-insert into ezd_bigret VALUES (3,'logo33.png','我是大大大标题','2017-5-4' ,3,3,DEFAULT ,'很好玩丫丫丫丫丫',2,3,3);
-
-
-
-
---     大招会报名表
-insert into ezd_erlbigret VALUES (1,1,1,1,DEFAULT );
-insert into ezd_erlbigret VALUES (2,2,2,2,DEFAULT );
-insert into ezd_erlbigret VALUES (3,3,3,3,DEFAULT );
-
-
---     校招会
-insert into ezd_schret VALUES (1,1,1,1,'欢迎来到南方校招会','2017-5-6',DEFAULT ,'java');
-insert into ezd_schret VALUES (2,2,2,2,'欢迎来到广东校招会','2017-6-6',DEFAULT ,'php');
-insert into ezd_schret VALUES (3,3,3,3,'欢迎来到珠海校招会','2017-6-6',DEFAULT ,'ui');
-
-
---     文章类型表
-insert into ezd_artitype VALUES (1,'教育');
-insert into ezd_artitype VALUES (2,'就业');
-insert into ezd_artitype VALUES (3,'科普');
-insert into ezd_artitype VALUES (4,'生活');
-insert into ezd_artitype VALUES (5,'职业');
-
---     文章信息表
-insert into ezd_article VALUES (1,'fengmian1.png',1,'大中国','如何打倒小日本','墨子','1336629729@qq.com','fengxinag1.png','在22世纪的世界，中国称霸武林，打倒了青莲派的小日本','保家卫国',DEFAULT ,1);
-insert into ezd_article VALUES (2,'fengmian2.png',2,'毕业了','马上要毕业了','峰子','13353422459@qq.com','fengxinag2.png','5月26号大家就要各奔东西了','毕业季',DEFAULT ,2);
-insert into ezd_article VALUES (3,'fengmian3.png',3,'毕业了','明天张茂荣结婚','小四眼','1334535435@qq.com','fengxinag3.png','5年后，张茂荣结婚了','生子',DEFAULT ,3);
-
---     文章评论
-insert into ezd_sayart VALUES (1,1,1,'文章很是有文采',1,1,DEFAULT );
-insert into ezd_sayart VALUES (2,2,2,'这首歌听了要怀孕啊',2,2,DEFAULT );
-insert into ezd_sayart VALUES (3,3,3,'张茂荣生仔了',1,1,DEFAULT );
-
---     点赞信息表
-insert into ezd_point VALUES (1,1,1,1,1);
-insert into ezd_point VALUES (2,2,2,NULL ,1);
-insert into ezd_point VALUES (3,3,3,1,0);
-
---   广告
-insert into ezd_adv VALUES (1,'香洲','中央记者','生活家居','一切为了生活','张茂荣','17607560915','www.guanggao.com',1);
-insert into ezd_adv VALUES (2,'斗门','报刊','战地报道','国外战争','张小花','17615150915','www.guanggao.com',2);
-insert into ezd_adv VALUES (3,'金湾','摄影','国外实时','一切为了生活','张茂荣','17607560915','www.guanggao.com',3);
 
 

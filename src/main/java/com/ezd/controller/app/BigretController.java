@@ -50,10 +50,10 @@ public class BigretController {
              ) {
             e.setBigretLogo(ip+e.getBigretLogo());
         }
-        mapper.addMixInAnnotations(EzdErlbigret.class, BigretFilterGetAll.class);
-        mapper.addMixInAnnotations(EzdEnmg.class, BigretEnmgsFilter.class);
-        mapper.addMixInAnnotations(EzdSchmg.class, BigretSchmgFilter.class);
-        OutputStream outputStream = null;
+//        mapper.addMixInAnnotations(EzdErlbigret.class, BigretFilterGetAll.class);
+//        mapper.addMixInAnnotations(EzdEnmg.class, BigretEnmgsFilter.class);
+//        mapper.addMixInAnnotations(EzdSchmg.class, BigretSchmgFilter.class);
+       OutputStream outputStream = null;
         try {
             outputStream =  response.getOutputStream();
         } catch (IOException e) {

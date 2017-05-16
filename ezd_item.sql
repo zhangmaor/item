@@ -24,7 +24,7 @@ CREATE TABLE ezd_tole_permission(--   角色权限关系表 3
 CREATE TABLE ezd_users(--  用户表 4
 	user_id INT PRIMARY KEY AUTO_INCREMENT, --  主键
 	user_phone VARCHAR(11)  NOT NULL, --  电话
-	user_Pwd VARCHAR(20)  NOT NULL,--  密码
+	user_Pwd VARCHAR(50)  NOT NULL,--  密码
 	user_uptime DATETIME DEFAULT CURRENT_TIMESTAMP	--  创建时间	
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 ALTER TABLE ezd_users ADD UNIQUE(user_phone);
@@ -35,14 +35,14 @@ CREATE TABLE ezd_umg(--  用户信息表 5
 	umg_photo VARCHAR(50),--  头像
 	umg_name  VARCHAR(20),--  姓名
 	umg_sex VARCHAR(10)  , -- 姓别
-	umg_birthday Datetime ,--  生日
+	umg_birthday DATETIME ,--  生日
 	umg_email VARCHAR(20),--  邮箱
 	umg_school VARCHAR(20),--  学校
 	umg_major VARCHAR(20),--  专业
 	umg_degree VARCHAR(20),--  学历
 	umg_sayMf VARCHAR(500),--  自我评价
 	umg_education VARCHAR(200),--  教育经历
-	umg_address varchar(100), -- 家庭地址
+	umg_address VARCHAR(100), -- 家庭地址
 	umg_idCard1 varchar(100), -- 省份证 正面地址
 	umg_idCard2 varchar(100), -- 省份证 背面地址
 	umg_status int default 0, -- 是否实名 1 已实名认证  0 未认证

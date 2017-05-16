@@ -30,10 +30,21 @@
         SELECT * FROM ezd_erlenret WHERE enret_time =(SELECT MAX(enret_time) FROM ezd_erlenret WHERE erlenret_enret =#{enretId}) AND erlenret_enret = #{enretId}
     </select>
 
-    <!--<select id="getOntUmg">-->
-        <!--SELECT * from ezd_-->
-    <!--</select>-->
-
+    <select id="getOntUmg" resultMap="erlenret" parameterType="int">
+    SELECT * from ezd_erlenret
+    left join ezd_enret
+    on ezd_erlenret.erlenret_enret = ezd_enret.enret_id
+    left join ezd_enmg
+    on ezd_enmg.enmg_id = ezd_enret.nret_enmg
+    left join ezd_postTwo
+    on ezd_postTwo.ptwo_id = ezd_enret.enret_postTwo
+    where erlenret_umg = #{erlenretUmg}
+    </select>
+    <!--获取当前的用户是否报名该招聘信息-->
+    <select id="getCount" resultType="int" parameterType="com.ezd.model.EzdErlenret">
+        select count(*) from ezd_erlenret
+        where erlenret_umg = #{erlenretUmg} and erlenret_id = #{erlenretId}
+    </select>
     <select id="getHireAll" resultType="int" >
         select count(*),erlenret_enret from ezd_erlenret where erlenret_status = 3  group by erlenret_enret
     </select>

@@ -1,11 +1,23 @@
 package com.ezd.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.Date;
 
 /**
  * Created by Administrator on 2017/4/6.
  */
 public class EzdErlenret {
+    @Override
+    public String toString() {
+        return "EzdErlenret{" +
+                "erlenretId=" + erlenretId +
+                ", erlenretUmg=" + erlenretUmg +
+                ", erlenretEnret=" + erlenretEnret +
+                ", erlenretStatus=" + erlenretStatus +
+                ", rettime=" + rettime +
+                '}';
+    }
     private int erlenretId;
     private int erlenretUmg;//references umg(umg_id)
     private int erlenretEnret;//references enret(enret_id),
@@ -82,17 +94,4 @@ public class EzdErlenret {
         this.ezdRestatus = ezdRestatus;
     }
 
-    @Override
-    public String toString() {
-        return "EzdErlenret{" +
-                "erlenretId=" + erlenretId +
-                ", erlenretUmg=" + erlenretUmg +
-                ", erlenretEnret=" + erlenretEnret +
-                ", erlenretStatus=" + erlenretStatus +
-                ", ezdUmg=" + ezdUmg +
-                ", ezdEnret=" + ezdEnret +
-                ", rettime=" + rettime +
-                ", ezdRestatus=" + ezdRestatus +
-                '}';
-    }
 }

@@ -3,6 +3,7 @@ package com.ezd.controller.background;
 import com.ezd.jackonInterface.BigretEnmgFilter;
 import com.ezd.jackonInterface.BigretFilterGetAll;
 import com.ezd.jackonInterface.EnmgEnretFilter;
+import com.ezd.jackonInterface.EnmgEnretsFilter;
 import com.ezd.model.*;
 import com.ezd.service.EzdEnmgService;
 import com.ezd.service.EzdIndustryService;
@@ -73,7 +74,7 @@ public class BgEnmg {
 
         ObjectMapper mapper = new ObjectMapper();
         mapper.addMixIn(EzdEnmg.class, BigretEnmgFilter.class);
-        mapper.addMixIn(EzdEnret.class, EnmgEnretFilter.class);
+        mapper.addMixIn(EzdEnret.class, EnmgEnretsFilter.class);
         OutputStream outputStream = null;
         try {
             outputStream = response.getOutputStream();

@@ -1,5 +1,8 @@
 package com.ezd.controller.app;
 
+import com.ezd.jackonInterface.BigretEnmgsFilter;
+import com.ezd.jackonInterface.EnmgEnretFilter;
+import com.ezd.jackonInterface.EnretErlFilter;
 import com.ezd.model.EzdEnmg;
 import com.ezd.model.EzdEnret;
 import com.ezd.model.EzdErlenret;
@@ -110,8 +113,50 @@ public class AppEnretController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+    }
+    /*
+     *app_enret/get
+    * */
+    @RequestMapping(value = "/get",method = RequestMethod.GET)
+    public void get(int umgId,HttpServletResponse response){
+        List<EzdErlenret> oneUmg = ezdEnretService.getOneUmg(umgId);
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.addMixIn(EzdErlenret.class, EnretErlFilter.class);
+        mapper.addMixIn(EzdEnret.class, EnmgEnretFilter.class);
+        mapper.addMixIn(EzdEnmg.class, BigretEnmgsFilter.class);
+        OutputStream outputStream = null;
+        try {
+            outputStream = response.getOutputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            mapper.writeValue(outputStream,oneUmg);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
+    /**
+     * 获取本用户是否报名此招聘
+     * @param ezdErlenret
+     * @param response
+     */
+    @RequestMapping("/getErlNum")
+    public void getErlCount(EzdErlenret ezdErlenret,HttpServletResponse response){
+        int count = ezdEnretService.getCount(ezdErlenret);
+        ObjectMapper mapper = new ObjectMapper();
+        OutputStream outputStream = null;
+        try {
+            outputStream = response.getOutputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            mapper.writeValue(outputStream,count);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

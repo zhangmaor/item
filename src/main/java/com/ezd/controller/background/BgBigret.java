@@ -57,12 +57,12 @@ public class BgBigret {
     @RequestMapping(value = "/bigret", method = RequestMethod.GET)
     public void displayBigret(HttpServletRequest request, HttpServletResponse response) {
         List<EzdBigret> all = ezdBigretService.getAll();
-        String ip = new LocalhostIp().getIp();
-        for (EzdBigret e: all
-             ) {
-            //e.getBigretLogo();
-            e.setBigretLogo(ip+e.getBigretLogo());
-        }
+//        String ip = new LocalhostIp().getIp();
+//        for (EzdBigret e: all
+//             ) {
+//            //e.getBigretLogo();
+//            e.setBigretLogo(ip+e.getBigretLogo());
+//        }
         System.out.println("加载过的=====");
         ObjectMapper mapper = new ObjectMapper();
         SerializationConfig serializationConfig = mapper.getSerializationConfig();

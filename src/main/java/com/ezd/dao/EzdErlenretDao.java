@@ -25,4 +25,8 @@ public interface EzdErlenretDao {
     /*添加一条数据招聘信息报名表*/
     public int add(EzdErlenret ezdErlenret)throws Exception;
 
+    public List<EzdErlenret> getOntUmg(int umgId)throws Exception;
+
+    public int getCount(EzdErlenret ezdErlenret)throws Exception;
+
 }

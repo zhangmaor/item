@@ -2,6 +2,7 @@ package com.ezd.controller.app;
 
 import com.ezd.jackonInterface.BigretEnmgFilter;
 import com.ezd.jackonInterface.EnmgEnretFilter;
+import com.ezd.jackonInterface.EnmgEnretsFilter;
 import com.ezd.model.EzdBigret;
 import com.ezd.model.EzdEnmg;
 import com.ezd.model.EzdEnret;
@@ -44,7 +45,7 @@ public class AppEnmg {
         }
         ObjectMapper mapper = new ObjectMapper();
         mapper.addMixIn(EzdEnmg.class, BigretEnmgFilter.class);
-        mapper.addMixIn(EzdEnret.class, EnmgEnretFilter.class);
+        mapper.addMixIn(EzdEnret.class, EnmgEnretsFilter.class);
         OutputStream outputStream = null;
         try {
             outputStream = response.getOutputStream();

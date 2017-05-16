@@ -341,4 +341,24 @@ public class EzdEnretService {
         }
         return add;
     }
+    public List<EzdErlenret> getOneUmg(int id){
+        List<EzdErlenret> ontUmg = null;
+        try {
+            ontUmg= ezdErlenretDao.getOntUmg(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ontUmg;
+    }
+
+    public int getCount(EzdErlenret ezdErlenret){
+        int count = 0;
+        try {
+            count = ezdErlenretDao.getCount(ezdErlenret);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+
 }
